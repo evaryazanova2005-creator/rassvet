@@ -385,51 +385,49 @@ h1, h2, h3, h4 { letter-spacing:-.01em; }
 .gallery .g.tall{aspect-ratio:.78/1.13}
 .gallery .g img{width:100%;height:100%;object-fit:cover;display:block}
 
-/* ───── DARK BENEFITS (softened) ───── */
+/* ───── BENEFITS (light cream-yellow) ───── */
 .benefits{
-  background:
-    radial-gradient(70% 80% at 80% 60%, rgba(220,130,70,.18) 0%, transparent 70%),
-    radial-gradient(50% 70% at 15% 25%, rgba(160,180,100,.10) 0%, transparent 70%),
-    linear-gradient(180deg, #221608 0%, #1c1208 100%);
+  background:#fceeb0;
   padding:110px 0 110px;
-  color:#f3e6cf;
+  color:var(--ink);
 }
-.benefits .section-eyebrow{color:var(--orange-2)}
-.benefits .section-title{color:#fff;margin-bottom:48px}
-.benefits .section-title i{color:var(--green-soft)}
+.benefits .section-eyebrow{color:var(--orange)}
+.benefits .section-title{color:var(--ink);margin-bottom:48px}
+.benefits .section-title i{color:var(--green-deep)}
 .benefits-grid{
   display:grid;grid-template-columns:1fr 1fr;gap:26px;
   max-width:1100px;margin:0 auto;
 }
 .b-card{
   position:relative;
-  background:linear-gradient(160deg, rgba(255,180,120,.045), rgba(255,255,255,.018));
-  border:1px solid rgba(240,170,90,.10);
+  background:#fffaf0;
+  border:1px solid rgba(140,90,40,.08);
   border-radius:26px;
   padding:40px 44px;
+  box-shadow:0 4px 18px rgba(160,110,40,.06);
 }
 .b-card.right{
-  background:linear-gradient(160deg, rgba(190,210,140,.10), rgba(180,200,120,.02));
-  border-color:rgba(190,210,140,.16);
+  background:#fffdf3;
+  border-color:rgba(140,160,90,.18);
 }
 .b-card h3{
   font-family:'Cormorant Garamond',serif;
-  color:var(--orange-soft);
+  color:var(--orange);
   font-size:26px;
   font-weight:600;
   margin:0 0 26px;
 }
-.b-card.right h3{color:var(--green-soft)}
+.b-card.right h3{color:var(--green-deep)}
 .b-card ul{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:16px}
 .b-card li{
-  font-size:15px;color:#e8dcc6;line-height:1.5;
+  font-size:15px;color:var(--ink-soft);line-height:1.5;
   display:flex;gap:14px;align-items:flex-start;
 }
 .b-card li::before{
-  content:"✓";color:var(--orange-2);
+  content:"✓";color:var(--orange);
   font-weight:700;font-size:14px;margin-top:2px;flex-shrink:0;
 }
-.b-card.right li::before{content:"✦";color:var(--green-soft)}
+.b-card.right li::before{content:"✦";color:var(--green-deep)}
 
 /* ───── PRICING ───── */
 .pricing{padding:100px 0 110px;background:var(--bg)}
