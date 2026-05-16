@@ -101,8 +101,8 @@ h1, h2, h3, h4 { letter-spacing:-.01em; }
   white-space:nowrap;border:none;
 }
 .btn-primary{background:var(--orange);color:#fff}
-.btn-primary:hover{background:#d05c1d;transform:translateY(-1px)}
-.btn-ghost{background:transparent;color:var(--ink);box-shadow:inset 0 0 0 1.5px #e6d8be}
+.btn-primary:hover{background:#e7e97d;transform:translateY(-1px)}
+.btn-ghost{background:transparent;color:var(--ink);box-shadow:inset 0 0 0 1.5px #cc8b13}
 .btn-ghost:hover{background:rgba(233,109,42,.06);box-shadow:inset 0 0 0 1.5px var(--orange);color:var(--orange)}
 
 /* ───── HERO ───── */
@@ -385,9 +385,13 @@ h1, h2, h3, h4 { letter-spacing:-.01em; }
 .gallery .g.tall{aspect-ratio:.78/1.13}
 .gallery .g img{width:100%;height:100%;object-fit:cover;display:block}
 
-/* ───── BENEFITS (light cream-yellow) ───── */
+/* ───── BENEFITS (soft pink→peach→cream gradient) ───── */
 .benefits{
-  background:#fceeb0;
+  background:
+    radial-gradient(60% 80% at 12% 18%, #fbd5d8 0%, transparent 60%),
+    radial-gradient(55% 70% at 92% 32%, #f8c9b3 0%, transparent 60%),
+    radial-gradient(70% 70% at 50% 100%, #fceeb0 0%, transparent 70%),
+    linear-gradient(160deg, #fbe1d3 0%, #fce3c4 45%, #fceeb0 100%);
   padding:110px 0 110px;
   color:var(--ink);
 }
@@ -1010,7 +1014,7 @@ h1, h2, h3, h4 { letter-spacing:-.01em; }
   <div class="cta-inner">
     <h2>Готова <i>присоединиться?</i></h2>
     <p>Напиши мне — отвечу на все вопросы и расскажу подробности</p>
-    <a href="#" class="tg-btn" id="tg-link"><span class="tg-icon">✈</span> Написать в Telegram</a>
+    <a href="https://t.me/evavasilyyevna" target="_blank" rel="noopener" class="tg-btn" id="tg-link"><span class="tg-icon">✈</span> Написать в Telegram</a>
   </div>
 </section>
 
@@ -1034,7 +1038,7 @@ h1, h2, h3, h4 { letter-spacing:-.01em; }
       <div>
         <h4>Связь</h4>
         <ul>
-          <li><a href="#">Telegram</a></li>
+          <li><a href="https://t.me/evavasilyyevna" target="_blank" rel="noopener">Telegram</a></li>
           <li><a href="#">Instagram</a></li>
         </ul>
       </div>
@@ -1163,8 +1167,7 @@ h1, h2, h3, h4 { letter-spacing:-.01em; }
     });
   });
   document.getElementById('tg-link').addEventListener('click', e => {
-    e.preventDefault();
-    openModal('', 'Выберите тариф');
+    // прямой переход в Telegram — модалку не открываем
   });
   modalClose.addEventListener('click', closeModal);
   modal.addEventListener('click', e => { if (e.target === modal) closeModal(); });
