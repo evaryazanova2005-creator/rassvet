@@ -17,468 +17,133 @@
   --ink-soft: #3d2e1f;
   --ink-mute: #8a7558;
   --line: #ece1c8;
-
-  /* Orange palette — slightly softened */
   --orange: #e96d2a;
   --orange-2: #f1864a;
   --orange-soft: #f49d6f;
   --orange-50: #fde3d0;
   --orange-100: #fbcfb1;
-
-  /* NEW pastel salatovy */
   --green: #b9cf8a;
   --green-soft: #d6e3b6;
   --green-50: #e8f0d4;
   --green-deep: #8ea35a;
-
   --dark: #1f140a;
   --dark-2: #2c1d10;
   --olive: #aaa336;
   --olive-dark: #948c25;
-
   --shadow-sm: 0 1px 2px rgba(120,80,30,.05), 0 4px 12px rgba(120,80,30,.04);
   --shadow-md: 0 14px 36px rgba(120,80,30,.10);
 }
 *,*::before,*::after{box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{
-  margin:0;
-  font-family:'Onest','Inter','Helvetica Neue',Arial,sans-serif;
-  font-weight:400;
-  font-size:15px;line-height:1.55;
-  color:var(--ink);
-  background:var(--bg);
-  -webkit-font-smoothing:antialiased;
-}
+body{margin:0;font-family:'Onest','Inter','Helvetica Neue',Arial,sans-serif;font-weight:400;font-size:15px;line-height:1.55;color:var(--ink);background:var(--bg);-webkit-font-smoothing:antialiased;}
 body.modal-open{overflow:hidden}
 img{max-width:100%;display:block}
 button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit}
 a{color:inherit;text-decoration:none}
-
 .container{max-width:1240px;margin:0 auto;padding:0 36px}
-
-/* Common typography helpers */
 h1, h2, h3, h4 { letter-spacing:-.01em; }
-.serif-display{
-  font-family:'Cormorant Garamond','Times New Roman',serif;
-  font-weight:600;
-}
-.it{
-  font-family:'Cormorant Garamond',serif;
-  font-style:italic;
-  font-weight:500;
-  color:var(--orange);
-}
-
-/* ───── HEADER ───── */
-.header{
-  position:sticky;top:0;z-index:50;
-  background:rgba(250,243,231,.86);
-  backdrop-filter:saturate(140%) blur(10px);
-  -webkit-backdrop-filter:saturate(140%) blur(10px);
-  border-bottom:1px solid rgba(140,90,40,.06);
-}
+.serif-display{font-family:'Cormorant Garamond','Times New Roman',serif;font-weight:600;}
+.it{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:500;color:var(--orange);}
+.header{position:sticky;top:0;z-index:50;background:rgba(250,243,231,.86);backdrop-filter:saturate(140%) blur(10px);-webkit-backdrop-filter:saturate(140%) blur(10px);border-bottom:1px solid rgba(140,90,40,.06);}
 .header-inner{display:flex;align-items:center;justify-content:space-between;height:78px}
-.logo{
-  font-family:'Cormorant Garamond',serif;
-  font-style:italic;
-  font-weight:600;
-  font-size:30px;
-  color:var(--orange);
-  letter-spacing:.005em;
-}
+.logo{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:600;font-size:30px;color:var(--orange);letter-spacing:.005em;}
 .nav{display:flex;gap:46px}
-.nav a{
-  font-size:14.5px;color:var(--ink-soft);font-weight:400;
-  transition:color .2s ease;
-}
+.nav a{font-size:14.5px;color:var(--ink-soft);font-weight:400;transition:color .2s ease;}
 .nav a:hover{color:var(--orange)}
-.btn{
-  display:inline-flex;align-items:center;justify-content:center;
-  border-radius:999px;padding:14px 28px;
-  font-size:14.5px;font-weight:500;
-  transition:transform .15s ease,background .2s ease,box-shadow .2s ease,color .2s ease;
-  white-space:nowrap;border:none;
-}
+.btn{display:inline-flex;align-items:center;justify-content:center;border-radius:999px;padding:14px 28px;font-size:14.5px;font-weight:500;transition:transform .15s ease,background .2s ease,box-shadow .2s ease,color .2s ease;white-space:nowrap;border:none;}
 .btn-primary{background:var(--orange);color:#fff}
 .btn-primary:hover{background:#e7e97d;transform:translateY(-1px)}
 .btn-ghost{background:transparent;color:var(--ink);box-shadow:inset 0 0 0 1.5px #cc8b13}
 .btn-ghost:hover{background:rgba(233,109,42,.06);box-shadow:inset 0 0 0 1.5px var(--orange);color:var(--orange)}
-
-/* ───── HERO ───── */
 .hero{padding:64px 0 100px}
-.hero-grid{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:72px;
-  align-items:center;
-}
-.eyebrow-pill{
-  display:inline-block;
-  background:var(--orange-50);
-  color:var(--ink-soft);
-  font-size:12px;letter-spacing:.14em;text-transform:uppercase;
-  padding:9px 20px;
-  border-radius:999px;
-  margin-bottom:36px;
-  font-weight:500;
-}
-.hero h1{
-  font-family:'Cormorant Garamond',serif;
-  font-weight:600;
-  font-size:90px;
-  line-height:.98;
-  margin:0 0 30px;
-  letter-spacing:-.012em;
-  color:var(--ink);
-  text-wrap:balance;
-}
-.hero h1 i{
-  font-style:italic;font-weight:500;color:var(--orange);
-}
-.hero p.lead{
-  max-width:520px;
-  font-size:16.5px;
-  line-height:1.6;
-  color:var(--ink-mute);
-  margin:0 0 36px;
-}
+.hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center;}
+.eyebrow-pill{display:inline-block;background:var(--orange-50);color:var(--ink-soft);font-size:12px;letter-spacing:.14em;text-transform:uppercase;padding:9px 20px;border-radius:999px;margin-bottom:36px;font-weight:500;}
+.hero h1{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:90px;line-height:.98;margin:0 0 30px;letter-spacing:-.012em;color:var(--ink);text-wrap:balance;}
+.hero h1 i{font-style:italic;font-weight:500;color:var(--orange);}
+.hero p.lead{max-width:520px;font-size:16.5px;line-height:1.6;color:var(--ink-mute);margin:0 0 36px;}
 .hero-buttons{display:flex;gap:14px;flex-wrap:wrap}
-.hero-img-wrap{
-  position:relative;
-  border-radius:26px;
-  aspect-ratio:.82 / 1;
-  background:#cdc4ad;
-  box-shadow:var(--shadow-md);
-}
+.hero-img-wrap{position:relative;border-radius:26px;aspect-ratio:.82 / 1;background:#cdc4ad;box-shadow:var(--shadow-md);}
 .hero-img-wrap img{width:100%;height:100%;object-fit:cover;border-radius:26px;display:block}
-.hero-pill{
-  position:absolute;
-  left:18px;bottom:-22px;
-  background:#fffaf0;
-  padding:13px 24px;
-  border-radius:999px;
-  font-size:14.5px;
-  color:var(--ink);
-  box-shadow:
-    0 0 0 6px rgba(185,207,138,.35),
-    0 0 32px 6px rgba(185,207,138,.55),
-    0 8px 24px rgba(80,40,10,.10);
-  display:flex;align-items:center;gap:10px;
-  font-weight:500;
-  z-index:2;
-}
-
-/* ───── ABOUT ───── */
+.hero-pill{position:absolute;left:18px;bottom:-22px;background:#fffaf0;padding:13px 24px;border-radius:999px;font-size:14.5px;color:var(--ink);box-shadow:0 0 0 6px rgba(185,207,138,.35),0 0 32px 6px rgba(185,207,138,.55),0 8px 24px rgba(80,40,10,.10);display:flex;align-items:center;gap:10px;font-weight:500;z-index:2;}
 .about{padding:60px 0 80px}
-.about-grid{
-  display:grid;
-  grid-template-columns:.95fr 1.1fr;
-  gap:72px;
-  align-items:start;
-}
-.collage{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  grid-template-rows:auto auto;
-  gap:16px;
-}
+.about-grid{display:grid;grid-template-columns:.95fr 1.1fr;gap:72px;align-items:start;}
+.collage{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:auto auto;gap:16px;}
 .collage > div{border-radius:22px;overflow:hidden;background:#d8d2c2}
 .collage > div img{width:100%;height:100%;object-fit:cover;display:block}
 .collage .c1{grid-column:1;grid-row:1 / span 2;aspect-ratio:.76/1}
 .collage .c2{grid-column:2;grid-row:1;aspect-ratio:1/1}
 .collage .c3{grid-column:2;grid-row:2;aspect-ratio:1/1}
 .about-text{padding-top:6px}
-.section-eyebrow{
-  display:inline-block;
-  font-size:12px;
-  color:var(--orange);
-  letter-spacing:.16em;
-  text-transform:uppercase;
-  margin-bottom:22px;
-  font-weight:500;
-}
+.section-eyebrow{display:inline-block;font-size:12px;color:var(--orange);letter-spacing:.16em;text-transform:uppercase;margin-bottom:22px;font-weight:500;}
 .section-eyebrow::before{content:"— "}
-.about h2{
-  font-family:'Cormorant Garamond',serif;
-  font-weight:600;
-  font-size:50px;
-  line-height:1.06;
-  margin:0 0 30px;
-  letter-spacing:-.012em;
-  text-wrap:balance;
-}
-.about h2 i{
-  font-style:italic;font-weight:500;color:var(--orange);
-}
-.about-text p{
-  font-size:16px;
-  color:var(--ink-soft);
-  line-height:1.65;
-  margin:0 0 18px;
-  max-width:520px;
-}
+.about h2{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:50px;line-height:1.06;margin:0 0 30px;letter-spacing:-.012em;text-wrap:balance;}
+.about h2 i{font-style:italic;font-weight:500;color:var(--orange);}
+.about-text p{font-size:16px;color:var(--ink-soft);line-height:1.65;margin:0 0 18px;max-width:520px;}
 .about-text strong{color:var(--ink);font-weight:600}
-
-/* ───── SCHEDULE ───── */
 .schedule-wrap{padding:30px 0 50px}
-.schedule{
-  border-radius:28px;
-  background:var(--paper);
-  border:1px solid var(--line);
-  box-shadow:0 8px 28px rgba(160,110,40,.05);
-  padding:46px 52px 38px;
-}
-.schedule h3{
-  font-family:'Cormorant Garamond',serif;
-  font-weight:600;
-  font-size:34px;
-  margin:0 0 36px;
-  letter-spacing:-.01em;
-}
+.schedule{border-radius:28px;background:var(--paper);border:1px solid var(--line);box-shadow:0 8px 28px rgba(160,110,40,.05);padding:46px 52px 38px;}
+.schedule h3{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:34px;margin:0 0 36px;letter-spacing:-.01em;}
 .schedule h3 i{font-style:italic;font-weight:500;color:var(--orange)}
-.week{
-  display:grid;
-  grid-template-columns:repeat(7,1fr);
-  gap:14px;
-  align-items:start;
-}
+.week{display:grid;grid-template-columns:repeat(7,1fr);gap:14px;align-items:start;}
 .day{display:flex;flex-direction:column;align-items:center;gap:12px;min-height:130px}
 .day-name{font-size:12px;letter-spacing:.14em;color:var(--ink-mute);text-transform:uppercase}
-.event{
-  width:100%;
-  border-radius:14px;
-  padding:11px 8px;
-  text-align:center;
-  font-size:13.5px;line-height:1.35;
-  font-weight:500;
-  background:#fef0e0;
-  color:#c45a1b;
-  border:1.4px solid var(--orange-100);
-}
-.event.green{
-  background:var(--green-50);
-  color:var(--green-deep);
-  border-color:#cad9a9;
-}
-.event.yellow{
-  background:#fcefc6;
-  color:#a87c1c;
-  border-color:#f0db9b;
-}
+.event{width:100%;border-radius:14px;padding:11px 8px;text-align:center;font-size:13.5px;line-height:1.35;font-weight:500;background:#fef0e0;color:#c45a1b;border:1.4px solid var(--orange-100);}
+.event.green{background:var(--green-50);color:var(--green-deep);border-color:#cad9a9;}
+.event.yellow{background:#fcefc6;color:#a87c1c;border-color:#f0db9b;}
 .event.tiny{padding:8px 6px;font-size:12.5px}
 .event-time{display:block;font-weight:400;font-size:11.5px;color:var(--ink-mute);margin-top:3px}
-.day .empty{
-  width:100%;
-  border-radius:14px;
-  padding:18px 8px;
-  background:#f3ead4;
-  text-align:center;
-  color:#cdb98e;
-  font-size:18px;font-weight:300;
-}
-.schedule-foot{
-  text-align:center;font-size:13.5px;color:var(--ink-mute);margin-top:28px;
-}
-
-/* ───── MANIFESTO orange card (softened) ───── */
+.day .empty{width:100%;border-radius:14px;padding:18px 8px;background:#f3ead4;text-align:center;color:#cdb98e;font-size:18px;font-weight:300;}
+.schedule-foot{text-align:center;font-size:13.5px;color:var(--ink-mute);margin-top:28px;}
 .manifesto-wrap{padding:30px 0 60px}
-.manifesto{
-  background:linear-gradient(110deg, #f08847 0%, #f29659 35%, #f4a472 70%, #f4b384 100%);
-  border-radius:28px;
-  padding:56px 70px;
-  color:#fffaf0;
-  font-family:'Cormorant Garamond',serif;
-  font-style:italic;
-  font-size:25px;
-  line-height:1.45;
-  font-weight:500;
-  letter-spacing:.005em;
-  box-shadow:0 14px 36px rgba(200,120,60,.16);
-}
-
-/* ───── ACTIVITIES (compact, 2 colors) ───── */
+.manifesto{background:linear-gradient(110deg, #f08847 0%, #f29659 35%, #f4a472 70%, #f4b384 100%);border-radius:28px;padding:56px 70px;color:#fffaf0;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:25px;line-height:1.45;font-weight:500;letter-spacing:.005em;box-shadow:0 14px 36px rgba(200,120,60,.16);}
 .activities{padding:90px 0 100px}
-.activities-head{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  align-items:end;
-  margin-bottom:50px;
-  gap:40px;
-}
-.section-title{
-  font-family:'Cormorant Garamond',serif;
-  font-weight:600;
-  font-size:72px;
-  line-height:1;
-  margin:6px 0 0;
-  letter-spacing:-.018em;
-}
-.section-title i{
-  font-style:italic;font-weight:500;color:var(--orange);
-}
-.activities-sub{
-  font-size:16px;color:var(--ink-mute);text-align:right;
-}
-.activity-grid{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:14px 22px;
-}
-.activity{
-  display:grid;
-  grid-template-columns:36px 1fr auto;
-  align-items:center;
-  gap:18px;
-  padding:18px 24px;
-  border-radius:18px;
-  min-height:64px;
-  transition:transform .18s ease, box-shadow .18s ease;
-}
+.activities-head{display:grid;grid-template-columns:1fr 1fr;align-items:end;margin-bottom:50px;gap:40px;}
+.section-title{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:72px;line-height:1;margin:6px 0 0;letter-spacing:-.018em;}
+.section-title i{font-style:italic;font-weight:500;color:var(--orange);}
+.activities-sub{font-size:16px;color:var(--ink-mute);text-align:right;}
+.activity-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px 22px;}
+.activity{display:grid;grid-template-columns:36px 1fr auto;align-items:center;gap:18px;padding:18px 24px;border-radius:18px;min-height:64px;transition:transform .18s ease, box-shadow .18s ease;}
 .activity:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(120,80,30,.08)}
-.activity .num{
-  font-family:'Cormorant Garamond',serif;
-  font-size:22px;
-  color:var(--orange);
-  font-weight:500;
-}
+.activity .num{font-family:'Cormorant Garamond',serif;font-size:22px;color:var(--orange);font-weight:500;}
 .activity .a-text{display:flex;flex-direction:column;gap:2px}
-.activity .a-title{
-  font-family:'Cormorant Garamond',serif;
-  font-weight:600;
-  font-size:20px;
-  line-height:1.2;
-  color:var(--ink);
-  letter-spacing:-.005em;
-}
-.activity .a-desc{
-  font-size:13px;color:var(--ink-soft);opacity:.68;
-  line-height:1.35;
-}
-.tag{
-  font-size:12px;
-  padding:6px 13px;
-  border-radius:999px;
-  background:rgba(255,255,255,.65);
-  color:var(--ink-soft);
-  font-weight:500;
-  white-space:nowrap;
-}
+.activity .a-title{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:20px;line-height:1.2;color:var(--ink);letter-spacing:-.005em;}
+.activity .a-desc{font-size:13px;color:var(--ink-soft);opacity:.68;line-height:1.35;}
+.tag{font-size:12px;padding:6px 13px;border-radius:999px;background:rgba(255,255,255,.65);color:var(--ink-soft);font-weight:500;white-space:nowrap;}
 .act-peach{background:#fbe5cf}
 .act-yellow{background:#fbecb1}
-
-/* ───── GALLERY ───── */
 .gallery-wrap{padding:50px 0 80px}
 .gallery-eyebrow{margin-bottom:32px}
-.gallery{
-  display:grid;
-  grid-template-columns:.78fr 1fr 1fr 1fr;
-  gap:18px;
-  align-items:start;
-}
-.gallery .g{
-  border-radius:22px;
-  background:#cdc6b6;
-  overflow:hidden;
-  aspect-ratio:1/1;
-}
+.gallery{display:grid;grid-template-columns:.78fr 1fr 1fr 1fr;gap:18px;align-items:start;}
+.gallery .g{border-radius:22px;background:#cdc6b6;overflow:hidden;aspect-ratio:1/1;}
 .gallery .g.tall{aspect-ratio:.78/1.13}
 .gallery .g img{width:100%;height:100%;object-fit:cover;display:block}
-
-/* ───── BENEFITS (soft pink→peach→cream gradient) ───── */
-.benefits{
-  background:
-    radial-gradient(60% 80% at 12% 18%, #fbd5d8 0%, transparent 60%),
-    radial-gradient(55% 70% at 92% 32%, #f8c9b3 0%, transparent 60%),
-    radial-gradient(70% 70% at 50% 100%, #fceeb0 0%, transparent 70%),
-    linear-gradient(160deg, #fbe1d3 0%, #fce3c4 45%, #fceeb0 100%);
-  padding:110px 0 110px;
-  color:var(--ink);
-}
+.benefits{background:radial-gradient(60% 80% at 12% 18%, #fbd5d8 0%, transparent 60%),radial-gradient(55% 70% at 92% 32%, #f8c9b3 0%, transparent 60%),radial-gradient(70% 70% at 50% 100%, #fceeb0 0%, transparent 70%),linear-gradient(160deg, #fbe1d3 0%, #fce3c4 45%, #fceeb0 100%);padding:110px 0 110px;color:var(--ink);}
 .benefits .section-eyebrow{color:var(--orange)}
 .benefits .section-title{color:var(--ink);margin-bottom:48px}
 .benefits .section-title i{color:var(--green-deep)}
-.benefits-grid{
-  display:grid;grid-template-columns:1fr 1fr;gap:26px;
-  max-width:1100px;margin:0 auto;
-}
-.b-card{
-  position:relative;
-  background:#fffaf0;
-  border:1px solid rgba(140,90,40,.08);
-  border-radius:26px;
-  padding:40px 44px;
-  box-shadow:0 4px 18px rgba(160,110,40,.06);
-}
-.b-card.right{
-  background:#fffdf3;
-  border-color:rgba(140,160,90,.18);
-}
-.b-card h3{
-  font-family:'Cormorant Garamond',serif;
-  color:var(--orange);
-  font-size:26px;
-  font-weight:600;
-  margin:0 0 26px;
-}
+.benefits-grid{display:grid;grid-template-columns:1fr 1fr;gap:26px;max-width:1100px;margin:0 auto;}
+.b-card{position:relative;background:#fffaf0;border:1px solid rgba(140,90,40,.08);border-radius:26px;padding:40px 44px;box-shadow:0 4px 18px rgba(160,110,40,.06);}
+.b-card.right{background:#fffdf3;border-color:rgba(140,160,90,.18);}
+.b-card h3{font-family:'Cormorant Garamond',serif;color:var(--orange);font-size:26px;font-weight:600;margin:0 0 26px;}
 .b-card.right h3{color:var(--green-deep)}
 .b-card ul{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:16px}
-.b-card li{
-  font-size:15px;color:var(--ink-soft);line-height:1.5;
-  display:flex;gap:14px;align-items:flex-start;
-}
-.b-card li::before{
-  content:"✓";color:var(--orange);
-  font-weight:700;font-size:14px;margin-top:2px;flex-shrink:0;
-}
+.b-card li{font-size:15px;color:var(--ink-soft);line-height:1.5;display:flex;gap:14px;align-items:flex-start;}
+.b-card li::before{content:"✓";color:var(--orange);font-weight:700;font-size:14px;margin-top:2px;flex-shrink:0;}
 .b-card.right li::before{content:"✦";color:var(--green-deep)}
-
-/* ───── PRICING ───── */
 .pricing{padding:100px 0 110px;background:var(--bg)}
 .pricing .activities-head{align-items:start;margin-bottom:50px}
-.pricing-sub{
-  font-size:16px;color:var(--ink-mute);
-  max-width:400px;line-height:1.55;
-  margin:0;text-align:right;
-}
-.tariffs{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:26px;
-  max-width:1100px;margin:0 auto;
-}
-.tariff{
-  position:relative;
-  border-radius:28px;
-  padding:40px 42px 36px;
-  display:flex;flex-direction:column;
-  transition:transform .2s ease, box-shadow .2s ease;
-}
+.pricing-sub{font-size:16px;color:var(--ink-mute);max-width:400px;line-height:1.55;margin:0;text-align:right;}
+.tariffs{display:grid;grid-template-columns:1fr 1fr;gap:26px;max-width:1100px;margin:0 auto;}
+.tariff{position:relative;border-radius:28px;padding:40px 42px 36px;display:flex;flex-direction:column;transition:transform .2s ease, box-shadow .2s ease;}
 .tariff:hover{transform:translateY(-3px)}
 .tariff.base{background:var(--paper);box-shadow:var(--shadow-sm)}
-.tariff.dance{
-  background:linear-gradient(135deg, #ef7d40 0%, #f08a51 45%, #f4a276 100%);
-  color:#fff8e4;
-  box-shadow:0 14px 36px rgba(200,100,40,.20);
-}
-.tariff .tnum{
-  font-size:13px;color:rgba(60,40,20,.45);
-  font-weight:500;letter-spacing:.08em;margin-bottom:24px;
-}
+.tariff.dance{background:linear-gradient(135deg, #ef7d40 0%, #f08a51 45%, #f4a276 100%);color:#fff8e4;box-shadow:0 14px 36px rgba(200,100,40,.20);}
+.tariff .tnum{font-size:13px;color:rgba(60,40,20,.45);font-weight:500;letter-spacing:.08em;margin-bottom:24px;}
 .tariff.dance .tnum{color:rgba(255,240,210,.78)}
-.tariff .tname{
-  font-family:'Cormorant Garamond',serif;
-  font-size:40px;font-weight:600;
-  margin:0 0 10px;letter-spacing:-.01em;
-}
+.tariff .tname{font-family:'Cormorant Garamond',serif;font-size:40px;font-weight:600;margin:0 0 10px;letter-spacing:-.01em;}
 .tariff .tsub{font-size:14.5px;color:var(--ink-mute);margin-bottom:28px}
 .tariff.dance .tsub{color:rgba(255,240,210,.85)}
-.tariff .price{
-  font-family:'Cormorant Garamond',serif;
-  font-size:72px;font-weight:600;
-  line-height:1;letter-spacing:-.02em;
-  display:flex;align-items:flex-start;gap:2px;
-}
+.tariff .price{font-family:'Cormorant Garamond',serif;font-size:72px;font-weight:600;line-height:1;letter-spacing:-.02em;display:flex;align-items:flex-start;gap:2px;}
 .tariff .price .ruble{font-size:26px;margin-top:14px;margin-left:6px;font-weight:500;opacity:.85}
 .tariff .price-cap{font-size:13.5px;color:var(--ink-mute);margin-top:6px}
 .tariff.dance .price-cap{color:rgba(255,240,210,.78)}
@@ -488,129 +153,39 @@ h1, h2, h3, h4 { letter-spacing:-.01em; }
 .tariff .features li::before{content:"✓";color:var(--orange);font-weight:700}
 .tariff.dance .features li::before{color:#fff8e4}
 .tariff.dance .features li.hi{font-weight:600;color:#fff}
-.tariff .cta-btn{
-  align-self:center;width:100%;margin-top:auto;
-  border-radius:999px;padding:18px 30px;
-  font-size:14px;letter-spacing:.05em;
-  text-transform:lowercase;font-weight:500;
-  transition:transform .15s ease, background .2s ease, color .2s ease;
-}
+.tariff .cta-btn{align-self:center;width:100%;margin-top:auto;border-radius:999px;padding:18px 30px;font-size:14px;letter-spacing:.05em;text-transform:lowercase;font-weight:500;transition:transform .15s ease, background .2s ease, color .2s ease;}
 .tariff.base .cta-btn{background:transparent;color:var(--orange);box-shadow:inset 0 0 0 1.5px var(--orange)}
 .tariff.base .cta-btn:hover{background:var(--orange);color:#fff;transform:translateY(-1px)}
 .tariff.dance .cta-btn{background:#fffaf0;color:var(--orange)}
 .tariff.dance .cta-btn:hover{background:#fff;transform:translateY(-1px)}
-.tariff-badge{
-  position:absolute;top:20px;right:24px;
-  background:rgba(255,255,255,.22);
-  color:#fff8e4;
-  font-size:12.5px;
-  padding:8px 16px;border-radius:999px;
-  backdrop-filter:blur(4px);
-}
-
-/* ───── STORY ───── */
+.tariff-badge{position:absolute;top:20px;right:24px;background:rgba(255,255,255,.22);color:#fff8e4;font-size:12.5px;padding:8px 16px;border-radius:999px;backdrop-filter:blur(4px);}
 .story{padding:100px 0 90px;background:var(--bg)}
-.story-title{
-  font-family:'Cormorant Garamond',serif;
-  font-weight:600;
-  font-size:60px;
-  line-height:1.05;
-  letter-spacing:-.018em;
-  margin:0 auto 44px;
-  max-width:1100px;
-  text-wrap:balance;
-}
-.story-title i{
-  font-style:italic;font-weight:500;color:var(--orange);
-}
-.story-body{
-  max-width:760px;
-  font-size:16.5px;line-height:1.75;color:var(--ink-soft);
-}
+.story-title{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:60px;line-height:1.05;letter-spacing:-.018em;margin:0 auto 44px;max-width:1100px;text-wrap:balance;}
+.story-title i{font-style:italic;font-weight:500;color:var(--orange);}
+.story-body{max-width:760px;font-size:16.5px;line-height:1.75;color:var(--ink-soft);}
 .story-body p{margin:0 0 22px}
 .story-body strong{color:var(--ink);font-weight:600}
-
-/* ───── FAQ ───── */
 .faq{padding:90px 0 110px;background:var(--bg)}
 .faq .section-title{text-align:left;margin-bottom:48px}
 .faq-list{max-width:920px;display:flex;flex-direction:column;gap:14px}
-.faq-item{
-  background:var(--paper);
-  border-radius:18px;
-  box-shadow:var(--shadow-sm);
-  overflow:hidden;
-  transition:box-shadow .2s ease;
-}
+.faq-item{background:var(--paper);border-radius:18px;box-shadow:var(--shadow-sm);overflow:hidden;transition:box-shadow .2s ease;}
 .faq-item.open{box-shadow:0 8px 24px rgba(140,90,40,.10)}
-.faq-q{
-  display:flex;align-items:center;justify-content:space-between;
-  width:100%;padding:24px 28px;
-  text-align:left;font-size:16px;color:var(--ink);font-weight:500;
-  transition:background .15s ease;
-}
+.faq-q{display:flex;align-items:center;justify-content:space-between;width:100%;padding:24px 28px;text-align:left;font-size:16px;color:var(--ink);font-weight:500;transition:background .15s ease;}
 .faq-q:hover{background:#fffefa}
-.faq-icon{
-  color:var(--orange);font-size:22px;
-  transition:transform .25s ease;line-height:1;
-  width:24px;height:24px;display:inline-flex;align-items:center;justify-content:center;
-}
+.faq-icon{color:var(--orange);font-size:22px;transition:transform .25s ease;line-height:1;width:24px;height:24px;display:inline-flex;align-items:center;justify-content:center;}
 .faq-item.open .faq-icon{transform:rotate(45deg)}
-.faq-a{
-  max-height:0;overflow:hidden;
-  transition:max-height .35s ease;
-  padding:0 28px;color:var(--ink-mute);font-size:15px;line-height:1.65;
-}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .35s ease;padding:0 28px;color:var(--ink-mute);font-size:15px;line-height:1.65;}
 .faq-item.open .faq-a{max-height:320px;padding:0 28px 24px}
-
-/* ───── CTA (softened with green hint) ───── */
-.cta{
-  background:linear-gradient(
-    180deg,
-    var(--bg) 0%, var(--bg) 8%,
-    #f4ad75 26%,
-    #f5b988 60%,
-    #e8c595 88%,
-    var(--green-50) 100%
-  );
-}
+.cta{background:linear-gradient(180deg,var(--bg) 0%,var(--bg) 8%,#f4ad75 26%,#f5b988 60%,#e8c595 88%,var(--green-50) 100%);}
 .cta-inner{text-align:center;padding:120px 24px 140px}
-.cta h2{
-  font-family:'Cormorant Garamond',serif;
-  font-size:88px;font-weight:600;
-  margin:0 0 28px;
-  color:#fffaf0;
-  letter-spacing:-.018em;
-  line-height:1.02;
-}
-.cta h2 i{
-  font-style:italic;font-weight:500;color:#fffaf0;display:block;
-}
-.cta p{
-  color:rgba(255,250,232,.95);
-  font-size:16px;margin:0 auto 44px;
-  max-width:580px;line-height:1.6;
-}
-.tg-btn{
-  background:#fffaf0;color:var(--ink);
-  padding:18px 48px;border-radius:999px;
-  font-size:15.5px;font-weight:500;
-  display:inline-flex;align-items:center;gap:14px;
-  transition:transform .15s ease, background .2s ease;
-  box-shadow:0 10px 24px rgba(0,0,0,.10);
-}
+.cta h2{font-family:'Cormorant Garamond',serif;font-size:88px;font-weight:600;margin:0 0 28px;color:#fffaf0;letter-spacing:-.018em;line-height:1.02;}
+.cta h2 i{font-style:italic;font-weight:500;color:#fffaf0;display:block;}
+.cta p{color:rgba(255,250,232,.95);font-size:16px;margin:0 auto 44px;max-width:580px;line-height:1.6;}
+.tg-btn{background:#fffaf0;color:var(--ink);padding:18px 48px;border-radius:999px;font-size:15.5px;font-weight:500;display:inline-flex;align-items:center;gap:14px;transition:transform .15s ease, background .2s ease;box-shadow:0 10px 24px rgba(0,0,0,.10);}
 .tg-btn:hover{transform:translateY(-2px);background:#fff}
-.tg-icon{
-  width:30px;height:30px;border-radius:50%;background:var(--orange);
-  display:inline-flex;align-items:center;justify-content:center;
-  color:#fff;font-size:16px;
-}
-
-/* ───── FOOTER ───── */
+.tg-icon{width:30px;height:30px;border-radius:50%;background:var(--orange);display:inline-flex;align-items:center;justify-content:center;color:#fff;font-size:16px;}
 .footer{background:#1c1107;color:#a89a7c;padding:74px 0 32px}
-.footer-grid{
-  display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:48px;
-  padding-bottom:44px;border-bottom:1px solid rgba(255,240,200,.08);
-}
+.footer-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:48px;padding-bottom:44px;border-bottom:1px solid rgba(255,240,200,.08);}
 .footer .logo{color:#ed8a4e;font-size:28px}
 .footer-about{color:#8a7a5e;font-size:14px;line-height:1.55;max-width:300px;margin-top:18px}
 .footer h4{color:#f0e2b3;font-size:14.5px;font-weight:500;margin:0 0 20px}
@@ -618,121 +193,35 @@ h1, h2, h3, h4 { letter-spacing:-.01em; }
 .footer ul a{font-size:14.5px;color:#a89a7c;transition:color .2s ease}
 .footer ul a:hover{color:#fff8e8}
 .footer-copy{padding-top:28px;font-size:12.5px;color:#5a4d35}
-
-/* ───── PAYMENT MODAL ───── */
-.modal-backdrop{
-  position:fixed;inset:0;
-  background:rgba(40,20,8,.55);
-  backdrop-filter:blur(6px);
-  z-index:200;
-  display:flex;align-items:center;justify-content:center;padding:24px;
-  opacity:0;visibility:hidden;
-  transition:opacity .25s ease,visibility .25s ease;
-}
+.modal-backdrop{position:fixed;inset:0;background:rgba(40,20,8,.55);backdrop-filter:blur(6px);z-index:200;display:flex;align-items:center;justify-content:center;padding:24px;opacity:0;visibility:hidden;transition:opacity .25s ease,visibility .25s ease;}
 .modal-backdrop.open{opacity:1;visibility:visible}
-.modal{
-  position:relative;
-  background:var(--paper-soft);
-  border-radius:26px;
-  padding:44px 50px 38px;
-  width:100%;max-width:520px;
-  max-height:92vh;overflow-y:auto;
-  box-shadow:0 24px 60px rgba(0,0,0,.32);
-  transform:translateY(20px) scale(.97);
-  transition:transform .3s ease;
-}
+.modal{position:relative;background:var(--paper-soft);border-radius:26px;padding:44px 50px 38px;width:100%;max-width:520px;max-height:92vh;overflow-y:auto;box-shadow:0 24px 60px rgba(0,0,0,.32);transform:translateY(20px) scale(.97);transition:transform .3s ease;}
 .modal-backdrop.open .modal{transform:translateY(0) scale(1)}
-.modal-close{
-  position:absolute;top:22px;right:22px;
-  width:42px;height:42px;border-radius:50%;
-  background:#e8dfc6;color:var(--ink-soft);font-size:18px;
-  display:inline-flex;align-items:center;justify-content:center;
-  transition:background .2s ease, transform .2s ease;
-}
+.modal-close{position:absolute;top:22px;right:22px;width:42px;height:42px;border-radius:50%;background:#e8dfc6;color:var(--ink-soft);font-size:18px;display:inline-flex;align-items:center;justify-content:center;transition:background .2s ease, transform .2s ease;}
 .modal-close:hover{background:#dfd3b3;transform:rotate(90deg)}
-.modal h2{
-  font-family:'Cormorant Garamond',serif;
-  font-weight:600;font-size:38px;
-  margin:0 0 12px;letter-spacing:-.01em;
-}
-.modal-tariff{
-  color:var(--orange);font-size:15px;
-  margin-bottom:30px;font-weight:500;
-}
+.modal h2{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:38px;margin:0 0 12px;letter-spacing:-.01em;}
+.modal-tariff{color:var(--orange);font-size:15px;margin-bottom:30px;font-weight:500;}
 .field{display:flex;flex-direction:column;gap:8px;margin-bottom:18px}
 .field label{font-size:14.5px;color:var(--ink);font-weight:500}
-.field input, .field select{
-  width:100%;padding:15px 18px;border-radius:14px;
-  background:rgba(255,250,240,.7);
-  border:1.4px solid #ece1c8;
-  font-family:inherit;font-size:15px;color:var(--ink);
-  transition:border-color .2s ease, background .2s ease;
-}
+.field input, .field select{width:100%;padding:15px 18px;border-radius:14px;background:rgba(255,250,240,.7);border:1.4px solid #ece1c8;font-family:inherit;font-size:15px;color:var(--ink);transition:border-color .2s ease, background .2s ease;}
 .field input::placeholder{color:#c4b59a}
 .field input:focus, .field select:focus{outline:none;border-color:var(--orange);background:#fff}
-.field select{
-  appearance:none;
-  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'><path fill='%238a7558' d='M6 8 0 0h12z'/></svg>");
-  background-repeat:no-repeat;background-position:right 18px center;padding-right:40px;
-}
-.modal .submit{
-  width:100%;margin-top:12px;padding:18px;border-radius:999px;
-  background:var(--olive);color:#fff8e4;
-  font-size:16px;font-weight:500;
-  transition:background .2s ease, transform .15s ease;
-}
+.field select{appearance:none;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'><path fill='%238a7558' d='M6 8 0 0h12z'/></svg>");background-repeat:no-repeat;background-position:right 18px center;padding-right:40px;}
+.modal .submit{width:100%;margin-top:12px;padding:18px;border-radius:999px;background:var(--olive);color:#fff8e4;font-size:16px;font-weight:500;transition:background .2s ease, transform .15s ease;}
 .modal .submit:hover{background:var(--olive-dark);transform:translateY(-1px)}
-.pay-methods{
-  display:flex;flex-wrap:wrap;justify-content:center;gap:10px;
-  margin:22px 0 16px;
-}
-.pay-methods span{
-  background:#f0e7c8;color:var(--ink-soft);
-  font-size:13px;padding:8px 16px;border-radius:999px;font-weight:500;
-}
+.pay-methods{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin:22px 0 16px;}
+.pay-methods span{background:#f0e7c8;color:var(--ink-soft);font-size:13px;padding:8px 16px;border-radius:999px;font-weight:500;}
 .security{text-align:center;font-size:13px;color:var(--ink-mute)}
 .modal-success{text-align:center;padding:24px 0 8px}
-.modal-success .check{
-  width:64px;height:64px;border-radius:50%;
-  background:var(--orange);color:#fff;
-  display:inline-flex;align-items:center;justify-content:center;
-  font-size:32px;margin-bottom:18px;
-}
-.modal-success h3{
-  font-family:'Cormorant Garamond',serif;
-  font-size:30px;font-weight:600;margin:0 0 10px;
-}
+.modal-success .check{width:64px;height:64px;border-radius:50%;background:var(--orange);color:#fff;display:inline-flex;align-items:center;justify-content:center;font-size:32px;margin-bottom:18px;}
+.modal-success h3{font-family:'Cormorant Garamond',serif;font-size:30px;font-weight:600;margin:0 0 10px;}
 .modal-success p{color:var(--ink-mute);font-size:15px;margin:0}
-
-/* ───── RESPONSIVE ───── */
-@media (max-width: 1080px){
-  .gallery{grid-template-columns:repeat(2,1fr)}
-  .gallery .g.tall{aspect-ratio:1/1}
-}
-@media (max-width: 880px){
-  .container{padding:0 22px}
-  .hero-grid,.about-grid,.benefits-grid,.tariffs,.footer-grid,.activities-head{grid-template-columns:1fr;gap:36px}
-  .activities-sub{text-align:left}
-  .pricing-sub{text-align:left;max-width:none}
-  .activity-grid{grid-template-columns:1fr}
-  .hero h1{font-size:56px}
-  .about h2{font-size:38px}
-  .section-title{font-size:48px}
-  .schedule{padding:32px 22px}
-  .week{grid-template-columns:repeat(4,1fr)}
-  .manifesto{padding:36px 28px;font-size:19px}
-  .gallery{grid-template-columns:1fr 1fr}
-  .nav{display:none}
-  .cta h2{font-size:48px}
-  .story-title{font-size:36px}
-  .modal{padding:32px 24px}
-  .modal h2{font-size:28px}
-}
+@media (max-width: 1080px){.gallery{grid-template-columns:repeat(2,1fr)}.gallery .g.tall{aspect-ratio:1/1}}
+@media (max-width: 880px){.container{padding:0 22px}.hero-grid,.about-grid,.benefits-grid,.tariffs,.footer-grid,.activities-head{grid-template-columns:1fr;gap:36px}.activities-sub{text-align:left}.pricing-sub{text-align:left;max-width:none}.activity-grid{grid-template-columns:1fr}.hero h1{font-size:56px}.about h2{font-size:38px}.section-title{font-size:48px}.schedule{padding:32px 22px}.week{grid-template-columns:repeat(4,1fr)}.manifesto{padding:36px 28px;font-size:19px}.gallery{grid-template-columns:1fr 1fr}.nav{display:none}.cta h2{font-size:48px}.story-title{font-size:36px}.modal{padding:32px 24px}.modal h2{font-size:28px}}
 </style>
 </head>
 <body>
 
-<!-- HEADER -->
 <header class="header">
   <div class="container header-inner">
     <a href="#" class="logo">Рассвет</a>
@@ -746,13 +235,12 @@ h1, h2, h3, h4 { letter-spacing:-.01em; }
   </div>
 </header>
 
-<!-- HERO -->
 <section class="hero">
   <div class="container hero-grid">
     <div>
       <span class="eyebrow-pill">Клуб для девушек</span>
       <h1>Твоя неделя станет <i>ярче</i></h1>
-      <p class="lead">Место, где общие ценности объединяют людей. Где у недели появляется ритм, а у дней — яркость. Здесь ты можешь быть собой, чувствовать себя в кругу своих и помнить, ради чего живёшь.</p>
+      <p class="lead">Место, где общие ценности объединяют людей. Где у недели появляется ритм, а у дней — яркость. Тут ты можешь быть собой, чувствовать себя в кругу своих и помнить, ради чего живёшь.</p>
       <div class="hero-buttons">
         <a href="#pricing" class="btn btn-primary">Выбрать тариф</a>
         <a href="#about" class="btn btn-ghost">Что внутри</a>
@@ -760,12 +248,11 @@ h1, h2, h3, h4 { letter-spacing:-.01em; }
     </div>
     <div class="hero-img-wrap">
       <img src="hero.png" alt="Девушки клуба Рассвет" />
-      <span class="hero-pill">☀ здесь хорошо</span>
+      <span class="hero-pill">☀ тут хорошо</span>
     </div>
   </div>
 </section>
 
-<!-- ABOUT -->
 <section id="about" class="about">
   <div class="container about-grid">
     <div class="collage">
@@ -775,32 +262,24 @@ h1, h2, h3, h4 { letter-spacing:-.01em; }
     </div>
     <div class="about-text">
       <span class="section-eyebrow">о клубе</span>
-      <h2>Здесь каждую неделю ты будешь <i>ощущать радость</i></h2>
+      <h2>В клубе каждую неделю ты будешь <i>ощущать радость</i></h2>
       <p>Рассвет — это закрытое сообщество для девушек, которые хотят наполнить жизнь движением, общением и внутренней гармонией. Встречаемся <strong>несколько раз в неделю</strong>, а вы сами выбираете, что ближе.</p>
-      <p>Здесь не нужно ломать голову, чем заняться — расписание уже готово. Пробежки по выходным, танцы в обед, книжный клуб по вечерам, пикники и встречи в течение недели. Тёплая компания, движение и вдохновение уже ждут тебя.</p>
+      <p>Тебе не нужно ломать голову, чем заняться — расписание уже готово. Пробежки по выходным, танцы в обед, книжный клуб по вечерам, пикники и встречи в течение недели. Тёплая компания, движение и вдохновение уже ждут тебя.</p>
     </div>
   </div>
 </section>
 
-<!-- SCHEDULE -->
 <section class="schedule-wrap">
   <div class="container">
     <div class="schedule">
       <h3>Пример расписания <i>на неделю</i></h3>
       <div class="week">
-        <div class="day"><span class="day-name">Пн</span>
-          <div class="event">Танцы<span class="event-time">18:00–20:00</span></div>
-        </div>
+        <div class="day"><span class="day-name">Пн</span><div class="event">Танцы<span class="event-time">18:00–20:00</span></div></div>
         <div class="day"><span class="day-name">Вт</span><div class="empty">—</div></div>
         <div class="day"><span class="day-name">Ср</span><div class="empty">—</div></div>
-        <div class="day"><span class="day-name">Чт</span>
-          <div class="event yellow">Книжный клуб<span class="event-time">18:00–19:00</span></div>
-          <div class="event tiny">+ пикник</div>
-        </div>
+        <div class="day"><span class="day-name">Чт</span><div class="event yellow">Книжный клуб<span class="event-time">18:00–19:00</span></div><div class="event tiny">+ пикник</div></div>
         <div class="day"><span class="day-name">Пт</span><div class="empty">—</div></div>
-        <div class="day"><span class="day-name">Сб</span>
-          <div class="event green">Пробежка<span class="event-time">10:00–11:30</span></div>
-        </div>
+        <div class="day"><span class="day-name">Сб</span><div class="event green">Пробежка<span class="event-time">10:00–11:30</span></div></div>
         <div class="day"><span class="day-name">Вс</span><div class="empty">—</div></div>
       </div>
       <div class="schedule-foot">Помимо основного расписания — тренировки в парке, фотодни, велопрогулки и воплощение ваших идей</div>
@@ -808,16 +287,14 @@ h1, h2, h3, h4 { letter-spacing:-.01em; }
   </div>
 </section>
 
-<!-- MANIFESTO -->
 <section class="manifesto-wrap">
   <div class="container">
     <div class="manifesto">
-      Рассвет — это пространство, где девушки собираются вместе, чтобы разделять события и эмоции, общаться и активничать. Я верю, что регулярные встречи с единомышленницами меняют качество жизни: появляется лёгкость, уверенность и ощущение, что ты на своём месте. Здесь можно бегать по выходным, танцевать по вечерам понедельника, обсуждать книги, ходить на пикники — и каждый раз уходить с улыбкой и наполненностью. Это не курс и не марафон — это образ жизни.
+      Рассвет — это пространство, где девушки собираются вместе, чтобы разделять события и эмоции, общаться и активничать. Я верю, что регулярные встречи с единомышленницами меняют качество жизни: появляется лёгкость, уверенность и ощущение, что ты на своём месте. В клубе можно бегать по выходным, танцевать по вечерам понедельника, обсуждать книги, ходить на пикники — и каждый раз уходить с улыбкой и наполненностью. Это не курс и не марафон — это образ жизни.
     </div>
   </div>
 </section>
 
-<!-- ACTIVITIES -->
 <section id="activities" class="activities">
   <div class="container">
     <div class="activities-head">
@@ -828,51 +305,18 @@ h1, h2, h3, h4 { letter-spacing:-.01em; }
       <div class="activities-sub">8+ идей, чем мы займёмся</div>
     </div>
     <div class="activity-grid">
-      <div class="activity act-peach">
-        <span class="num">01</span>
-        <div class="a-text"><span class="a-title">Танцевальные тренировки</span></div>
-        <span class="tag">4 ч/мес · 2 раза/нед</span>
-      </div>
-      <div class="activity act-yellow">
-        <span class="num">02</span>
-        <div class="a-text"><span class="a-title">Пробежки</span><span class="a-desc">По красивым маршрутам</span></div>
-        <span class="tag">1 раз/нед</span>
-      </div>
-      <div class="activity act-peach">
-        <span class="num">03</span>
-        <div class="a-text"><span class="a-title">Онлайн марафоны</span><span class="a-desc">Челленджи с призами</span></div>
-        <span class="tag">1 раз/мес</span>
-      </div>
-      <div class="activity act-yellow">
-        <span class="num">04</span>
-        <div class="a-text"><span class="a-title">Пикники и игры</span><span class="a-desc">Отдых на свежем воздухе</span></div>
-        <span class="tag">1 раз/2 нед</span>
-      </div>
-      <div class="activity act-peach">
-        <span class="num">05</span>
-        <div class="a-text"><span class="a-title">Книжный / кино клуб</span><span class="a-desc">Книги и впечатления</span></div>
-        <span class="tag">1 раз/нед</span>
-      </div>
-      <div class="activity act-yellow">
-        <span class="num">06</span>
-        <div class="a-text"><span class="a-title">Тренировки на воздухе</span><span class="a-desc">Спорт в парках</span></div>
-        <span class="tag">1 раз/нед</span>
-      </div>
-      <div class="activity act-peach">
-        <span class="num">07</span>
-        <div class="a-text"><span class="a-title">Творческие съёмки</span></div>
-        <span class="tag">по запросу</span>
-      </div>
-      <div class="activity act-yellow">
-        <span class="num">08</span>
-        <div class="a-text"><span class="a-title">Планирование и тайм-менеджмент</span></div>
-        <span class="tag">регулярно</span>
-      </div>
+      <div class="activity act-peach"><span class="num">01</span><div class="a-text"><span class="a-title">Танцевальные тренировки</span></div><span class="tag">4 ч/мес · 2 раза/нед</span></div>
+      <div class="activity act-yellow"><span class="num">02</span><div class="a-text"><span class="a-title">Пробежки</span><span class="a-desc">По красивым маршрутам</span></div><span class="tag">1 раз/нед</span></div>
+      <div class="activity act-peach"><span class="num">03</span><div class="a-text"><span class="a-title">Онлайн марафоны</span><span class="a-desc">Челленджи с призами</span></div><span class="tag">1 раз/мес</span></div>
+      <div class="activity act-yellow"><span class="num">04</span><div class="a-text"><span class="a-title">Пикники и игры</span><span class="a-desc">Отдых на свежем воздухе</span></div><span class="tag">1 раз/2 нед</span></div>
+      <div class="activity act-peach"><span class="num">05</span><div class="a-text"><span class="a-title">Книжный / кино клуб</span><span class="a-desc">Книги и впечатления</span></div><span class="tag">1 раз/нед</span></div>
+      <div class="activity act-yellow"><span class="num">06</span><div class="a-text"><span class="a-title">Тренировки на воздухе</span><span class="a-desc">Спорт в парках</span></div><span class="tag">1 раз/нед</span></div>
+      <div class="activity act-peach"><span class="num">07</span><div class="a-text"><span class="a-title">Творческие съёмки</span></div><span class="tag">по запросу</span></div>
+      <div class="activity act-yellow"><span class="num">08</span><div class="a-text"><span class="a-title">Планирование и тайм-менеджмент</span></div><span class="tag">регулярно</span></div>
     </div>
   </div>
 </section>
 
-<!-- GALLERY -->
 <section class="gallery-wrap">
   <div class="container">
     <div class="gallery-eyebrow"><span class="section-eyebrow">атмосфера</span></div>
@@ -885,7 +329,6 @@ h1, h2, h3, h4 { letter-spacing:-.01em; }
   </div>
 </section>
 
-<!-- DARK BENEFITS -->
 <section class="benefits">
   <div class="container">
     <span class="section-eyebrow">миссия</span>
@@ -914,7 +357,6 @@ h1, h2, h3, h4 { letter-spacing:-.01em; }
   </div>
 </section>
 
-<!-- PRICING -->
 <section id="pricing" class="pricing">
   <div class="container">
     <div class="activities-head">
@@ -961,7 +403,6 @@ h1, h2, h3, h4 { letter-spacing:-.01em; }
   </div>
 </section>
 
-<!-- STORY -->
 <section class="story">
   <div class="container">
     <span class="section-eyebrow">почему я создала рассвет</span>
@@ -970,12 +411,11 @@ h1, h2, h3, h4 { letter-spacing:-.01em; }
       <p>Когда я переехала в Москву, я была уверена, что быстро найду своё окружение. Но на деле оказалось сложнее — я долго не могла почувствовать себя частью чего-то. Свободное время пугало, и я заполняла его бегом, тренировками, учёбой — но внутри оставалось одиночество.</p>
       <p>Я помню вечер, когда звонила маме и плакала от того, что снова проведу воскресенье одна — красивая, с планами, но без людей рядом. Это было тяжело. Но именно это стало толчком: я решила взять всё в свои руки и начать знакомиться.</p>
       <p>Постепенно в мою жизнь пришли люди, события, танцы — то, о чём я мечтала с десяти лет. И спустя пять лет я поняла: я такая не одна. Многим девушкам не хватает того же — тёплого окружения, заполненной недели, чувства, что ты нужна и интересна.</p>
-      <p>Так родился Рассвет. Идеальное комбо, которое помогло мне: <strong>общение + расписание недели + движение</strong>. Здесь есть всё, что я хотела бы иметь в те годы — и я хочу разделить это с вами.</p>
+      <p>Так родился Рассвет. Идеальное комбо, которое помогло мне: <strong>общение + расписание недели + движение</strong>. В Рассвете есть всё, что я хотела бы иметь в те годы — и я хочу разделить это с вами.</p>
     </div>
   </div>
 </section>
 
-<!-- FAQ -->
 <section id="faq" class="faq">
   <div class="container">
     <span class="section-eyebrow">ответы</span>
@@ -1009,7 +449,6 @@ h1, h2, h3, h4 { letter-spacing:-.01em; }
   </div>
 </section>
 
-<!-- CTA -->
 <section id="cta" class="cta">
   <div class="cta-inner">
     <h2>Готова <i>присоединиться?</i></h2>
@@ -1018,7 +457,6 @@ h1, h2, h3, h4 { letter-spacing:-.01em; }
   </div>
 </section>
 
-<!-- FOOTER -->
 <footer class="footer">
   <div class="container">
     <div class="footer-grid">
@@ -1047,7 +485,6 @@ h1, h2, h3, h4 { letter-spacing:-.01em; }
   </div>
 </footer>
 
-<!-- PAYMENT MODAL -->
 <div class="modal-backdrop" id="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
   <div class="modal" role="document">
     <button class="modal-close" aria-label="Закрыть" id="modal-close">✕</button>
@@ -1055,18 +492,9 @@ h1, h2, h3, h4 { letter-spacing:-.01em; }
       <h2 id="modal-title">Оформление</h2>
       <div class="modal-tariff" id="modal-tariff">Тариф «Клуб + танцы» · 3800 ₽/мес</div>
       <form id="pay-form" novalidate>
-        <div class="field">
-          <label for="f-name">Ваше имя</label>
-          <input id="f-name" type="text" placeholder="Анна" required />
-        </div>
-        <div class="field">
-          <label for="f-tg">Telegram</label>
-          <input id="f-tg" type="text" placeholder="@anna" required />
-        </div>
-        <div class="field">
-          <label for="f-phone">Телефон</label>
-          <input id="f-phone" type="tel" placeholder="+7 (___) ___-__-__" required />
-        </div>
+        <div class="field"><label for="f-name">Ваше имя</label><input id="f-name" type="text" placeholder="Анна" required /></div>
+        <div class="field"><label for="f-tg">Telegram</label><input id="f-tg" type="text" placeholder="@anna" required /></div>
+        <div class="field"><label for="f-phone">Телефон</label><input id="f-phone" type="tel" placeholder="+7 (___) ___-__-__" required /></div>
         <div class="field">
           <label for="f-period">Период</label>
           <select id="f-period">
@@ -1075,12 +503,7 @@ h1, h2, h3, h4 { letter-spacing:-.01em; }
           </select>
         </div>
         <button type="submit" class="submit" id="submit-btn">Перейти к оплате</button>
-        <div class="pay-methods">
-          <span>СБП</span>
-          <span>Visa / MC</span>
-          <span>МИР</span>
-          <span>ЮMoney</span>
-        </div>
+        <div class="pay-methods"><span>СБП</span><span>Visa / MC</span><span>МИР</span><span>ЮMoney</span></div>
         <div class="security">Безопасная оплата · Возврат в течение 14 дней</div>
       </form>
     </div>
@@ -1093,7 +516,6 @@ h1, h2, h3, h4 { letter-spacing:-.01em; }
 </div>
 
 <script>
-  // ── FAQ ──────────────────────────────────────────
   document.querySelectorAll('.faq-item .faq-q').forEach(btn => {
     btn.addEventListener('click', () => {
       const item = btn.closest('.faq-item');
@@ -1102,8 +524,6 @@ h1, h2, h3, h4 { letter-spacing:-.01em; }
       if (!wasOpen) item.classList.add('open');
     });
   });
-
-  // ── Smooth scroll with header offset ─────────────
   document.querySelectorAll('a[href^="#"]').forEach(a => {
     a.addEventListener('click', e => {
       const href = a.getAttribute('href');
@@ -1115,67 +535,28 @@ h1, h2, h3, h4 { letter-spacing:-.01em; }
       window.scrollTo({top:y, behavior:'smooth'});
     });
   });
-
-  // ── Payment Modal ────────────────────────────────
-  const modal       = document.getElementById('modal');
-  const modalClose  = document.getElementById('modal-close');
+  const modal = document.getElementById('modal');
+  const modalClose = document.getElementById('modal-close');
   const modalTariff = document.getElementById('modal-tariff');
-  const modalForm   = document.getElementById('modal-form');
-  const modalSuccess= document.getElementById('modal-success');
-  const payForm     = document.getElementById('pay-form');
-  const submitBtn   = document.getElementById('submit-btn');
-  const fName       = document.getElementById('f-name');
-  const fTg         = document.getElementById('f-tg');
-  const fPhone      = document.getElementById('f-phone');
-  const fPeriod     = document.getElementById('f-period');
-
-  const PRICES = {
-    base:  { name: 'База',           price: 2000 },
-    dance: { name: 'Клуб + танцы',   price: 3800 }
-  };
-  // Только два периода: 1 мес и 3 мес со скидкой 10%
+  const modalForm = document.getElementById('modal-form');
+  const modalSuccess = document.getElementById('modal-success');
+  const payForm = document.getElementById('pay-form');
+  const submitBtn = document.getElementById('submit-btn');
+  const fName = document.getElementById('f-name');
+  const fTg = document.getElementById('f-tg');
+  const fPhone = document.getElementById('f-phone');
+  const fPeriod = document.getElementById('f-period');
+  const PRICES = { base: { name: 'База', price: 2000 }, dance: { name: 'Клуб + танцы', price: 3800 } };
   const DISCOUNTS = { 1: 0, 3: 0.10 };
-
-  function priceLabel(key){
-    if (!key || !PRICES[key]) return 'Выберите тариф ниже';
-    const t = PRICES[key];
-    const period = parseInt(fPeriod.value, 10) || 1;
-    const monthly = Math.round(t.price * (1 - (DISCOUNTS[period] || 0)));
-    return `Тариф «${t.name}» · ${monthly.toLocaleString('ru-RU')} ₽/мес`;
-  }
-  function openModal(tariffKey, fallbackName){
-    modal.dataset.tariff = tariffKey || '';
-    modalTariff.textContent = tariffKey ? priceLabel(tariffKey) : (fallbackName ? `Тариф «${fallbackName}»` : 'Выберите тариф ниже');
-    modalForm.hidden = false;
-    modalSuccess.hidden = true;
-    modal.classList.add('open');
-    document.body.classList.add('modal-open');
-    setTimeout(() => fName.focus(), 280);
-  }
-  function closeModal(){
-    modal.classList.remove('open');
-    document.body.classList.remove('modal-open');
-  }
-  fPeriod.addEventListener('change', () => {
-    const key = modal.dataset.tariff;
-    if (key && PRICES[key]) modalTariff.textContent = priceLabel(key);
-  });
-  document.querySelectorAll('[data-pay]').forEach(btn => {
-    btn.addEventListener('click', e => {
-      e.preventDefault();
-      openModal(btn.dataset.pay, btn.dataset.name);
-    });
-  });
-  document.getElementById('tg-link').addEventListener('click', e => {
-    // прямой переход в Telegram — модалку не открываем
-  });
+  function priceLabel(key){ if (!key || !PRICES[key]) return 'Выберите тариф ниже'; const t = PRICES[key]; const period = parseInt(fPeriod.value, 10) || 1; const monthly = Math.round(t.price * (1 - (DISCOUNTS[period] || 0))); return `Тариф «${t.name}» · ${monthly.toLocaleString('ru-RU')} ₽/мес`; }
+  function openModal(tariffKey, fallbackName){ modal.dataset.tariff = tariffKey || ''; modalTariff.textContent = tariffKey ? priceLabel(tariffKey) : (fallbackName ? `Тариф «${fallbackName}»` : 'Выберите тариф ниже'); modalForm.hidden = false; modalSuccess.hidden = true; modal.classList.add('open'); document.body.classList.add('modal-open'); setTimeout(() => fName.focus(), 280); }
+  function closeModal(){ modal.classList.remove('open'); document.body.classList.remove('modal-open'); }
+  fPeriod.addEventListener('change', () => { const key = modal.dataset.tariff; if (key && PRICES[key]) modalTariff.textContent = priceLabel(key); });
+  document.querySelectorAll('[data-pay]').forEach(btn => { btn.addEventListener('click', e => { e.preventDefault(); openModal(btn.dataset.pay, btn.dataset.name); }); });
+  document.getElementById('tg-link').addEventListener('click', e => {});
   modalClose.addEventListener('click', closeModal);
   modal.addEventListener('click', e => { if (e.target === modal) closeModal(); });
-  document.addEventListener('keydown', e => {
-    if (e.key === 'Escape' && document.body.classList.contains('modal-open')) closeModal();
-  });
-
-  // Phone mask
+  document.addEventListener('keydown', e => { if (e.key === 'Escape' && document.body.classList.contains('modal-open')) closeModal(); });
   fPhone.addEventListener('input', () => {
     let d = fPhone.value.replace(/\D/g, '');
     if (d.startsWith('8')) d = '7' + d.slice(1);
@@ -1188,21 +569,16 @@ h1, h2, h3, h4 { letter-spacing:-.01em; }
     if (d.length >= 9) out += '-' + d.slice(9, 11);
     fPhone.value = out;
   });
-
   payForm.addEventListener('submit', e => {
     e.preventDefault();
     if (!fName.value.trim()) { fName.focus(); return; }
-    if (!fTg.value.trim())   { fTg.focus(); return; }
+    if (!fTg.value.trim()) { fTg.focus(); return; }
     if (fPhone.value.replace(/\D/g, '').length < 11) { fPhone.focus(); return; }
     submitBtn.textContent = 'Создаём заказ…';
     submitBtn.disabled = true;
-    setTimeout(() => {
-      modalForm.hidden = true;
-      modalSuccess.hidden = false;
-      submitBtn.textContent = 'Перейти к оплате';
-      submitBtn.disabled = false;
-    }, 700);
+    setTimeout(() => { modalForm.hidden = true; modalSuccess.hidden = false; submitBtn.textContent = 'Перейти к оплате'; submitBtn.disabled = false; }, 700);
   });
 </script>
 </body>
 </html>
+
