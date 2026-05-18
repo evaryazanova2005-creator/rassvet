@@ -55,7 +55,7 @@ h1,h2,h3,h4{letter-spacing:-.01em}
 /* ABOUT */
 .about{padding:20px 0 60px}
 .about-grid{display:grid;grid-template-columns:.95fr 1.1fr;gap:72px;align-items:start;}
-.collage{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:auto auto;gap:16px;}
+.collage{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:auto auto;gap:16px;margin-top:-80px;}
 .collage>div{border-radius:22px;overflow:hidden;background:#d8d2c2}
 .collage>div img{width:100%;height:100%;object-fit:cover;display:block}
 .collage .c1{grid-column:1;grid-row:1/span 2;aspect-ratio:.76/1}
@@ -585,16 +585,29 @@ function updateBadge(tariff, count) {
   }
 }
 
-async function loadSpots() {
-  try {
-    const r = await fetch('/api/spots');
-    const d = await r.json();
-    updateBadge('base',  d.base);
-    updateBadge('dance', d.dance);
-  } catch {
-    document.getElementById('spots-base-text').textContent  = 'Осталось 20 мест';
-    document.getElementById('spots-dance-text').textContent = 'Осталось 10 мест';
+// Hardcoded spots with live animated counter
+const SPOTS = { base: 3, dance: 2 };
+
+function animateCounter(el, from, to, suffix) {
+  const duration = 1200;
+  const start = performance.now();
+  function step(now) {
+    const progress = Math.min((now - start) / duration, 1);
+    const ease = 1 - Math.pow(1 - progress, 3);
+    const current = Math.round(from + (to - from) * ease);
+    el.innerHTML = `Осталось <strong style="font-size:15px;color:var(--orange)">${current}</strong> ${suffix}`;
+    if (progress < 1) requestAnimationFrame(step);
   }
+  requestAnimationFrame(step);
+}
+
+function loadSpots() {
+  updateBadge('base',  SPOTS.base);
+  updateBadge('dance', SPOTS.dance);
+  const baseEl  = document.getElementById('spots-base-text');
+  const danceEl = document.getElementById('spots-dance-text');
+  animateCounter(baseEl,  10, SPOTS.base,  plural(SPOTS.base));
+  animateCounter(danceEl, 10, SPOTS.dance, plural(SPOTS.dance));
 }
 loadSpots();
 
