@@ -52,7 +52,7 @@ h1, h2, h3, h4 { letter-spacing:-.01em; }
 .nav a:hover{color:var(--orange)}
 .btn{display:inline-flex;align-items:center;justify-content:center;border-radius:999px;padding:14px 28px;font-size:14.5px;font-weight:500;transition:transform .15s ease,background .2s ease,box-shadow .2s ease,color .2s ease;white-space:nowrap;border:none;}
 .btn-primary{background:var(--orange);color:#fff}
-.btn-primary:hover{background:#e7e97d;transform:translateY(-1px)}
+.btn-primary:hover{background:#d4602000;transform:translateY(-1px);box-shadow:0 6px 20px rgba(233,109,42,.35)}
 .btn-ghost{background:transparent;color:var(--ink);box-shadow:inset 0 0 0 1.5px #cc8b13}
 .btn-ghost:hover{background:rgba(233,109,42,.06);box-shadow:inset 0 0 0 1.5px var(--orange);color:var(--orange)}
 .hero{padding:64px 0 100px}
@@ -231,7 +231,8 @@ h1, h2, h3, h4 { letter-spacing:-.01em; }
       <a href="#pricing">Тарифы</a>
       <a href="#faq">Вопросы</a>
     </nav>
-    <button class="btn btn-primary" data-pay="" data-name="Любой тариф">Присоединиться</button>
+    <!-- ✅ Теперь ведёт к тарифам, не открывает модалку -->
+    <a href="#pricing" class="btn btn-primary">Присоединиться</a>
   </div>
 </header>
 
@@ -453,7 +454,7 @@ h1, h2, h3, h4 { letter-spacing:-.01em; }
   <div class="cta-inner">
     <h2>Готова <i>присоединиться?</i></h2>
     <p>Напиши мне — отвечу на все вопросы и расскажу подробности</p>
-    <a href="https://t.me/evavasilyyevna" target="_blank" rel="noopener" class="tg-btn" id="tg-link"><span class="tg-icon">✈</span> Написать в Telegram</a>
+    <a href="https://t.me/evavasilyyevna" target="_blank" rel="noopener" class="tg-btn"><span class="tg-icon">✈</span> Написать в Telegram</a>
   </div>
 </section>
 
@@ -485,23 +486,26 @@ h1, h2, h3, h4 { letter-spacing:-.01em; }
   </div>
 </footer>
 
+<!-- PAYMENT MODAL -->
 <div class="modal-backdrop" id="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
   <div class="modal" role="document">
     <button class="modal-close" aria-label="Закрыть" id="modal-close">✕</button>
     <div id="modal-form">
       <h2 id="modal-title">Оформление</h2>
-      <div class="modal-tariff" id="modal-tariff">Тариф «Клуб + танцы» · 3800 ₽/мес</div>
+      <div class="modal-tariff" id="modal-tariff"></div>
       <form id="pay-form" novalidate>
         <div class="field"><label for="f-name">Ваше имя</label><input id="f-name" type="text" placeholder="Анна" required /></div>
         <div class="field"><label for="f-tg">Telegram</label><input id="f-tg" type="text" placeholder="@anna" required /></div>
         <div class="field"><label for="f-phone">Телефон</label><input id="f-phone" type="tel" placeholder="+7 (___) ___-__-__" required /></div>
         <div class="field">
-          <label for="f-period">Период</label>
+          <label for="f-period">Период оплаты</label>
           <select id="f-period">
             <option value="1">1 месяц</option>
             <option value="3">3 месяца — скидка 10%</option>
           </select>
         </div>
+        <!-- ✅ Итоговая сумма показывается здесь -->
+        <div id="price-summary" style="background:#fef0e0;border-radius:14px;padding:16px 20px;margin-bottom:18px;font-size:15px;color:var(--ink-soft);line-height:1.5;"></div>
         <button type="submit" class="submit" id="submit-btn">Перейти к оплате</button>
         <div class="pay-methods"><span>СБП</span><span>Visa / MC</span><span>МИР</span><span>ЮMoney</span></div>
         <div class="security">Безопасная оплата · Возврат в течение 14 дней</div>
@@ -516,6 +520,7 @@ h1, h2, h3, h4 { letter-spacing:-.01em; }
 </div>
 
 <script>
+  // ── FAQ ──────────────────────────────────────────
   document.querySelectorAll('.faq-item .faq-q').forEach(btn => {
     btn.addEventListener('click', () => {
       const item = btn.closest('.faq-item');
@@ -524,6 +529,8 @@ h1, h2, h3, h4 { letter-spacing:-.01em; }
       if (!wasOpen) item.classList.add('open');
     });
   });
+
+  // ── Smooth scroll ────────────────────────────────
   document.querySelectorAll('a[href^="#"]').forEach(a => {
     a.addEventListener('click', e => {
       const href = a.getAttribute('href');
@@ -531,32 +538,84 @@ h1, h2, h3, h4 { letter-spacing:-.01em; }
       const target = document.querySelector(href);
       if (!target) return;
       e.preventDefault();
-      const y = target.getBoundingClientRect().top + window.scrollY - 78;
-      window.scrollTo({top:y, behavior:'smooth'});
+      window.scrollTo({ top: target.getBoundingClientRect().top + window.scrollY - 78, behavior: 'smooth' });
     });
   });
-  const modal = document.getElementById('modal');
-  const modalClose = document.getElementById('modal-close');
-  const modalTariff = document.getElementById('modal-tariff');
-  const modalForm = document.getElementById('modal-form');
+
+  // ── Modal ────────────────────────────────────────
+  const modal        = document.getElementById('modal');
+  const modalClose   = document.getElementById('modal-close');
+  const modalTariff  = document.getElementById('modal-tariff');
+  const priceSummary = document.getElementById('price-summary');
+  const modalForm    = document.getElementById('modal-form');
   const modalSuccess = document.getElementById('modal-success');
-  const payForm = document.getElementById('pay-form');
-  const submitBtn = document.getElementById('submit-btn');
-  const fName = document.getElementById('f-name');
-  const fTg = document.getElementById('f-tg');
-  const fPhone = document.getElementById('f-phone');
-  const fPeriod = document.getElementById('f-period');
-  const PRICES = { base: { name: 'База', price: 2000 }, dance: { name: 'Клуб + танцы', price: 3800 } };
-  const DISCOUNTS = { 1: 0, 3: 0.10 };
-  function priceLabel(key){ if (!key || !PRICES[key]) return 'Выберите тариф ниже'; const t = PRICES[key]; const period = parseInt(fPeriod.value, 10) || 1; const monthly = Math.round(t.price * (1 - (DISCOUNTS[period] || 0))); return `Тариф «${t.name}» · ${monthly.toLocaleString('ru-RU')} ₽/мес`; }
-  function openModal(tariffKey, fallbackName){ modal.dataset.tariff = tariffKey || ''; modalTariff.textContent = tariffKey ? priceLabel(tariffKey) : (fallbackName ? `Тариф «${fallbackName}»` : 'Выберите тариф ниже'); modalForm.hidden = false; modalSuccess.hidden = true; modal.classList.add('open'); document.body.classList.add('modal-open'); setTimeout(() => fName.focus(), 280); }
-  function closeModal(){ modal.classList.remove('open'); document.body.classList.remove('modal-open'); }
-  fPeriod.addEventListener('change', () => { const key = modal.dataset.tariff; if (key && PRICES[key]) modalTariff.textContent = priceLabel(key); });
-  document.querySelectorAll('[data-pay]').forEach(btn => { btn.addEventListener('click', e => { e.preventDefault(); openModal(btn.dataset.pay, btn.dataset.name); }); });
-  document.getElementById('tg-link').addEventListener('click', e => {});
+  const payForm      = document.getElementById('pay-form');
+  const submitBtn    = document.getElementById('submit-btn');
+  const fName        = document.getElementById('f-name');
+  const fTg          = document.getElementById('f-tg');
+  const fPhone       = document.getElementById('f-phone');
+  const fPeriod      = document.getElementById('f-period');
+
+  const PRICES = {
+    base:  { name: 'База',         price: 2000 },
+    dance: { name: 'Клуб + танцы', price: 3800 }
+  };
+
+  function fmt(n) { return n.toLocaleString('ru-RU'); }
+
+  // ✅ Считает итоговую сумму за период (не месячную!)
+  function updatePriceSummary() {
+    const key = modal.dataset.tariff;
+    if (!key || !PRICES[key]) return;
+    const t = PRICES[key];
+    const period = parseInt(fPeriod.value, 10) || 1;
+
+    if (period === 1) {
+      const total = t.price;
+      modalTariff.textContent = `Тариф «${t.name}»`;
+      priceSummary.innerHTML = `<strong style="font-size:20px;color:var(--ink)">${fmt(total)} ₽</strong> — за 1 месяц`;
+    } else {
+      const monthly    = t.price;
+      const discounted = Math.round(monthly * 0.9); // −10%
+      const total      = discounted * period;        // итого за 3 мес
+      const saved      = (monthly * period) - total;
+      modalTariff.textContent = `Тариф «${t.name}»`;
+      priceSummary.innerHTML =
+        `<strong style="font-size:20px;color:var(--ink)">${fmt(total)} ₽</strong> — итого за 3 месяца` +
+        `<br><span style="font-size:13px;color:var(--ink-mute)">${fmt(discounted)} ₽/мес вместо ${fmt(monthly)} ₽ · экономия ${fmt(saved)} ₽</span>`;
+    }
+  }
+
+  function openModal(tariffKey, fallbackName) {
+    modal.dataset.tariff = tariffKey || '';
+    fPeriod.value = '1';
+    modalForm.hidden = false;
+    modalSuccess.hidden = true;
+    updatePriceSummary();
+    modal.classList.add('open');
+    document.body.classList.add('modal-open');
+    setTimeout(() => fName.focus(), 280);
+  }
+
+  function closeModal() {
+    modal.classList.remove('open');
+    document.body.classList.remove('modal-open');
+  }
+
+  fPeriod.addEventListener('change', updatePriceSummary);
+
+  document.querySelectorAll('[data-pay]').forEach(btn => {
+    btn.addEventListener('click', e => {
+      e.preventDefault();
+      openModal(btn.dataset.pay, btn.dataset.name);
+    });
+  });
+
   modalClose.addEventListener('click', closeModal);
   modal.addEventListener('click', e => { if (e.target === modal) closeModal(); });
   document.addEventListener('keydown', e => { if (e.key === 'Escape' && document.body.classList.contains('modal-open')) closeModal(); });
+
+  // ── Phone mask ───────────────────────────────────
   fPhone.addEventListener('input', () => {
     let d = fPhone.value.replace(/\D/g, '');
     if (d.startsWith('8')) d = '7' + d.slice(1);
@@ -569,16 +628,22 @@ h1, h2, h3, h4 { letter-spacing:-.01em; }
     if (d.length >= 9) out += '-' + d.slice(9, 11);
     fPhone.value = out;
   });
+
+  // ── Submit ───────────────────────────────────────
   payForm.addEventListener('submit', e => {
     e.preventDefault();
     if (!fName.value.trim()) { fName.focus(); return; }
-    if (!fTg.value.trim()) { fTg.focus(); return; }
+    if (!fTg.value.trim())   { fTg.focus(); return; }
     if (fPhone.value.replace(/\D/g, '').length < 11) { fPhone.focus(); return; }
     submitBtn.textContent = 'Создаём заказ…';
     submitBtn.disabled = true;
-    setTimeout(() => { modalForm.hidden = true; modalSuccess.hidden = false; submitBtn.textContent = 'Перейти к оплате'; submitBtn.disabled = false; }, 700);
+    setTimeout(() => {
+      modalForm.hidden = true;
+      modalSuccess.hidden = false;
+      submitBtn.textContent = 'Перейти к оплате';
+      submitBtn.disabled = false;
+    }, 700);
   });
 </script>
 </body>
 </html>
-
