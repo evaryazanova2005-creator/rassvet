@@ -585,29 +585,16 @@ function updateBadge(tariff, count) {
   }
 }
 
-// Hardcoded spots with live animated counter
-const SPOTS = { base: 3, dance: 2 };
-
-function animateCounter(el, from, to, suffix) {
-  const duration = 1200;
-  const start = performance.now();
-  function step(now) {
-    const progress = Math.min((now - start) / duration, 1);
-    const ease = 1 - Math.pow(1 - progress, 3);
-    const current = Math.round(from + (to - from) * ease);
-    el.innerHTML = `Осталось <strong style="font-size:15px;color:var(--orange)">${current}</strong> ${suffix}`;
-    if (progress < 1) requestAnimationFrame(step);
+async function loadSpots() {
+  try {
+    const res = await fetch('/api/spots');
+    const data = await res.json();
+    updateBadge('base',  data.base);
+    updateBadge('dance', data.dance);
+  } catch {
+    document.getElementById('spots-base-text').textContent  = 'Уточняйте у организатора';
+    document.getElementById('spots-dance-text').textContent = 'Уточняйте у организатора';
   }
-  requestAnimationFrame(step);
-}
-
-function loadSpots() {
-  updateBadge('base',  SPOTS.base);
-  updateBadge('dance', SPOTS.dance);
-  const baseEl  = document.getElementById('spots-base-text');
-  const danceEl = document.getElementById('spots-dance-text');
-  animateCounter(baseEl,  10, SPOTS.base,  plural(SPOTS.base));
-  animateCounter(danceEl, 10, SPOTS.dance, plural(SPOTS.dance));
 }
 loadSpots();
 
