@@ -1,7 +1,7 @@
 import { Redis } from '@upstash/redis';
 
 const redis = Redis.fromEnv();
-const DEFAULTS = { base: 3, dance: 2 };
+const DEFAULTS = { base: 20, dance: 10 };
 
 export default async function handler(req, res) {
   res.setHeader('Access-Control-Allow-Origin', '*');
