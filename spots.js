@@ -1,6 +1,7 @@
-import { kv } from '@vercel/kv';
+import { Redis } from '@upstash/redis';
 
-const DEFAULTS = { base: 20, dance: 10 };
+const redis = Redis.fromEnv();
+const DEFAULTS = { base: 3, dance: 2 };
 
 export default async function handler(req, res) {
   res.setHeader('Access-Control-Allow-Origin', '*');
@@ -10,8 +11,8 @@ export default async function handler(req, res) {
   if (req.method === 'OPTIONS') return res.status(200).end();
 
   if (req.method === 'GET') {
-    const base  = await kv.get('spots_base')  ?? DEFAULTS.base;
-    const dance = await kv.get('spots_dance') ?? DEFAULTS.dance;
+    const base  = await redis.get('spots_base')  ?? DEFAULTS.base;
+    const dance = await redis.get('spots_dance') ?? DEFAULTS.dance;
     return res.json({ base: Number(base), dance: Number(dance) });
   }
 
@@ -22,14 +23,13 @@ export default async function handler(req, res) {
     }
 
     const key     = `spots_${tariff}`;
-    const current = Number(await kv.get(key) ?? DEFAULTS[tariff]);
+    const current = Number(await redis.get(key) ?? DEFAULTS[tariff]);
 
     if (current <= 0) {
       return res.status(409).json({ error: 'no spots left' });
     }
 
-    // Инициализируем если ключа не было, потом декрементируем
-    await kv.set(key, current - 1);
+    await redis.set(key, current - 1);
     return res.json({ remaining: current - 1 });
   }
 
