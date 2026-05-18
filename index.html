@@ -596,8 +596,8 @@ async function loadSpots() {
     updateBadge('base',  d.base);
     updateBadge('dance', d.dance);
   } catch {
-    document.getElementById('spots-base-text').textContent  = 'Осталось несколько мест';
-    document.getElementById('spots-dance-text').textContent = 'Осталось несколько мест';
+    document.getElementById('spots-base-text').textContent  = 'Осталось 20 мест';
+    document.getElementById('spots-dance-text').textContent = 'Осталось 10 мест';
   }
 }
 loadSpots();
