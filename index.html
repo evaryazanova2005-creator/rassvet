@@ -596,16 +596,20 @@ function updateBadge(tariff, count) {
 
 async function loadSpots() {
   try {
-    const r = await fetch(SHEETS_URL);
-    const d = await r.json();
+    const r = await fetch(SHEETS_URL, {
+      redirect: 'follow',
+      method: 'GET',
+    });
+    const text = await r.text();
+    const d = JSON.parse(text);
     updateBadge('base',  d.base);
     updateBadge('dance', d.dance);
-  } catch {
+  } catch (err) {
+    console.error('loadSpots error:', err);
     document.getElementById('spots-base-text').textContent  = 'Осталось несколько мест';
     document.getElementById('spots-dance-text').textContent = 'Осталось несколько мест';
   }
 }
-loadSpots();
 
 // ── Ссылки оплаты Продамус ────────────────────────────
 const PAY_LINKS = {
@@ -706,6 +710,7 @@ payForm.addEventListener('submit', async e => {
   try {
     await fetch(SHEETS_URL, {
       method: 'POST',
+      redirect: 'follow',
       headers: { 'Content-Type': 'text/plain' },
       body: JSON.stringify({
         name: fName.value.trim(),
