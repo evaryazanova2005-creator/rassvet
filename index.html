@@ -695,14 +695,31 @@ payForm.addEventListener('submit', async e => {
   const period = parseInt(fPeriod.value) || 1;
   const payUrl = PAY_LINKS[tariff]?.[period];
 
-  // Сразу ставим ссылку на кнопку и показываем экран успеха
-  // (до любых await, чтобы браузер не заблокировал открытие вкладки)
+  // Ставим ссылку на кнопку сразу
   if (payUrl) payDirectBtn.href = payUrl;
   submitBtn.textContent = 'Создаём заказ…';
   submitBtn.disabled = true;
   modalForm.hidden = true;
   modalSuccess.hidden = false;
 
+  // Отправляем заявку в Google Таблицу (фоново, не блокируем)
+  try {
+    await fetch(SHEETS_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'text/plain' },
+      body: JSON.stringify({
+        name: fName.value.trim(),
+        telegram: fTg.value.trim(),
+        phone: fPhone.value.trim(),
+        tariff: tariff,
+        period: period
+      })
+    });
+  } catch { /* таблица недоступна — не блокируем оплату */ }
+
+  submitBtn.textContent = 'Перейти к оплате';
+  submitBtn.disabled = false;
+});
   // Фоново обновляем счётчик мест
   try {
     const res  = await fetch(SHEETS_URL, {
