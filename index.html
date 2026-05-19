@@ -567,7 +567,7 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
   });
 });
 
-// ── Spots counter (Google Sheets) ─────────────────────
+// ── Spots counter ──────────────────────────────────────
 const SHEETS_URL = 'https://script.google.com/macros/s/AKfycbynONdLgamCEk0ZdOOllhRkAQk7dUt4zi_uw9VMVfirtrIp6Xhm9NfJjT1UTr6Uf-3sIg/exec';
 
 function plural(n) {
@@ -596,20 +596,16 @@ function updateBadge(tariff, count) {
 
 async function loadSpots() {
   try {
-    const r = await fetch(SHEETS_URL, {
-      redirect: 'follow',
-      method: 'GET',
-    });
-    const text = await r.text();
-    const d = JSON.parse(text);
+    const r = await fetch(SHEETS_URL, { method: 'GET', redirect: 'follow' });
+    const d = JSON.parse(await r.text());
     updateBadge('base',  d.base);
     updateBadge('dance', d.dance);
-  } catch (err) {
-    console.error('loadSpots error:', err);
+  } catch {
     document.getElementById('spots-base-text').textContent  = 'Осталось несколько мест';
     document.getElementById('spots-dance-text').textContent = 'Осталось несколько мест';
   }
 }
+loadSpots(); // ← вызов счётчика
 
 // ── Ссылки оплаты Продамус ────────────────────────────
 const PAY_LINKS = {
@@ -699,14 +695,13 @@ payForm.addEventListener('submit', async e => {
   const period = parseInt(fPeriod.value) || 1;
   const payUrl = PAY_LINKS[tariff]?.[period];
 
-  // Ставим ссылку на кнопку сразу
   if (payUrl) payDirectBtn.href = payUrl;
   submitBtn.textContent = 'Создаём заказ…';
   submitBtn.disabled = true;
   modalForm.hidden = true;
   modalSuccess.hidden = false;
 
-  // Отправляем заявку в Google Таблицу (фоново, не блокируем)
+  // Сохраняем заявку в Google Таблицу фоново
   try {
     await fetch(SHEETS_URL, {
       method: 'POST',
@@ -720,32 +715,7 @@ payForm.addEventListener('submit', async e => {
         period: period
       })
     });
-  } catch { /* таблица недоступна — не блокируем оплату */ }
-
-  submitBtn.textContent = 'Перейти к оплате';
-  submitBtn.disabled = false;
-});
-  // Фоново обновляем счётчик мест
-  try {
-    const res  = await fetch(SHEETS_URL, {
-      method: 'POST',
-      headers: { 'Content-Type': 'text/plain' },
-      body: JSON.stringify({ tariff })
-    });
-    const data = await res.json();
-    if (data.error === 'no spots') {
-      // Мест нет — возвращаем форму и сообщаем
-      modalSuccess.hidden = true;
-      modalForm.hidden = false;
-      submitBtn.textContent = 'Перейти к оплате';
-      submitBtn.disabled = false;
-      closeModal();
-      loadSpots();
-      alert('К сожалению, все места уже заняты!');
-      return;
-    }
-    updateBadge(tariff, data.remaining);
-  } catch { /* счётчик недоступен — не блокируем оплату */ }
+  } catch { /* не блокируем оплату */ }
 
   submitBtn.textContent = 'Перейти к оплате';
   submitBtn.disabled = false;
