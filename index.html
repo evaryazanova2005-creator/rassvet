@@ -237,6 +237,8 @@ h1,h2,h3,h4{letter-spacing:-.01em}
 .modal-success .check{width:64px;height:64px;border-radius:50%;background:var(--orange);color:#fff;display:inline-flex;align-items:center;justify-content:center;font-size:32px;margin-bottom:18px;}
 .modal-success h3{font-family:'Cormorant Garamond',serif;font-size:30px;font-weight:600;margin:0 0 10px;}
 .modal-success p{color:var(--ink-mute);font-size:15px;margin:0}
+.modal-success .pay-direct-btn{display:inline-block;margin-top:20px;padding:14px 32px;border-radius:999px;background:var(--orange);color:#fff;font-size:15px;font-weight:500;text-decoration:none;transition:background .2s,transform .15s;}
+.modal-success .pay-direct-btn:hover{background:#d46820;transform:translateY(-1px)}
 
 @media(max-width:1080px){.gallery{grid-template-columns:repeat(2,1fr)}.gallery .g.tall{aspect-ratio:1/1}}
 @media(max-width:880px){.container{padding:0 22px}.hero-grid,.about-grid,.benefits-grid,.tariffs,.footer-grid,.activities-head{grid-template-columns:1fr;gap:36px}.activities-sub,.pricing-sub{text-align:left;max-width:none}.activity-grid{grid-template-columns:1fr}.hero h1{font-size:56px}.about h2{font-size:38px}.section-title{font-size:48px}.schedule{padding:32px 22px}.week{grid-template-columns:repeat(4,1fr)}.manifesto{padding:36px 28px;font-size:19px}.gallery{grid-template-columns:1fr 1fr}.nav{display:none}.cta h2{font-size:48px}.story-title{font-size:36px}.modal{padding:32px 24px}.modal h2{font-size:28px}}
@@ -539,10 +541,12 @@ h1,h2,h3,h4{letter-spacing:-.01em}
     <div id="modal-success" class="modal-success" hidden>
       <div class="check">✓</div>
       <h3>Почти готово!</h3>
-      <p>Сейчас откроется окно оплаты. После успешной оплаты я свяжусь с вами в Telegram.</p>
+      <p>Нажми кнопку ниже, чтобы перейти к оплате.<br>После оплаты я свяжусь с тобой в Telegram.</p>
+      <a id="pay-direct-btn" href="#" target="_blank" rel="noopener" class="pay-direct-btn">Перейти к оплате →</a>
     </div>
   </div>
 </div>
+
 <script>
 // FAQ
 document.querySelectorAll('.faq-q').forEach(btn => {
@@ -603,7 +607,7 @@ async function loadSpots() {
 }
 loadSpots();
 
-// ── Ссылки оплаты Продамус ───────────────────────────
+// ── Ссылки оплаты Продамус ────────────────────────────
 const PAY_LINKS = {
   base:  {
     1: 'https://link.payform.ru/?paymentLinkId=b08a5d9c-4db7-4634-8e24-36875168300b',
@@ -616,29 +620,30 @@ const PAY_LINKS = {
 };
 
 // ── Modal ─────────────────────────────────────────────
-const modal       = document.getElementById('modal');
-const modalTariff = document.getElementById('modal-tariff');
-const priceSummary= document.getElementById('price-summary');
-const modalForm   = document.getElementById('modal-form');
-const modalSuccess= document.getElementById('modal-success');
-const payForm     = document.getElementById('pay-form');
-const submitBtn   = document.getElementById('submit-btn');
-const fName       = document.getElementById('f-name');
-const fTg         = document.getElementById('f-tg');
-const fPhone      = document.getElementById('f-phone');
-const fPeriod     = document.getElementById('f-period');
+const modal        = document.getElementById('modal');
+const modalTariff  = document.getElementById('modal-tariff');
+const priceSummary = document.getElementById('price-summary');
+const modalForm    = document.getElementById('modal-form');
+const modalSuccess = document.getElementById('modal-success');
+const payForm      = document.getElementById('pay-form');
+const submitBtn    = document.getElementById('submit-btn');
+const payDirectBtn = document.getElementById('pay-direct-btn');
+const fName        = document.getElementById('f-name');
+const fTg          = document.getElementById('f-tg');
+const fPhone       = document.getElementById('f-phone');
+const fPeriod      = document.getElementById('f-period');
 
 const PRICES = { base:{name:'База',price:2000}, dance:{name:'Клуб + танцы',price:3800} };
 const fmt = n => n.toLocaleString('ru-RU');
 
 function updatePriceSummary() {
   const t = PRICES[modal.dataset.tariff]; if (!t) return;
-  const p = parseInt(fPeriod.value)||1;
+  const p = parseInt(fPeriod.value) || 1;
   modalTariff.textContent = `Тариф «${t.name}»`;
-  if (p===1) {
+  if (p === 1) {
     priceSummary.innerHTML = `<strong style="font-size:20px;color:var(--ink)">${fmt(t.price)} ₽</strong> — за 1 месяц`;
   } else {
-    const disc = Math.round(t.price*.9), total = disc*p, saved = t.price*p - total;
+    const disc = Math.round(t.price * .9), total = disc * p, saved = t.price * p - total;
     priceSummary.innerHTML =
       `<strong style="font-size:20px;color:var(--ink)">${fmt(total)} ₽</strong> — итого за 3 месяца` +
       `<br><span style="font-size:13px;color:var(--ink-mute)">${fmt(disc)} ₽/мес вместо ${fmt(t.price)} ₽ · экономия ${fmt(saved)} ₽</span>`;
@@ -653,7 +658,7 @@ function openModal(key) {
   updatePriceSummary();
   modal.classList.add('open');
   document.body.classList.add('modal-open');
-  setTimeout(()=>fName.focus(),280);
+  setTimeout(() => fName.focus(), 280);
 }
 function closeModal() { modal.classList.remove('open'); document.body.classList.remove('modal-open'); }
 
@@ -662,65 +667,66 @@ document.querySelectorAll('[data-pay]').forEach(btn => {
   btn.addEventListener('click', e => { e.preventDefault(); if (!btn.disabled) openModal(btn.dataset.pay); });
 });
 document.getElementById('modal-close').addEventListener('click', closeModal);
-modal.addEventListener('click', e => { if (e.target===modal) closeModal(); });
-document.addEventListener('keydown', e => { if (e.key==='Escape') closeModal(); });
+modal.addEventListener('click', e => { if (e.target === modal) closeModal(); });
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
 
 // Phone mask
 fPhone.addEventListener('input', () => {
-  let d = fPhone.value.replace(/\D/g,'');
-  if (d.startsWith('8')) d='7'+d.slice(1);
-  if (!d.startsWith('7')) d='7'+d;
-  d=d.slice(0,11);
-  let o='+7';
-  if(d.length>1) o+=' ('+d.slice(1,4);
-  if(d.length>=4) o+=') '+d.slice(4,7);
-  if(d.length>=7) o+='-'+d.slice(7,9);
-  if(d.length>=9) o+='-'+d.slice(9,11);
-  fPhone.value=o;
+  let d = fPhone.value.replace(/\D/g, '');
+  if (d.startsWith('8')) d = '7' + d.slice(1);
+  if (!d.startsWith('7')) d = '7' + d;
+  d = d.slice(0, 11);
+  let o = '+7';
+  if (d.length > 1)  o += ' (' + d.slice(1, 4);
+  if (d.length >= 4) o += ') ' + d.slice(4, 7);
+  if (d.length >= 7) o += '-' + d.slice(7, 9);
+  if (d.length >= 9) o += '-' + d.slice(9, 11);
+  fPhone.value = o;
 });
 
-// Submit → уменьшаем счётчик → редирект на Продамус
+// Submit
 payForm.addEventListener('submit', async e => {
   e.preventDefault();
-  if (!fName.value.trim()) { fName.focus(); return; }
-  if (!fTg.value.trim())   { fTg.focus();  return; }
-  if (fPhone.value.replace(/\D/g,'').length<11) { fPhone.focus(); return; }
+  if (!fName.value.trim())  { fName.focus();  return; }
+  if (!fTg.value.trim())    { fTg.focus();    return; }
+  if (fPhone.value.replace(/\D/g, '').length < 11) { fPhone.focus(); return; }
 
-  submitBtn.textContent = 'Создаём заказ…';
-  submitBtn.disabled = true;
-
-  // Определяем ссылку оплаты
   const tariff = modal.dataset.tariff;
   const period = parseInt(fPeriod.value) || 1;
   const payUrl = PAY_LINKS[tariff]?.[period];
 
+  // Сразу ставим ссылку на кнопку и показываем экран успеха
+  // (до любых await, чтобы браузер не заблокировал открытие вкладки)
+  if (payUrl) payDirectBtn.href = payUrl;
+  submitBtn.textContent = 'Создаём заказ…';
+  submitBtn.disabled = true;
+  modalForm.hidden = true;
+  modalSuccess.hidden = false;
+
+  // Фоново обновляем счётчик мест
   try {
-    const res = await fetch(SHEETS_URL, {
-      method:'POST',
-      headers:{'Content-Type':'text/plain'},
-      body: JSON.stringify({ tariff: tariff })
+    const res  = await fetch(SHEETS_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'text/plain' },
+      body: JSON.stringify({ tariff })
     });
     const data = await res.json();
     if (data.error === 'no spots') {
-      closeModal(); loadSpots();
+      // Мест нет — возвращаем форму и сообщаем
+      modalSuccess.hidden = true;
+      modalForm.hidden = false;
+      submitBtn.textContent = 'Перейти к оплате';
+      submitBtn.disabled = false;
+      closeModal();
+      loadSpots();
       alert('К сожалению, все места уже заняты!');
-      submitBtn.textContent='Перейти к оплате'; submitBtn.disabled=false;
       return;
     }
     updateBadge(tariff, data.remaining);
-  } catch { /* API недоступен — не блокируем */ }
+  } catch { /* счётчик недоступен — не блокируем оплату */ }
 
-  // Показываем «Почти готово» и через секунду открываем оплату
-  modalForm.hidden = true;
-  modalSuccess.hidden = false;
-  submitBtn.textContent='Перейти к оплате';
-  submitBtn.disabled=false;
-
-  if (payUrl) {
-    setTimeout(() => {
-      window.open(payUrl, '_blank');
-    }, 1200);
-  }
+  submitBtn.textContent = 'Перейти к оплате';
+  submitBtn.disabled = false;
 });
 </script>
 </body>
