@@ -543,7 +543,6 @@ h1,h2,h3,h4{letter-spacing:-.01em}
     </div>
   </div>
 </div>
-
 <script>
 // FAQ
 document.querySelectorAll('.faq-q').forEach(btn => {
@@ -565,7 +564,6 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
 });
 
 // ── Spots counter (Google Sheets) ─────────────────────
-// ⚠️ ЗАМЕНИ URL НА СВОЙ (из Google Apps Script → Развернуть → Веб-приложение)
 const SHEETS_URL = 'https://script.google.com/macros/s/AKfycbyk6hpSDKlVJ5Xj-TIhXoCfM4wDg9Dr67gSaLp4RBZ8WgefTzezJmpGnbdBIHp78tvpEg/exec';
 
 function plural(n) {
@@ -604,6 +602,18 @@ async function loadSpots() {
   }
 }
 loadSpots();
+
+// ── Ссылки оплаты Продамус ───────────────────────────
+const PAY_LINKS = {
+  base:  {
+    1: 'https://link.payform.ru/?paymentLinkId=b08a5d9c-4db7-4634-8e24-36875168300b',
+    3: 'https://link.payform.ru/?paymentLinkId=189279c5-1ea1-48f6-838b-b15a8cc178d4'
+  },
+  dance: {
+    1: 'https://link.payform.ru/?paymentLinkId=31df960d-eef9-4bb7-847e-1bea1ae29529',
+    3: 'https://link.payform.ru/?paymentLinkId=458c66bd-f748-4508-ad3a-59842f967e4a'
+  }
+};
 
 // ── Modal ─────────────────────────────────────────────
 const modal       = document.getElementById('modal');
@@ -669,7 +679,7 @@ fPhone.addEventListener('input', () => {
   fPhone.value=o;
 });
 
-// Submit — уменьшаем счётчик через Google Sheets
+// Submit → уменьшаем счётчик → редирект на Продамус
 payForm.addEventListener('submit', async e => {
   e.preventDefault();
   if (!fName.value.trim()) { fName.focus(); return; }
@@ -679,11 +689,16 @@ payForm.addEventListener('submit', async e => {
   submitBtn.textContent = 'Создаём заказ…';
   submitBtn.disabled = true;
 
+  // Определяем ссылку оплаты
+  const tariff = modal.dataset.tariff;
+  const period = parseInt(fPeriod.value) || 1;
+  const payUrl = PAY_LINKS[tariff]?.[period];
+
   try {
     const res = await fetch(SHEETS_URL, {
       method:'POST',
       headers:{'Content-Type':'text/plain'},
-      body: JSON.stringify({ tariff: modal.dataset.tariff })
+      body: JSON.stringify({ tariff: tariff })
     });
     const data = await res.json();
     if (data.error === 'no spots') {
@@ -692,13 +707,20 @@ payForm.addEventListener('submit', async e => {
       submitBtn.textContent='Перейти к оплате'; submitBtn.disabled=false;
       return;
     }
-    updateBadge(modal.dataset.tariff, data.remaining);
+    updateBadge(tariff, data.remaining);
   } catch { /* API недоступен — не блокируем */ }
 
+  // Показываем «Почти готово» и через секунду открываем оплату
   modalForm.hidden = true;
   modalSuccess.hidden = false;
   submitBtn.textContent='Перейти к оплате';
   submitBtn.disabled=false;
+
+  if (payUrl) {
+    setTimeout(() => {
+      window.open(payUrl, '_blank');
+    }, 1200);
+  }
 });
 </script>
 </body>
