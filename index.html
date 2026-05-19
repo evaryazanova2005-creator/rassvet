@@ -41,7 +41,7 @@ h1,h2,h3,h4{letter-spacing:-.01em}
 .btn-ghost:hover{background:rgba(233,109,42,.06);box-shadow:inset 0 0 0 1.5px var(--orange);color:var(--orange)}
 
 /* HERO */
-.hero{padding:64px 0 100px}
+.hero{padding:32px 0 100px}
 .hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center;}
 .eyebrow-pill{display:inline-block;background:var(--orange-50);color:var(--ink-soft);font-size:12px;letter-spacing:.14em;text-transform:uppercase;padding:9px 20px;border-radius:999px;margin-bottom:36px;font-weight:500;}
 .hero h1{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:90px;line-height:.98;margin:0 0 30px;letter-spacing:-.012em;text-wrap:balance;}
@@ -53,9 +53,9 @@ h1,h2,h3,h4{letter-spacing:-.01em}
 .hero-pill{position:absolute;left:18px;bottom:-22px;background:#fffaf0;padding:13px 24px;border-radius:999px;font-size:14.5px;color:var(--ink);box-shadow:0 0 0 6px rgba(185,207,138,.35),0 0 32px 6px rgba(185,207,138,.55),0 8px 24px rgba(80,40,10,.10);display:flex;align-items:center;gap:10px;font-weight:500;z-index:2;}
 
 /* ABOUT */
-.about{padding:20px 0 60px}
+.about{padding:60px 0 80px}
 .about-grid{display:grid;grid-template-columns:.95fr 1.1fr;gap:72px;align-items:start;}
-.collage{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:auto auto;gap:16px;margin-top:-80px;}
+.collage{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:auto auto;gap:16px;}
 .collage>div{border-radius:22px;overflow:hidden;background:#d8d2c2}
 .collage>div img{width:100%;height:100%;object-fit:cover;display:block}
 .collage .c1{grid-column:1;grid-row:1/span 2;aspect-ratio:.76/1}
@@ -297,12 +297,12 @@ h1,h2,h3,h4{letter-spacing:-.01em}
       <h3>Пример расписания <i>на неделю</i></h3>
       <div class="week">
         <div class="day"><span class="day-name">Пн</span><div class="event">Танцы<span class="event-time">18:00–20:00</span></div></div>
-        <div class="day"><span class="day-name">Вт</span><div class="event tiny">Отдыхаем и общаемся в чате</div></div>
+        <div class="day"><span class="day-name">Вт</span><div class="event yellow">Отдыхаем и общаемся в чате<span class="event-time">весь день</span></div></div>
         <div class="day"><span class="day-name">Ср</span><div class="event green">Тренировка в парке<span class="event-time">10:00–11:00</span></div></div>
         <div class="day"><span class="day-name">Чт</span><div class="event yellow">Книжный клуб<span class="event-time">18:00–19:00</span></div><div class="event tiny">+ пикник</div></div>
-        <div class="day"><span class="day-name">Пт</span><div class="event yellow tiny">Делимся рецептами на ужин</div></div>
+        <div class="day"><span class="day-name">Пт</span><div class="event">Делимся рецептами на ужин<span class="event-time">вечер</span></div></div>
         <div class="day"><span class="day-name">Сб</span><div class="event green">Пробежка<span class="event-time">10:00–11:30</span></div></div>
-        <div class="day"><span class="day-name">Вс</span><div class="event tiny">Отдыхаем</div></div>
+        <div class="day"><span class="day-name">Вс</span><div class="event yellow">Отдыхаем<span class="event-time">весь день ☀</span></div></div>
       </div>
       <div class="schedule-foot">Помимо основного расписания — тренировки в парке, фотодни, велопрогулки и воплощение ваших идей</div>
     </div>
@@ -450,23 +450,27 @@ h1,h2,h3,h4{letter-spacing:-.01em}
     <div class="faq-list">
       <div class="faq-item open">
         <button class="faq-q">А если я не смогу прийти на встречу? <span class="faq-icon">+</span></button>
-        <div class="faq-a"><p>Никаких обязательств — выбирайте активности, которые тебе интересны и удобны по времени.</p></div>
+        <div class="faq-a"><p>Никаких обязательств — выбирайте активности, которые вам интересны и удобны по времени.</p></div>
       </div>
       <div class="faq-item">
         <button class="faq-q">Я никого не знаю, будет ли мне комфортно? <span class="faq-icon">+</span></button>
-        <div class="faq-a"><p>Благодаря моей поддержке и тёплой атмосфере я уверена, что мы все подружимся!</p></div>
+        <div class="faq-a"><p>Большинство девушек приходят без знакомых — это нормально. Атмосфера тёплая, мы сами знакомим всех, и уже через пару встреч появляются свои.</p></div>
       </div>
       <div class="faq-item">
         <button class="faq-q">Я в плохой физической форме, подходит ли мне? <span class="faq-icon">+</span></button>
         <div class="faq-a"><p>Да. Все тренировки и пробежки адаптируются под уровень участниц. Главное — желание двигаться.</p></div>
       </div>
       <div class="faq-item">
-        <button class="faq-q">Я могу приостановить участие, если я уеду из Москвы? <span class="faq-icon">+</span></button>
-        <div class="faq-a"><p>Вы остаётесь членом комьюнити вне зависимости от того, где вы находитесь. По вашему желанию и обстоятельствам вы можете пропускать занятия.</p></div>
+        <button class="faq-q">Можно ли попробовать перед оплатой? <span class="faq-icon">+</span></button>
+        <div class="faq-a"><p>Да, для новеньких есть пробная встреча. Напишите в Telegram — расскажу подробности.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Что если я хочу заморозить участие? <span class="faq-icon">+</span></button>
+        <div class="faq-a"><p>Можно поставить участие на паузу до 1 месяца в году без потери оплаты.</p></div>
       </div>
       <div class="faq-item">
         <button class="faq-q">Какая аудитория клуба? <span class="faq-icon">+</span></button>
-        <div class="faq-a"><p>Девушки 17–25 лет из Москвы, которые ценят активный образ жизни, развитие и приятное окружение.</p></div>
+        <div class="faq-a"><p>Девушки 22–35 лет из Москвы, которые ценят активный образ жизни, развитие и тёплое окружение.</p></div>
       </div>
     </div>
   </div>
@@ -560,7 +564,10 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
   });
 });
 
-// ── Spots counter ─────────────────────────────────────
+// ── Spots counter (Google Sheets) ─────────────────────
+// ⚠️ ЗАМЕНИ URL НА СВОЙ (из Google Apps Script → Развернуть → Веб-приложение)
+const SHEETS_URL = 'https://script.google.com/macros/s/AKfycbyk6hpSDKlVJ5Xj-TIhXoCfM4wDg9Dr67gSaLp4RBZ8WgefTzezJmpGnbdBIHp78tvpEg/exec';
+
 function plural(n) {
   if (n%10===1 && n%100!==11) return 'место';
   if ([2,3,4].includes(n%10) && ![12,13,14].includes(n%100)) return 'места';
@@ -587,13 +594,13 @@ function updateBadge(tariff, count) {
 
 async function loadSpots() {
   try {
-    const res = await fetch('/api/spots');
-    const data = await res.json();
-    updateBadge('base',  data.base);
-    updateBadge('dance', data.dance);
+    const r = await fetch(SHEETS_URL);
+    const d = await r.json();
+    updateBadge('base',  d.base);
+    updateBadge('dance', d.dance);
   } catch {
-    document.getElementById('spots-base-text').textContent  = 'Уточняйте у организатора';
-    document.getElementById('spots-dance-text').textContent = 'Уточняйте у организатора';
+    document.getElementById('spots-base-text').textContent  = 'Осталось несколько мест';
+    document.getElementById('spots-dance-text').textContent = 'Осталось несколько мест';
   }
 }
 loadSpots();
@@ -662,7 +669,7 @@ fPhone.addEventListener('input', () => {
   fPhone.value=o;
 });
 
-// Submit — уменьшаем счётчик
+// Submit — уменьшаем счётчик через Google Sheets
 payForm.addEventListener('submit', async e => {
   e.preventDefault();
   if (!fName.value.trim()) { fName.focus(); return; }
@@ -673,18 +680,18 @@ payForm.addEventListener('submit', async e => {
   submitBtn.disabled = true;
 
   try {
-    const res = await fetch('/api/spots', {
+    const res = await fetch(SHEETS_URL, {
       method:'POST',
-      headers:{'Content-Type':'application/json'},
+      headers:{'Content-Type':'text/plain'},
       body: JSON.stringify({ tariff: modal.dataset.tariff })
     });
-    if (res.status===409) {
+    const data = await res.json();
+    if (data.error === 'no spots') {
       closeModal(); loadSpots();
       alert('К сожалению, все места уже заняты!');
       submitBtn.textContent='Перейти к оплате'; submitBtn.disabled=false;
       return;
     }
-    const data = await res.json();
     updateBadge(modal.dataset.tariff, data.remaining);
   } catch { /* API недоступен — не блокируем */ }
 
