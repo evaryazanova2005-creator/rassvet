@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Рассвет — добро пожаловать</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Onest:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#faf3e7;--paper:#fffaf0;--paper-soft:#fdf5e6;
+  --ink:#1d150c;--ink-soft:#3d2e1f;--ink-mute:#8a7558;--line:#ece1c8;
+  --orange:#e96d2a;--orange-50:#fde3d0;--orange-100:#fbcfb1;
+  --green-50:#e8f0d4;--green-deep:#8ea35a;
+  --olive:#aaa336;--olive-dark:#948c25;
+  --shadow-sm:0 1px 2px rgba(120,80,30,.05),0 4px 12px rgba(120,80,30,.04);
+  --shadow-md:0 14px 36px rgba(120,80,30,.10);
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:'Onest','Inter',Arial,sans-serif;font-size:15px;line-height:1.55;color:var(--ink);background:var(--bg);-webkit-font-smoothing:antialiased;}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+.container{max-width:1240px;margin:0 auto;padding:0 36px}
+h1,h2,h3,h4{letter-spacing:-.01em}
+
+/* HEADER */
+.header{position:sticky;top:0;z-index:50;background:rgba(250,243,231,.86);backdrop-filter:saturate(140%) blur(10px);border-bottom:1px solid rgba(140,90,40,.06);}
+.header-inner{display:flex;align-items:center;justify-content:space-between;height:78px}
+.logo{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:600;font-size:30px;color:var(--orange);}
+.nav{display:flex;gap:46px}
+.nav a{font-size:14.5px;color:var(--ink-soft);transition:color .2s}
+.nav a:hover{color:var(--orange)}
+.btn{display:inline-flex;align-items:center;justify-content:center;border-radius:999px;padding:14px 28px;font-size:14.5px;font-weight:500;transition:transform .15s,background .2s,box-shadow .2s,color .2s;white-space:nowrap;border:none;cursor:pointer;font-family:inherit;}
+.btn-primary{background:var(--orange);color:#fff}
+.btn-primary:hover{background:#d46820;transform:translateY(-1px);box-shadow:0 6px 20px rgba(233,109,42,.35)}
+.btn-ghost{background:transparent;color:var(--ink);box-shadow:inset 0 0 0 1.5px #cc8b13}
+.btn-ghost:hover{background:rgba(233,109,42,.06);box-shadow:inset 0 0 0 1.5px var(--orange);color:var(--orange)}
+
+/* HERO */
+.hero{padding:32px 0 100px;position:relative;overflow:hidden;}
+.hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center;position:relative;z-index:1;}
+.eyebrow-pill{display:inline-block;background:var(--orange-50);color:var(--orange);font-size:12px;letter-spacing:.14em;text-transform:uppercase;padding:9px 20px;border-radius:999px;margin-bottom:36px;font-weight:500;animation:bounce 2.5s ease-in-out infinite;}
+@keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
+.hero h1{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:90px;line-height:.98;margin:0 0 30px;letter-spacing:-.012em;text-wrap:balance;}
+.hero h1 i{font-style:italic;font-weight:500;color:var(--orange);}
+.hero p.lead{max-width:520px;font-size:17px;line-height:1.6;color:var(--ink-soft);margin:0 0 36px;}
+.hero-buttons{display:flex;gap:14px;flex-wrap:wrap}
+.hero-img-wrap{position:relative;border-radius:26px;aspect-ratio:.82/1;background:linear-gradient(135deg,#f08847,#f4b384);box-shadow:var(--shadow-md);overflow:hidden;}
+.hero-img-wrap img{width:100%;height:100%;object-fit:cover;border-radius:26px;display:block}
+.hero-pill{position:absolute;left:18px;bottom:-22px;background:#fffaf0;padding:13px 24px;border-radius:999px;font-size:14.5px;color:var(--ink);box-shadow:0 0 0 6px rgba(185,207,138,.35),0 0 32px 6px rgba(185,207,138,.55),0 8px 24px rgba(80,40,10,.10);display:flex;align-items:center;gap:10px;font-weight:500;z-index:2;}
+
+/* INTRO BANNER */
+.intro-banner{background:linear-gradient(135deg,#ef7d40 0%,#f08a51 50%,#f4a276 100%);color:#fffaf0;padding:80px 50px;border-radius:32px;margin:0 36px 80px;max-width:1168px;margin-left:auto;margin-right:auto;position:relative;overflow:hidden;}
+.intro-banner::before{content:"";position:absolute;top:-100px;right:-100px;width:400px;height:400px;background:radial-gradient(circle,rgba(255,255,255,.15) 0%,transparent 70%);border-radius:50%;}
+.intro-banner::after{content:"";position:absolute;bottom:-80px;left:-80px;width:300px;height:300px;background:radial-gradient(circle,rgba(255,255,255,.10) 0%,transparent 70%);border-radius:50%;}
+.intro-banner-inner{position:relative;z-index:1;text-align:center;}
+.intro-banner h2{font-family:'Cormorant Garamond',serif;font-size:54px;font-weight:600;line-height:1.05;margin:0 0 20px;letter-spacing:-.01em;}
+.intro-banner h2 i{font-style:italic;color:#fff8e4;}
+.intro-banner p{font-size:17.5px;line-height:1.65;max-width:680px;margin:0 auto;color:rgba(255,250,232,.92);}
+
+/* SECTIONS COMMON */
+.section-eyebrow{display:inline-block;font-size:12px;color:var(--orange);letter-spacing:.16em;text-transform:uppercase;margin-bottom:22px;font-weight:500;}
+.section-eyebrow::before{content:"— "}
+
+/* ABOUT */
+.about{padding:60px 0 80px}
+.about-grid{display:grid;grid-template-columns:.95fr 1.1fr;gap:72px;align-items:start;}
+.collage{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:auto auto;gap:16px;}
+.collage>div{border-radius:22px;overflow:hidden;background:#d8d2c2}
+.collage>div img{width:100%;height:100%;object-fit:cover;display:block}
+.collage .c1{grid-column:1;grid-row:1/span 2;aspect-ratio:.76/1}
+.collage .c2{grid-column:2;grid-row:1;aspect-ratio:1/1}
+.collage .c3{grid-column:2;grid-row:2;aspect-ratio:1/1}
+.about-text{padding-top:6px}
+.about h2{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:50px;line-height:1.06;margin:0 0 30px;letter-spacing:-.012em;text-wrap:balance;}
+.about h2 i{font-style:italic;font-weight:500;color:var(--orange);}
+.about-text p{font-size:16px;color:var(--ink-soft);line-height:1.65;margin:0 0 18px;max-width:520px;}
+.about-text strong{color:var(--ink);font-weight:600}
+
+/* SCHEDULE */
+.schedule-wrap{padding:30px 0 50px}
+.schedule{border-radius:28px;background:var(--paper);border:1px solid var(--line);box-shadow:0 8px 28px rgba(160,110,40,.05);padding:46px 52px 38px;}
+.schedule h3{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:34px;margin:0 0 36px;}
+.schedule h3 i{font-style:italic;font-weight:500;color:var(--orange)}
+.week{display:grid;grid-template-columns:repeat(7,1fr);gap:14px;align-items:start;}
+.day{display:flex;flex-direction:column;align-items:center;gap:12px;min-height:130px}
+.day-name{font-size:12px;letter-spacing:.14em;color:var(--ink-mute);text-transform:uppercase}
+.event{width:100%;border-radius:14px;padding:11px 8px;text-align:center;font-size:13.5px;line-height:1.35;font-weight:500;background:#fef0e0;color:#c45a1b;border:1.4px solid var(--orange-100);}
+.event.green{background:var(--green-50);color:var(--green-deep);border-color:#cad9a9;}
+.event.yellow{background:#fcefc6;color:#a87c1c;border-color:#f0db9b;}
+.event.tiny{padding:8px 6px;font-size:12.5px}
+.event-time{display:block;font-weight:400;font-size:11.5px;color:var(--ink-mute);margin-top:3px}
+.schedule-foot{text-align:center;font-size:13.5px;color:var(--ink-mute);margin-top:28px;}
+
+/* MANIFESTO */
+.manifesto-wrap{padding:30px 0 60px}
+.manifesto{background:linear-gradient(110deg,#f08847 0%,#f29659 35%,#f4a472 70%,#f4b384 100%);border-radius:28px;padding:56px 70px;color:#fffaf0;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:25px;line-height:1.45;font-weight:500;box-shadow:0 14px 36px rgba(200,120,60,.16);}
+
+/* ACTIVITIES */
+.activities{padding:90px 0 100px}
+.activities-head{display:grid;grid-template-columns:1fr 1fr;align-items:end;margin-bottom:50px;gap:40px;}
+.section-title{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:72px;line-height:1;margin:6px 0 0;letter-spacing:-.018em;}
+.section-title i{font-style:italic;font-weight:500;color:var(--orange);}
+.activities-sub{font-size:16px;color:var(--ink-mute);text-align:right;}
+.activity-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px 22px;}
+.activity{display:grid;grid-template-columns:36px 1fr auto;align-items:center;gap:18px;padding:18px 24px;border-radius:18px;min-height:64px;transition:transform .18s,box-shadow .18s;}
+.activity:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(120,80,30,.08)}
+.activity .num{font-family:'Cormorant Garamond',serif;font-size:22px;color:var(--orange);font-weight:500;}
+.activity .a-text{display:flex;flex-direction:column;gap:2px}
+.activity .a-title{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:20px;line-height:1.2;color:var(--ink);}
+.activity .a-desc{font-size:13px;color:var(--ink-soft);opacity:.68;line-height:1.35;}
+.tag{font-size:12px;padding:6px 13px;border-radius:999px;background:rgba(255,255,255,.65);color:var(--ink-soft);font-weight:500;white-space:nowrap;}
+.act-peach{background:#fbe5cf}
+.act-yellow{background:#fbecb1}
+
+/* GALLERY */
+.gallery-wrap{padding:50px 0 80px}
+.gallery-eyebrow{margin-bottom:32px}
+.gallery{display:grid;grid-template-columns:.78fr 1fr 1fr 1fr;gap:18px;align-items:start;}
+.gallery .g{border-radius:22px;background:#cdc6b6;overflow:hidden;aspect-ratio:1/1;}
+.gallery .g.tall{aspect-ratio:.78/1.13}
+.gallery .g img{width:100%;height:100%;object-fit:cover;display:block}
+
+/* BENEFITS */
+.benefits{background:radial-gradient(60% 80% at 12% 18%,#fbd5d8 0%,transparent 60%),radial-gradient(55% 70% at 92% 32%,#f8c9b3 0%,transparent 60%),linear-gradient(160deg,#fbe1d3 0%,#fce3c4 45%,#fceeb0 100%);padding:110px 0;color:var(--ink);}
+.benefits .section-eyebrow{color:var(--orange)}
+.benefits .section-title{color:var(--ink);margin-bottom:48px}
+.benefits .section-title i{color:var(--green-deep)}
+.benefits-grid{display:grid;grid-template-columns:1fr 1fr;gap:26px;max-width:1100px;margin:0 auto;}
+.b-card{background:#fffaf0;border:1px solid rgba(140,90,40,.08);border-radius:26px;padding:40px 44px;box-shadow:0 4px 18px rgba(160,110,40,.06);}
+.b-card.right{background:#fffdf3;border-color:rgba(140,160,90,.18);}
+.b-card h3{font-family:'Cormorant Garamond',serif;color:var(--orange);font-size:26px;font-weight:600;margin:0 0 26px;}
+.b-card.right h3{color:var(--green-deep)}
+.b-card ul{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:16px}
+.b-card li{font-size:15px;color:var(--ink-soft);line-height:1.5;display:flex;gap:14px;align-items:flex-start;}
+.b-card li::before{content:"✓";color:var(--orange);font-weight:700;font-size:14px;margin-top:2px;flex-shrink:0;}
+.b-card.right li::before{content:"✦";color:var(--green-deep)}
+
+/* TARIFFS — без цен */
+.pricing{padding:100px 0 110px;background:var(--bg)}
+.pricing .activities-head{align-items:start;margin-bottom:50px}
+.pricing-sub{font-size:16px;color:var(--ink-mute);max-width:400px;line-height:1.55;margin:0;text-align:right;}
+.tariffs{display:grid;grid-template-columns:1fr 1fr;gap:26px;max-width:1100px;margin:0 auto;}
+.tariff{position:relative;border-radius:28px;padding:40px 42px 36px;display:flex;flex-direction:column;transition:transform .2s,box-shadow .2s;min-height:560px;}
+.tariff:hover{transform:translateY(-3px)}
+.tariff.base{background:var(--paper);box-shadow:var(--shadow-sm)}
+.tariff.dance{background:linear-gradient(135deg,#ef7d40 0%,#f08a51 45%,#f4a276 100%);color:#fff8e4;box-shadow:0 14px 36px rgba(200,100,40,.20);}
+.tariff .tnum{font-size:13px;color:rgba(60,40,20,.45);font-weight:500;letter-spacing:.08em;margin-bottom:24px;}
+.tariff.dance .tnum{color:rgba(255,240,210,.78)}
+.tariff .tname{font-family:'Cormorant Garamond',serif;font-size:40px;font-weight:600;margin:0 0 10px;}
+.tariff .tsub{font-size:15px;color:var(--ink-mute);margin-bottom:30px;line-height:1.5;}
+.tariff.dance .tsub{color:rgba(255,240,210,.92)}
+.tariff .features{list-style:none;padding:0;margin:0 0 24px;display:flex;flex-direction:column;gap:14px;flex:1}
+.tariff .features li{font-size:15px;line-height:1.45;display:flex;gap:12px}
+.tariff .features li::before{content:"✓";color:var(--orange);font-weight:700}
+.tariff.dance .features li::before{color:#fff8e4}
+.tariff.dance .features li.hi{font-weight:600;color:#fff}
+.tariff-badge{position:absolute;top:20px;right:24px;background:rgba(255,255,255,.22);color:#fff8e4;font-size:12.5px;padding:8px 16px;border-radius:999px;backdrop-filter:blur(4px);}
+
+.choose-soon{
+  align-self:stretch;width:100%;margin-top:auto;
+  border-radius:999px;padding:18px 30px;
+  font-size:14px;letter-spacing:.06em;text-transform:lowercase;
+  font-weight:500;text-align:center;
+  background:transparent;
+}
+.tariff.base .choose-soon{
+  color:var(--orange);box-shadow:inset 0 0 0 1.5px var(--orange);
+}
+.tariff.dance .choose-soon{
+  color:#fff8e4;box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.6);
+  background:rgba(255,255,255,.10);
+}
+
+/* INTRIGUE — ниже тарифов, заменяет цены */
+.intrigue{
+  max-width:1100px;margin:60px auto 0;
+  background:#fffaf0;border-radius:28px;
+  padding:56px 60px;
+  border:1.5px solid var(--orange-100);
+  text-align:center;position:relative;overflow:hidden;
+}
+.intrigue::before{
+  content:"";position:absolute;top:-60px;right:-60px;
+  width:200px;height:200px;
+  background:radial-gradient(circle,#fde3d040 0%,transparent 70%);
+  border-radius:50%;
+}
+.intrigue-title{
+  font-family:'Cormorant Garamond',serif;
+  font-size:36px;font-weight:600;
+  margin:0 0 18px;line-height:1.15;
+  position:relative;z-index:1;
+}
+.intrigue-title i{font-style:italic;color:var(--orange);}
+.intrigue-text{
+  font-size:16px;color:var(--ink-soft);
+  max-width:600px;margin:0 auto 30px;
+  line-height:1.65;position:relative;z-index:1;
+}
+.intrigue-btn{
+  display:inline-block;
+  padding:18px 42px;border-radius:999px;
+  background:linear-gradient(135deg,#f08847,#e96d2a);
+  color:#fff;font-weight:500;font-size:15px;
+  letter-spacing:.04em;text-transform:lowercase;
+  box-shadow:0 8px 24px rgba(233,109,42,.30);
+  transition:transform .2s,box-shadow .2s;
+  position:relative;z-index:1;
+}
+.intrigue-btn:hover{transform:translateY(-2px);box-shadow:0 12px 32px rgba(233,109,42,.40)}
+
+/* STORY */
+.story{padding:100px 0 90px}
+.story-title{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:60px;line-height:1.05;letter-spacing:-.018em;margin:0 auto 44px;max-width:1100px;text-wrap:balance;}
+.story-title i{font-style:italic;font-weight:500;color:var(--orange);}
+.story-body{max-width:760px;font-size:16.5px;line-height:1.75;color:var(--ink-soft);}
+.story-body p{margin:0 0 22px}
+.story-body strong{color:var(--ink);font-weight:600}
+
+/* CTA */
+.cta{background:linear-gradient(180deg,var(--bg) 0%,var(--bg) 8%,#f4ad75 26%,#f5b988 60%,#e8c595 88%,var(--green-50) 100%);}
+.cta-inner{text-align:center;padding:120px 24px 140px}
+.cta h2{font-family:'Cormorant Garamond',serif;font-size:80px;font-weight:600;margin:0 0 28px;color:#fffaf0;letter-spacing:-.018em;line-height:1.02;}
+.cta h2 i{font-style:italic;font-weight:500;color:#fffaf0;display:block;}
+.cta p{color:rgba(255,250,232,.95);font-size:17px;margin:0 auto 44px;max-width:580px;line-height:1.6;}
+.tg-btn{background:#fffaf0;color:var(--ink);padding:18px 48px;border-radius:999px;font-size:15.5px;font-weight:500;display:inline-flex;align-items:center;gap:14px;transition:transform .15s,background .2s;box-shadow:0 10px 24px rgba(0,0,0,.10);}
+.tg-btn:hover{transform:translateY(-2px);background:#fff}
+.tg-icon{width:30px;height:30px;border-radius:50%;background:var(--orange);display:inline-flex;align-items:center;justify-content:center;color:#fff;font-size:16px;}
+
+/* FOOTER */
+.footer{background:#1c1107;color:#a89a7c;padding:60px 0 32px;text-align:center;}
+.footer .logo{color:#ed8a4e;font-size:28px;margin-bottom:18px;display:inline-block;}
+.footer-about{color:#8a7a5e;font-size:14px;line-height:1.55;max-width:400px;margin:0 auto 24px;}
+.footer-copy{padding-top:24px;font-size:12.5px;color:#5a4d35;border-top:1px solid rgba(255,240,200,.08);margin-top:20px;}
+
+@media(max-width:1080px){.gallery{grid-template-columns:repeat(2,1fr)}.gallery .g.tall{aspect-ratio:1/1}}
+@media(max-width:880px){.container{padding:0 22px}.hero-grid,.about-grid,.benefits-grid,.tariffs,.activities-head{grid-template-columns:1fr;gap:36px}.activities-sub,.pricing-sub{text-align:left;max-width:none}.activity-grid{grid-template-columns:1fr}.hero h1{font-size:56px}.about h2{font-size:38px}.section-title{font-size:48px}.schedule{padding:32px 22px}.week{grid-template-columns:repeat(4,1fr)}.manifesto{padding:36px 28px;font-size:19px}.gallery{grid-template-columns:1fr 1fr}.nav{display:none}.cta h2{font-size:48px}.story-title{font-size:36px}.intro-banner{padding:50px 32px;margin:0 16px 60px}.intro-banner h2{font-size:36px}.intrigue{padding:40px 28px}.intrigue-title{font-size:28px}}
+</style>
+</head>
+<body>
+
+<header class="header">
+  <div class="container header-inner">
+    <a href="#" class="logo">Рассвет</a>
+    <nav class="nav">
+      <a href="#about">О клубе</a>
+      <a href="#activities">Активности</a>
+      <a href="#tariffs">Форматы</a>
+      <a href="#join">Вступить</a>
+    </nav>
+    <a href="#join" class="btn btn-primary">Хочу в клуб</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="container hero-grid">
+    <div>
+      <span class="eyebrow-pill">✦ закрытое сообщество</span>
+      <h1>Твоя неделя станет <i>ярче</i></h1>
+      <p class="lead">Сейчас вы знакомитесь с пространством, которое уже изменило жизнь тех, кто внутри. Тут общие ценности объединяют людей, у недели появляется ритм, а у дней — яркость. Можно быть собой, чувствовать себя в кругу своих и помнить, ради чего живёшь.</p>
+      <div class="hero-buttons">
+        <a href="#tariffs" class="btn btn-primary">Посмотреть форматы</a>
+        <a href="#about" class="btn btn-ghost">Что внутри</a>
+      </div>
+    </div>
+    <div class="hero-img-wrap">
+      <img src="hero.png" alt="Девушки клуба Рассвет"/>
+      <span class="hero-pill">☀ тут хорошо</span>
+    </div>
+  </div>
+</section>
+
+<section class="intro-banner">
+  <div class="intro-banner-inner">
+    <h2>Вы здесь не <i>случайно</i></h2>
+    <p>Сегодня — наша первая встреча. Те, кто рядом с вами в этом парке — будущий костяк Рассвета. Через месяц вы скажете: «Я была в самом начале». Через полгода — у каждой из вас будет история, которую захочется рассказать.</p>
+  </div>
+</section>
+
+<section id="about" class="about">
+  <div class="container about-grid">
+    <div class="collage">
+      <div class="c1"><img src="about-1.png" alt=""/></div>
+      <div class="c2"><img src="about-2.png" alt=""/></div>
+      <div class="c3"><img src="about-3.png" alt=""/></div>
+    </div>
+    <div class="about-text">
+      <span class="section-eyebrow">о клубе</span>
+      <h2>В клубе каждую неделю ты будешь <i>ощущать радость</i></h2>
+      <p>Рассвет — это закрытое сообщество для девушек, которые хотят наполнить жизнь движением, общением и внутренней гармонией. Встречаемся <strong>несколько раз в неделю</strong>, а вы сами выбираете, что ближе.</p>
+      <p>Тебе не нужно ломать голову, чем заняться — расписание уже готово. Пробежки по выходным, танцы в обед, книжный клуб по вечерам, пикники и встречи в течение недели. Тёплая компания, движение и вдохновение уже ждут тебя.</p>
+    </div>
+  </div>
+</section>
+
+<section class="schedule-wrap">
+  <div class="container">
+    <div class="schedule">
+      <h3>Пример расписания <i>на неделю</i></h3>
+      <div class="week">
+        <div class="day"><span class="day-name">Пн</span><div class="event">Танцы<span class="event-time">18:00–20:00</span></div></div>
+        <div class="day"><span class="day-name">Вт</span><div class="event yellow">Отдыхаем и общаемся в чате<span class="event-time">весь день</span></div></div>
+        <div class="day"><span class="day-name">Ср</span><div class="event green">Тренировка в парке<span class="event-time">10:00–11:00</span></div></div>
+        <div class="day"><span class="day-name">Чт</span><div class="event yellow">Книжный клуб<span class="event-time">18:00–19:00</span></div><div class="event tiny">+ пикник</div></div>
+        <div class="day"><span class="day-name">Пт</span><div class="event">Делимся рецептами на ужин<span class="event-time">вечер</span></div></div>
+        <div class="day"><span class="day-name">Сб</span><div class="event green">Пробежка<span class="event-time">10:00–11:30</span></div></div>
+        <div class="day"><span class="day-name">Вс</span><div class="event yellow">Отдыхаем<span class="event-time">весь день ☀</span></div></div>
+      </div>
+      <div class="schedule-foot">Помимо основного расписания — тренировки в парке, фотодни, велопрогулки и воплощение ваших идей</div>
+    </div>
+  </div>
+</section>
+
+<section class="manifesto-wrap">
+  <div class="container">
+    <div class="manifesto">
+      Рассвет — это пространство, где девушки собираются вместе, чтобы разделять события и эмоции, общаться и активничать. Я верю, что регулярные встречи с единомышленницами меняют качество жизни: появляется лёгкость, уверенность и ощущение, что ты на своём месте. В клубе можно бегать по выходным, танцевать по вечерам понедельника, обсуждать книги, ходить на пикники — и каждый раз уходить с улыбкой и наполненностью. Это не курс и не марафон — это образ жизни.
+    </div>
+  </div>
+</section>
+
+<section id="activities" class="activities">
+  <div class="container">
+    <div class="activities-head">
+      <div>
+        <span class="section-eyebrow">активности</span>
+        <h2 class="section-title">Что тебя <i>ждёт</i></h2>
+      </div>
+      <div class="activities-sub">8+ идей, чем мы займёмся вместе</div>
+    </div>
+    <div class="activity-grid">
+      <div class="activity act-peach"><span class="num">01</span><div class="a-text"><span class="a-title">Танцевальные тренировки</span></div><span class="tag">2 раза/нед</span></div>
+      <div class="activity act-yellow"><span class="num">02</span><div class="a-text"><span class="a-title">Пробежки</span><span class="a-desc">По красивым маршрутам</span></div><span class="tag">1 раз/нед</span></div>
+      <div class="activity act-peach"><span class="num">03</span><div class="a-text"><span class="a-title">Онлайн марафоны</span><span class="a-desc">Челленджи с призами</span></div><span class="tag">1 раз/мес</span></div>
+      <div class="activity act-yellow"><span class="num">04</span><div class="a-text"><span class="a-title">Пикники и игры</span><span class="a-desc">Отдых на свежем воздухе</span></div><span class="tag">1 раз/2 нед</span></div>
+      <div class="activity act-peach"><span class="num">05</span><div class="a-text"><span class="a-title">Книжный / кино клуб</span><span class="a-desc">Книги и впечатления</span></div><span class="tag">1 раз/нед</span></div>
+      <div class="activity act-yellow"><span class="num">06</span><div class="a-text"><span class="a-title">Тренировки на воздухе</span><span class="a-desc">Спорт в парках</span></div><span class="tag">1 раз/нед</span></div>
+      <div class="activity act-peach"><span class="num">07</span><div class="a-text"><span class="a-title">Творческие съёмки</span></div><span class="tag">по запросу</span></div>
+      <div class="activity act-yellow"><span class="num">08</span><div class="a-text"><span class="a-title">Планирование и тайм-менеджмент</span></div><span class="tag">регулярно</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="gallery-wrap">
+  <div class="container">
+    <div class="gallery-eyebrow"><span class="section-eyebrow">атмосфера</span></div>
+    <div class="gallery">
+      <div class="g tall"><img src="gal-1.png" alt=""/></div>
+      <div class="g"><img src="gal-2.png" alt=""/></div>
+      <div class="g"><img src="gal-3.png" alt=""/></div>
+      <div class="g"><img src="gal-4.png" alt=""/></div>
+    </div>
+  </div>
+</section>
+
+<section class="benefits">
+  <div class="container">
+    <span class="section-eyebrow">что ты получишь</span>
+    <h2 class="section-title">Не просто клуб — <i>твоё место</i></h2>
+    <div class="benefits-grid">
+      <div class="b-card">
+        <h3>Для тебя</h3>
+        <ul>
+          <li>Крутая атмосфера и общение с вдохновляющими девушками</li>
+          <li>Не нужно думать, чем заняться — расписание уже готово</li>
+          <li>Навык планирования и тайм-менеджмента</li>
+          <li>Разнообразие активностей в одном месте</li>
+          <li>Свобода выбора — вы выбираете, что сейчас вам подходит</li>
+          <li>Чувство «своих» и поддержки каждую неделю</li>
+        </ul>
+      </div>
+      <div class="b-card right">
+        <h3>Моя миссия</h3>
+        <ul>
+          <li>Вдохновлять и влиять на жизнь девушек к лучшему</li>
+          <li>Делиться опытом в разных сферах активности</li>
+          <li>Создавать пространство для взаимного роста</li>
+          <li>Знакомить классных людей друг с другом</li>
+          <li>Просто люблю людей и хочу быть полезной</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="tariffs" class="pricing">
+  <div class="container">
+    <div class="activities-head">
+      <div>
+        <span class="section-eyebrow">форматы участия</span>
+        <h2 class="section-title">Выбери <i>свой формат</i></h2>
+      </div>
+      <p class="pricing-sub">Все активности клуба входят в базу. Танцы — отдельный трек, который можно добавить к членству.</p>
+    </div>
+    <div class="tariffs">
+
+      <div class="tariff base">
+        <div class="tnum">01</div>
+        <h3 class="tname">База</h3>
+        <div class="tsub">Все активности клуба, кроме танцев. Идеально, если ты хочешь полную программу и общение, но без танцевальных тренировок.</div>
+        <ul class="features">
+          <li>Еженедельные пробежки</li>
+          <li>Книжный клуб</li>
+          <li>Тренировки fullbody / растяжка</li>
+          <li>Пикники, настолки и велопрогулки</li>
+          <li>Фото и видеосъёмки</li>
+          <li>Онлайн-марафоны с призами</li>
+          <li>Доступ к закрытому чату</li>
+        </ul>
+        <div class="choose-soon">первый формат</div>
+      </div>
+
+      <div class="tariff dance">
+        <span class="tariff-badge">Для тех, кто хочет танцевать</span>
+        <div class="tnum">02</div>
+        <h3 class="tname">Клуб + танцы</h3>
+        <div class="tsub">Всё из базы + 4 часа танцев в месяц. Для тех, кто давно мечтал танцевать в кругу своих и работать с телом регулярно.</div>
+        <ul class="features">
+          <li>Всё из тарифа «База»</li>
+          <li class="hi">4 часа танцев в месяц</li>
+          <li>Пластика и работа с телом</li>
+          <li>Подборки музыки и хореографии</li>
+          <li>Закрытый канал участниц танцев</li>
+        </ul>
+        <div class="choose-soon">второй формат</div>
+      </div>
+
+    </div>
+
+    <!-- Блок интриги вместо цен -->
+    <div class="intrigue">
+      <h2 class="intrigue-title">Что дальше? <i>Самое интересное</i></h2>
+      <p class="intrigue-text">Условия участия и специальная цена для девушек с этой встречи — я расскажу лично в конце вечера. Тем, кто решит присоединиться сегодня — особый бонус 💛</p>
+      <a href="#join" class="intrigue-btn">я хочу узнать</a>
+    </div>
+  </div>
+</section>
+
+<section class="story">
+  <div class="container">
+    <span class="section-eyebrow">почему я создала рассвет</span>
+    <h2 class="story-title">Этот клуб вдохновлён <i>личной историей</i></h2>
+    <div class="story-body">
+      <p>Когда я переехала в Москву, я была уверена, что быстро найду своё окружение. Но на деле оказалось сложнее — я долго не могла почувствовать себя частью чего-то. Свободное время пугало, и я заполняла его бегом, тренировками, учёбой — но внутри оставалось одиночество.</p>
+      <p>Я помню вечер, когда звонила маме и плакала от того, что снова проведу воскресенье одна — красивая, с планами, но без людей рядом. Это было тяжело. Но именно это стало толчком: я решила взять всё в свои руки и начать знакомиться.</p>
+      <p>Постепенно в мою жизнь пришли люди, события, танцы — то, о чём я мечтала с десяти лет. И спустя пять лет я поняла: я такая не одна. Многим девушкам не хватает того же — тёплого окружения, заполненной недели, чувства, что ты нужна и интересна.</p>
+      <p>Так родился Рассвет. Идеальное комбо, которое помогло мне: <strong>общение + расписание недели + движение</strong>. В Рассвете есть всё, что я хотела бы иметь в те годы — и я хочу разделить это с вами.</p>
+    </div>
+  </div>
+</section>
+
+<section id="join" class="cta">
+  <div class="cta-inner">
+    <h2>Готова <i>стать частью?</i></h2>
+    <p>Подходи ко мне после встречи или пиши в Telegram — расскажу условия для тех, кто был сегодня в парке 💛</p>
+    <a href="https://t.me/evavasilyyevna" target="_blank" rel="noopener" class="tg-btn"><span class="tg-icon">✈</span> Написать Еве</a>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="logo">Рассвет</div>
+    <div class="footer-about">Клуб активностей для девушек, которые хотят наполнить жизнь движением, творчеством и общением.</div>
+    <div class="footer-copy">© 2026 Рассвет · Москва</div>
+  </div>
+</footer>
+
+<script>
+// Smooth scroll
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const t = document.querySelector(a.getAttribute('href'));
+    if (!t) return;
+    e.preventDefault();
+    window.scrollTo({ top: t.getBoundingClientRect().top + window.scrollY - 78, behavior:'smooth' });
+  });
+});
+</script>
+</body>
+</html>
