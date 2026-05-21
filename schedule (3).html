@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Рассвет — расписание на месяц</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Onest:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#faf3e7;--paper:#fffaf0;--paper-soft:#fdf5e6;
+  --ink:#1d150c;--ink-soft:#3d2e1f;--ink-mute:#8a7558;--line:#ece1c8;
+  --orange:#e96d2a;--orange-50:#fde3d0;--orange-100:#fbcfb1;
+  --green-50:#e8f0d4;--green-deep:#8ea35a;
+  --yellow-50:#fcefc6;--yellow-deep:#a87c1c;
+  --purple-50:#ece5f5;--purple-deep:#7b68ae;
+  --shadow-sm:0 1px 2px rgba(120,80,30,.05),0 4px 12px rgba(120,80,30,.04);
+  --shadow-md:0 14px 36px rgba(120,80,30,.10);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Onest','Inter',Arial,sans-serif;font-size:15px;line-height:1.55;color:var(--ink);background:var(--bg);-webkit-font-smoothing:antialiased;}
+a{color:inherit;text-decoration:none}
+.container{max-width:1080px;margin:0 auto;padding:0 28px}
+.header{padding:48px 0 20px;text-align:center;}
+.logo{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:600;font-size:34px;color:var(--orange);}
+.hero{padding:30px 0 70px;text-align:center;position:relative;overflow:hidden;}
+.hero::before{content:"";position:absolute;top:-100px;left:50%;transform:translateX(-50%);width:600px;height:600px;background:radial-gradient(circle,#fde3d040 0%,transparent 60%);border-radius:50%;pointer-events:none;z-index:0;}
+.hero-inner{position:relative;z-index:1;}
+.hero-badge{display:inline-block;background:var(--orange-50);color:var(--orange);font-size:12px;letter-spacing:.16em;text-transform:uppercase;padding:9px 22px;border-radius:999px;margin-bottom:28px;font-weight:500;}
+.hero h1{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:62px;line-height:1.02;margin-bottom:20px;letter-spacing:-.015em;}
+.hero h1 i{font-style:italic;color:var(--orange);font-weight:500;}
+.hero-dates{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:24px;color:var(--ink-mute);margin-bottom:24px;}
+.hero p{font-size:16.5px;color:var(--ink-soft);max-width:580px;margin:0 auto;line-height:1.65;}
+.legend{padding:0 0 50px;}
+.legend-card{background:var(--paper);border:1px solid var(--line);border-radius:22px;padding:28px 36px;display:flex;flex-wrap:wrap;gap:18px 28px;justify-content:center;align-items:center;box-shadow:var(--shadow-sm);}
+.legend-item{display:flex;align-items:center;gap:10px;font-size:13.5px;color:var(--ink-soft);}
+.legend-dot{width:12px;height:12px;border-radius:50%;flex-shrink:0;}
+.legend-dance{background:#e96d2a;}
+.legend-book{background:#a87c1c;}
+.legend-run{background:#8ea35a;}
+.legend-pic{background:#7b68ae;}
+.legend-train{background:#5b8db8;}
+.legend-photo{background:#d4658c;}
+.legend-marathon{background:#c45a1b;}
+.section-eyebrow{display:inline-block;font-size:12px;color:var(--orange);letter-spacing:.16em;text-transform:uppercase;margin-bottom:16px;font-weight:500;}
+.section-eyebrow::before{content:"— "}
+.section-title{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:44px;line-height:1.05;margin-bottom:18px;letter-spacing:-.015em;}
+.section-title i{font-style:italic;font-weight:500;color:var(--orange);}
+.section-sub{font-size:16px;color:var(--ink-soft);line-height:1.6;max-width:600px;margin-bottom:40px;}
+.rhythm{padding:30px 0 70px;}
+.rhythm-card{background:var(--paper);border-radius:26px;padding:40px 44px;border:1px solid var(--line);box-shadow:var(--shadow-sm);}
+.anchors{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+.anchor{background:var(--paper-soft);border-radius:18px;padding:24px 22px;border:1.5px solid var(--line);position:relative;}
+.anchor.dance-anchor{border-color:#fbcfb1;background:#fef0e0;}
+.anchor.book-anchor{border-color:#f0db9b;background:#fcefc6;}
+.anchor.run-anchor{border-color:#cad9a9;background:var(--green-50);}
+.anchor-day{font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-weight:500;margin-bottom:8px;}
+.anchor.dance-anchor .anchor-day{color:#c45a1b;}
+.anchor.book-anchor .anchor-day{color:#a87c1c;}
+.anchor.run-anchor .anchor-day{color:#6b8049;}
+.anchor-name{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:22px;color:var(--ink);margin-bottom:6px;}
+.anchor-time{font-size:13.5px;color:var(--ink-mute);margin-bottom:8px;font-weight:500;}
+.anchor-desc{font-size:13.5px;color:var(--ink-soft);line-height:1.5;}
+.rhythm-note{margin-top:24px;padding-top:24px;border-top:1px solid var(--line);font-family:'Cormorant Garamond',serif;font-style:italic;font-size:17px;color:var(--ink-mute);text-align:center;}
+.schedule{padding:60px 0 70px;}
+.weeks{display:flex;flex-direction:column;gap:26px;}
+.week-block{background:var(--paper);border-radius:24px;padding:36px 40px;border:1px solid var(--line);box-shadow:var(--shadow-sm);}
+.week-header{display:flex;align-items:baseline;gap:18px;margin-bottom:24px;flex-wrap:wrap;padding-bottom:18px;border-bottom:1px solid var(--line);}
+.week-num{font-family:'Cormorant Garamond',serif;font-size:42px;font-style:italic;color:var(--orange);font-weight:500;line-height:1;}
+.week-date{font-size:13px;color:var(--ink-mute);letter-spacing:.05em;}
+.week-name{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:22px;color:var(--ink);width:100%;margin-top:4px;}
+.events{display:flex;flex-direction:column;gap:12px;}
+.event-row{display:grid;grid-template-columns:96px 1fr auto;gap:18px;align-items:center;padding:16px 20px;border-radius:14px;background:var(--paper-soft);transition:transform .15s,box-shadow .15s;border-left:3px solid transparent;}
+.event-row:hover{transform:translateX(3px);box-shadow:var(--shadow-sm);}
+.event-day{font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-mute);font-weight:500;line-height:1.3;}
+.event-day strong{display:block;color:var(--ink);font-size:14px;letter-spacing:0;margin-bottom:2px;}
+.event-name{font-weight:500;color:var(--ink);font-size:15px;}
+.event-name span{display:block;font-size:13px;color:var(--ink-mute);margin-top:3px;font-weight:400;line-height:1.45;}
+.event-time{font-size:13px;font-weight:500;white-space:nowrap;padding:6px 14px;border-radius:999px;}
+.event-row.dance{background:#fef0e0;border-left-color:#e96d2a;}
+.event-row.dance .event-time{background:#fbcfb1;color:#c45a1b;}
+.event-row.book{background:#fcefc6;border-left-color:#a87c1c;}
+.event-row.book .event-time{background:#f0db9b;color:#7d5a13;}
+.event-row.run{background:var(--green-50);border-left-color:#8ea35a;}
+.event-row.run .event-time{background:#cad9a9;color:#6b8049;}
+.event-row.pic{background:#ece5f5;border-left-color:#7b68ae;}
+.event-row.pic .event-time{background:#d6c8eb;color:#5e4d8c;}
+.event-row.train{background:#e1ecf5;border-left-color:#5b8db8;}
+.event-row.train .event-time{background:#bdd3e8;color:#3d6c92;}
+.event-row.photo{background:#fae0e8;border-left-color:#d4658c;}
+.event-row.photo .event-time{background:#f0c4d4;color:#a04668;}
+.event-row.marathon{background:#fef0e0;border-left-color:#c45a1b;}
+.event-row.marathon .event-time{background:#fbcfb1;color:#c45a1b;}
+.event-row.special{background:linear-gradient(135deg,#fde3d0,#fcefc6);border-left-color:var(--orange);position:relative;}
+.event-row.special::before{content:"✦";position:absolute;top:8px;right:8px;color:var(--orange);font-size:12px;}
+.event-row.special .event-time{background:#fff;color:var(--orange);}
+.totals{padding:40px 0 80px;}
+.totals-card{background:linear-gradient(135deg,#fde3d0 0%,#fcefc6 100%);border-radius:28px;padding:48px 52px;position:relative;overflow:hidden;}
+.totals-card::before{content:"";position:absolute;top:-50px;right:-50px;width:200px;height:200px;background:radial-gradient(circle,rgba(255,255,255,.4) 0%,transparent 70%);border-radius:50%;}
+.totals-title{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:30px;margin-bottom:8px;position:relative;z-index:1;}
+.totals-title i{font-style:italic;color:var(--orange);}
+.totals-sub{font-size:14px;color:var(--ink-mute);margin-bottom:30px;position:relative;z-index:1;}
+.totals-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;position:relative;z-index:1;}
+.total-item{background:rgba(255,250,240,.85);backdrop-filter:blur(4px);padding:18px 20px;border-radius:14px;display:flex;align-items:center;gap:14px;}
+.total-num{font-family:'Cormorant Garamond',serif;font-size:32px;font-weight:600;color:var(--orange);line-height:1;flex-shrink:0;min-width:34px;}
+.total-text{font-size:13.5px;color:var(--ink-soft);line-height:1.35;}
+.close{padding:50px 0 90px;text-align:center;}
+.close-text{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:26px;color:var(--orange);font-weight:500;max-width:520px;margin:0 auto;line-height:1.4;}
+.heart{display:inline-block;animation:beat 1.5s ease-in-out infinite;}
+@keyframes beat{0%,100%{transform:scale(1)}50%{transform:scale(1.15)}}
+.footer{text-align:center;padding:40px 0 50px;font-size:13px;color:var(--ink-mute);}
+@media(max-width:780px){
+  .hero h1{font-size:42px;}.hero-dates{font-size:19px;}.section-title{font-size:32px;}.anchors{grid-template-columns:1fr;}.totals-grid{grid-template-columns:1fr;}.rhythm-card,.week-block{padding:26px 22px;}.week-header{flex-direction:column;gap:6px;align-items:flex-start;}.event-row{grid-template-columns:1fr;gap:8px;}.event-time{justify-self:start;}.close-text{font-size:21px;}.legend-card{padding:22px;gap:12px 20px;}
+}
+</style>
+</head>
+<body>
+
+<header class="header">
+  <span class="logo">Рассвет</span>
+</header>
+
+<section class="hero">
+  <div class="container hero-inner">
+    <span class="hero-badge">расписание</span>
+    <h1>Первый <i>месяц</i> Рассвета</h1>
+    <div class="hero-dates">27 мая — 25 июня</div>
+    <p>Что тебя ждёт:</p>
+  </div>
+</section>
+
+<section class="legend">
+  <div class="container">
+    <div class="legend-card">
+      <div class="legend-item"><span class="legend-dot legend-dance"></span> Танцы</div>
+      <div class="legend-item"><span class="legend-dot legend-book"></span> Книжный клуб</div>
+      <div class="legend-item"><span class="legend-dot legend-run"></span> Пробежка</div>
+      <div class="legend-item"><span class="legend-dot legend-pic"></span> Пикник</div>
+      <div class="legend-item"><span class="legend-dot legend-train"></span> Тренировка в парке</div>
+      <div class="legend-item"><span class="legend-dot legend-photo"></span> Фото/видео</div>
+      <div class="legend-item"><span class="legend-dot legend-marathon"></span> Онлайн-марафон</div>
+    </div>
+  </div>
+</section>
+
+<section class="rhythm">
+  <div class="container">
+    <span class="section-eyebrow">основа</span>
+    <h2 class="section-title"><i>Фундамент:</i></h2>
+    <p class="section-sub">Три офлайн дня — танцы, книжный клуб, пробежка. Остальные активности варьируются и изменяются по неделям, делая каждую неделю разной.</p>
+
+    <div class="rhythm-card">
+      <div class="anchors">
+        <div class="anchor dance-anchor">
+          <div class="anchor-day">Вторник</div>
+          <div class="anchor-name">Танцы</div>
+          <div class="anchor-time">18:00 — 19:00</div>
+          <div class="anchor-desc">Здесь куётся женственность. 4 часа в месяц. Работа с пластикой и чувством уверенности.</div>
+        </div>
+        <div class="anchor book-anchor">
+          <div class="anchor-day">Среда</div>
+          <div class="anchor-name">Книжный клуб</div>
+          <div class="anchor-time">18:00 — 19:30</div>
+          <div class="anchor-desc">Книги, разговоры о важном, тёплая обстановка. Чередуем онлайн и офлайн.</div>
+        </div>
+        <div class="anchor run-anchor">
+          <div class="anchor-day">Суббота</div>
+          <div class="anchor-name">Пробежка</div>
+          <div class="anchor-time">8:30 — 9:30</div>
+          <div class="anchor-desc">Утро в парке или по набережной, 2–3 км в комфортном темпе.</div>
+        </div>
+      </div>
+      <div class="rhythm-note">+ дополнительные активности по неделям — пикники, тренировки в парке, фотопрогулки, онлайн-марафон</div>
+    </div>
+  </div>
+</section>
+
+<section class="schedule">
+  <div class="container">
+    <span class="section-eyebrow">по неделям</span>
+    <h2 class="section-title">Полное <i>расписание</i></h2>
+    <p class="section-sub">В каждой неделе новая жизнь</p>
+
+    <div class="weeks">
+
+      <!-- Week 1 -->
+      <div class="week-block">
+        <div class="week-header">
+          <div class="week-num">01</div>
+          <div class="week-date">27 мая — 1 июня</div>
+          <div class="week-name">Знакомимся с ритмом</div>
+        </div>
+        <div class="events">
+          <div class="event-row dance">
+            <div class="event-day"><strong>Вт</strong>27 мая</div>
+            <div class="event-name">Танцы<span>Лёгкая хореография для знакомства с телом</span></div>
+            <div class="event-time">18:00–19:00</div>
+          </div>
+          <div class="event-row book">
+            <div class="event-day"><strong>Ср</strong>28 мая</div>
+            <div class="event-name">Книжный клуб онлайн<span>Принеси любимую книгу этого года, делимся впечатлениями и выбираем книгу в наш клуб</span></div>
+            <div class="event-time">18:00–19:30</div>
+          </div>
+          <div class="event-row train">
+            <div class="event-day"><strong>Чт</strong>29 мая</div>
+            <div class="event-name">Тренировка в парке<span>Растяжка + функциональная тренировка, 50 мин</span></div>
+            <div class="event-time">19:00–20:00</div>
+          </div>
+          <div class="event-row run">
+            <div class="event-day"><strong>Сб</strong>31 мая</div>
+            <div class="event-name">Утренняя пробежка<span>2–3 км в комфортном темпе</span></div>
+            <div class="event-time">8:30–9:30</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Week 2 -->
+      <div class="week-block">
+        <div class="week-header">
+          <div class="week-num">02</div>
+          <div class="week-date">2 — 8 июня</div>
+          <div class="week-name">Лето начинается</div>
+        </div>
+        <div class="events">
+          <div class="event-row marathon">
+            <div class="event-day"><strong>Пн</strong>2 июня</div>
+            <div class="event-name">Старт онлайн-марафона 🔥<span>Тему выберем в чате — 2 недели вместе, задания каждый день</span></div>
+            <div class="event-time">старт</div>
+          </div>
+          <div class="event-row dance">
+            <div class="event-day"><strong>Вт</strong>3 июня</div>
+            <div class="event-name">Танцы<span>Работа с пластикой</span></div>
+            <div class="event-time">18:00–19:00</div>
+          </div>
+          <div class="event-row book">
+            <div class="event-day"><strong>Ср</strong>4 июня</div>
+            <div class="event-name">Книжный клуб офлайн<span>Обсуждаем книгу, которую выбрали на первой встрече</span></div>
+            <div class="event-time">18:00–19:30</div>
+          </div>
+          <div class="event-row pic">
+            <div class="event-day"><strong>Чт</strong>5 июня</div>
+            <div class="event-name">Пикник с настолками<span>Плед, лимонад, игры. Привезите снеки на общий стол</span></div>
+            <div class="event-time">19:00–21:00</div>
+          </div>
+          <div class="event-row run">
+            <div class="event-day"><strong>Сб</strong>7 июня</div>
+            <div class="event-name">Утренняя пробежка<span>2–3 км в комфортном темпе</span></div>
+            <div class="event-time">8:30–9:30</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Week 3 -->
+      <div class="week-block">
+        <div class="week-header">
+          <div class="week-num">03</div>
+          <div class="week-date">9 — 15 июня</div>
+          <div class="week-name">Глубже в комьюнити</div>
+        </div>
+        <div class="events">
+          <div class="event-row dance">
+            <div class="event-day"><strong>Вт</strong>10 июня</div>
+            <div class="event-name">Танцы<span>Разучиваем связку</span></div>
+            <div class="event-time">18:00–19:00</div>
+          </div>
+          <div class="event-row book">
+            <div class="event-day"><strong>Ср</strong>11 июня</div>
+            <div class="event-name">Книжный клуб онлайн<span>Что почитать летом — собираем общий список</span></div>
+            <div class="event-time">18:00–19:30</div>
+          </div>
+          <div class="event-row photo">
+            <div class="event-day"><strong>Чт</strong>12 июня</div>
+            <div class="event-name">Фотопрогулка на закате<span>Золотой свет, делаем кадры друг другу</span></div>
+            <div class="event-time">19:00–20:30</div>
+          </div>
+          <div class="event-row run">
+            <div class="event-day"><strong>Сб</strong>14 июня</div>
+            <div class="event-name">Утренняя пробежка<span>3 км в комфортном темпе</span></div>
+            <div class="event-time">8:30–9:30</div>
+          </div>
+          <div class="event-row marathon">
+            <div class="event-day"><strong>Вс</strong>15 июня</div>
+            <div class="event-name">Финал онлайн-марафона 🏆<span>Подводим итоги, делимся результатами</span></div>
+            <div class="event-time">финал</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Week 4 -->
+      <div class="week-block">
+        <div class="week-header">
+          <div class="week-num">04</div>
+          <div class="week-date">16 — 22 июня</div>
+          <div class="week-name">Лето на полную</div>
+        </div>
+        <div class="events">
+          <div class="event-row dance">
+            <div class="event-day"><strong>Вт</strong>17 июня</div>
+            <div class="event-name">Танцы<span>Собираем мини-связку под летний трек</span></div>
+            <div class="event-time">18:00–19:00</div>
+          </div>
+          <div class="event-row book">
+            <div class="event-day"><strong>Ср</strong>18 июня</div>
+            <div class="event-name">Книжный клуб офлайн<span>Обсуждаем книгу месяца</span></div>
+            <div class="event-time">18:00–19:30</div>
+          </div>
+          <div class="event-row train">
+            <div class="event-day"><strong>Чт</strong>19 июня</div>
+            <div class="event-name">Тренировка в парке<span>Растяжка + функциональная тренировка, 50 мин</span></div>
+            <div class="event-time">19:00–20:00</div>
+          </div>
+          <div class="event-row run">
+            <div class="event-day"><strong>Сб</strong>21 июня</div>
+            <div class="event-name">Утренняя пробежка<span>3 км в комфортном темпе</span></div>
+            <div class="event-time">8:30–9:30</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Closing -->
+      <div class="week-block">
+        <div class="week-header">
+          <div class="week-num">✦</div>
+          <div class="week-date">23 — 25 июня</div>
+          <div class="week-name">Закрытие первого месяца</div>
+        </div>
+        <div class="events">
+          <div class="event-row special">
+            <div class="event-day"><strong>Ср</strong>25 июня</div>
+            <div class="event-name">Подведение первого месяца Рассвета<span>Пикник · что получилось, идеи на июль, маленький сюрприз для всех 🌅</span></div>
+            <div class="event-time">19:00–21:00</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="totals">
+  <div class="container">
+    <div class="totals-card">
+      <h3 class="totals-title">Итого за <i>месяц</i></h3>
+      <p class="totals-sub">18 активностей на выбор — приходи на те, что зажигают именно тебя</p>
+      <div class="totals-grid">
+        <div class="total-item"><div class="total-num">4</div><div class="total-text">танцевальные<br>тренировки</div></div>
+        <div class="total-item"><div class="total-num">4</div><div class="total-text">книжных клуба<br>(онлайн + офлайн)</div></div>
+        <div class="total-item"><div class="total-num">4</div><div class="total-text">утренние<br>пробежки</div></div>
+        <div class="total-item"><div class="total-num">2</div><div class="total-text">тренировки<br>в парке</div></div>
+        <div class="total-item"><div class="total-num">1</div><div class="total-text">пикник<br>с настолками</div></div>
+        <div class="total-item"><div class="total-num">1</div><div class="total-text">фотопрогулка<br>на закате</div></div>
+        <div class="total-item"><div class="total-num">1</div><div class="total-text">онлайн-марафон<br>2 недели</div></div>
+        <div class="total-item"><div class="total-num">1</div><div class="total-text">закрытие месяца<br>25 июня</div></div>
+        <div class="total-item"><div class="total-num">∞</div><div class="total-text">общение в чате<br>каждый день</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="close">
+  <div class="container">
+    <p class="close-text">Этот месяц задаёт ритм.<br>Дальше — больше <span class="heart">💛</span></p>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">Рассвет · 2026</div>
+</footer>
+
+</body>
+</html>
