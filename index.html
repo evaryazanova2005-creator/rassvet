@@ -31,7 +31,7 @@ h1,h2,h3,h4{letter-spacing:-.01em}
 .header{position:sticky;top:0;z-index:50;background:rgba(250,243,231,.86);backdrop-filter:saturate(140%) blur(10px);border-bottom:1px solid rgba(140,90,40,.06);}
 .header-inner{display:flex;align-items:center;justify-content:space-between;height:78px}
 .logo{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:600;font-size:30px;color:var(--orange);}
-.nav{display:flex;gap:46px}
+.nav{display:flex;gap:38px}
 .nav a{font-size:14.5px;color:var(--ink-soft);transition:color .2s}
 .nav a:hover{color:var(--orange)}
 .btn{display:inline-flex;align-items:center;justify-content:center;border-radius:999px;padding:14px 28px;font-size:14.5px;font-weight:500;transition:transform .15s,background .2s,box-shadow .2s,color .2s;white-space:nowrap;border:none;}
@@ -69,11 +69,16 @@ h1,h2,h3,h4{letter-spacing:-.01em}
 .about-text p{font-size:16px;color:var(--ink-soft);line-height:1.65;margin:0 0 18px;max-width:520px;}
 .about-text strong{color:var(--ink);font-weight:600}
 
-/* SCHEDULE */
+/* SCHEDULE TEASER */
 .schedule-wrap{padding:30px 0 50px}
 .schedule{border-radius:28px;background:var(--paper);border:1px solid var(--line);box-shadow:0 8px 28px rgba(160,110,40,.05);padding:46px 52px 38px;}
-.schedule h3{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:34px;margin:0 0 36px;}
+.schedule-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:36px;gap:20px;flex-wrap:wrap;}
+.schedule h3{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:34px;margin:0;}
 .schedule h3 i{font-style:italic;font-weight:500;color:var(--orange)}
+.schedule-link{display:inline-flex;align-items:center;gap:8px;font-size:14px;color:var(--orange);padding:10px 22px;border-radius:999px;background:var(--orange-50);font-weight:500;transition:transform .15s ease, background .2s ease, color .2s ease;}
+.schedule-link:hover{background:var(--orange);color:#fff;transform:translateY(-1px)}
+.schedule-link .arr{transition:transform .2s ease}
+.schedule-link:hover .arr{transform:translateX(3px)}
 .week{display:grid;grid-template-columns:repeat(7,1fr);gap:14px;align-items:start;}
 .day{display:flex;flex-direction:column;align-items:center;gap:12px;min-height:130px}
 .day-name{font-size:12px;letter-spacing:.14em;color:var(--ink-mute);text-transform:uppercase}
@@ -252,6 +257,7 @@ h1,h2,h3,h4{letter-spacing:-.01em}
     <nav class="nav">
       <a href="#about">О клубе</a>
       <a href="#activities">Активности</a>
+      <a href="schedule.html">Наше расписание</a>
       <a href="#pricing">Тарифы</a>
       <a href="#faq">Вопросы</a>
     </nav>
@@ -296,7 +302,10 @@ h1,h2,h3,h4{letter-spacing:-.01em}
 <section class="schedule-wrap">
   <div class="container">
     <div class="schedule">
-      <h3>Пример расписания <i>на неделю</i></h3>
+      <div class="schedule-head">
+        <h3>Пример расписания <i>на неделю</i></h3>
+        <a href="schedule.html" class="schedule-link">Полное расписание июня <span class="arr">→</span></a>
+      </div>
       <div class="week">
         <div class="day"><span class="day-name">Пн</span><div class="event">Танцы<span class="event-time">18:00–20:00</span></div></div>
         <div class="day"><span class="day-name">Вт</span><div class="event yellow">Отдыхаем и общаемся в чате<span class="event-time">весь день</span></div></div>
@@ -497,6 +506,7 @@ h1,h2,h3,h4{letter-spacing:-.01em}
         <ul>
           <li><a href="#about">О клубе</a></li>
           <li><a href="#activities">Активности</a></li>
+          <li><a href="schedule.html">Наше расписание</a></li>
           <li><a href="#pricing">Тарифы</a></li>
           <li><a href="#faq">Вопросы</a></li>
         </ul>
@@ -556,7 +566,7 @@ document.querySelectorAll('.faq-q').forEach(btn => {
   });
 });
 
-// Smooth scroll
+// Smooth scroll (only for in-page anchors, not links to other files)
 document.querySelectorAll('a[href^="#"]').forEach(a => {
   a.addEventListener('click', e => {
     const t = document.querySelector(a.getAttribute('href'));
@@ -604,7 +614,7 @@ async function loadSpots() {
     document.getElementById('spots-dance-text').textContent = 'Осталось несколько мест';
   }
 }
-loadSpots(); // ← вызов счётчика
+loadSpots();
 
 // ── Ссылки оплаты Продамус ────────────────────────────
 const PAY_LINKS = {
