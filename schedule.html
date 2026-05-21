@@ -3,699 +3,732 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Расписание — Рассвет</title>
+<title>Рассвет — клуб для девушек</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Onest:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root{
-  --bg:#faf3e7;--bg-2:#f7eedb;
-  --paper:#fffaf0;--paper-soft:#fdf5e6;
+  --bg:#faf3e7;--paper:#fffaf0;--paper-soft:#fdf5e6;
   --ink:#1d150c;--ink-soft:#3d2e1f;--ink-mute:#8a7558;--line:#ece1c8;
-  --orange:#e96d2a;--orange-2:#f1864a;--orange-soft:#f49d6f;
-  --orange-50:#fde3d0;--orange-100:#fbcfb1;
-  --green:#b9cf8a;--green-soft:#d6e3b6;--green-50:#e8f0d4;--green-deep:#8ea35a;
+  --orange:#e96d2a;--orange-50:#fde3d0;--orange-100:#fbcfb1;
+  --green-50:#e8f0d4;--green-deep:#8ea35a;
+  --olive:#aaa336;--olive-dark:#948c25;
   --shadow-sm:0 1px 2px rgba(120,80,30,.05),0 4px 12px rgba(120,80,30,.04);
   --shadow-md:0 14px 36px rgba(120,80,30,.10);
 }
 *,*::before,*::after{box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{
-  margin:0;font-family:'Onest','Inter','Helvetica Neue',Arial,sans-serif;
-  font-weight:400;font-size:15px;line-height:1.55;color:var(--ink);background:var(--bg);
-  -webkit-font-smoothing:antialiased;
-}
+body{margin:0;font-family:'Onest','Inter',Arial,sans-serif;font-size:15px;line-height:1.55;color:var(--ink);background:var(--bg);-webkit-font-smoothing:antialiased;}
 body.modal-open{overflow:hidden}
+img{max-width:100%;display:block}
 button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit}
 a{color:inherit;text-decoration:none}
-.container{max-width:1280px;margin:0 auto;padding:0 36px}
+.container{max-width:1240px;margin:0 auto;padding:0 36px}
+h1,h2,h3,h4{letter-spacing:-.01em}
 
-.header{position:sticky;top:0;z-index:50;background:rgba(250,243,231,.86);backdrop-filter:saturate(140%) blur(10px);-webkit-backdrop-filter:saturate(140%) blur(10px);border-bottom:1px solid rgba(140,90,40,.06)}
+/* HEADER */
+.header{position:sticky;top:0;z-index:50;background:rgba(250,243,231,.86);backdrop-filter:saturate(140%) blur(10px);border-bottom:1px solid rgba(140,90,40,.06);}
 .header-inner{display:flex;align-items:center;justify-content:space-between;height:78px}
-.logo{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:600;font-size:30px;color:var(--orange)}
-.nav{display:flex;gap:46px}
-.nav a{font-size:14.5px;color:var(--ink-soft);transition:color .2s ease}
+.logo{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:600;font-size:30px;color:var(--orange);}
+.nav{display:flex;gap:38px}
+.nav a{font-size:14.5px;color:var(--ink-soft);transition:color .2s}
 .nav a:hover{color:var(--orange)}
-.btn{display:inline-flex;align-items:center;justify-content:center;border-radius:999px;padding:14px 28px;font-size:14.5px;font-weight:500;transition:transform .15s ease,background .2s ease,color .2s ease;white-space:nowrap;border:none}
+.btn{display:inline-flex;align-items:center;justify-content:center;border-radius:999px;padding:14px 28px;font-size:14.5px;font-weight:500;transition:transform .15s,background .2s,box-shadow .2s,color .2s;white-space:nowrap;border:none;}
 .btn-primary{background:var(--orange);color:#fff}
-.btn-primary:hover{background:#d05c1d;transform:translateY(-1px)}
+.btn-primary:hover{background:#d46820;transform:translateY(-1px);box-shadow:0 6px 20px rgba(233,109,42,.35)}
+.btn-ghost{background:transparent;color:var(--ink);box-shadow:inset 0 0 0 1.5px #cc8b13}
+.btn-ghost:hover{background:rgba(233,109,42,.06);box-shadow:inset 0 0 0 1.5px var(--orange);color:var(--orange)}
 
-.intro{padding:56px 0 16px}
-.eyebrow{display:inline-block;font-size:12px;color:var(--orange);letter-spacing:.16em;text-transform:uppercase;margin-bottom:16px;font-weight:500}
-.intro h1{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:78px;line-height:1;margin:0 0 18px;letter-spacing:-.018em}
-.intro h1 i{font-style:italic;font-weight:500;color:var(--orange)}
-.intro p{font-size:16px;color:var(--ink-mute);max-width:620px;margin:0;line-height:1.6}
+/* HERO */
+.hero{padding:32px 0 100px}
+.hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center;}
+.eyebrow-pill{display:inline-block;background:var(--orange-50);color:var(--ink-soft);font-size:12px;letter-spacing:.14em;text-transform:uppercase;padding:9px 20px;border-radius:999px;margin-bottom:36px;font-weight:500;}
+.hero h1{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:90px;line-height:.98;margin:0 0 30px;letter-spacing:-.012em;text-wrap:balance;}
+.hero h1 i{font-style:italic;font-weight:500;color:var(--orange);}
+.hero p.lead{max-width:520px;font-size:16.5px;line-height:1.6;color:var(--ink-mute);margin:0 0 36px;}
+.hero-buttons{display:flex;gap:14px;flex-wrap:wrap}
+.hero-img-wrap{position:relative;border-radius:26px;aspect-ratio:.82/1;background:#cdc4ad;box-shadow:var(--shadow-md);}
+.hero-img-wrap img{width:100%;height:100%;object-fit:cover;border-radius:26px;display:block}
+.hero-pill{position:absolute;left:18px;bottom:-22px;background:#fffaf0;padding:13px 24px;border-radius:999px;font-size:14.5px;color:var(--ink);box-shadow:0 0 0 6px rgba(185,207,138,.35),0 0 32px 6px rgba(185,207,138,.55),0 8px 24px rgba(80,40,10,.10);display:flex;align-items:center;gap:10px;font-weight:500;z-index:2;}
 
-.month-tabs{display:flex;gap:8px;margin:32px 0 24px;flex-wrap:wrap}
-.month-tab{display:inline-flex;align-items:center;gap:8px;padding:11px 22px;border-radius:999px;background:var(--paper);border:1px solid var(--line);font-size:14.5px;color:var(--ink-soft);font-weight:500;transition:transform .15s ease, background .2s ease, color .2s ease, box-shadow .2s ease}
-.month-tab:hover{transform:translateY(-1px);box-shadow:var(--shadow-sm)}
-.month-tab.active{background:var(--orange);color:#fff;border-color:var(--orange)}
-.month-tab.locked{opacity:.62}
-.month-tab .lock-ico{font-size:12px;opacity:.7}
+/* ABOUT */
+.about{padding:60px 0 80px}
+.about-grid{display:grid;grid-template-columns:.95fr 1.1fr;gap:72px;align-items:start;}
+.collage{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:auto auto;gap:16px;}
+.collage>div{border-radius:22px;overflow:hidden;background:#d8d2c2}
+.collage>div img{width:100%;height:100%;object-fit:cover;display:block}
+.collage .c1{grid-column:1;grid-row:1/span 2;aspect-ratio:.76/1}
+.collage .c2{grid-column:2;grid-row:1;aspect-ratio:1/1}
+.collage .c3{grid-column:2;grid-row:2;aspect-ratio:1/1}
+.about-text{padding-top:6px}
+.section-eyebrow{display:inline-block;font-size:12px;color:var(--orange);letter-spacing:.16em;text-transform:uppercase;margin-bottom:22px;font-weight:500;}
+.section-eyebrow::before{content:"— "}
+.about h2{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:50px;line-height:1.06;margin:0 0 30px;letter-spacing:-.012em;text-wrap:balance;}
+.about h2 i{font-style:italic;font-weight:500;color:var(--orange);}
+.about-text p{font-size:16px;color:var(--ink-soft);line-height:1.65;margin:0 0 18px;max-width:520px;}
+.about-text strong{color:var(--ink);font-weight:600}
 
-.legend{display:flex;flex-wrap:wrap;gap:10px;margin:0 0 28px}
-.legend-chip{display:inline-flex;align-items:center;gap:10px;padding:8px 16px;border-radius:999px;background:var(--paper);font-size:13.5px;color:var(--ink-soft);border:1px solid var(--line);cursor:pointer;user-select:none;transition:transform .15s ease, box-shadow .15s ease, opacity .2s ease}
-.legend-chip:hover{transform:translateY(-1px);box-shadow:var(--shadow-sm)}
-.legend-chip.muted{opacity:.35}
-.legend-dot{width:12px;height:12px;border-radius:50%;border:1.5px solid var(--ink)}
-.dot-dance   {background:#fdd9c7;border-color:#e89a78}
-.dot-book    {background:#fbecb1;border-color:#dcc36a}
-.dot-run     {background:#cce8a8;border-color:#8ea35a}
-.dot-pic     {background:#d6c8eb;border-color:#9d83c8}
-.dot-train   {background:#bdd3e8;border-color:#5b8db8}
-.dot-photo   {background:#f0c4d4;border-color:#d4658c}
-.dot-content {background:#e3d2ef;border-color:#c89bd6}
-.dot-marathon{background:#fde3d0;border-color:#c45a1b}
-.dot-rest    {background:#f4ecd2;border-color:#c4ad6a}
-.dot-special {background:#fff;border-color:var(--orange)}
+/* SCHEDULE TEASER */
+.schedule-wrap{padding:30px 0 50px}
+.schedule{border-radius:28px;background:var(--paper);border:1px solid var(--line);box-shadow:0 8px 28px rgba(160,110,40,.05);padding:46px 52px 38px;}
+.schedule-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:36px;gap:20px;flex-wrap:wrap;}
+.schedule h3{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:34px;margin:0;}
+.schedule h3 i{font-style:italic;font-weight:500;color:var(--orange)}
+.schedule-link{display:inline-flex;align-items:center;gap:8px;font-size:14px;color:var(--orange);padding:10px 22px;border-radius:999px;background:var(--orange-50);font-weight:500;transition:transform .15s ease, background .2s ease, color .2s ease;}
+.schedule-link:hover{background:var(--orange);color:#fff;transform:translateY(-1px)}
+.schedule-link .arr{transition:transform .2s ease}
+.schedule-link:hover .arr{transform:translateX(3px)}
+.week{display:grid;grid-template-columns:repeat(7,1fr);gap:14px;align-items:start;}
+.day{display:flex;flex-direction:column;align-items:center;gap:12px;min-height:130px}
+.day-name{font-size:12px;letter-spacing:.14em;color:var(--ink-mute);text-transform:uppercase}
+.event{width:100%;border-radius:14px;padding:11px 8px;text-align:center;font-size:13.5px;line-height:1.35;font-weight:500;background:#fef0e0;color:#c45a1b;border:1.4px solid var(--orange-100);}
+.event.green{background:var(--green-50);color:var(--green-deep);border-color:#cad9a9;}
+.event.yellow{background:#fcefc6;color:#a87c1c;border-color:#f0db9b;}
+.event.tiny{padding:8px 6px;font-size:12.5px}
+.event-time{display:block;font-weight:400;font-size:11.5px;color:var(--ink-mute);margin-top:3px}
+.day .empty{width:100%;border-radius:14px;padding:18px 8px;background:#f3ead4;text-align:center;color:#cdb98e;font-size:18px;}
+.schedule-foot{text-align:center;font-size:13.5px;color:var(--ink-mute);margin-top:28px;}
 
-.calendar-card{position:relative;background:var(--paper);border-radius:28px;box-shadow:0 8px 28px rgba(160,110,40,.05);border:1px solid var(--line);padding:40px 44px 36px;margin-bottom:32px;overflow:hidden}
-.cal-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:26px;flex-wrap:wrap;gap:16px}
-.cal-month{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:38px;letter-spacing:-.01em;margin:0}
-.cal-month i{font-style:italic;font-weight:500;color:var(--orange)}
-.cal-today{font-size:13px;padding:10px 18px;border-radius:999px;background:var(--green-50);border:1px solid rgba(142,163,90,.22);color:var(--green-deep);font-weight:500}
-.cal-nav{display:flex;gap:10px}
-.cal-nav button{width:40px;height:40px;border-radius:50%;background:var(--paper-soft);border:1px solid var(--line);color:var(--ink-soft);font-size:18px;transition:background .2s ease, color .2s ease, transform .15s ease}
-.cal-nav button:hover:not(:disabled){background:var(--orange);color:#fff;border-color:var(--orange);transform:translateY(-1px)}
-.cal-nav button:disabled{opacity:.35;cursor:not-allowed}
+/* MANIFESTO */
+.manifesto-wrap{padding:30px 0 60px}
+.manifesto{background:linear-gradient(110deg,#f08847 0%,#f29659 35%,#f4a472 70%,#f4b384 100%);border-radius:28px;padding:56px 70px;color:#fffaf0;font-family:'Cormorant Garamond',serif;font-size:25px;line-height:1.45;font-weight:400;box-shadow:0 14px 36px rgba(200,120,60,.16);}
 
-.week-head{display:grid;grid-template-columns:repeat(7,1fr);gap:10px;margin-bottom:12px}
-.week-head span{font-size:11.5px;letter-spacing:.16em;color:var(--ink-mute);text-transform:uppercase;text-align:center;padding:6px 0}
-.week-head span:nth-child(7){color:var(--orange)}
+/* ACTIVITIES */
+.activities{padding:90px 0 100px}
+.activities-head{display:grid;grid-template-columns:1fr 1fr;align-items:end;margin-bottom:50px;gap:40px;}
+.section-title{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:72px;line-height:1;margin:6px 0 0;letter-spacing:-.018em;}
+.section-title i{font-style:italic;font-weight:500;color:var(--orange);}
+.activities-sub{font-size:16px;color:var(--ink-mute);text-align:right;}
+.activity-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px 22px;}
+.activity{display:grid;grid-template-columns:36px 1fr auto;align-items:center;gap:18px;padding:18px 24px;border-radius:18px;min-height:64px;transition:transform .18s,box-shadow .18s;}
+.activity:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(120,80,30,.08)}
+.activity .num{font-family:'Cormorant Garamond',serif;font-size:22px;color:var(--orange);font-weight:500;}
+.activity .a-text{display:flex;flex-direction:column;gap:2px}
+.activity .a-title{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:20px;line-height:1.2;color:var(--ink);}
+.activity .a-desc{font-size:13px;color:var(--ink-soft);opacity:.68;line-height:1.35;}
+.tag{font-size:12px;padding:6px 13px;border-radius:999px;background:rgba(255,255,255,.65);color:var(--ink-soft);font-weight:500;white-space:nowrap;}
+.act-peach{background:#fbe5cf}
+.act-yellow{background:#fbecb1}
 
-.grid{display:grid;grid-template-columns:repeat(7,1fr);gap:10px}
-.cell{position:relative;background:var(--paper-soft);border-radius:16px;padding:12px 12px 14px;min-height:130px;display:flex;flex-direction:column;gap:6px;cursor:pointer;transition:transform .15s ease, box-shadow .2s ease, background .2s ease;border:1.5px solid transparent}
-.cell:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(120,80,30,.10);background:#fff}
-.cell.out{opacity:.32;cursor:default;pointer-events:none;background:transparent}
-.cell.today{border-color:var(--green-deep);background:#fff;box-shadow:0 0 0 4px rgba(185,207,138,.22), 0 6px 20px rgba(120,80,30,.06)}
-.cell.dimmed{opacity:.32}
-.day-num{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:22px;line-height:1;color:var(--ink);letter-spacing:-.01em;display:flex;align-items:center;gap:6px}
-.cell.today .day-num{color:var(--green-deep)}
-.cell.sun .day-num{color:var(--orange)}
-.day-star{display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--orange)}
+/* GALLERY */
+.gallery-wrap{padding:50px 0 80px}
+.gallery-eyebrow{margin-bottom:32px}
+.gallery{display:grid;grid-template-columns:.78fr 1fr 1fr 1fr;gap:18px;align-items:start;}
+.gallery .g{border-radius:22px;background:#cdc6b6;overflow:hidden;aspect-ratio:1/1;}
+.gallery .g.tall{aspect-ratio:.78/1.13}
+.gallery .g img{width:100%;height:100%;object-fit:cover;display:block}
 
-.ev{border-radius:8px;padding:6px 8px;font-size:12px;line-height:1.25;font-weight:500;background:var(--paper);color:var(--ink-soft);border:1.2px solid transparent;display:flex;flex-direction:column;gap:2px}
-.ev-time{font-size:10.5px;font-weight:400;color:var(--ink-mute)}
-.ev.dance    {background:#fdd9c7;color:#b34717;border-color:#f7c2a7}
-.ev.book     {background:#fbecb1;color:#8a6a14;border-color:#efdc8f}
-.ev.run      {background:#cce8a8;color:#5e7a2a;border-color:#a8cd76}
-.ev.pic      {background:#d6c8eb;color:#5e4d8c;border-color:#bba8d6}
-.ev.train    {background:#bdd3e8;color:#3d6c92;border-color:#a4c0db}
-.ev.photo    {background:#f0c4d4;color:#a04668;border-color:#e2a8be}
-.ev.content  {background:#e3d2ef;color:#7e57a7;border-color:#d3bce0}
-.ev.marathon {background:#fde3d0;color:#c45a1b;border-color:#fbcfb1}
-.ev.rest     {background:#f4ecd2;color:#8a6f2e;border-color:#e8d99f}
-.ev.special  {background:#fff;color:var(--orange);border-color:var(--orange);font-weight:600;font-size:11px;padding:4px 8px}
+/* BENEFITS */
+.benefits{background:radial-gradient(60% 80% at 12% 18%,#fbd5d8 0%,transparent 60%),radial-gradient(55% 70% at 92% 32%,#f8c9b3 0%,transparent 60%),linear-gradient(160deg,#fbe1d3 0%,#fce3c4 45%,#fceeb0 100%);padding:110px 0;color:var(--ink);}
+.benefits .section-eyebrow{color:var(--orange)}
+.benefits .section-title{color:var(--ink);margin-bottom:48px}
+.benefits .section-title i{color:var(--green-deep)}
+.benefits-grid{display:grid;grid-template-columns:1fr 1fr;gap:26px;max-width:1100px;margin:0 auto;}
+.b-card{background:#fffaf0;border:1px solid rgba(140,90,40,.08);border-radius:26px;padding:40px 44px;box-shadow:0 4px 18px rgba(160,110,40,.06);}
+.b-card.right{background:#fffdf3;border-color:rgba(140,160,90,.18);}
+.b-card h3{font-family:'Cormorant Garamond',serif;color:var(--orange);font-size:26px;font-weight:600;margin:0 0 26px;}
+.b-card.right h3{color:var(--green-deep)}
+.b-card ul{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:16px}
+.b-card li{font-size:15px;color:var(--ink-soft);line-height:1.5;display:flex;gap:14px;align-items:flex-start;}
+.b-card li::before{content:"✓";color:var(--orange);font-weight:700;font-size:14px;margin-top:2px;flex-shrink:0;}
+.b-card.right li::before{content:"✦";color:var(--green-deep)}
 
-.cell-foot{margin-top:32px;text-align:center;font-size:13px;color:var(--ink-mute)}
+/* PRICING */
+.pricing{padding:100px 0 110px;background:var(--bg)}
+.pricing .activities-head{align-items:start;margin-bottom:50px}
+.pricing-sub{font-size:16px;color:var(--ink-mute);max-width:400px;line-height:1.55;margin:0;text-align:right;}
+.tariffs{display:grid;grid-template-columns:1fr 1fr;gap:26px;max-width:1100px;margin:0 auto;}
+.tariff{position:relative;border-radius:28px;padding:40px 42px 36px;display:flex;flex-direction:column;transition:transform .2s,box-shadow .2s;}
+.tariff:hover{transform:translateY(-3px)}
+.tariff.base{background:var(--paper);box-shadow:var(--shadow-sm)}
+.tariff.dance{background:linear-gradient(135deg,#ef7d40 0%,#f08a51 45%,#f4a276 100%);color:#fff8e4;box-shadow:0 14px 36px rgba(200,100,40,.20);}
+.tariff .tnum{font-size:13px;color:rgba(60,40,20,.45);font-weight:500;letter-spacing:.08em;margin-bottom:24px;}
+.tariff.dance .tnum{color:rgba(255,240,210,.78)}
+.tariff .tname{font-family:'Cormorant Garamond',serif;font-size:40px;font-weight:600;margin:0 0 10px;}
+.tariff .tsub{font-size:14.5px;color:var(--ink-mute);margin-bottom:20px}
+.tariff.dance .tsub{color:rgba(255,240,210,.85)}
+.tariff .price{font-family:'Cormorant Garamond',serif;font-size:72px;font-weight:600;line-height:1;letter-spacing:-.02em;display:flex;align-items:flex-start;gap:2px;}
+.tariff .price .ruble{font-size:26px;margin-top:14px;margin-left:6px;font-weight:500;opacity:.85}
+.tariff .price-cap{font-size:13.5px;color:var(--ink-mute);margin-top:6px;margin-bottom:20px;}
+.tariff.dance .price-cap{color:rgba(255,240,210,.78)}
+.tariff.dance .price-cap s{opacity:.7}
+.tariff .features{list-style:none;padding:0;margin:0 0 24px;display:flex;flex-direction:column;gap:14px;flex:1}
+.tariff .features li{font-size:15px;line-height:1.45;display:flex;gap:12px}
+.tariff .features li::before{content:"✓";color:var(--orange);font-weight:700}
+.tariff.dance .features li::before{color:#fff8e4}
+.tariff.dance .features li.hi{font-weight:600;color:#fff}
+.tariff .cta-btn{align-self:stretch;width:100%;margin-top:auto;border-radius:999px;padding:18px 30px;font-size:14px;letter-spacing:.05em;text-transform:lowercase;font-weight:500;transition:transform .15s,background .2s,color .2s;}
+.tariff.base .cta-btn{background:transparent;color:var(--orange);box-shadow:inset 0 0 0 1.5px var(--orange)}
+.tariff.base .cta-btn:hover:not(:disabled){background:var(--orange);color:#fff;transform:translateY(-1px)}
+.tariff.dance .cta-btn{background:#fffaf0;color:var(--orange)}
+.tariff.dance .cta-btn:hover:not(:disabled){background:#fff;transform:translateY(-1px)}
+.tariff .cta-btn:disabled{opacity:.4;cursor:not-allowed;transform:none!important}
+.tariff-badge{position:absolute;top:20px;right:24px;background:rgba(255,255,255,.22);color:#fff8e4;font-size:12.5px;padding:8px 16px;border-radius:999px;backdrop-filter:blur(4px);}
 
-.lock-overlay{position:absolute;inset:0;background:rgba(252,243,225,.78);backdrop-filter:blur(8px) saturate(110%);-webkit-backdrop-filter:blur(8px) saturate(110%);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:40px 24px;z-index:5;border-radius:28px}
-.lock-icon-wrap{width:84px;height:84px;border-radius:50%;background:linear-gradient(140deg, var(--orange) 0%, var(--orange-soft) 80%);display:inline-flex;align-items:center;justify-content:center;box-shadow:0 14px 30px rgba(220,110,50,.30), 0 0 0 8px rgba(244,162,118,.20);margin-bottom:24px}
-.lock-icon{width:36px;height:36px;color:#fff}
-.lock-title{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:42px;margin:0 0 12px;letter-spacing:-.012em;color:var(--ink)}
-.lock-title i{font-style:italic;font-weight:500;color:var(--orange)}
-.lock-sub{font-size:15.5px;color:var(--ink-soft);max-width:480px;line-height:1.55;margin:0 0 26px}
-.lock-btn{background:var(--orange);color:#fff;padding:14px 30px;border-radius:999px;font-size:14.5px;font-weight:500;display:inline-flex;align-items:center;gap:10px;transition:transform .15s ease, background .2s ease}
-.lock-btn:hover{transform:translateY(-1px);background:#d05c1d}
+/* SPOTS BADGE */
+.spots-badge{display:inline-flex;align-items:center;gap:8px;border-radius:999px;padding:9px 18px;font-size:13px;font-weight:500;margin-bottom:18px;background:#fff3e8;border:1.5px solid var(--orange-100);color:var(--ink-soft);}
+.tariff.dance .spots-badge{background:rgba(255,255,255,.15);border-color:rgba(255,255,255,.3);color:#fff8e4;}
+.spots-dot{width:8px;height:8px;border-radius:50%;background:#4caf50;flex-shrink:0;animation:pdot 2s infinite;}
+.spots-badge.few .spots-dot{background:#ff9800}
+.spots-badge.none .spots-dot{background:#f44336;animation:none}
+@keyframes pdot{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(1.4)}}
 
-/* TOTALS CARD */
-.totals{margin-bottom:60px}
-.totals-card{background:linear-gradient(135deg,#fde3d0 0%,#fcefc6 100%);border-radius:28px;padding:48px 52px;position:relative;overflow:hidden}
-.totals-card::before{content:"";position:absolute;top:-50px;right:-50px;width:200px;height:200px;background:radial-gradient(circle,rgba(255,255,255,.4) 0%,transparent 70%);border-radius:50%}
-.totals-title{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:30px;margin-bottom:8px;position:relative;z-index:1}
-.totals-title i{font-style:italic;color:var(--orange)}
-.totals-sub{font-size:14px;color:var(--ink-mute);margin-bottom:30px;position:relative;z-index:1}
-.totals-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;position:relative;z-index:1}
-.total-item{background:rgba(255,250,240,.85);backdrop-filter:blur(4px);padding:18px 20px;border-radius:14px;display:flex;align-items:center;gap:14px}
-.total-num{font-family:'Cormorant Garamond',serif;font-size:32px;font-weight:600;color:var(--orange);line-height:1;flex-shrink:0;min-width:34px}
-.total-text{font-size:13.5px;color:var(--ink-soft);line-height:1.35}
+/* STORY */
+.story{padding:100px 0 90px}
+.story-title{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:60px;line-height:1.05;letter-spacing:-.018em;margin:0 auto 44px;max-width:1100px;text-wrap:balance;}
+.story-title i{font-style:italic;font-weight:500;color:var(--orange);}
+.story-body{max-width:760px;font-size:16.5px;line-height:1.75;color:var(--ink-soft);}
+.story-body p{margin:0 0 22px}
+.story-body strong{color:var(--ink);font-weight:600}
 
-/* DAY MODAL */
-.modal-backdrop{position:fixed;inset:0;background:rgba(40,20,8,.55);backdrop-filter:blur(6px);z-index:200;display:flex;align-items:center;justify-content:center;padding:24px;opacity:0;visibility:hidden;transition:opacity .25s ease,visibility .25s ease}
-.modal-backdrop.open{opacity:1;visibility:visible}
-.modal{position:relative;background:var(--paper-soft);border-radius:26px;padding:38px 44px 32px;width:100%;max-width:500px;max-height:92vh;overflow-y:auto;box-shadow:0 24px 60px rgba(0,0,0,.32);transform:translateY(20px) scale(.97);transition:transform .3s ease}
-.modal-backdrop.open .modal{transform:translateY(0) scale(1)}
-.modal-close{position:absolute;top:20px;right:20px;width:40px;height:40px;border-radius:50%;background:#e8dfc6;color:var(--ink-soft);font-size:16px;display:inline-flex;align-items:center;justify-content:center;transition:background .2s ease, transform .2s ease}
-.modal-close:hover{background:#dfd3b3;transform:rotate(90deg)}
-.modal-eyebrow{font-size:12px;color:var(--orange);letter-spacing:.16em;text-transform:uppercase;margin-bottom:10px;font-weight:500}
-.modal h2{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:34px;margin:0 0 22px;letter-spacing:-.01em}
-.modal h2 .dow{font-size:17px;color:var(--ink-mute);font-weight:400;font-style:italic;margin-left:8px}
-.modal-events{display:flex;flex-direction:column;gap:14px;margin-bottom:14px}
-.modal-event{border-radius:14px;padding:18px 20px;display:flex;flex-direction:column;gap:6px;position:relative}
-.modal-event .me-title{font-size:17px;font-weight:600;line-height:1.3}
-.modal-event .me-time{font-size:13.5px;color:rgba(60,40,20,.65)}
-.modal-event .me-desc{font-size:14px;line-height:1.5;margin-top:4px;color:rgba(60,40,20,.78)}
-.modal-event.dance    {background:#fdd9c7;color:#7a2f0c}
-.modal-event.book     {background:#fbecb1;color:#5d4806}
-.modal-event.run      {background:#cce8a8;color:#3f5715}
-.modal-event.pic      {background:#d6c8eb;color:#3e2e64}
-.modal-event.train    {background:#bdd3e8;color:#234766}
-.modal-event.photo    {background:#f0c4d4;color:#7a2a47}
-.modal-event.content  {background:#e3d2ef;color:#553478}
-.modal-event.marathon {background:#fde3d0;color:#7a2f0c}
-.modal-event.rest     {background:#f4ecd2;color:#5e4a18}
-.modal-event.special  {background:#fff7eb;color:#7a2f0c;border:1.5px solid var(--orange)}
-.modal-event.special::before{content:"особое событие";position:absolute;top:-9px;left:18px;background:var(--orange);color:#fff;font-size:10px;letter-spacing:.12em;text-transform:uppercase;padding:3px 10px;border-radius:999px;font-weight:600}
-.me-actions{display:flex;gap:8px;margin-top:10px;flex-wrap:wrap}
-.me-action{font-size:12px;font-weight:500;padding:7px 14px;border-radius:999px;background:rgba(255,255,255,.55);color:inherit;border:1px solid rgba(0,0,0,.08);display:inline-flex;align-items:center;gap:6px;transition:background .2s ease, transform .15s ease}
-.me-action:hover{background:#fff;transform:translateY(-1px)}
-.me-action svg{width:13px;height:13px}
-.modal .add-btn{display:block;width:100%;padding:14px;border-radius:999px;background:var(--orange);color:#fff;text-align:center;font-size:14.5px;font-weight:500;transition:background .2s ease, transform .15s ease;margin-top:12px}
-.modal .add-btn:hover{background:#d05c1d;transform:translateY(-1px)}
-.modal-empty{text-align:center;color:var(--ink-mute);padding:30px 0;font-size:15px}
+/* FAQ */
+.faq{padding:90px 0 110px}
+.faq .section-title{text-align:left;margin-bottom:48px}
+.faq-list{max-width:920px;display:flex;flex-direction:column;gap:14px}
+.faq-item{background:var(--paper);border-radius:18px;box-shadow:var(--shadow-sm);overflow:hidden;transition:box-shadow .2s;}
+.faq-item.open{box-shadow:0 8px 24px rgba(140,90,40,.10)}
+.faq-q{display:flex;align-items:center;justify-content:space-between;width:100%;padding:24px 28px;text-align:left;font-size:16px;color:var(--ink);font-weight:500;transition:background .15s;}
+.faq-q:hover{background:#fffefa}
+.faq-icon{color:var(--orange);font-size:22px;transition:transform .25s;line-height:1;width:24px;height:24px;display:inline-flex;align-items:center;justify-content:center;}
+.faq-item.open .faq-icon{transform:rotate(45deg)}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .35s;padding:0 28px;color:var(--ink-mute);font-size:15px;line-height:1.65;}
+.faq-item.open .faq-a{max-height:320px;padding:0 28px 24px}
 
 /* CTA */
-.cta{background:linear-gradient(135deg, #ef7d40 0%, #f08a51 45%, #f4a276 80%, #cee2a0 110%);border-radius:28px;padding:60px 56px;color:#fff8e4;margin-bottom:60px;text-align:center}
-.cta h3{font-family:'Cormorant Garamond',serif;font-size:42px;font-weight:600;margin:0 0 14px;line-height:1.05;letter-spacing:-.012em}
-.cta h3 i{font-style:italic;font-weight:500}
-.cta p{max-width:480px;margin:0 auto 28px;font-size:15.5px;line-height:1.6;opacity:.95}
-.cta .tg-btn{background:#fffaf0;color:var(--ink);padding:16px 38px;border-radius:999px;font-size:15px;font-weight:500;display:inline-flex;align-items:center;gap:12px;transition:transform .15s ease, background .2s ease}
-.cta .tg-btn:hover{transform:translateY(-2px);background:#fff}
-.cta .tg-icon{width:26px;height:26px;border-radius:50%;background:var(--orange);display:inline-flex;align-items:center;justify-content:center;color:#fff;font-size:14px}
+.cta{background:linear-gradient(180deg,var(--bg) 0%,var(--bg) 8%,#f4ad75 26%,#f5b988 60%,#e8c595 88%,var(--green-50) 100%);}
+.cta-inner{text-align:center;padding:120px 24px 140px}
+.cta h2{font-family:'Cormorant Garamond',serif;font-size:88px;font-weight:600;margin:0 0 28px;color:#fffaf0;letter-spacing:-.018em;line-height:1.02;}
+.cta h2 i{font-style:italic;font-weight:500;color:#fffaf0;display:block;}
+.cta p{color:rgba(255,250,232,.95);font-size:16px;margin:0 auto 44px;max-width:580px;line-height:1.6;}
+.tg-btn{background:#fffaf0;color:var(--ink);padding:18px 48px;border-radius:999px;font-size:15.5px;font-weight:500;display:inline-flex;align-items:center;gap:14px;transition:transform .15s,background .2s;box-shadow:0 10px 24px rgba(0,0,0,.10);}
+.tg-btn:hover{transform:translateY(-2px);background:#fff}
+.tg-icon{width:30px;height:30px;border-radius:50%;background:var(--orange);display:inline-flex;align-items:center;justify-content:center;color:#fff;font-size:16px;}
 
-.footer{background:linear-gradient(170deg, #1c1107 0%, #182210 100%);color:#a89a7c;padding:60px 0 30px}
-.footer-inner{display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap;padding-bottom:32px;border-bottom:1px solid rgba(255,240,200,.08)}
-.footer .logo{color:#ed8a4e;font-size:26px}
-.footer-links{display:flex;gap:32px}
-.footer-links a{font-size:14.5px;color:#a89a7c;transition:color .2s ease}
-.footer-links a:hover{color:#fff8e8}
-.footer-copy{padding-top:22px;font-size:12.5px;color:#5a4d35;text-align:center}
+/* FOOTER */
+.footer{background:#1c1107;color:#a89a7c;padding:74px 0 32px}
+.footer-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:48px;padding-bottom:44px;border-bottom:1px solid rgba(255,240,200,.08);}
+.footer .logo{color:#ed8a4e;font-size:28px}
+.footer-about{color:#8a7a5e;font-size:14px;line-height:1.55;max-width:300px;margin-top:18px}
+.footer h4{color:#f0e2b3;font-size:14.5px;font-weight:500;margin:0 0 20px}
+.footer ul{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:10px}
+.footer ul a{font-size:14.5px;color:#a89a7c;transition:color .2s}
+.footer ul a:hover{color:#fff8e8}
+.footer-copy{padding-top:28px;font-size:12.5px;color:#5a4d35}
 
-@media (max-width:980px){
-  .intro h1{font-size:54px}
-  .cal-month{font-size:30px}
-  .calendar-card{padding:28px 22px}
-  .cell{min-height:96px;padding:10px 8px}
-  .day-num{font-size:18px}
-  .ev{font-size:11px;padding:5px 6px}
-  .ev-time{font-size:10px}
-  .week-head span{font-size:10px}
-  .nav{display:none}
-  .lock-title{font-size:32px}
-  .totals-card{padding:32px 28px}
-  .totals-grid{grid-template-columns:1fr 1fr}
-}
-@media (max-width:680px){
-  .grid{gap:6px}
-  .week-head{gap:6px}
-  .cell{min-height:80px;border-radius:12px}
-  .ev{display:none}
-  .cell.has-event::after{content:"";position:absolute;left:50%;bottom:8px;transform:translateX(-50%);width:6px;height:6px;border-radius:50%;background:var(--orange)}
-  .cta{padding:40px 24px}
-  .cta h3{font-size:30px}
-  .totals-grid{grid-template-columns:1fr}
-}
+/* MODAL */
+.modal-backdrop{position:fixed;inset:0;background:rgba(40,20,8,.55);backdrop-filter:blur(6px);z-index:200;display:flex;align-items:center;justify-content:center;padding:24px;opacity:0;visibility:hidden;transition:opacity .25s,visibility .25s;}
+.modal-backdrop.open{opacity:1;visibility:visible}
+.modal{position:relative;background:var(--paper-soft);border-radius:26px;padding:44px 50px 38px;width:100%;max-width:520px;max-height:92vh;overflow-y:auto;box-shadow:0 24px 60px rgba(0,0,0,.32);transform:translateY(20px) scale(.97);transition:transform .3s;}
+.modal-backdrop.open .modal{transform:translateY(0) scale(1)}
+.modal-close{position:absolute;top:22px;right:22px;width:42px;height:42px;border-radius:50%;background:#e8dfc6;color:var(--ink-soft);font-size:18px;display:inline-flex;align-items:center;justify-content:center;transition:background .2s,transform .2s;}
+.modal-close:hover{background:#dfd3b3;transform:rotate(90deg)}
+.modal h2{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:38px;margin:0 0 12px;}
+.modal-tariff{color:var(--orange);font-size:15px;margin-bottom:30px;font-weight:500;}
+.field{display:flex;flex-direction:column;gap:8px;margin-bottom:18px}
+.field label{font-size:14.5px;color:var(--ink);font-weight:500}
+.field input,.field select{width:100%;padding:15px 18px;border-radius:14px;background:rgba(255,250,240,.7);border:1.4px solid #ece1c8;font-family:inherit;font-size:15px;color:var(--ink);transition:border-color .2s,background .2s;}
+.field input::placeholder{color:#c4b59a}
+.field input:focus,.field select:focus{outline:none;border-color:var(--orange);background:#fff}
+.field select{appearance:none;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'><path fill='%238a7558' d='M6 8 0 0h12z'/></svg>");background-repeat:no-repeat;background-position:right 18px center;padding-right:40px;}
+.price-summary{background:#fef0e0;border-radius:14px;padding:16px 20px;margin-bottom:18px;font-size:15px;color:var(--ink-soft);line-height:1.5;}
+.modal .submit{width:100%;margin-top:12px;padding:18px;border-radius:999px;background:var(--olive);color:#fff8e4;font-size:16px;font-weight:500;transition:background .2s,transform .15s;}
+.modal .submit:hover:not(:disabled){background:var(--olive-dark);transform:translateY(-1px)}
+.modal .submit:disabled{opacity:.5;cursor:not-allowed}
+.pay-methods{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin:22px 0 16px;}
+.pay-methods span{background:#f0e7c8;color:var(--ink-soft);font-size:13px;padding:8px 16px;border-radius:999px;font-weight:500;}
+.security{text-align:center;font-size:13px;color:var(--ink-mute)}
+.modal-success{text-align:center;padding:24px 0 8px}
+.modal-success .check{width:64px;height:64px;border-radius:50%;background:var(--orange);color:#fff;display:inline-flex;align-items:center;justify-content:center;font-size:32px;margin-bottom:18px;}
+.modal-success h3{font-family:'Cormorant Garamond',serif;font-size:30px;font-weight:600;margin:0 0 10px;}
+.modal-success p{color:var(--ink-mute);font-size:15px;margin:0}
+.modal-success .pay-direct-btn{display:inline-block;margin-top:20px;padding:14px 32px;border-radius:999px;background:var(--orange);color:#fff;font-size:15px;font-weight:500;text-decoration:none;transition:background .2s,transform .15s;}
+.modal-success .pay-direct-btn:hover{background:#d46820;transform:translateY(-1px)}
+
+@media(max-width:1080px){.gallery{grid-template-columns:repeat(2,1fr)}.gallery .g.tall{aspect-ratio:1/1}}
+@media(max-width:880px){.container{padding:0 22px}.hero-grid,.about-grid,.benefits-grid,.tariffs,.footer-grid,.activities-head{grid-template-columns:1fr;gap:36px}.activities-sub,.pricing-sub{text-align:left;max-width:none}.activity-grid{grid-template-columns:1fr}.hero h1{font-size:56px}.about h2{font-size:38px}.section-title{font-size:48px}.schedule{padding:32px 22px}.week{grid-template-columns:repeat(4,1fr)}.manifesto{padding:36px 28px;font-size:19px}.gallery{grid-template-columns:1fr 1fr}.nav{display:none}.cta h2{font-size:48px}.story-title{font-size:36px}.modal{padding:32px 24px}.modal h2{font-size:28px}}
 </style>
 </head>
 <body>
 
 <header class="header">
   <div class="container header-inner">
-    <a href="index.html" class="logo">Рассвет</a>
+    <a href="#" class="logo">Рассвет</a>
     <nav class="nav">
-      <a href="index.html#about">О клубе</a>
-      <a href="index.html#activities">Активности</a>
-      <a href="schedule.html">Расписание</a>
-      <a href="index.html#pricing">Тарифы</a>
+      <a href="#about">О клубе</a>
+      <a href="#activities">Активности</a>
+      <a href="schedule.html">Наше расписание</a>
+      <a href="#pricing">Тарифы</a>
+      <a href="#faq">Вопросы</a>
     </nav>
-    <a href="index.html#pricing" class="btn btn-primary">Присоединиться</a>
+    <a href="#pricing" class="btn btn-primary">Присоединиться</a>
   </div>
 </header>
 
-<section class="intro">
-  <div class="container">
-    <span class="eyebrow">— календарь</span>
-    <h1>Что у нас <i id="intro-month">в июне</i></h1>
-    <p>Первый месяц Рассвета. Кликни на день, чтобы посмотреть подробности и добавить в свой календарь.</p>
-
-    <div class="month-tabs" id="month-tabs">
-      <button class="month-tab" data-month="4">Май <span style="opacity:.55">26 — 31</span></button>
-      <button class="month-tab active" data-month="5">Июнь <span style="opacity:.55">2026</span></button>
-      <button class="month-tab locked" data-month="6">Июль <span class="lock-ico">🔒</span></button>
-      <button class="month-tab locked" data-month="7">Август <span class="lock-ico">🔒</span></button>
+<section class="hero">
+  <div class="container hero-grid">
+    <div>
+      <span class="eyebrow-pill">Клуб для девушек</span>
+      <h1>Твоя неделя станет <i>ярче</i></h1>
+      <p class="lead">Место, где общие ценности объединяют людей. Где у недели появляется ритм, а у дней — яркость. Тут ты можешь быть собой, чувствовать себя в кругу своих и помнить, ради чего живёшь.</p>
+      <div class="hero-buttons">
+        <a href="#pricing" class="btn btn-primary">Выбрать тариф</a>
+        <a href="#about" class="btn btn-ghost">Что внутри</a>
+      </div>
     </div>
-
-    <div class="legend" id="legend">
-      <span class="legend-chip" data-filter="dance"><span class="legend-dot dot-dance"></span>Танцы</span>
-      <span class="legend-chip" data-filter="book"><span class="legend-dot dot-book"></span>Книжный клуб</span>
-      <span class="legend-chip" data-filter="run"><span class="legend-dot dot-run"></span>Пробежка</span>
-      <span class="legend-chip" data-filter="pic"><span class="legend-dot dot-pic"></span>Пикник</span>
-      <span class="legend-chip" data-filter="train"><span class="legend-dot dot-train"></span>Тренировка в парке</span>
-      <span class="legend-chip" data-filter="content"><span class="legend-dot dot-content"></span>Reels &amp; контент</span>
-      <span class="legend-chip" data-filter="marathon"><span class="legend-dot dot-marathon"></span>Онлайн-марафон</span>
-      <span class="legend-chip" data-filter="rest"><span class="legend-dot dot-rest"></span>Семейный день</span>
-      <span class="legend-chip" data-filter="special"><span class="legend-dot dot-special"></span>Особое</span>
+    <div class="hero-img-wrap">
+      <img src="hero.png" alt="Девушки клуба Рассвет"/>
+      <span class="hero-pill">☀ тут хорошо</span>
     </div>
   </div>
 </section>
 
-<section>
+<section id="about" class="about">
+  <div class="container about-grid">
+    <div class="collage">
+      <div class="c1"><img src="about-1.png" alt=""/></div>
+      <div class="c2"><img src="about-2.png" alt=""/></div>
+      <div class="c3"><img src="about-3.png" alt=""/></div>
+    </div>
+    <div class="about-text">
+      <span class="section-eyebrow">о клубе</span>
+      <h2>В клубе каждую неделю ты будешь <i>ощущать радость</i></h2>
+      <p>Рассвет — это закрытое сообщество для девушек, которые хотят наполнить жизнь движением, общением и внутренней гармонией. Встречаемся <strong>несколько раз в неделю</strong>, а вы сами выбираете, что ближе.</p>
+      <p>Тебе не нужно ломать голову, чем заняться — расписание уже готово. Пробежки по выходным, танцы в обед, книжный клуб по вечерам, пикники и встречи в течение недели. Тёплая компания, движение и вдохновение уже ждут тебя.</p>
+    </div>
+  </div>
+</section>
+
+<section class="schedule-wrap">
   <div class="container">
-    <div class="calendar-card" id="calendar-card">
-      <div class="cal-head">
-        <h2 class="cal-month" id="cal-month-label">Июнь <i>2026</i></h2>
-        <span class="cal-today" id="cal-today">Сегодня — 21 мая, четверг</span>
-        <div class="cal-nav">
-          <button id="prev-btn" aria-label="Предыдущий месяц">←</button>
-          <button id="next-btn" aria-label="Следующий месяц">→</button>
-        </div>
+    <div class="schedule">
+      <div class="schedule-head">
+        <h3>Пример расписания <i>на неделю</i></h3>
+        <a href="schedule.html" class="schedule-link">Полное расписание июня <span class="arr">→</span></a>
       </div>
-      <div class="week-head">
-        <span>Пн</span><span>Вт</span><span>Ср</span><span>Чт</span><span>Пт</span><span>Сб</span><span>Вс</span>
+      <div class="week">
+        <div class="day"><span class="day-name">Пн</span><div class="event">Танцы<span class="event-time">18:00–20:00</span></div></div>
+        <div class="day"><span class="day-name">Вт</span><div class="event yellow">Отдыхаем и общаемся в чате<span class="event-time">весь день</span></div></div>
+        <div class="day"><span class="day-name">Ср</span><div class="event green">Тренировка в парке<span class="event-time">10:00–11:00</span></div></div>
+        <div class="day"><span class="day-name">Чт</span><div class="event yellow">Книжный / кино клуб<span class="event-time">18:00–19:00</span></div><div class="event tiny">+ пикник</div></div>
+        <div class="day"><span class="day-name">Пт</span><div class="event">Делимся рецептами на ужин<span class="event-time">вечер</span></div></div>
+        <div class="day"><span class="day-name">Сб</span><div class="event green">Пробежка<span class="event-time">10:00–11:30</span></div></div>
+        <div class="day"><span class="day-name">Вс</span><div class="event yellow">Отдыхаем<span class="event-time">весь день ☀</span></div></div>
       </div>
-      <div class="grid" id="grid"></div>
-      <div class="cell-foot">Помимо основного расписания — фотодни, велопрогулки и идеи, которые мы воплощаем вместе</div>
+      <div class="schedule-foot">Помимо основного расписания — тренировки в парке, фотодни, велопрогулки и воплощение ваших идей</div>
+    </div>
+  </div>
+</section>
 
-      <div class="lock-overlay" id="lock-overlay" style="display:none">
-        <div class="lock-icon-wrap">
-          <svg class="lock-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-            <rect x="4" y="11" width="16" height="10" rx="2"/>
-            <path d="M8 11V8a4 4 0 0 1 8 0v3"/>
-          </svg>
-        </div>
-        <h3 class="lock-title">Откроется <i id="lock-when">в июле</i></h3>
-        <p class="lock-sub">Расписание формируется ближе к месяцу. Подпишись на клуб, чтобы получить уведомление, как только страница разблокируется.</p>
-        <a href="index.html#pricing" class="lock-btn">Стать участницей</a>
+<section class="manifesto-wrap">
+  <div class="container">
+    <div class="manifesto">
+      Рассвет — это пространство, где девушки собираются вместе, чтобы разделять события и эмоции, общаться и активничать. Я верю, что регулярные встречи с единомышленницами меняют качество жизни: появляется лёгкость, уверенность и ощущение, что ты на своём месте. В клубе мы бегаем, танцуем по вечерам, обсуждаем книги и фильмы, ходим на пикники — чтобы каждый раз уходить с улыбкой. Это не курс и не марафон — это образ жизни.
+    </div>
+  </div>
+</section>
+
+<section id="activities" class="activities">
+  <div class="container">
+    <div class="activities-head">
+      <div>
+        <span class="section-eyebrow">активности</span>
+        <h2 class="section-title">Что тебя <i>ждёт</i></h2>
+      </div>
+      <div class="activities-sub">8+ идей, чем мы займёмся</div>
+    </div>
+    <div class="activity-grid">
+      <div class="activity act-peach"><span class="num">01</span><div class="a-text"><span class="a-title">Танцевальные тренировки</span></div><span class="tag">4 ч/мес · 2 раза/нед</span></div>
+      <div class="activity act-yellow"><span class="num">02</span><div class="a-text"><span class="a-title">Пробежки</span><span class="a-desc">По красивым маршрутам</span></div><span class="tag">1 раз/нед</span></div>
+      <div class="activity act-peach"><span class="num">03</span><div class="a-text"><span class="a-title">Онлайн марафоны</span><span class="a-desc">Челленджи и марафоны</span></div><span class="tag">1 раз/мес</span></div>
+      <div class="activity act-yellow"><span class="num">04</span><div class="a-text"><span class="a-title">Пикники и игры</span><span class="a-desc">Отдых на свежем воздухе</span></div><span class="tag">3 раза/мес</span></div>
+      <div class="activity act-peach"><span class="num">05</span><div class="a-text"><span class="a-title">Книжный / кино клуб</span><span class="a-desc">Книги и впечатления</span></div><span class="tag">1 раз/нед</span></div>
+      <div class="activity act-yellow"><span class="num">06</span><div class="a-text"><span class="a-title">Тренировки на воздухе</span><span class="a-desc">Спорт в парках</span></div><span class="tag">1 раз/нед</span></div>
+      <div class="activity act-peach"><span class="num">07</span><div class="a-text"><span class="a-title">Творческие съёмки</span></div><span class="tag">по запросу</span></div>
+      <div class="activity act-yellow"><span class="num">08</span><div class="a-text"><span class="a-title">Реализация ваших идей</span></div><span class="tag">2 раза/мес</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="gallery-wrap">
+  <div class="container">
+    <div class="gallery-eyebrow"><span class="section-eyebrow">атмосфера</span></div>
+    <div class="gallery">
+      <div class="g tall"><img src="gal-1.png" alt=""/></div>
+      <div class="g"><img src="gal-2.png" alt=""/></div>
+      <div class="g"><img src="gal-3.png" alt=""/></div>
+      <div class="g"><img src="gal-4.png" alt=""/></div>
+    </div>
+  </div>
+</section>
+
+<section class="benefits">
+  <div class="container">
+    <span class="section-eyebrow">миссия</span>
+    <h2 class="section-title">Что ты <i>получишь</i></h2>
+    <div class="benefits-grid">
+      <div class="b-card">
+        <h3>Для тебя</h3>
+        <ul>
+          <li>Крутая атмосфера и общение с вдохновляющими людьми</li>
+          <li>Не нужно думать, чем заняться — расписание уже готово</li>
+          <li>Разнообразие активностей в одном месте</li>
+          <li>Свобода выбора — вы выбираете, что сейчас вам подходит</li>
+        </ul>
+      </div>
+      <div class="b-card right">
+        <h3>Моя миссия</h3>
+        <ul>
+          <li>Вдохновлять и влиять на жизнь людей к лучшему</li>
+          <li>Делиться опытом в разных сферах активности</li>
+          <li>Создавать пространство для взаимного роста</li>
+          <li>Просто люблю людей и хочу быть полезной</li>
+        </ul>
       </div>
     </div>
+  </div>
+</section>
 
-    <!-- TOTALS -->
-    <div class="totals">
-      <div class="totals-card">
-        <h3 class="totals-title">Итого за <i id="totals-month">июнь</i></h3>
-        <p class="totals-sub" id="totals-sub">15 активностей на выбор — приходи на те, что зажигают именно тебя</p>
-        <div class="totals-grid" id="totals-grid"></div>
+<section id="pricing" class="pricing">
+  <div class="container">
+    <div class="activities-head">
+      <div>
+        <span class="section-eyebrow">тарифы</span>
+        <h2 class="section-title">Выбери <i>свой формат</i></h2>
+      </div>
+      <p class="pricing-sub">Все активности клуба входят в базу. Танцы — отдельный трек, который можно добавить к членству или купить отдельно.</p>
+    </div>
+    <div class="tariffs">
+
+      <div class="tariff base">
+        <div class="tnum">01</div>
+        <h3 class="tname">База</h3>
+        <div class="tsub">Все активности клуба, кроме танцев</div>
+        <div class="price">2000<span class="ruble">₽</span></div>
+        <div class="price-cap">в месяц</div>
+        <ul class="features">
+          <li>Еженедельные пробежки</li>
+          <li>Книжный / кино клуб</li>
+          <li>Тренировки fullbody / растяжка</li>
+          <li>Пикники, настолки и велопрогулки</li>
+          <li>Фото и видеосъёмки</li>
+          <li>Онлайн-марафоны с призами</li>
+          <li>Доступ к закрытому чату</li>
+        </ul>
+        <div class="spots-badge" id="spots-base"><span class="spots-dot"></span><span id="spots-base-text">загрузка…</span></div>
+        <button class="cta-btn" data-pay="base" data-price="2000">присоединиться</button>
+      </div>
+
+      <div class="tariff dance">
+        <span class="tariff-badge">Для тех, кто хочет танцевать</span>
+        <div class="tnum">02</div>
+        <h3 class="tname">Клуб + танцы</h3>
+        <div class="tsub">Всё из базы + 4 часа танцев в месяц</div>
+        <div class="price">3800<span class="ruble">₽</span></div>
+        <div class="price-cap">в месяц <s>вместо 5000 ₽</s></div>
+        <ul class="features">
+          <li>Всё из тарифа «База»</li>
+          <li class="hi">4 часа танцев в месяц</li>
+          <li>Пластика и работа с телом</li>
+          <li>Подборки музыки и хореографии</li>
+        </ul>
+        <div class="spots-badge" id="spots-dance"><span class="spots-dot"></span><span id="spots-dance-text">загрузка…</span></div>
+        <button class="cta-btn" data-pay="dance" data-price="3800">присоединиться</button>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="story">
+  <div class="container">
+    <span class="section-eyebrow">почему я создала рассвет</span>
+    <h2 class="story-title">Этот клуб вдохновлён <i>личной историей</i></h2>
+    <div class="story-body">
+      <p>Когда я переехала в Москву, я была уверена, что быстро найду своё окружение. Но на деле оказалось сложнее — я долго не могла почувствовать себя частью чего-то. Свободное время пугало, и я заполняла его бегом, тренировками, учёбой — но внутри оставалось одиночество.</p>
+      <p>Я помню вечер, когда звонила маме и плакала от того, что снова проведу воскресенье одна — красивая, с планами, но без людей рядом. Это было тяжело. Но именно это стало толчком: я решила взять всё в свои руки и начать знакомиться.</p>
+      <p>Постепенно в мою жизнь пришли люди, события, танцы — то, о чём я мечтала с десяти лет. И спустя пять лет я поняла: я такая не одна. Многим девушкам не хватает того же — тёплого окружения, заполненной недели, чувства, что ты нужна и интересна.</p>
+      <p>Так родился Рассвет. Идеальное комбо, которое помогло мне: <strong>общение + расписание недели + движение</strong>. В Рассвете есть всё, что я хотела бы иметь в те годы — и я хочу разделить это с вами.</p>
+    </div>
+  </div>
+</section>
+
+<section id="faq" class="faq">
+  <div class="container">
+    <span class="section-eyebrow">ответы</span>
+    <h2 class="section-title">Частые <i>вопросы</i></h2>
+    <div class="faq-list">
+      <div class="faq-item open">
+        <button class="faq-q">А если я не смогу прийти на встречу? <span class="faq-icon">+</span></button>
+        <div class="faq-a"><p>Ничего страшного — выбирай активности, которые тебе интересны и удобны по времени.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Я никого не знаю, будет ли мне комфортно? <span class="faq-icon">+</span></button>
+        <div class="faq-a"><p>Здесь тебя ждут и поддержат!</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Я в плохой физической форме, подходит ли мне? <span class="faq-icon">+</span></button>
+        <div class="faq-a"><p>Да. Все тренировки и пробежки адаптируются под уровень участниц. Главное — желание двигаться.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Можно ли попробовать перед оплатой? <span class="faq-icon">+</span></button>
+        <div class="faq-a"><p>Да, следи за каналом клуба, раз в месяц можно попробовать формат комьюнити на открытых встречах.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Что если я хочу заморозить участие? <span class="faq-icon">+</span></button>
+        <div class="faq-a"><p>На период отпуска или отъезда мы можем договориться о твоем отсутствии.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Какая аудитория клуба? <span class="faq-icon">+</span></button>
+        <div class="faq-a"><p>Девушки 17–28 лет из Москвы, которые ценят активный образ жизни, развитие и комфортное окружение.</p></div>
       </div>
     </div>
+  </div>
+</section>
 
-    <div class="cta">
-      <h3>Хочешь <i>попасть</i> на встречу?</h3>
-      <p>Каждая активность — для участниц клуба. Присоединяйся, чтобы появляться в чате и приходить на встречи.</p>
-      <a href="https://t.me/evavasilyyevna" target="_blank" rel="noopener" class="tg-btn"><span class="tg-icon">✈</span>Написать в Telegram</a>
-    </div>
+<section id="cta" class="cta">
+  <div class="cta-inner">
+    <h2>Готова <i>стать частью нас?</i></h2>
+    <p>Напиши мне — отвечу на все вопросы и расскажу подробности</p>
+    <a href="https://t.me/evavasilyyevna" target="_blank" rel="noopener" class="tg-btn"><span class="tg-icon">✈</span> Написать в Telegram</a>
   </div>
 </section>
 
 <footer class="footer">
   <div class="container">
-    <div class="footer-inner">
-      <a href="index.html" class="logo">Рассвет</a>
-      <div class="footer-links">
-        <a href="index.html#about">О клубе</a>
-        <a href="index.html#activities">Активности</a>
-        <a href="schedule.html">Расписание</a>
-        <a href="https://t.me/evavasilyyevna" target="_blank" rel="noopener">Telegram</a>
+    <div class="footer-grid">
+      <div>
+        <div class="logo">Рассвет</div>
+        <div class="footer-about">Клуб активностей для тех, кто хочет наполнить жизнь движением, творчеством и общением.</div>
+      </div>
+      <div>
+        <h4>Разделы</h4>
+        <ul>
+          <li><a href="#about">О клубе</a></li>
+          <li><a href="#activities">Активности</a></li>
+          <li><a href="schedule.html">Наше расписание</a></li>
+          <li><a href="#pricing">Тарифы</a></li>
+          <li><a href="#faq">Вопросы</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Связь</h4>
+        <ul>
+          <li><a href="https://t.me/evavasilyyevna" target="_blank" rel="noopener">Telegram</a></li>
+          <li><a href="#">Instagram</a></li>
+        </ul>
       </div>
     </div>
     <div class="footer-copy">© 2026 Рассвет. Все права защищены.</div>
   </div>
 </footer>
 
+<!-- MODAL -->
 <div class="modal-backdrop" id="modal" role="dialog" aria-modal="true">
   <div class="modal">
-    <button class="modal-close" id="modal-close" aria-label="Закрыть">✕</button>
-    <div class="modal-eyebrow" id="m-eyebrow">июнь 2026</div>
-    <h2 id="m-title"></h2>
-    <div class="modal-events" id="m-events"></div>
-    <a href="https://t.me/evavasilyyevna" target="_blank" rel="noopener" class="add-btn">Записаться через Telegram</a>
+    <button class="modal-close" id="modal-close">✕</button>
+    <div id="modal-form">
+      <h2>Оформление</h2>
+      <div class="modal-tariff" id="modal-tariff"></div>
+      <form id="pay-form" novalidate>
+        <div class="field"><label for="f-name">Ваше имя</label><input id="f-name" type="text" placeholder="Анна" required/></div>
+        <div class="field"><label for="f-tg">Telegram</label><input id="f-tg" type="text" placeholder="@anna" required/></div>
+        <div class="field"><label for="f-phone">Телефон</label><input id="f-phone" type="tel" placeholder="+7 (___) ___-__-__" required/></div>
+        <div class="field">
+          <label for="f-period">Период оплаты</label>
+          <select id="f-period">
+            <option value="1">1 месяц</option>
+            <option value="3">3 месяца — скидка 10%</option>
+          </select>
+        </div>
+        <div class="price-summary" id="price-summary"></div>
+        <button type="submit" class="submit" id="submit-btn">Перейти к оплате</button>
+        <div class="pay-methods"><span>СБП</span><span>Visa / MC</span><span>МИР</span><span>ЮMoney</span></div>
+        <div class="security">Безопасная оплата</div>
+      </form>
+    </div>
+    <div id="modal-success" class="modal-success" hidden>
+      <div class="check">✓</div>
+      <h3>Почти готово!</h3>
+      <p>Нажми кнопку ниже, чтобы перейти к оплате.<br>После оплаты я свяжусь с тобой в Telegram.</p>
+      <a id="pay-direct-btn" href="#" target="_blank" rel="noopener" class="pay-direct-btn">Перейти к оплате →</a>
+    </div>
   </div>
 </div>
 
 <script>
-  /* ── Optional Google Sheet backend (leave empty to use defaults) ── */
-  const SHEET_URL = '';
-
-  /* ── Default June schedule ────────────────────────────────────────
-     date → events array. type: dance | book | run | pic | train | photo | content | marathon | rest | special
-     startH/endH/endM in 24h for .ics/Google Calendar.                                               */
-  const DEFAULT_DATA = {
-    /* ── МАЙ — старт клуба с 26 числа ── */
-    '2026-05-26': [
-      { type:'book',     title:'Книжный клуб',                 time:'18:00–19:30', desc:'Принеси любимую книгу года, делимся впечатлениями и выбираем книгу клуба.', startH:18, endH:19, endM:30 }
-    ],
-    '2026-05-30': [
-      { type:'run',      title:'Утренняя пробежка',            time:'8:30–9:10',   desc:'2–3 км в комфортном темпе.', startH:8, startM:30, endH:9, endM:10 }
-    ],
-    '2026-05-31': [
-      { type:'rest',     title:'Семейный день и отдых',        time:'весь день',   desc:'Воскресенье — день для семьи и для себя.' }
-    ],
-
-    /* ── ИЮНЬ ── */
-    '2026-06-01': [
-      { type:'dance',    title:'Танцы',                        time:'16:00–18:00', desc:'Работа с пластикой и чувством уверенности.', startH:16, endH:18 },
-      { type:'marathon', title:'Старт онлайн-марафона 🔥',    time:'старт',       desc:'Тему выбираем в чате — 2 недели вместе, задания каждый день.' }
-    ],
-    '2026-06-03': [
-      { type:'book',     title:'Книжный клуб',                 time:'18:00–19:30', desc:'Обсуждаем книгу, которую выбрали на первой встрече.', startH:18, endH:19, endM:30 }
-    ],
-    '2026-06-04': [
-      { type:'pic',      title:'Пикник с настолками',          time:'19:00–21:00', desc:'Плед, лимонад, игры. Привозите снеки на общий стол.', startH:19, endH:21 }
-    ],
-    '2026-06-06': [
-      { type:'run',      title:'Утренняя пробежка',            time:'8:30–9:10',   desc:'Лёгкий маршрут в парке, комфортный темп.', startH:8, startM:30, endH:9, endM:10 }
-    ],
-    '2026-06-07': [
-      { type:'rest',     title:'Семейный день и отдых',        time:'весь день',   desc:'Воскресенье — день для семьи и для себя.' }
-    ],
-    '2026-06-09': [
-      { type:'train',    title:'Тренировка в парке',           time:'8:30–9:30',   desc:'Растяжка + функциональная тренировка, 60 минут.', startH:8, startM:30, endH:9, endM:30 }
-    ],
-    '2026-06-10': [
-      { type:'book',     title:'Книжный клуб',                 time:'18:00–19:30', desc:'Что почитать летом — собираем общий список.', startH:18, endH:19, endM:30 }
-    ],
-    '2026-06-11': [
-      { type:'content',  title:'Reels & content день',         time:'19:00–21:00', desc:'Снимаем reels друг для друга, разбираем удачные кадры, помогаем с тем, что не получается.', startH:19, endH:21 }
-    ],
-    '2026-06-13': [
-      { type:'run',      title:'Утренняя пробежка',            time:'8:30–9:10',   desc:'3 км в комфортном темпе.', startH:8, startM:30, endH:9, endM:10 }
-    ],
-    '2026-06-14': [
-      { type:'rest',     title:'Семейный день и отдых',        time:'весь день',   desc:'Воскресенье — день для семьи и для себя.' }
-    ],
-    '2026-06-15': [
-      { type:'dance',    title:'Танцы',                        time:'16:00–18:00', desc:'Собираем мини-связку под летний трек.', startH:16, endH:18 },
-      { type:'special',  title:'+ девичник в честь дня рождения 🎂', time:'после танцев', desc:'Маленькое празднование дня рождения вместе с клубом. Подробности — в чате.' }
-    ],
-    '2026-06-17': [
-      { type:'book',     title:'Книжный клуб',                 time:'18:00–19:30', desc:'Обсуждаем книгу месяца.', startH:18, endH:19, endM:30 }
-    ],
-    '2026-06-19': [
-      { type:'marathon', title:'Финал онлайн-марафона 🏆',     time:'финал',       desc:'Подводим итоги марафона, делимся результатами в чате.' }
-    ],
-    '2026-06-20': [
-      { type:'run',      title:'Утренняя пробежка',            time:'8:30–9:10',   desc:'3 км в комфортном темпе.', startH:8, startM:30, endH:9, endM:10 }
-    ],
-    '2026-06-21': [
-      { type:'rest',     title:'Семейный день и отдых',        time:'весь день',   desc:'Воскресенье — день для семьи и для себя.' }
-    ],
-    '2026-06-22': [
-      { type:'train',    title:'Тренировка в парке',           time:'8:30–9:30',   desc:'Растяжка + функциональная тренировка, 60 минут.', startH:8, startM:30, endH:9, endM:30 }
-    ],
-    '2026-06-24': [
-      { type:'book',     title:'Книжный клуб',                 time:'18:00–19:30', desc:'Финальная встреча месяца — что прочитали и что зажгло.', startH:18, endH:19, endM:30 }
-    ],
-    '2026-06-26': [
-      { type:'special',  title:'Закрытие первого месяца Рассвета', time:'19:00–21:00', desc:'Пикник · что получилось, идеи на июль, маленький сюрприз для всех 🌅', startH:19, endH:21 }
-    ],
-    '2026-06-27': [
-      { type:'run',      title:'Утренняя пробежка',            time:'8:30–9:10',   desc:'Закрываем месяц утренней пробежкой.', startH:8, startM:30, endH:9, endM:10 }
-    ],
-    '2026-06-28': [
-      { type:'rest',     title:'Семейный день и отдых',        time:'весь день',   desc:'Воскресенье — день для семьи и для себя.' }
-    ]
-  };
-
-  const MONTHS = {
-    4: { name:'Май',     intro:'с 26 мая',  locked:false },
-    5: { name:'Июнь',    intro:'в июне',    locked:false },
-    6: { name:'Июль',    intro:'в июле',    locked:true, when:'в июле' },
-    7: { name:'Август',  intro:'в августе', locked:true, when:'в августе' }
-  };
-
-  const RU_DOW   = ['воскресенье','понедельник','вторник','среда','четверг','пятница','суббота'];
-  const RU_MONTH = ['января','февраля','марта','апреля','мая','июня','июля','августа','сентября','октября','ноября','декабря'];
-
-  const YEAR  = 2026;
-  let currentMonth = 5;
-  let DATA = DEFAULT_DATA;
-  const TODAY = new Date(2026, 4, 21);
-
-  function daysInMonth(y, m){ return new Date(y, m + 1, 0).getDate(); }
-  function mondayIdx(d){ return (d.getDay() + 6) % 7; }
-  function pad(n){ return n < 10 ? '0' + n : '' + n; }
-  function dateKey(y, m, d){ return `${y}-${pad(m+1)}-${pad(d)}`; }
-
-  function eventsForDate(y, m, d){ return DATA[dateKey(y, m, d)] || []; }
-
-  /* ── .ics + Google Calendar export ───────────────────────────── */
-  function makeICS(ev, y, m, d){
-    const start = new Date(y, m, d, ev.startH || 10, ev.startM || 0);
-    const end   = new Date(y, m, d, ev.endH || (ev.startH ? ev.startH+1 : 11), ev.endM || 0);
-    const fmt = (dt) => dt.getFullYear() + pad(dt.getMonth()+1) + pad(dt.getDate()) + 'T' + pad(dt.getHours()) + pad(dt.getMinutes()) + '00';
-    const uid = `rassvet-${y}${pad(m+1)}${pad(d)}-${ev.type}@rassvet`;
-    return [
-      'BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//Rassvet//Schedule//RU','CALSCALE:GREGORIAN','METHOD:PUBLISH',
-      'BEGIN:VEVENT','UID:' + uid,'DTSTAMP:' + fmt(new Date()),
-      'DTSTART:' + fmt(start),'DTEND:' + fmt(end),
-      'SUMMARY:' + (ev.title || '').replace(/,/g,'\\,'),
-      'DESCRIPTION:' + (ev.desc || '').replace(/,/g,'\\,').replace(/\n/g,'\\n'),
-      'END:VEVENT','END:VCALENDAR'
-    ].join('\r\n');
-  }
-  function googleCalUrl(ev, y, m, d){
-    const start = new Date(y, m, d, ev.startH || 10, ev.startM || 0);
-    const end   = new Date(y, m, d, ev.endH || (ev.startH ? ev.startH+1 : 11), ev.endM || 0);
-    const fmt = (dt) => dt.getFullYear() + pad(dt.getMonth()+1) + pad(dt.getDate()) + 'T' + pad(dt.getHours()) + pad(dt.getMinutes()) + '00';
-    const params = new URLSearchParams({
-      action:'TEMPLATE', text:ev.title || '',
-      dates: fmt(start) + '/' + fmt(end),
-      details: (ev.desc || '') + '\n\nКлуб Рассвет'
-    });
-    return 'https://www.google.com/calendar/render?' + params.toString();
-  }
-  function downloadICS(ev, y, m, d){
-    const blob = new Blob([makeICS(ev, y, m, d)], { type:'text/calendar;charset=utf-8' });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url; a.download = `rassvet-${dateKey(y,m,d)}-${ev.type}.ics`;
-    document.body.appendChild(a); a.click(); a.remove();
-    setTimeout(() => URL.revokeObjectURL(url), 1000);
-  }
-
-  /* ── Calendar build ──────────────────────────────────────────── */
-  function buildCalendar(m){
-    currentMonth = m;
-    const grid = document.getElementById('grid');
-    const conf = MONTHS[m];
-
-    document.getElementById('cal-month-label').innerHTML = `${conf.name} <i>2026</i>`;
-    document.getElementById('intro-month').textContent = conf.intro;
-    document.getElementById('totals-month').textContent = conf.name.toLowerCase();
-
-    document.querySelectorAll('.month-tab').forEach(t => {
-      t.classList.toggle('active', +t.dataset.month === m);
-    });
-    document.getElementById('prev-btn').disabled = m <= 4;
-    document.getElementById('next-btn').disabled = m >= 7;
-
-    grid.innerHTML = '';
-    const firstDow = mondayIdx(new Date(YEAR, m, 1));
-    const dim      = daysInMonth(YEAR, m);
-    const prevDim  = daysInMonth(YEAR, m - 1);
-
-    for (let i = firstDow; i > 0; i--){
-      const c = document.createElement('div');
-      c.className = 'cell out';
-      c.innerHTML = `<span class="day-num">${prevDim - i + 1}</span>`;
-      grid.appendChild(c);
-    }
-
-    for (let d = 1; d <= dim; d++){
-      const date = new Date(YEAR, m, d);
-      const dow  = date.getDay();
-      const isSun = dow === 0;
-      const events = conf.locked ? [] : eventsForDate(YEAR, m, d);
-      const isToday = date.toDateString() === TODAY.toDateString();
-      const hasSpecial = events.some(e => e.type === 'special');
-
-      const c = document.createElement('div');
-      c.className = 'cell' + (isSun ? ' sun' : '') + (events.length ? ' has-event' : '') + (isToday ? ' today' : '');
-      c.dataset.day = d;
-      c.dataset.types = events.map(e => e.type).join(',');
-
-      let html = `<span class="day-num">${d}${hasSpecial ? '<span class="day-star"></span>' : ''}</span>`;
-      events.forEach(e => {
-        html += `<div class="ev ${e.type}"><span>${e.title}</span>${e.time ? `<span class="ev-time">${e.time}</span>` : ''}</div>`;
-      });
-      c.innerHTML = html;
-      if (!conf.locked) c.addEventListener('click', () => openDay(d, dow, m));
-      grid.appendChild(c);
-    }
-
-    const total = firstDow + dim;
-    const trailing = (7 - (total % 7)) % 7;
-    for (let i = 1; i <= trailing; i++){
-      const c = document.createElement('div');
-      c.className = 'cell out';
-      c.innerHTML = `<span class="day-num">${i}</span>`;
-      grid.appendChild(c);
-    }
-
-    const lockOverlay = document.getElementById('lock-overlay');
-    if (conf.locked){
-      lockOverlay.style.display = 'flex';
-      document.getElementById('lock-when').textContent = conf.when;
-    } else {
-      lockOverlay.style.display = 'none';
-    }
-
-    renderTotals(m);
-    applyFilters();
-  }
-
-  /* ── Totals card ─────────────────────────────────────────────── */
-  const TOTAL_ORDER = ['dance','book','run','train','pic','content','marathon','rest','special'];
-  const TOTAL_LABEL = {
-    dance:    'танцевальные<br>тренировки',
-    book:     'книжных клуба',
-    run:      'утренние<br>пробежки',
-    train:    'тренировка<br>в парке',
-    pic:      'пикник<br>с настолками',
-    content:  'reels &amp; content<br>день',
-    marathon: 'онлайн-марафон<br>2 недели',
-    rest:     'семейных дня<br>и отдыха',
-    special:  'особых события<br>(день рождения · закрытие)'
-  };
-  function renderTotals(m){
-    const conf = MONTHS[m];
-    const sub = document.getElementById('totals-sub');
-    const grid = document.getElementById('totals-grid');
-    if (conf.locked){
-      sub.textContent = `Откроется ${conf.when}`;
-      grid.innerHTML = '';
-      return;
-    }
-    const counts = {};
-    const dim = daysInMonth(YEAR, m);
-    for (let d = 1; d <= dim; d++){
-      eventsForDate(YEAR, m, d).forEach(e => { counts[e.type] = (counts[e.type] || 0) + 1; });
-    }
-    // Marathon: 2 entries (start + final) count as 1 program
-    if (counts.marathon){ counts.marathon = 1; }
-    const items = TOTAL_ORDER.filter(k => counts[k]).map(k =>
-      `<div class="total-item"><div class="total-num">${counts[k]}</div><div class="total-text">${TOTAL_LABEL[k]}</div></div>`
-    );
-    items.push(`<div class="total-item"><div class="total-num">∞</div><div class="total-text">общение в чате<br>каждый день</div></div>`);
-    grid.innerHTML = items.join('');
-    const totalCount = Object.values(counts).reduce((s, n) => s + n, 0);
-    sub.textContent = `${totalCount} активностей на выбор — приходи на те, что зажигают именно тебя`;
-  }
-
-  /* ── Day modal ──────────────────────────────────────────────── */
-  const modal   = document.getElementById('modal');
-  const mClose  = document.getElementById('modal-close');
-  const mTitle  = document.getElementById('m-title');
-  const mEyebrow= document.getElementById('m-eyebrow');
-  const mEvents = document.getElementById('m-events');
-
-  function openDay(day, dow, m){
-    mEyebrow.textContent = `${MONTHS[m].name} 2026`.toLowerCase();
-    mTitle.innerHTML = `${day} ${RU_MONTH[m]} <span class="dow">${RU_DOW[dow]}</span>`;
-
-    const events = eventsForDate(YEAR, m, day);
-    if (events.length === 0){
-      mEvents.innerHTML = '<div class="modal-empty">Свободный день — отдыхай ✨</div>';
-    } else {
-      mEvents.innerHTML = events.map((e, i) => {
-        const hasTime = e.startH != null;
-        const gcal = hasTime ? googleCalUrl(e, YEAR, m, day) : null;
-        return `
-          <div class="modal-event ${e.type}">
-            <div class="me-title">${e.title}</div>
-            ${e.time ? `<div class="me-time">${e.time}</div>` : ''}
-            ${e.desc ? `<div class="me-desc">${e.desc}</div>` : ''}
-            ${hasTime ? `
-              <div class="me-actions">
-                <a class="me-action" href="${gcal}" target="_blank" rel="noopener">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
-                  Добавить в Google Calendar
-                </a>
-              </div>
-            ` : ''}
-          </div>
-        `;
-      }).join('');
-
-    }
-    modal.classList.add('open');
-    document.body.classList.add('modal-open');
-  }
-  function closeModal(){ modal.classList.remove('open'); document.body.classList.remove('modal-open'); }
-  mClose.addEventListener('click', closeModal);
-  modal.addEventListener('click', e => { if (e.target === modal) closeModal(); });
-  document.addEventListener('keydown', e => {
-    if (e.key === 'Escape' && document.body.classList.contains('modal-open')) closeModal();
+// FAQ
+document.querySelectorAll('.faq-q').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const item = btn.closest('.faq-item'), wasOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item.open').forEach(o => o.classList.remove('open'));
+    if (!wasOpen) item.classList.add('open');
   });
+});
 
-  /* ── Month tabs / nav ───────────────────────────────────────── */
-  document.querySelectorAll('.month-tab').forEach(tab => {
-    tab.addEventListener('click', () => {
-      buildCalendar(+tab.dataset.month);
-      window.scrollTo({ top: document.querySelector('.calendar-card').offsetTop - 80, behavior:'smooth' });
-    });
+// Smooth scroll (only for in-page anchors, not links to other files)
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const t = document.querySelector(a.getAttribute('href'));
+    if (!t) return;
+    e.preventDefault();
+    window.scrollTo({ top: t.getBoundingClientRect().top + window.scrollY - 78, behavior:'smooth' });
   });
-  document.getElementById('prev-btn').addEventListener('click', () => { if (currentMonth > 4) buildCalendar(currentMonth - 1); });
-  document.getElementById('next-btn').addEventListener('click', () => { if (currentMonth < 7) buildCalendar(currentMonth + 1); });
+});
 
-  /* ── Legend filter ───────────────────────────────────────────── */
-  const activeFilters = new Set();
-  function applyFilters(){
-    const noneActive = activeFilters.size === 0;
-    document.querySelectorAll('.cell').forEach(c => {
-      if (c.classList.contains('out')) return;
-      if (noneActive){ c.classList.remove('dimmed'); return; }
-      const types = (c.dataset.types || '').split(',').filter(Boolean);
-      const hasVisible = types.some(t => !activeFilters.has(t));
-      c.classList.toggle('dimmed', !hasVisible);
+// ── Spots counter ──────────────────────────────────────
+const SHEETS_URL = 'https://script.google.com/macros/s/AKfycbwPjHt8DuppBvWeejvCvcakVk3B1li6DAthQofl2AHdAk510p6B_G0g6HsE_uIN5RS67g/exec';
+
+function plural(n) {
+  if (n%10===1 && n%100!==11) return 'место';
+  if ([2,3,4].includes(n%10) && ![12,13,14].includes(n%100)) return 'места';
+  return 'мест';
+}
+
+function updateBadge(tariff, count) {
+  const badge = document.getElementById(`spots-${tariff}`);
+  const text  = document.getElementById(`spots-${tariff}-text`);
+  const btn   = document.querySelector(`[data-pay="${tariff}"]`);
+  badge.classList.remove('few','none');
+  if (count <= 0) {
+    badge.classList.add('none');
+    text.textContent = 'Мест нет';
+    btn.disabled = true;
+    btn.textContent = 'Мест нет';
+  } else if (count <= 5) {
+    badge.classList.add('few');
+    text.textContent = `Осталось ${count} ${plural(count)}`;
+  } else {
+    text.textContent = `Осталось ${count} ${plural(count)}`;
+  }
+}
+
+async function loadSpots() {
+  try {
+    const r = await fetch(SHEETS_URL, { method: 'GET', redirect: 'follow' });
+    const d = JSON.parse(await r.text());
+    updateBadge('base',  d.base);
+    updateBadge('dance', d.dance);
+  } catch {
+    document.getElementById('spots-base-text').textContent  = 'Осталось несколько мест';
+    document.getElementById('spots-dance-text').textContent = 'Осталось несколько мест';
+  }
+}
+loadSpots();
+
+// ── Ссылки оплаты Продамус ────────────────────────────
+const PAY_LINKS = {
+  base:  {
+    1: 'https://link.payform.ru/?paymentLinkId=b08a5d9c-4db7-4634-8e24-36875168300b',
+    3: 'https://link.payform.ru/?paymentLinkId=189279c5-1ea1-48f6-838b-b15a8cc178d4'
+  },
+  dance: {
+    1: 'https://link.payform.ru/?paymentLinkId=31df960d-eef9-4bb7-847e-1bea1ae29529',
+    3: 'https://link.payform.ru/?paymentLinkId=458c66bd-f748-4508-ad3a-59842f967e4a'
+  }
+};
+
+// ── Modal ─────────────────────────────────────────────
+const modal        = document.getElementById('modal');
+const modalTariff  = document.getElementById('modal-tariff');
+const priceSummary = document.getElementById('price-summary');
+const modalForm    = document.getElementById('modal-form');
+const modalSuccess = document.getElementById('modal-success');
+const payForm      = document.getElementById('pay-form');
+const submitBtn    = document.getElementById('submit-btn');
+const payDirectBtn = document.getElementById('pay-direct-btn');
+const fName        = document.getElementById('f-name');
+const fTg          = document.getElementById('f-tg');
+const fPhone       = document.getElementById('f-phone');
+const fPeriod      = document.getElementById('f-period');
+
+const PRICES = { base:{name:'База',price:2000}, dance:{name:'Клуб + танцы',price:3800} };
+const fmt = n => n.toLocaleString('ru-RU');
+
+function updatePriceSummary() {
+  const t = PRICES[modal.dataset.tariff]; if (!t) return;
+  const p = parseInt(fPeriod.value) || 1;
+  modalTariff.textContent = `Тариф «${t.name}»`;
+  if (p === 1) {
+    priceSummary.innerHTML = `<strong style="font-size:20px;color:var(--ink)">${fmt(t.price)} ₽</strong> — за 1 месяц`;
+  } else {
+    const disc = Math.round(t.price * .9), total = disc * p, saved = t.price * p - total;
+    priceSummary.innerHTML =
+      `<strong style="font-size:20px;color:var(--ink)">${fmt(total)} ₽</strong> — итого за 3 месяца` +
+      `<br><span style="font-size:13px;color:var(--ink-mute)">${fmt(disc)} ₽/мес вместо ${fmt(t.price)} ₽ · экономия ${fmt(saved)} ₽</span>`;
+  }
+}
+
+function openModal(key) {
+  modal.dataset.tariff = key;
+  fPeriod.value = '1';
+  modalForm.hidden = false;
+  modalSuccess.hidden = true;
+  updatePriceSummary();
+  modal.classList.add('open');
+  document.body.classList.add('modal-open');
+  setTimeout(() => fName.focus(), 280);
+}
+function closeModal() { modal.classList.remove('open'); document.body.classList.remove('modal-open'); }
+
+fPeriod.addEventListener('change', updatePriceSummary);
+document.querySelectorAll('[data-pay]').forEach(btn => {
+  btn.addEventListener('click', e => { e.preventDefault(); if (!btn.disabled) openModal(btn.dataset.pay); });
+});
+document.getElementById('modal-close').addEventListener('click', closeModal);
+modal.addEventListener('click', e => { if (e.target === modal) closeModal(); });
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+// Phone mask
+fPhone.addEventListener('input', () => {
+  let d = fPhone.value.replace(/\D/g, '');
+  if (d.startsWith('8')) d = '7' + d.slice(1);
+  if (!d.startsWith('7')) d = '7' + d;
+  d = d.slice(0, 11);
+  let o = '+7';
+  if (d.length > 1)  o += ' (' + d.slice(1, 4);
+  if (d.length >= 4) o += ') ' + d.slice(4, 7);
+  if (d.length >= 7) o += '-' + d.slice(7, 9);
+  if (d.length >= 9) o += '-' + d.slice(9, 11);
+  fPhone.value = o;
+});
+
+// Submit
+payForm.addEventListener('submit', async e => {
+  e.preventDefault();
+  if (!fName.value.trim())  { fName.focus();  return; }
+  if (!fTg.value.trim())    { fTg.focus();    return; }
+  if (fPhone.value.replace(/\D/g, '').length < 11) { fPhone.focus(); return; }
+
+  const tariff = modal.dataset.tariff;
+  const period = parseInt(fPeriod.value) || 1;
+  const payUrl = PAY_LINKS[tariff]?.[period];
+
+  if (payUrl) payDirectBtn.href = payUrl;
+  submitBtn.textContent = 'Создаём заказ…';
+  submitBtn.disabled = true;
+  modalForm.hidden = true;
+  modalSuccess.hidden = false;
+
+  // Сохраняем заявку в Google Таблицу фоново
+  try {
+    await fetch(SHEETS_URL, {
+      method: 'POST',
+      redirect: 'follow',
+      headers: { 'Content-Type': 'text/plain' },
+      body: JSON.stringify({
+        name: fName.value.trim(),
+        telegram: fTg.value.trim(),
+        phone: fPhone.value.trim(),
+        tariff: tariff,
+        period: period
+      })
     });
-  }
-  document.querySelectorAll('.legend-chip').forEach(chip => {
-    chip.addEventListener('click', () => {
-      const f = chip.dataset.filter;
-      if (activeFilters.has(f)){ activeFilters.delete(f); chip.classList.remove('muted'); }
-      else { activeFilters.add(f); chip.classList.add('muted'); }
-      applyFilters();
-    });
-  });
+  } catch { /* не блокируем оплату */ }
 
-  /* ── Optional: load from Google Sheet (CSV) ─────────────────── */
-  function parseCSV(text){
-    const rows = [];
-    let i = 0, field = '', row = [], inQuotes = false;
-    while (i < text.length){
-      const c = text[i];
-      if (inQuotes){
-        if (c === '"' && text[i+1] === '"'){ field += '"'; i += 2; continue; }
-        if (c === '"'){ inQuotes = false; i++; continue; }
-        field += c; i++; continue;
-      }
-      if (c === '"'){ inQuotes = true; i++; continue; }
-      if (c === ','){ row.push(field); field = ''; i++; continue; }
-      if (c === '\n'){ row.push(field); rows.push(row); row = []; field = ''; i++; continue; }
-      if (c === '\r'){ i++; continue; }
-      field += c; i++;
-    }
-    if (field.length || row.length){ row.push(field); rows.push(row); }
-    if (!rows.length) return [];
-    const head = rows[0].map(s => s.trim().toLowerCase());
-    return rows.slice(1).filter(r => r.length && r.some(c => c.trim()))
-      .map(r => Object.fromEntries(head.map((h, i) => [h, (r[i] || '').trim()])));
-  }
-  async function tryLoadSheet(){
-    if (!SHEET_URL) return;
-    try {
-      const res = await fetch(SHEET_URL, { cache:'no-store' });
-      if (!res.ok) throw new Error('HTTP ' + res.status);
-      const rows = parseCSV(await res.text());
-      const byDate = {};
-      rows.forEach(r => {
-        if (!r.date || !r.type || !r.title) return;
-        const ev = { type:r.type, title:r.title, desc:r.desc || '', time:r.time || '' };
-        if (r.starth) ev.startH = +r.starth;
-        if (r.startm) ev.startM = +r.startm;
-        if (r.endh)   ev.endH   = +r.endh;
-        if (r.endm)   ev.endM   = +r.endm;
-        (byDate[r.date] = byDate[r.date] || []).push(ev);
-      });
-      if (Object.keys(byDate).length){
-        DATA = byDate;
-        buildCalendar(currentMonth);
-      }
-    } catch (e){ console.warn('Sheet load failed, using defaults', e); }
-  }
-
-  buildCalendar(5);
-  tryLoadSheet();
+  submitBtn.textContent = 'Перейти к оплате';
+  submitBtn.disabled = false;
+});
 </script>
 </body>
 </html>
