@@ -466,7 +466,7 @@ a{color:inherit;text-decoration:none}
      Формат ссылки:
      https://docs.google.com/spreadsheets/d/ТВОЙ_ID/gviz/tq?tqx=out:csv&sheet=Расписание
      ══════════════════════════════════════════════════════════════════ */
-  const SHEET_URL = 'ВСТАВЬ_ССЫЛКУ_СЮДА';
+  const SHEET_URL = 'https://docs.google.com/spreadsheets/d/1hcSYs1wEek6Qlhcqm3BuTeFx2z71xLn5dwd0IWeP_2E/gviz/tq?tqx=out:csv&sheet=Расписание';
 
   /* ── Default June schedule ────────────────────────────────────────
      date → events array. type: dance | book | run | pic | train | photo | content | marathon | rest | special
@@ -824,27 +824,43 @@ a{color:inherit;text-decoration:none}
       .map(r => Object.fromEntries(head.map((h, i) => [h, (r[i] || '').trim()])));
   }
   async function tryLoadSheet(){
-    if (!SHEET_URL || SHEET_URL === 'https://docs.google.com/spreadsheets/d/e/2PACX-1vSZQP0DutcNd51XBxYyb19xzL4wUOX2SoW2Z-7Zl0nDhFExM3H-XeTK5pporF1R4VbWDfxL81tRwaCM/pub?output=csv' || !SHEET_URL.startsWith('http')) return;
-    try {
-      const res = await fetch(SHEET_URL, { cache:'no-store' });
-      if (!res.ok) throw new Error('HTTP ' + res.status);
-      const rows = parseCSV(await res.text());
-      const byDate = {};
-      rows.forEach(r => {
-        if (!r.date || !r.type || !r.title) return;
-        const ev = { type:r.type.trim(), title:r.title.trim(), desc:(r.desc || '').trim(), time:(r.time || '').trim() };
-        if (r.starth) ev.startH = +r.starth;
-        if (r.startm) ev.startM = +r.startm;
-        if (r.endh)   ev.endH   = +r.endh;
-        if (r.endm)   ev.endM   = +r.endm;
-        (byDate[r.date.trim()] = byDate[r.date.trim()] || []).push(ev);
-      });
-      if (Object.keys(byDate).length){
-        DATA = byDate;
-        buildCalendar(currentMonth);
-        console.log('✅ Расписание загружено из Google Таблицы:', Object.keys(byDate).length, 'дат');
-      }
-    } catch (e){ console.warn('⚠️ Не удалось загрузить таблицу, используем встроенные данные.', e); }
+    if (!SHEET_URL || SHEET_URL === 'ВСТАВЬ_ССЫЛКУ_СЮДА' || !SHEET_URL.startsWith('http')) return;
+
+    /* Пробуем основную ссылку, если не сработает — пробуем альтернативный формат */
+    const SHEET_ID = '1hcSYs1wEek6Qlhcqm3BuTeFx2z71xLn5dwd0IWeP_2E';
+    const urls = [
+      SHEET_URL,
+      `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:csv`,
+      `https://docs.google.com/spreadsheets/d/${SHEET_ID}/export?format=csv&gid=0`
+    ];
+
+    for (const url of urls){
+      try {
+        const res = await fetch(url, { cache:'no-store' });
+        if (!res.ok) continue;
+        const text = await res.text();
+        if (!text || text.length < 10 || text.includes('<!DOCTYPE')) continue;
+
+        const rows = parseCSV(text);
+        const byDate = {};
+        rows.forEach(r => {
+          if (!r.date || !r.type || !r.title) return;
+          const ev = { type:r.type.trim(), title:r.title.trim(), desc:(r.desc || '').trim(), time:(r.time || '').trim() };
+          if (r.starth) ev.startH = +r.starth;
+          if (r.startm) ev.startM = +r.startm;
+          if (r.endh)   ev.endH   = +r.endh;
+          if (r.endm)   ev.endM   = +r.endm;
+          (byDate[r.date.trim()] = byDate[r.date.trim()] || []).push(ev);
+        });
+        if (Object.keys(byDate).length){
+          DATA = byDate;
+          buildCalendar(currentMonth);
+          console.log('✅ Расписание загружено из Google Таблицы:', Object.keys(byDate).length, 'дат');
+          return; /* Успех — выходим */
+        }
+      } catch (e){ console.warn('Попытка загрузки не удалась:', url, e); }
+    }
+    console.warn('⚠️ Не удалось загрузить таблицу ни по одной ссылке. Используем встроенные данные.');
   }
 
   buildCalendar(5);
