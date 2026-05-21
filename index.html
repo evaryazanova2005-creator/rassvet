@@ -91,8 +91,8 @@ h1,h2,h3,h4{letter-spacing:-.01em}
 .schedule-foot{text-align:center;font-size:13.5px;color:var(--ink-mute);margin-top:28px;}
 
 /* MANIFESTO */
-.manifesto-wrap{padding:30px 0 55px}
-.manifesto{color:#5b4636;font-family:'Cormorant Garamond',serif;font-size:23px;line-height:1.45;font-weight:800;}
+.manifesto-wrap{padding:30px 0 60px}
+.manifesto{background:linear-gradient(110deg,#f08847 0%,#f29659 35%,#f4a472 70%,#f4b384 100%);border-radius:28px;padding:56px 70px;color:#fffaf0;font-family:'Cormorant Garamond',serif;font-size:25px;line-height:1.45;font-weight:400;box-shadow:0 14px 36px rgba(200,120,60,.16);}
 
 /* ACTIVITIES */
 .activities{padding:90px 0 100px}
@@ -248,6 +248,62 @@ h1,h2,h3,h4{letter-spacing:-.01em}
 @media(max-width:1080px){.gallery{grid-template-columns:repeat(2,1fr)}.gallery .g.tall{aspect-ratio:1/1}}
 @media(max-width:880px){.container{padding:0 22px}.hero-grid,.about-grid,.benefits-grid,.tariffs,.footer-grid,.activities-head{grid-template-columns:1fr;gap:36px}.activities-sub,.pricing-sub{text-align:left;max-width:none}.activity-grid{grid-template-columns:1fr}.hero h1{font-size:56px}.about h2{font-size:38px}.section-title{font-size:48px}.schedule{padding:32px 22px}.week{grid-template-columns:repeat(4,1fr)}.manifesto{padding:36px 28px;font-size:19px}.gallery{grid-template-columns:1fr 1fr}.nav{display:none}.cta h2{font-size:48px}.story-title{font-size:36px}.modal{padding:32px 24px}.modal h2{font-size:28px}}
 </style>
+<style>
+.checklist-banner{padding:30px 0 0}
+.checklist-banner-inner{
+  display:flex;align-items:center;justify-content:space-between;gap:36px;
+  background:linear-gradient(135deg,#ef7d40 0%,#f08a51 50%,#f4a276 100%);
+  border-radius:28px;padding:48px 56px;
+  color:#fff8e4;
+  box-shadow:0 18px 40px rgba(200,100,40,.22);
+  position:relative;overflow:hidden;
+  transition:transform .25s ease, box-shadow .25s ease;
+  text-decoration:none;
+}
+.checklist-banner-inner:hover{transform:translateY(-3px);box-shadow:0 24px 48px rgba(200,100,40,.30)}
+.checklist-banner-inner::before{
+  content:"";position:absolute;top:-60px;right:-40px;width:240px;height:240px;
+  background:radial-gradient(circle, rgba(255,255,255,.30) 0%, transparent 65%);
+  border-radius:50%;pointer-events:none;
+}
+.cb-text{flex:1;position:relative;z-index:1}
+.cb-eyebrow{
+  display:inline-block;
+  background:rgba(255,255,255,.22);
+  padding:7px 16px;border-radius:999px;
+  font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;
+  font-weight:500;margin-bottom:16px;
+}
+.cb-title{
+  font-family:'Cormorant Garamond',serif;
+  font-weight:600;font-size:46px;line-height:1.02;
+  margin:0 0 12px;letter-spacing:-.018em;
+  text-wrap:balance;
+}
+.cb-title i{font-style:italic;font-weight:500}
+.cb-title .big{
+  display:inline-block;
+  background:#fff8e4;color:var(--orange);
+  padding:0 14px;border-radius:10px;
+  font-size:.92em;transform:rotate(-2deg);margin-right:4px;
+}
+.cb-sub{font-size:15px;line-height:1.55;max-width:520px;opacity:.95;margin:0}
+.cb-arrow{
+  flex-shrink:0;position:relative;z-index:1;
+  width:72px;height:72px;border-radius:50%;
+  background:#fff8e4;color:var(--orange);
+  display:inline-flex;align-items:center;justify-content:center;
+  font-size:30px;
+  box-shadow:0 8px 24px rgba(0,0,0,.12);
+  transition:transform .25s ease;
+}
+.checklist-banner-inner:hover .cb-arrow{transform:translateX(6px)}
+@media (max-width:880px){
+  .checklist-banner-inner{flex-direction:column;align-items:flex-start;text-align:left;padding:34px 28px;gap:24px}
+  .cb-title{font-size:32px}
+  .cb-arrow{width:56px;height:56px;font-size:24px}
+}
+</style>
 </head>
 <body>
 
@@ -294,7 +350,7 @@ h1,h2,h3,h4{letter-spacing:-.01em}
       <span class="section-eyebrow">о клубе</span>
       <h2>В клубе каждую неделю ты будешь <i>ощущать радость</i></h2>
       <p>Рассвет — это закрытое сообщество для девушек, которые хотят наполнить жизнь движением, общением и внутренней гармонией. Встречаемся <strong>несколько раз в неделю</strong>, а вы сами выбираете, что ближе.</p>
-      <p>Тебе не нужно ломать голову, чем заняться — расписание уже готово. Пробежки по выходным, танцы под крутые треки, книжный клуб и пикники по вечерам, встречи и меропритяия в течение недели. Тёплая компания, движение и вдохновение уже ждут тебя.</p>
+      <p>Тебе не нужно ломать голову, чем заняться — расписание уже готово. Пробежки по выходным, танцы в обед, книжный клуб по вечерам, пикники и встречи в течение недели. Тёплая компания, движение и вдохновение уже ждут тебя.</p>
     </div>
   </div>
 </section>
@@ -315,7 +371,7 @@ h1,h2,h3,h4{letter-spacing:-.01em}
         <div class="day"><span class="day-name">Сб</span><div class="event green">Пробежка<span class="event-time">10:00–11:30</span></div></div>
         <div class="day"><span class="day-name">Вс</span><div class="event yellow">Отдыхаем<span class="event-time">весь день ☀</span></div></div>
       </div>
-      <div class="schedule-foot">Помимо основного расписания — тренировки в парке, content дни, велопрогулки и воплощение ваших идей</div>
+      <div class="schedule-foot">Помимо основного расписания — тренировки в парке, фотодни, велопрогулки и воплощение ваших идей</div>
     </div>
   </div>
 </section>
@@ -323,7 +379,7 @@ h1,h2,h3,h4{letter-spacing:-.01em}
 <section class="manifesto-wrap">
   <div class="container">
     <div class="manifesto">
-      Рассвет — это пространство, где девушки собираются вместе, чтобы разделять события и эмоции, общаться и активничать. Я верю, что регулярные встречи с единомышленницами меняют качество жизни: появляется лёгкость, уверенность и ощущение, что ты на своём месте. Моя задача, чтобы вы каждый раз уходили с улыбкой. Это не курс и не марафон — это образ жизни.
+      Рассвет — это пространство, где девушки собираются вместе, чтобы разделять события и эмоции, общаться и активничать. Я верю, что регулярные встречи с единомышленницами меняют качество жизни: появляется лёгкость, уверенность и ощущение, что ты на своём месте. В клубе мы бегаем, танцуем по вечерам, обсуждаем книги и фильмы, ходим на пикники — чтобы каждый раз уходить с улыбкой. Это не курс и не марафон — это образ жизни.
     </div>
   </div>
 </section>
@@ -372,10 +428,10 @@ h1,h2,h3,h4{letter-spacing:-.01em}
         <ul>
           <li>Крутая атмосфера и общение с вдохновляющими девушками</li>
           <li>Не нужно думать, чем заняться — расписание уже готово</li>
-          <li>Идеи для контента и люди в кадре</li>
+          <li>Навык планирования и тайм-менеджмента</li>
           <li>Разнообразие активностей в одном месте</li>
           <li>Свобода выбора — вы выбираете, что сейчас вам подходит</li>
-          <li>Чувство единения и поддержки каждую неделю</li>
+          <li>Чувство «своих» и поддержки каждую неделю</li>
         </ul>
       </div>
       <div class="b-card right">
@@ -383,7 +439,7 @@ h1,h2,h3,h4{letter-spacing:-.01em}
         <ul>
           <li>Вдохновлять и влиять на жизнь девушек к лучшему</li>
           <li>Делиться опытом в разных сферах активности</li>
-          <li>Создавать пространство для взаимного роста и отдыха</li>
+          <li>Создавать пространство для взаимного роста</li>
           <li>Знакомить классных людей друг с другом</li>
           <li>Просто люблю людей и хочу быть полезной</li>
         </ul>
@@ -440,6 +496,19 @@ h1,h2,h3,h4{letter-spacing:-.01em}
       </div>
 
     </div>
+  </div>
+</section>
+
+<section class="checklist-banner">
+  <div class="container">
+    <a href="checklist.html" class="checklist-banner-inner">
+      <div class="cb-text">
+        <span class="cb-eyebrow">✨ Подарок от клуба</span>
+        <h2 class="cb-title"><span class="big">45+</span> вещей, которые <i>веселее делать вместе</i></h2>
+        <p class="cb-sub">Памятка-чек-лист со всеми идеями Рассвета. Отмечай галочки, распечатывай на стену и зови подругу.</p>
+      </div>
+      <span class="cb-arrow">→</span>
+    </a>
   </div>
 </section>
 
