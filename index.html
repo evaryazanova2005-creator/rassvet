@@ -68,6 +68,161 @@ h1,h2,h3,h4{letter-spacing:-.01em}
 .about-text p{font-size:16px;color:var(--ink-soft);line-height:1.65;margin:0 0 18px;max-width:520px;}
 .about-text strong{color:var(--ink);font-weight:600}
 
+/* ───────────────── WELCOME СЕКЦИЯ ───────────────── */
+.welcome-wrap{padding:30px 0 50px}
+.welcome{
+  position:relative;overflow:hidden;
+  display:grid;grid-template-columns:1.15fr .85fr;gap:60px;align-items:center;
+  background:linear-gradient(135deg,#fff5e3 0%,#fdebcf 55%,#fbd9b0 100%);
+  border-radius:32px;
+  padding:56px 64px;
+  box-shadow:0 18px 44px rgba(200,130,50,.14);
+}
+.welcome::before{
+  content:"";position:absolute;top:-100px;right:-80px;width:340px;height:340px;
+  background:radial-gradient(circle, rgba(255,255,255,.55) 0%, transparent 65%);
+  border-radius:50%;pointer-events:none;
+}
+.welcome::after{
+  content:"";position:absolute;bottom:-120px;left:-60px;width:280px;height:280px;
+  background:radial-gradient(circle, rgba(185,207,138,.30) 0%, transparent 65%);
+  border-radius:50%;pointer-events:none;
+}
+.welcome-content{position:relative;z-index:2}
+.welcome-eyebrow{
+  display:inline-flex;align-items:center;gap:8px;
+  background:rgba(255,255,255,.7);
+  padding:9px 18px;border-radius:999px;
+  font-size:12px;letter-spacing:.14em;text-transform:uppercase;
+  font-weight:500;color:var(--orange);
+  margin-bottom:24px;
+}
+.welcome-eyebrow .dot{width:7px;height:7px;border-radius:50%;background:var(--orange);animation:pdot 2s infinite;}
+.welcome h2{
+  font-family:'Cormorant Garamond',serif;
+  font-weight:600;font-size:54px;line-height:1.02;
+  margin:0 0 22px;letter-spacing:-.014em;text-wrap:balance;
+}
+.welcome h2 i{font-style:italic;font-weight:500;color:var(--orange);}
+.welcome-lead{
+  font-size:16.5px;line-height:1.6;color:var(--ink-soft);
+  max-width:520px;margin:0 0 30px;
+}
+.welcome-lead strong{color:var(--ink);font-weight:600}
+.welcome-bullets{
+  list-style:none;padding:0;margin:0 0 32px;
+  display:flex;flex-direction:column;gap:12px;max-width:520px;
+}
+.welcome-bullets li{
+  font-size:15px;color:var(--ink-soft);line-height:1.5;
+  display:flex;gap:12px;align-items:flex-start;
+}
+.welcome-bullets li::before{
+  content:"☀";color:var(--orange);font-size:15px;flex-shrink:0;margin-top:1px;
+}
+.welcome-cta-row{display:flex;align-items:center;gap:20px;flex-wrap:wrap}
+.welcome-cta{
+  background:var(--orange);color:#fff;
+  padding:16px 32px;border-radius:999px;
+  font-size:14.5px;font-weight:500;
+  display:inline-flex;align-items:center;gap:10px;
+  transition:transform .15s ease, background .2s ease, box-shadow .2s ease;
+  box-shadow:0 8px 22px rgba(233,109,42,.28);
+}
+.welcome-cta:hover{background:#d46820;transform:translateY(-2px);box-shadow:0 12px 28px rgba(233,109,42,.36)}
+.welcome-cta .arr{transition:transform .2s}
+.welcome-cta:hover .arr{transform:translateX(4px)}
+.welcome-note{font-size:13.5px;color:var(--ink-mute);max-width:260px;line-height:1.45}
+
+.welcome-card{
+  position:relative;z-index:2;
+  background:#fffaf0;border-radius:24px;
+  padding:36px 32px;
+  box-shadow:0 14px 32px rgba(160,110,40,.14);
+  transform:rotate(1.5deg);
+  transition:transform .3s ease;
+}
+.welcome-card:hover{transform:rotate(0deg) translateY(-4px)}
+.welcome-card-tag{
+  position:absolute;top:-14px;left:24px;
+  background:var(--green-deep);color:#fff8e4;
+  font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;
+  padding:6px 16px;border-radius:999px;font-weight:500;
+}
+.welcome-card-price{
+  font-family:'Cormorant Garamond',serif;
+  font-size:80px;font-weight:600;line-height:1;
+  color:var(--ink);margin:6px 0 4px;
+  display:flex;align-items:flex-start;gap:2px;
+}
+.welcome-card-price .ruble{font-size:28px;margin-top:18px;margin-left:6px;opacity:.7}
+.welcome-card-sub{font-size:14px;color:var(--ink-mute);font-style:italic;margin-bottom:24px}
+.welcome-card-list{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:11px}
+.welcome-card-list li{font-size:14.5px;color:var(--ink-soft);line-height:1.45;display:flex;gap:10px;align-items:flex-start}
+.welcome-card-list li::before{content:"✓";color:var(--orange);font-weight:700;font-size:13px;margin-top:2px;flex-shrink:0}
+.welcome-card-hint{
+  margin-top:22px;padding-top:18px;
+  border-top:1px dashed var(--line);
+  font-size:13px;color:var(--ink-mute);line-height:1.5;
+  font-style:italic;
+}
+
+/* ── Welcome форматы ─────────────────────── */
+.welcome-step-label{
+  font-size:14px;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--orange);font-weight:600;margin:0 0 14px;
+}
+.welcome-formats{
+  display:grid;grid-template-columns:1fr 1fr;gap:12px;
+  max-width:520px;margin-bottom:28px;
+}
+.wf-card{
+  display:flex;flex-direction:column;align-items:flex-start;gap:4px;
+  background:#fffaf0;border:2px solid var(--line);
+  border-radius:18px;padding:18px 20px;
+  text-align:left;cursor:pointer;
+  transition:border-color .2s,transform .18s,box-shadow .18s,background .2s;
+}
+.wf-card:hover{border-color:var(--orange-100);transform:translateY(-2px);box-shadow:0 8px 20px rgba(200,130,50,.12)}
+.wf-card.selected{
+  border-color:var(--orange);background:#fef0e0;
+  box-shadow:0 0 0 3px rgba(233,109,42,.18),0 8px 20px rgba(200,130,50,.12);
+  transform:translateY(-2px);
+}
+.wf-icon{font-size:24px;line-height:1;margin-bottom:2px}
+.wf-name{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:19px;color:var(--ink);line-height:1.2}
+.wf-when{font-size:12.5px;color:var(--ink-mute);line-height:1.3}
+
+.welcome-form-wrap{
+  max-width:520px;
+  animation:wfSlideIn .35s ease;
+}
+@keyframes wfSlideIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+.welcome-chosen{
+  display:inline-flex;align-items:center;gap:8px;
+  background:var(--green-50);border:1.5px solid #cad9a9;
+  padding:8px 18px;border-radius:999px;
+  font-size:13.5px;font-weight:500;color:var(--green-deep);
+  margin-bottom:18px;
+}
+.wf-fields{
+  display:grid;grid-template-columns:1fr 1fr;gap:14px;
+  margin-bottom:16px;
+}
+.welcome-submit{
+  width:100%;padding:17px 30px;border-radius:999px;
+  background:var(--orange);color:#fff;
+  font-size:15px;font-weight:500;border:none;cursor:pointer;
+  transition:background .2s,transform .15s,box-shadow .2s;
+  box-shadow:0 8px 22px rgba(233,109,42,.28);
+}
+.welcome-submit:hover{background:#d46820;transform:translateY(-2px);box-shadow:0 12px 28px rgba(233,109,42,.36)}
+.welcome-submit:disabled{opacity:.5;cursor:not-allowed;transform:none!important}
+.welcome-form-note{
+  font-size:13px;color:var(--ink-mute);line-height:1.5;
+  margin:14px 0 0;max-width:460px;
+}
+
 /* SCHEDULE TEASER */
 .schedule-wrap{padding:30px 0 50px}
 .schedule{border-radius:28px;background:var(--paper);border:1px solid var(--line);box-shadow:0 8px 28px rgba(160,110,40,.05);padding:46px 52px 38px;}
@@ -245,7 +400,24 @@ h1,h2,h3,h4{letter-spacing:-.01em}
 .modal-success .pay-direct-btn:hover{background:#d46820;transform:translateY(-1px)}
 
 @media(max-width:1080px){.gallery{grid-template-columns:repeat(2,1fr)}.gallery .g.tall{aspect-ratio:1/1}}
-@media(max-width:880px){.container{padding:0 22px}.hero-grid,.about-grid,.benefits-grid,.tariffs,.footer-grid,.activities-head{grid-template-columns:1fr;gap:36px}.activities-sub,.pricing-sub{text-align:left;max-width:none}.activity-grid{grid-template-columns:1fr}.hero h1{font-size:56px}.about h2{font-size:38px}.section-title{font-size:48px}.schedule{padding:32px 22px}.week{grid-template-columns:repeat(4,1fr)}.manifesto{padding:36px 28px;font-size:19px}.gallery{grid-template-columns:1fr 1fr}.nav{display:none}.cta h2{font-size:48px}.story-title{font-size:36px}.modal{padding:32px 24px}.modal h2{font-size:28px}}
+@media(max-width:880px){
+  .container{padding:0 22px}
+  .hero-grid,.about-grid,.benefits-grid,.tariffs,.footer-grid,.activities-head{grid-template-columns:1fr;gap:36px}
+  .activities-sub,.pricing-sub{text-align:left;max-width:none}
+  .activity-grid{grid-template-columns:1fr}
+  .hero h1{font-size:56px}.about h2{font-size:38px}.section-title{font-size:48px}
+  .schedule{padding:32px 22px}.week{grid-template-columns:repeat(4,1fr)}
+  .manifesto{padding:36px 28px;font-size:19px}
+  .gallery{grid-template-columns:1fr 1fr}.nav{display:none}
+  .cta h2{font-size:48px}.story-title{font-size:36px}
+  .modal{padding:32px 24px}.modal h2{font-size:28px}
+  .welcome{grid-template-columns:1fr;padding:38px 28px;gap:36px}
+  .welcome h2{font-size:36px}
+  .welcome-card{transform:rotate(0deg)}
+  .welcome-card-price{font-size:64px}
+  .welcome-formats{grid-template-columns:1fr 1fr;gap:10px}
+  .wf-fields{grid-template-columns:1fr}
+}
 </style>
 <style>
 .checklist-banner{padding:30px 0 0}
@@ -405,6 +577,19 @@ h1,h2,h3,h4{letter-spacing:-.01em}
   </div>
 </section>
 
+<section class="checklist-banner">
+  <div class="container">
+    <a href="checklist.html" class="checklist-banner-inner">
+      <div class="cb-text">
+        <span class="cb-eyebrow">✨ Подарок от клуба</span>
+        <h2 class="cb-title"><span class="big">45+</span> вещей, которые <i>веселее делать вместе</i></h2>
+        <p class="cb-sub">Памятка-чек-лист со всеми идеями Рассвета. Отмечай галочки, распечатывай на стену и зови подругу.</p>
+      </div>
+      <span class="cb-arrow">→</span>
+    </a>
+  </div>
+</section>
+
 <section class="gallery-wrap">
   <div class="container">
     <div class="gallery-eyebrow"><span class="section-eyebrow">атмосфера</span></div>
@@ -499,16 +684,67 @@ h1,h2,h3,h4{letter-spacing:-.01em}
   </div>
 </section>
 
-<section class="checklist-banner">
+<!-- ───────────── WELCOME ВСТРЕЧА ───────────── -->
+<section id="welcome" class="welcome-wrap">
   <div class="container">
-    <a href="checklist.html" class="checklist-banner-inner">
-      <div class="cb-text">
-        <span class="cb-eyebrow">✨ Подарок от клуба</span>
-        <h2 class="cb-title"><span class="big">45+</span> вещей, которые <i>веселее делать вместе</i></h2>
-        <p class="cb-sub">Памятка-чек-лист со всеми идеями Рассвета. Отмечай галочки, распечатывай на стену и зови подругу.</p>
+    <div class="welcome">
+      <div class="welcome-content">
+        <span class="welcome-eyebrow"><span class="dot"></span>Знакомство с клубом</span>
+        <h2>Не готова сразу? <i>Попробуй одну встречу</i></h2>
+        <p class="welcome-lead">
+          Раз в месяц у нас открыта <strong>Welcome-встреча</strong> — выбери активность, запишись и приходи. По цене чашки кофе, без обязательств. Просто чтобы почувствовать атмосферу и познакомиться.
+        </p>
+
+        <p class="welcome-step-label">Выбери формат:</p>
+        <div class="welcome-formats" id="welcome-formats">
+          <button class="wf-card" data-format="run" type="button">
+            <span class="wf-icon">🏃‍♀️</span>
+            <span class="wf-name">Пробежка</span>
+            <span class="wf-when">По красивым маршрутам</span>
+          </button>
+          <button class="wf-card" data-format="picnic" type="button">
+            <span class="wf-icon">🧺</span>
+            <span class="wf-name">Пикник и игры</span>
+            <span class="wf-when">Отдых на свежем воздухе</span>
+          </button>
+          <button class="wf-card" data-format="book" type="button">
+            <span class="wf-icon">📖</span>
+            <span class="wf-name">Книжный клуб</span>
+            <span class="wf-when">Обсуждения и эмоции</span>
+          </button>
+          <button class="wf-card" data-format="workout" type="button">
+            <span class="wf-icon">💪</span>
+            <span class="wf-name">Тренировка на улице</span>
+            <span class="wf-when">Fullbody в парке</span>
+          </button>
+        </div>
+
+        <div class="welcome-form-wrap" id="welcome-form-wrap" hidden>
+          <div class="welcome-chosen" id="welcome-chosen"></div>
+          <div class="wf-fields">
+            <div class="field"><label for="wf-name">Твоё имя</label><input id="wf-name" type="text" placeholder="Анна" required/></div>
+            <div class="field"><label for="wf-tg">Telegram</label><input id="wf-tg" type="text" placeholder="@anna" required/></div>
+          </div>
+          <button type="button" class="welcome-submit" id="welcome-submit">Записаться за 500 ₽ →</button>
+          <p class="welcome-form-note">После записи перенаправим на страницу оплаты. Я свяжусь с тобой в Telegram и расскажу все детали!</p>
+        </div>
       </div>
-      <span class="cb-arrow">→</span>
-    </a>
+
+      <div class="welcome-card">
+        <span class="welcome-card-tag">Раз в месяц</span>
+        <div class="welcome-card-price">500<span class="ruble">₽</span></div>
+        <div class="welcome-card-sub">— как чашка кофе</div>
+        <ul class="welcome-card-list">
+          <li>Одна активность на выбор</li>
+          <li>Разовое посещение, без подписки</li>
+          <li>Тёплый круг и общение</li>
+          <li>Возможность задать вопросы лично</li>
+        </ul>
+        <div class="welcome-card-hint">
+          После Welcome-встречи можно вступить в клуб со скидкой 10% на первый месяц.
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -544,7 +780,7 @@ h1,h2,h3,h4{letter-spacing:-.01em}
       </div>
       <div class="faq-item">
         <button class="faq-q">Можно ли попробовать перед оплатой? <span class="faq-icon">+</span></button>
-        <div class="faq-a"><p>Да, следи за каналом клуба, раз в месяц можно попробовать формат комьюнити на открытых встречах.</p></div>
+        <div class="faq-a"><p>Да! Раз в месяц можно прийти на Welcome-встречу — любую активность клуба за 500 ₽. Это разовое посещение без обязательств. Подробнее в блоке «Знакомство с клубом» выше.</p></div>
       </div>
       <div class="faq-item">
         <button class="faq-q">Что если я хочу заморозить участие? <span class="faq-icon">+</span></button>
@@ -800,6 +1036,67 @@ payForm.addEventListener('submit', async e => {
 
   submitBtn.textContent = 'Перейти к оплате';
   submitBtn.disabled = false;
+});
+
+// ── Welcome-встреча ──────────────────────────────────
+const WELCOME_PAY_URL = 'https://link.payform.ru/?paymentLinkId=84f25917-d488-44fc-b4dc-94f0fecf068e';
+const FORMAT_LABELS = {
+  run:     '🏃‍♀️ Пробежка',
+  picnic:  '🧺 Пикник и игры',
+  book:    '📖 Книжный клуб',
+  workout: '💪 Тренировка на улице'
+};
+
+let selectedWelcomeFormat = null;
+
+document.querySelectorAll('.wf-card').forEach(card => {
+  card.addEventListener('click', () => {
+    document.querySelectorAll('.wf-card').forEach(c => c.classList.remove('selected'));
+    card.classList.add('selected');
+    selectedWelcomeFormat = card.dataset.format;
+
+    const formWrap = document.getElementById('welcome-form-wrap');
+    const chosen   = document.getElementById('welcome-chosen');
+    chosen.textContent = '✓ ' + FORMAT_LABELS[selectedWelcomeFormat];
+    formWrap.hidden = false;
+    formWrap.scrollIntoView({ behavior:'smooth', block:'nearest' });
+  });
+});
+
+document.getElementById('welcome-submit').addEventListener('click', async () => {
+  const wfName = document.getElementById('wf-name');
+  const wfTg   = document.getElementById('wf-tg');
+  const btn    = document.getElementById('welcome-submit');
+
+  if (!selectedWelcomeFormat) return;
+  if (!wfName.value.trim()) { wfName.focus(); return; }
+  if (!wfTg.value.trim())   { wfTg.focus();   return; }
+
+  btn.textContent = 'Записываем…';
+  btn.disabled = true;
+
+  // Отправляем в Google Таблицу
+  try {
+    await fetch(SHEETS_URL, {
+      method: 'POST',
+      redirect: 'follow',
+      headers: { 'Content-Type': 'text/plain' },
+      body: JSON.stringify({
+        name: wfName.value.trim(),
+        telegram: wfTg.value.trim(),
+        phone: '',
+        tariff: 'welcome',
+        period: 1,
+        welcome_format: FORMAT_LABELS[selectedWelcomeFormat]
+      })
+    });
+  } catch { /* не блокируем */ }
+
+  // Редирект на Продамус
+  window.open(WELCOME_PAY_URL, '_blank');
+
+  btn.textContent = 'Записаться за 500 ₽ →';
+  btn.disabled = false;
 });
 </script>
 </body>
