@@ -222,6 +222,19 @@ h1,h2,h3,h4{letter-spacing:-.01em}
   font-size:13px;color:var(--ink-mute);line-height:1.5;
   margin:14px 0 0;max-width:460px;
 }
+.wf-spots{
+  display:block;margin-top:6px;
+  font-family:'Onest',sans-serif;
+  font-size:11.5px;font-weight:500;
+  color:var(--green-deep);
+}
+.wf-spots-few{color:#e67e22;font-weight:600}
+.wf-spots-none{color:#c0392b}
+.wf-card.wf-full{
+  opacity:.45;cursor:not-allowed;
+  pointer-events:none;
+  filter:grayscale(.4);
+}
 
 /* SCHEDULE TEASER */
 .schedule-wrap{padding:30px 0 50px}
@@ -886,6 +899,7 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
 
 // ── Spots counter ──────────────────────────────────────
 const SHEETS_URL = 'https://script.google.com/macros/s/AKfycbwPjHt8DuppBvWeejvCvcakVk3B1li6DAthQofl2AHdAk510p6B_G0g6HsE_uIN5RS67g/exec';
+
 function plural(n) {
   if (n%10===1 && n%100!==11) return 'место';
   if ([2,3,4].includes(n%10) && ![12,13,14].includes(n%100)) return 'места';
@@ -921,7 +935,7 @@ async function loadSpots() {
     document.getElementById('spots-dance-text').textContent = 'Осталось несколько мест';
   }
 }
-loadSpots();
+// loadSpots вызывается ниже как loadSpotsWithWelcome()
 
 // ── Ссылки оплаты Продамус ────────────────────────────
 const PAY_LINKS = {
@@ -1047,9 +1061,59 @@ const FORMAT_LABELS = {
 };
 
 let selectedWelcomeFormat = null;
+let welcomeSpots = { run: 3, picnic: 3, book: 3, workout: 3 }; // по умолчанию
+
+// Загружаем остатки мест для welcome при загрузке страницы
+// (данные уже приходят из того же GET-запроса loadSpots)
+const origLoadSpots = loadSpots;
+async function loadSpotsWithWelcome() {
+  try {
+    const r = await fetch(SHEETS_URL, { method: 'GET', redirect: 'follow' });
+    const d = JSON.parse(await r.text());
+    updateBadge('base',  d.base);
+    updateBadge('dance', d.dance);
+    if (d.welcome) {
+      welcomeSpots = d.welcome;
+      updateWelcomeCards();
+    }
+  } catch {
+    document.getElementById('spots-base-text').textContent  = 'Осталось несколько мест';
+    document.getElementById('spots-dance-text').textContent = 'Осталось несколько мест';
+  }
+}
+loadSpotsWithWelcome();
+
+function updateWelcomeCards() {
+  document.querySelectorAll('.wf-card').forEach(card => {
+    const key   = card.dataset.format;
+    const spots = welcomeSpots[key];
+    let badge   = card.querySelector('.wf-spots');
+
+    // Создаём бейдж если его ещё нет
+    if (!badge) {
+      badge = document.createElement('span');
+      badge.className = 'wf-spots';
+      card.appendChild(badge);
+    }
+
+    if (spots <= 0) {
+      badge.textContent = 'Мест нет';
+      badge.classList.add('wf-spots-none');
+      card.classList.add('wf-full');
+      card.disabled = true;
+    } else if (spots <= 1) {
+      badge.textContent = 'Последнее место!';
+      badge.classList.add('wf-spots-few');
+    } else {
+      badge.textContent = `Осталось ${spots} ${plural(spots)}`;
+    }
+  });
+}
 
 document.querySelectorAll('.wf-card').forEach(card => {
   card.addEventListener('click', () => {
+    if (card.classList.contains('wf-full')) return; // нет мест — не кликабельно
+
     document.querySelectorAll('.wf-card').forEach(c => c.classList.remove('selected'));
     card.classList.add('selected');
     selectedWelcomeFormat = card.dataset.format;
@@ -1076,7 +1140,7 @@ document.getElementById('welcome-submit').addEventListener('click', async () => 
 
   // Отправляем в Google Таблицу
   try {
-    await fetch(SHEETS_URL, {
+    const r = await fetch(SHEETS_URL, {
       method: 'POST',
       redirect: 'follow',
       headers: { 'Content-Type': 'text/plain' },
@@ -1089,7 +1153,21 @@ document.getElementById('welcome-submit').addEventListener('click', async () => 
         welcome_format: FORMAT_LABELS[selectedWelcomeFormat]
       })
     });
+    const result = JSON.parse(await r.text());
+
+    if (result.status === 'full') {
+      btn.textContent = 'Мест нет — выбери другой формат';
+      btn.disabled = false;
+      setTimeout(() => { btn.textContent = 'Записаться за 500 ₽ →'; }, 3000);
+      return;
+    }
   } catch { /* не блокируем */ }
+
+  // Уменьшаем счётчик локально
+  if (welcomeSpots[selectedWelcomeFormat] > 0) {
+    welcomeSpots[selectedWelcomeFormat]--;
+    updateWelcomeCards();
+  }
 
   // Редирект на Продамус
   window.open(WELCOME_PAY_URL, '_blank');
