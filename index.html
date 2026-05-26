@@ -937,15 +937,23 @@ async function loadSpots() {
 }
 // loadSpots вызывается ниже как loadSpotsWithWelcome()
 
-// ── Ссылки оплаты Продамус ────────────────────────────
+// URL страницы, куда вернуть после оплаты (со ссылкой на канал)
+const SUCCESS_URL = 'https://ВАШСАЙТ.ru/success.html'; // ← замените на свой URL
+
+function addSuccessUrl(link) {
+  const url = new URL(link);
+  url.searchParams.set('success_url', SUCCESS_URL);
+  return url.toString();
+}
+
 const PAY_LINKS = {
   base:  {
-    1: 'https://link.payform.ru/?paymentLinkId=b08a5d9c-4db7-4634-8e24-36875168300b',
-    3: 'https://link.payform.ru/?paymentLinkId=189279c5-1ea1-48f6-838b-b15a8cc178d4'
+    1: addSuccessUrl('https://link.payform.ru/?paymentLinkId=b08a5d9c-4db7-4634-8e24-36875168300b'),
+    3: addSuccessUrl('https://link.payform.ru/?paymentLinkId=189279c5-1ea1-48f6-838b-b15a8cc178d4')
   },
   dance: {
-    1: 'https://link.payform.ru/?paymentLinkId=31df960d-eef9-4bb7-847e-1bea1ae29529',
-    3: 'https://link.payform.ru/?paymentLinkId=458c66bd-f748-4508-ad3a-59842f967e4a'
+    1: addSuccessUrl('https://link.payform.ru/?paymentLinkId=31df960d-eef9-4bb7-847e-1bea1ae29529'),
+    3: addSuccessUrl('https://link.payform.ru/?paymentLinkId=458c66bd-f748-4508-ad3a-59842f967e4a')
   }
 };
 
