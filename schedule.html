@@ -253,7 +253,6 @@ a{color:inherit;text-decoration:none}
   .day-num{font-size:15px}
   .day-star{width:5px;height:5px}
 
-  /* На мобильных показываем короткую версию событий вместо полного скрытия */
   .ev{font-size:9.5px;padding:3px 4px;border-radius:5px;line-height:1.15;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;display:block;max-width:100%}
   .ev-time{display:none}
   .ev span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;display:block}
@@ -306,7 +305,6 @@ a{color:inherit;text-decoration:none}
   .footer-copy{font-size:11.5px;padding-top:16px}
 }
 
-/* Совсем маленькие экраны (iPhone SE и т.д.) */
 @media (max-width:380px){
   .container{padding:0 10px}
   .intro h1{font-size:32px}
@@ -322,7 +320,6 @@ a{color:inherit;text-decoration:none}
   .modal h2{font-size:22px}
 }
 
-/* Убираем hover-эффекты на touch-устройствах */
 @media (hover:none){
   .cell:hover{transform:none;box-shadow:none;background:var(--paper-soft)}
   .cell:active{background:#fff;transform:scale(.97);transition:transform .1s ease}
@@ -394,7 +391,7 @@ a{color:inherit;text-decoration:none}
     <div class="calendar-card" id="calendar-card">
       <div class="cal-head">
         <h2 class="cal-month" id="cal-month-label">Июнь <i>2026</i></h2>
-        <span class="cal-today" id="cal-today">Сегодня — 21 мая, четверг</span>
+        <span class="cal-today" id="cal-today"></span>
         <div class="cal-nav">
           <button id="prev-btn" aria-label="Предыдущий месяц">←</button>
           <button id="next-btn" aria-label="Следующий месяц">→</button>
@@ -462,18 +459,9 @@ a{color:inherit;text-decoration:none}
 </div>
 
 <script>
-  /* ══════════════════════════════════════════════════════════════════
-     🔶 ВСТАВЬ СЮДА ССЫЛКУ НА СВОЮ GOOGLE ТАБЛИЦУ (см. инструкцию)
-     Формат ссылки:
-     https://docs.google.com/spreadsheets/d/ТВОЙ_ID/gviz/tq?tqx=out:csv&sheet=Расписание
-     ══════════════════════════════════════════════════════════════════ */
-  const SHEET_URL = 'https://docs.google.com/spreadsheets/d/1hcSYs1wEek6Qlhcqm3BuTeFx2z71xLn5dwd0IWeP_2E/gviz/tq?tqx=out:csv&sheet=Расписание';
+  const SHEET_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vSZQP0DutcNd51XBxYyb19xzL4wUOX2SoW2Z-7Zl0nDhFExM3H-XeTK5pporF1R4VbWDfxL81tRwaCM/pub?gid=156384429&single=true&output=csv';
 
-  /* ── Default June schedule ────────────────────────────────────────
-     date → events array. type: dance | book | run | pic | train | photo | content | marathon | rest | special
-     startH/endH/endM in 24h for .ics/Google Calendar.                                               */
   const DEFAULT_DATA = {
-    /* ── МАЙ — старт клуба с 26 числа ── */
     '2026-05-26': [
       { type:'book',     title:'Книжный / кино клуб',           time:'18:00–19:30', desc:'Принеси любимую книгу года, делимся впечатлениями и выбираем книгу клуба.', startH:18, endH:19, endM:30 }
     ],
@@ -486,8 +474,6 @@ a{color:inherit;text-decoration:none}
     '2026-05-31': [
       { type:'rest',     title:'Семейный день и отдых',        time:'весь день',   desc:'Воскресенье — день для семьи и для себя.' }
     ],
-
-    /* ── ИЮНЬ ── */
     '2026-06-01': [
       { type:'dance',    title:'Танцы',                        time:'16:00–18:00', desc:'Работа с пластикой и чувством уверенности.', startH:16, endH:18 },
       { type:'marathon', title:'Старт онлайн-марафона 🔥',    time:'старт',       desc:'Тему выбираем в чате — 2 недели вместе, задания каждый день.' }
@@ -567,6 +553,13 @@ a{color:inherit;text-decoration:none}
   const RU_DOW   = ['воскресенье','понедельник','вторник','среда','четверг','пятница','суббота'];
   const RU_MONTH = ['января','февраля','марта','апреля','мая','июня','июля','августа','сентября','октября','ноября','декабря'];
 
+  const YEAR  = 2026;
+  let currentMonth = 5;
+  let DATA = DEFAULT_DATA;
+
+  /* ══════════════════════════════════════════════════════════════
+     🔧 ИСПРАВЛЕНИЕ: используем реальную дату вместо захардкоженной
+     ══════════════════════════════════════════════════════════════ */
   const TODAY = new Date();
 
   /* Динамически обновляем бейдж «Сегодня — …» */
@@ -577,13 +570,6 @@ a{color:inherit;text-decoration:none}
     el.textContent = 'Сегодня — ' + now.getDate() + ' ' + RU_MONTH[now.getMonth()] + ', ' + RU_DOW[now.getDay()];
   }
   updateTodayBadge();
-
-  function daysInMonth(y, m){ return new Date(y, m + 1, 0).getDate(); }
-  function mondayIdx(d){ return (d.getDay() + 6) % 7; }
-  function pad(n){ return n < 10 ? '0' + n : '' + n; }
-  function dateKey(y, m, d){ return `${y}-${pad(m+1)}-${pad(d)}`; }
-
-  function eventsForDate(y, m, d){ return DATA[dateKey(y, m, d)] || []; }
 
   function daysInMonth(y, m){ return new Date(y, m + 1, 0).getDate(); }
   function mondayIdx(d){ return (d.getDay() + 6) % 7; }
@@ -726,7 +712,6 @@ a{color:inherit;text-decoration:none}
     for (let d = 1; d <= dim; d++){
       eventsForDate(YEAR, m, d).forEach(e => { counts[e.type] = (counts[e.type] || 0) + 1; });
     }
-    // Marathon: 2 entries (start + final) count as 1 program
     if (counts.marathon){ counts.marathon = 1; }
     const items = TOTAL_ORDER.filter(k => counts[k]).map(k =>
       `<div class="total-item"><div class="total-num">${counts[k]}</div><div class="total-text">${TOTAL_LABEL[k]}</div></div>`
@@ -837,15 +822,24 @@ a{color:inherit;text-decoration:none}
     return rows.slice(1).filter(r => r.length && r.some(c => c.trim()))
       .map(r => Object.fromEntries(head.map((h, i) => [h, (r[i] || '').trim()])));
   }
+  function parseTSV(text){
+    const lines = text.split('\n').map(l => l.replace(/\r$/, ''));
+    if (!lines.length) return [];
+    const head = lines[0].split('\t').map(s => s.trim().toLowerCase());
+    return lines.slice(1).filter(l => l.trim())
+      .map(l => {
+        const cols = l.split('\t');
+        return Object.fromEntries(head.map((h, i) => [h, (cols[i] || '').trim()]));
+      });
+  }
   async function tryLoadSheet(){
     if (!SHEET_URL || SHEET_URL === 'ВСТАВЬ_ССЫЛКУ_СЮДА' || !SHEET_URL.startsWith('http')) return;
 
-    /* Пробуем основную ссылку, если не сработает — пробуем альтернативный формат */
-    const SHEET_ID = '1hcSYs1wEek6Qlhcqm3BuTeFx2z71xLn5dwd0IWeP_2E';
+    const SHEET_ID = '2PACX-1vSZQP0DutcNd51XBxYyb19xzL4wUOX2SoW2Z-7Zl0nDhFExM3H-XeTK5pporF1R4VbWDfxL81tRwaCM';
     const urls = [
       SHEET_URL,
-      `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:csv`,
-      `https://docs.google.com/spreadsheets/d/${SHEET_ID}/export?format=csv&gid=0`
+      `https://docs.google.com/spreadsheets/d/e/${SHEET_ID}/pub?gid=156384429&single=true&output=csv`,
+      `https://docs.google.com/spreadsheets/d/e/${SHEET_ID}/pub?gid=156384429&single=true&output=tsv`
     ];
 
     for (const url of urls){
@@ -855,7 +849,8 @@ a{color:inherit;text-decoration:none}
         const text = await res.text();
         if (!text || text.length < 10 || text.includes('<!DOCTYPE')) continue;
 
-        const rows = parseCSV(text);
+        const isTSV = url.includes('output=tsv');
+        const rows = isTSV ? parseTSV(text) : parseCSV(text);
         const byDate = {};
         rows.forEach(r => {
           if (!r.date || !r.type || !r.title) return;
@@ -870,7 +865,7 @@ a{color:inherit;text-decoration:none}
           DATA = byDate;
           buildCalendar(currentMonth);
           console.log('✅ Расписание загружено из Google Таблицы:', Object.keys(byDate).length, 'дат');
-          return; /* Успех — выходим */
+          return;
         }
       } catch (e){ console.warn('Попытка загрузки не удалась:', url, e); }
     }
