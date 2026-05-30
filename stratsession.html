@@ -595,6 +595,40 @@ h1,h2,h3,h4{letter-spacing:-.01em}
   filter:grayscale(.4);
 }
 
+/* Под-карточки челленджей внутри шага 04. Каждая — компактная карточка с
+   номером челленджа, датами периода и двумя полями для задач. Стилистически —
+   мини-версия .builder-step, чтобы визуально читалось «карточка в карточке». */
+.bs-challenges{display:flex;flex-direction:column;gap:12px;}
+.bs-challenge{
+  background:#fffdf6;
+  border:1px solid var(--line);
+  border-radius:14px;
+  padding:18px 22px;
+  transition:border-color .2s, box-shadow .2s;
+}
+.bs-challenge:hover{
+  border-color:var(--orange-100);
+  box-shadow:0 4px 14px rgba(200,130,50,.08);
+}
+.bs-challenge-head{
+  display:flex;align-items:baseline;gap:12px;
+  margin-bottom:12px;flex-wrap:wrap;
+}
+.bs-challenge-num{
+  font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:600;
+  font-size:22px;color:var(--orange);line-height:1;letter-spacing:-.01em;
+}
+.bs-challenge-dates{
+  font-size:13px;color:var(--ink-mute);font-weight:500;letter-spacing:.02em;
+}
+.bs-challenge-days{
+  margin-left:auto;font-size:11.5px;color:var(--ink-mute);
+  background:var(--orange-50);color:var(--orange);
+  padding:3px 10px;border-radius:999px;font-weight:600;letter-spacing:.04em;
+}
+.bs-challenge .bs-row-2{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+.bs-challenge input{padding:11px 14px;font-size:14px;}
+
 /* Кнопка сабмита — та же геометрия и анимация, что у твоей welcome-submit. */
 .builder-submit{
   display:block;width:100%;
@@ -742,25 +776,24 @@ h1,h2,h3,h4{letter-spacing:-.01em}
 <section class="hero">
   <div class="container hero-grid">
     <div>
-      <span class="eyebrow-pill">Стратсессия клуба · Май → Сентябрь</span>
       <h1>Итоги весны и&nbsp;план <i>на лето</i></h1>
-      <p class="lead">Конспект встречи. 19 дней до старта летнего цикла, шесть сфер на фокус и одно слово, которым мы назовём это лето.</p>
+      <p class="lead">Конспект встречи. Пять челленджей впереди, шесть сфер на фокус и одно слово, которым мы назовём это лето.</p>
       <div class="hero-meta">
         <span class="meta-chip"><span class="dot"></span>3 блока рефлексии</span>
         <span class="meta-chip green"><span class="dot"></span>6 сфер фокуса</span>
-        <span class="meta-chip olive"><span class="dot"></span>2 челленджа</span>
+        <span class="meta-chip olive"><span class="dot"></span>5 челленджей</span>
       </div>
     </div>
 
     <div class="hero-card">
       <div class="hero-card-inner">
         <span class="hero-card-tag"><span class="dot"></span>что внутри</span>
-        <h3>Один <i>конспект</i> — три горизонта</h3>
+        <h3>Один <i>конспект</i></h3>
         <ul>
           <li>Подвести весну за 15 минут</li>
           <li>Собрать колесо баланса на лето</li>
           <li>Разложить июнь по неделям</li>
-          <li>Выбрать челлендж и мудборд</li>
+          <li>Выбрать первый челлендж и&nbsp;мудборд</li>
           <li>Завести ритуал недельного отчёта</li>
         </ul>
       </div>
@@ -794,7 +827,7 @@ h1,h2,h3,h4{letter-spacing:-.01em}
           <h3 class="block-title">Блок 2. <i>Brain dump</i> — что висит в голове</h3>
           <span class="timer-pill">5–7 минут</span>
         </div>
-        <p class="intro">Выгрузите всё, что крутится в голове прямо сейчас. Без сортировки, без оценок, без редактирования. Чем сырее — тем честнее.</p>
+        <p class="intro">Выгрузите всё, что крутится в голове прямо сейчас.</p>
         <ol>
           <li>Что не закончено с весны и тянется за мной?</li>
           <li>Что тревожит или висит фоном?</li>
@@ -1028,10 +1061,10 @@ h1,h2,h3,h4{letter-spacing:-.01em}
       </div>
 
       <div class="assignment assignment-2">
-        <span class="assignment-tag">Задание №2 · Челлендж</span>
-        <h3>Выбрать самую <i>сложную задачу</i></h3>
-        <p>Из всех целей и задач, что вы расписали на июнь, выберите <strong>максимум 2</strong> — те, к которым сложнее всего подступиться. Не самые большие, а именно те, которые хочется обойти. Они станут вашими челленджами на ближайшие <strong>19 дней</strong>.</p>
-        <p class="hint">Принцип: то, чего избегаешь — обычно и есть ключ к следующему уровню. Челлендж не «успеть всё», а «перестать обходить». Берите максимум два — иначе фокус расплывётся.</p>
+        <span class="assignment-tag">Задание №2 · Челленджи</span>
+        <h3>Выбрать <i>2 самые сложные задачи</i> на каждый период</h3>
+        <p>Лето делится на <strong>5 челленджей</strong> по 19–20 дней. На каждый челлендж вы выбираете <strong>максимум 2 задачи</strong>, к которым сложнее всего подступиться, и каждый день отмечаете выполнение. Задача может быть конкретной (например, «3 тренировки в неделю») или одноразовой («запустить лендинг»).</p>
+        <p class="hint">Принцип: то, чего избегаешь — обычно и есть ключ к следующему уровню. Челлендж не «успеть всё», а «перестать обходить». Берите максимум две задачи на период — иначе фокус расплывётся.</p>
       </div>
 
     </div>
@@ -1094,23 +1127,19 @@ h1,h2,h3,h4{letter-spacing:-.01em}
         </div>
       </div>
 
-      <!-- Шаг 04: Максимум 2 челленджа. Даты в подписи к полям совпадают с
-           датами в xlsx-трекере, чтобы участница видела единую картину. -->
+      <!-- Шаг 04: Пять челленджей-периодов через всё лето, в каждом — максимум
+           2 задачи. Это правильная структура курса: лето нарезано на 5 отрезков
+           по ~19-20 дней, и на каждом участница выбирает не более двух задач,
+           по которым будет отчитываться каждый день. -->
       <div class="builder-step">
         <div class="bs-head">
           <span class="bs-num">04</span>
-          <h3 class="bs-title">Максимум <i>2 челленджа</i> — самые сложные задачи</h3>
+          <h3 class="bs-title">Пять <i>челленджей лета</i> — до 2 задач в каждом</h3>
         </div>
-        <div class="bs-row-2">
-          <div class="bs-field">
-            <label>Челлендж №1 · 01.06 — 19.06</label>
-            <input type="text" id="b-ch1" class="bs-input" placeholder="та задача, к которой сложнее всего подступиться" maxlength="120" />
-          </div>
-          <div class="bs-field">
-            <label>Челлендж №2 · 13.07 — 31.07 (необязательно)</label>
-            <input type="text" id="b-ch2" class="bs-input" placeholder="второй челлендж, если хочется" maxlength="120" />
-          </div>
-        </div>
+        <p class="intro" style="margin:-8px 0 16px;font-size:14px;color:var(--ink-mute);line-height:1.55;">
+          Каждые ~19–20 дней — новый челлендж. Задача может быть регулярной («3 тренировки в неделю») или разовой («запустить лендинг»). Сейчас можно подробно расписать только Челлендж №1, остальные — наметить общим направлением, конкретику добавите позже.
+        </p>
+        <div class="bs-challenges" id="b-challenges"><!-- 5 под-карточек рендерятся скриптом ниже --></div>
       </div>
 
       <!-- Шаг 05: От чего отказываюсь -->
@@ -1290,7 +1319,7 @@ h1,h2,h3,h4{letter-spacing:-.01em}
           </tr>
           <tr>
             <td><strong>Челленджи</strong></td>
-            <td>До 2 челленджей по 19 дней, ежедневная галочка, заметки</td>
+            <td>5 челленджей-периодов, до 2 задач в каждом, ежедневная галочка</td>
             <td>Каждый день в течение челленджа</td>
           </tr>
           <tr>
@@ -1357,16 +1386,27 @@ const SPHERE_GROUPS = [
   ]}
 ];
 
+// Пять периодов челленджей. Первый и второй заданы стратсессией явно,
+// остальные — продолжение ритма 19-20 дней до конца августа.
+const CHALLENGE_PERIODS = [
+  { num: 1, label: "01 — 19 июня",         days: 19 },
+  { num: 2, label: "20 июня — 09 июля",    days: 20 },
+  { num: 3, label: "10 — 29 июля",         days: 20 },
+  { num: 4, label: "30 июля — 18 августа", days: 20 },
+  { num: 5, label: "19 — 31 августа",      days: 13 }
+];
+
 const MAX_SPHERES = 6;
 const LS_KEY = "rassvet-summer-plan-2026";
 
-// 2) СОСТОЯНИЕ: единый объект, отражающий все 6 шагов. Все поля — строки,
-// кроме spheres (массив выбранных названий сфер).
+// 2) СОСТОЯНИЕ: единый объект, отражающий все 6 шагов. Для челленджей —
+// массив из 5 объектов, каждый с массивом задач (до 2). Это даёт нам
+// чистый JSON для сохранения и легко превращается в текст плана в конце.
 let state = {
   word: "",
   spheres: [],
   june: "", july: "", august: "",
-  ch1: "", ch2: "",
+  challenges: CHALLENGE_PERIODS.map(() => ({ tasks: ["", ""] })),
   no: "", need: ""
 };
 
@@ -1380,6 +1420,15 @@ try {
     state = Object.assign(state, parsed);
     // защита: spheres должен быть массивом, а не каким-то мусором
     if (!Array.isArray(state.spheres)) state.spheres = [];
+    // защита для челленджей: если структура старая или битая — восстанавливаем
+    // правильную форму, иначе цикл рендера упадёт
+    if (!Array.isArray(state.challenges) || state.challenges.length !== CHALLENGE_PERIODS.length) {
+      state.challenges = CHALLENGE_PERIODS.map(() => ({ tasks: ["", ""] }));
+    } else {
+      state.challenges = state.challenges.map(ch => ({
+        tasks: Array.isArray(ch?.tasks) ? [ch.tasks[0] || "", ch.tasks[1] || ""] : ["", ""]
+      }));
+    }
   }
 } catch (e) { /* пропускаем */ }
 
@@ -1456,7 +1505,10 @@ updateCounter();
 
 // 5) ПРИВЯЗКА ТЕКСТОВЫХ ПОЛЕЙ. Перечисляем ключи state, для каждого находим
 // инпут по id `b-<ключ>`, восстанавливаем значение и вешаем onInput-слушатель.
-const FIELDS = ["word", "june", "july", "august", "ch1", "ch2", "no", "need"];
+// Поля челленджей здесь не упоминаем — они генерируются и привязываются отдельно
+// в функции renderChallenges ниже, потому что их 10 (5 челленджей × 2 задачи)
+// и они создаются динамически.
+const FIELDS = ["word", "june", "july", "august", "no", "need"];
 FIELDS.forEach(key => {
   const el = document.getElementById("b-" + key);
   if (!el) return;
@@ -1466,6 +1518,69 @@ FIELDS.forEach(key => {
     saveState();
   });
 });
+
+// 5a) РЕНДЕР ЧЕЛЛЕНДЖЕЙ. Создаём 5 под-карточек, в каждой — заголовок с номером,
+// датами периода, бейджем с числом дней, и два поля для задач. Подписи к полям
+// дают понять, что вторая задача необязательна.
+const challengesEl = document.getElementById("b-challenges");
+
+function renderChallenges() {
+  challengesEl.innerHTML = "";
+  CHALLENGE_PERIODS.forEach((period, cIdx) => {
+    const card = document.createElement("div");
+    card.className = "bs-challenge";
+
+    // Шапка карточки: №, даты, бейдж «N дней»
+    const head = document.createElement("div");
+    head.className = "bs-challenge-head";
+    head.innerHTML =
+      '<span class="bs-challenge-num">№' + period.num + '</span>' +
+      '<span class="bs-challenge-dates">' + period.label + '</span>' +
+      '<span class="bs-challenge-days">' + period.days + ' дней</span>';
+    card.appendChild(head);
+
+    // Две колонки полей для задач
+    const row = document.createElement("div");
+    row.className = "bs-row-2";
+
+    [0, 1].forEach(tIdx => {
+      const field = document.createElement("div");
+      field.className = "bs-field";
+
+      const label = document.createElement("label");
+      label.textContent = tIdx === 0
+        ? "Задача 1"
+        : "Задача 2 (необязательно)";
+      field.appendChild(label);
+
+      const input = document.createElement("input");
+      input.type = "text";
+      input.className = "bs-input";
+      input.placeholder = tIdx === 0
+        ? (cIdx === 0
+            ? "например: 3 тренировки в неделю"
+            : "одна сложная задача периода")
+        : "ещё одна, если нужна";
+      input.maxLength = 120;
+      input.value = state.challenges[cIdx]?.tasks[tIdx] || "";
+
+      // Сохраняем в state при каждом изменении
+      input.addEventListener("input", () => {
+        if (!state.challenges[cIdx]) state.challenges[cIdx] = { tasks: ["", ""] };
+        state.challenges[cIdx].tasks[tIdx] = input.value;
+        saveState();
+      });
+
+      field.appendChild(input);
+      row.appendChild(field);
+    });
+
+    card.appendChild(row);
+    challengesEl.appendChild(card);
+  });
+}
+
+renderChallenges();
 
 // 6) ГЕНЕРАЦИЯ ТЕКСТА ПЛАНА.
 // Собираем построчно. Пустые блоки пропускаются, чтобы не было «болванок»
@@ -1495,10 +1610,22 @@ function generatePlanText() {
     L.push("");
   }
 
-  if (state.ch1.trim() || state.ch2.trim()) {
-    L.push("🔥 ЧЕЛЛЕНДЖИ (до 2):");
-    if (state.ch1.trim()) L.push("1. " + state.ch1.trim() + "  ·  01.06 — 19.06");
-    if (state.ch2.trim()) L.push("2. " + state.ch2.trim() + "  ·  13.07 — 31.07");
+  // ЧЕЛЛЕНДЖИ: проходим по всем 5 периодам, в каждом печатаем только те задачи,
+  // которые участница реально заполнила. Если за весь период ни одной задачи —
+  // блок пропускаем целиком, чтобы в финальном плане не было пустых заголовков.
+  const anyChallengeFilled = state.challenges.some(ch =>
+    ch && Array.isArray(ch.tasks) && ch.tasks.some(t => (t || "").trim())
+  );
+  if (anyChallengeFilled) {
+    L.push("🔥 ЧЕЛЛЕНДЖИ ЛЕТА (5 периодов · до 2 задач в каждом):");
+    state.challenges.forEach((ch, i) => {
+      const period = CHALLENGE_PERIODS[i];
+      const filledTasks = (ch?.tasks || []).filter(t => (t || "").trim());
+      if (filledTasks.length === 0) return;  // период пуст — пропускаем
+      L.push("");
+      L.push("Челлендж №" + period.num + " · " + period.label + ":");
+      filledTasks.forEach(t => L.push("  • " + t.trim()));
+    });
     L.push("");
   }
 
