@@ -1,0 +1,1640 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Рассвет · Стратсессия — итоги весны и план на лето</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Onest:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#faf3e7;--paper:#fffaf0;--paper-soft:#fdf5e6;
+  --ink:#1d150c;--ink-soft:#3d2e1f;--ink-mute:#8a7558;--line:#ece1c8;
+  --orange:#e96d2a;--orange-50:#fde3d0;--orange-100:#fbcfb1;
+  --green-50:#e8f0d4;--green-deep:#8ea35a;
+  --olive:#aaa336;--olive-dark:#948c25;
+  --shadow-sm:0 1px 2px rgba(120,80,30,.05),0 4px 12px rgba(120,80,30,.04);
+  --shadow-md:0 14px 36px rgba(120,80,30,.10);
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  font-family:'Onest','Inter',Arial,sans-serif;
+  font-size:15px;line-height:1.55;color:var(--ink);background:var(--bg);
+  -webkit-font-smoothing:antialiased;
+}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+.container{max-width:1100px;margin:0 auto;padding:0 36px}
+h1,h2,h3,h4{letter-spacing:-.01em}
+
+/* HEADER */
+.header{
+  position:sticky;top:0;z-index:50;
+  background:rgba(250,243,231,.86);backdrop-filter:saturate(140%) blur(10px);
+  border-bottom:1px solid rgba(140,90,40,.06);
+}
+.header-inner{display:flex;align-items:center;justify-content:space-between;height:78px}
+.logo{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:600;font-size:30px;color:var(--orange);}
+.nav{display:flex;gap:32px}
+.nav a{font-size:14px;color:var(--ink-soft);transition:color .2s}
+.nav a:hover{color:var(--orange)}
+
+/* HERO */
+.hero{padding:60px 0 80px}
+.hero-grid{display:grid;grid-template-columns:1.2fr .9fr;gap:60px;align-items:center;}
+.eyebrow-pill{display:inline-block;background:var(--orange-50);color:var(--ink-soft);font-size:12px;letter-spacing:.14em;text-transform:uppercase;padding:9px 20px;border-radius:999px;margin-bottom:32px;font-weight:500;}
+.hero h1{
+  font-family:'Cormorant Garamond',serif;font-weight:600;
+  font-size:76px;line-height:.98;
+  margin:0 0 26px;letter-spacing:-.012em;text-wrap:balance;
+}
+.hero h1 i{font-style:italic;font-weight:500;color:var(--orange);}
+.hero p.lead{
+  max-width:520px;font-size:16.5px;line-height:1.6;
+  color:var(--ink-mute);margin:0 0 32px;
+}
+.hero-meta{display:flex;gap:20px;flex-wrap:wrap;margin-top:8px}
+.meta-chip{
+  display:inline-flex;align-items:center;gap:8px;
+  background:#fffaf0;border:1.4px solid var(--line);
+  padding:9px 16px;border-radius:999px;
+  font-size:13px;color:var(--ink-soft);font-weight:500;
+}
+.meta-chip .dot{width:7px;height:7px;border-radius:50%;background:var(--orange);}
+.meta-chip.green .dot{background:var(--green-deep);}
+.meta-chip.olive .dot{background:var(--olive);}
+
+.hero-card{
+  position:relative;
+  background:linear-gradient(135deg,#fff5e3 0%,#fdebcf 55%,#fbd9b0 100%);
+  border-radius:28px;padding:44px 40px;
+  box-shadow:0 18px 44px rgba(200,130,50,.14);
+  overflow:hidden;
+}
+.hero-card::before{
+  content:"";position:absolute;top:-100px;right:-80px;width:280px;height:280px;
+  background:radial-gradient(circle, rgba(255,255,255,.55) 0%, transparent 65%);
+  border-radius:50%;pointer-events:none;
+}
+.hero-card::after{
+  content:"";position:absolute;bottom:-100px;left:-60px;width:240px;height:240px;
+  background:radial-gradient(circle, rgba(185,207,138,.30) 0%, transparent 65%);
+  border-radius:50%;pointer-events:none;
+}
+.hero-card-inner{position:relative;z-index:2}
+.hero-card-tag{
+  display:inline-flex;align-items:center;gap:8px;
+  background:rgba(255,255,255,.7);padding:8px 16px;border-radius:999px;
+  font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;
+  font-weight:500;color:var(--orange);margin-bottom:18px;
+}
+.hero-card-tag .dot{width:7px;height:7px;border-radius:50%;background:var(--orange);animation:pdot 2s infinite;}
+@keyframes pdot{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(1.4)}}
+.hero-card h3{
+  font-family:'Cormorant Garamond',serif;font-weight:600;
+  font-size:30px;margin:0 0 18px;line-height:1.1;color:var(--ink);
+}
+.hero-card h3 i{font-style:italic;color:var(--orange);font-weight:500}
+.hero-card ul{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:11px}
+.hero-card li{
+  font-size:14.5px;color:var(--ink-soft);line-height:1.5;
+  display:flex;gap:11px;align-items:flex-start;
+}
+.hero-card li::before{content:"☀";color:var(--orange);font-size:15px;flex-shrink:0;margin-top:1px;}
+
+/* SECTION HEAD */
+.section-eyebrow{display:inline-block;font-size:12px;color:var(--orange);letter-spacing:.16em;text-transform:uppercase;margin-bottom:18px;font-weight:500;}
+.section-eyebrow::before{content:"— "}
+
+.section{padding:64px 0}
+.section h2{
+  font-family:'Cormorant Garamond',serif;font-weight:600;
+  font-size:54px;line-height:1.04;letter-spacing:-.014em;
+  margin:0 0 22px;text-wrap:balance;
+}
+.section h2 i{font-style:italic;font-weight:500;color:var(--orange);}
+.section .lead{
+  font-size:16.5px;color:var(--ink-mute);line-height:1.6;
+  max-width:620px;margin:0 0 44px;
+}
+
+/* СПРИНГ — БЛОКИ */
+.block-row{display:flex;flex-direction:column;gap:20px;}
+.block{
+  background:var(--paper);
+  border-radius:24px;
+  padding:38px 44px;
+  box-shadow:var(--shadow-sm);
+  border:1px solid rgba(140,90,40,.05);
+  transition:transform .2s,box-shadow .2s;
+}
+.block:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(120,80,30,.08);}
+.block-head{
+  display:flex;align-items:baseline;justify-content:space-between;
+  gap:20px;flex-wrap:wrap;margin-bottom:22px;
+  padding-bottom:18px;border-bottom:1px dashed var(--line);
+}
+.block-title{
+  font-family:'Cormorant Garamond',serif;font-weight:600;font-size:28px;
+  margin:0;line-height:1.15;letter-spacing:-.01em;color:var(--ink);
+}
+.block-title i{font-style:italic;font-weight:500;color:var(--orange)}
+.timer-pill{
+  display:inline-flex;align-items:center;gap:7px;
+  background:var(--orange-50);color:var(--orange);
+  padding:7px 14px;border-radius:999px;
+  font-size:12px;font-weight:500;letter-spacing:.05em;
+  white-space:nowrap;
+}
+.timer-pill::before{content:"⏱";font-size:13px}
+.block .intro{font-size:15px;color:var(--ink-mute);margin:0 0 18px;line-height:1.6;}
+.block ol{margin:0;padding-left:0;list-style:none;counter-reset:q;}
+.block ol > li{
+  counter-increment:q;
+  padding:13px 0 13px 46px;
+  border-bottom:1px solid rgba(236,225,200,.5);
+  position:relative;
+  font-size:15.5px;color:var(--ink);line-height:1.55;
+}
+.block ol > li:last-child{border-bottom:none;padding-bottom:0;}
+.block ol > li::before{
+  content:counter(q,decimal-leading-zero);
+  position:absolute;left:0;top:14px;
+  font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:500;
+  font-size:18px;color:var(--orange);
+}
+.write-line{
+  display:inline-block;min-width:200px;
+  border-bottom:1px dotted var(--ink-mute);
+  margin:0 6px;color:transparent;user-select:none;
+}
+.example-hint{
+  font-size:13px;color:var(--ink-mute);font-style:italic;
+  display:block;margin-top:4px;
+}
+
+/* КОЛЕСО БАЛАНСА */
+.wheel-note{
+  background:linear-gradient(135deg,#fff5e3 0%,#fbe5d0 100%);
+  border-radius:20px;padding:24px 32px;
+  margin-bottom:32px;
+  font-size:15px;line-height:1.6;color:var(--ink-soft);
+}
+.wheel-note strong{color:var(--ink);font-weight:600}
+.wheel-grid{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:18px;
+}
+.sphere-card{
+  background:var(--paper);
+  border-radius:22px;padding:28px 30px;
+  border:1px solid rgba(140,90,40,.06);
+  box-shadow:var(--shadow-sm);
+  transition:transform .2s,box-shadow .2s,border-color .2s;
+}
+.sphere-card:hover{
+  transform:translateY(-3px);
+  box-shadow:0 12px 28px rgba(120,80,30,.10);
+  border-color:var(--orange-100);
+}
+.sphere-name{
+  font-family:'Cormorant Garamond',serif;font-weight:600;font-style:italic;
+  font-size:24px;color:var(--orange);
+  margin:0 0 16px;padding-bottom:14px;
+  border-bottom:1px solid var(--line);
+  letter-spacing:-.005em;
+}
+.sphere-card ul{list-style:none;padding:0;margin:0}
+.sphere-card ul li{
+  padding:7px 0 7px 22px;position:relative;
+  font-size:14.5px;color:var(--ink-soft);line-height:1.5;
+}
+.sphere-card ul li::before{
+  content:"";position:absolute;left:4px;top:14px;
+  width:6px;height:6px;border-radius:50%;background:var(--orange-100);
+}
+
+/* МЕСЯЦЫ */
+.months{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:18px;margin:24px 0;
+}
+.month-card{
+  background:var(--paper);
+  border-radius:22px;padding:28px 24px;text-align:center;
+  border:1px solid var(--line);
+  position:relative;overflow:hidden;
+}
+.month-card::before{
+  content:"";position:absolute;top:-40px;right:-40px;width:120px;height:120px;
+  background:radial-gradient(circle, rgba(253,227,208,.6) 0%, transparent 70%);
+  border-radius:50%;pointer-events:none;
+}
+.month-card .mname{
+  font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:600;
+  font-size:30px;color:var(--orange);position:relative;
+}
+.month-card .mdates{
+  font-size:12px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--ink-mute);margin:6px 0 18px;position:relative;
+}
+.month-card .mline{
+  border-bottom:1px dotted var(--ink-mute);
+  height:28px;margin:0 6px;
+}
+.month-card .mexample{
+  font-size:12.5px;color:var(--ink-mute);font-style:italic;
+  margin-top:12px;line-height:1.45;
+}
+
+/* НЕДЕЛИ */
+.weeks-list{margin-top:14px;display:flex;flex-direction:column;gap:0;}
+.week-row{
+  display:flex;align-items:center;gap:18px;
+  padding:14px 0;border-bottom:1px solid var(--line);
+}
+.week-row:last-child{border-bottom:none}
+.week-label{
+  font-family:'Cormorant Garamond',serif;font-weight:600;font-style:italic;
+  color:var(--orange);font-size:17px;min-width:120px;
+}
+.week-dates{font-size:13px;color:var(--ink-mute);min-width:120px;}
+.week-row .write-line{flex:1;height:22px;}
+
+/* TODO КОЛОНКА */
+.todo-col{
+  background:var(--paper);
+  border-radius:24px;padding:32px 38px;
+  border:1px solid rgba(140,160,90,.18);
+  margin-top:24px;
+  position:relative;overflow:hidden;
+}
+.todo-col::before{
+  content:"";position:absolute;top:0;left:0;bottom:0;width:5px;
+  background:var(--green-deep);
+}
+.todo-col h4{
+  font-family:'Cormorant Garamond',serif;font-weight:600;font-size:24px;
+  margin:0 0 10px;color:var(--green-deep);
+}
+.todo-col h4 i{font-style:italic;font-weight:500;color:var(--orange)}
+.todo-col p{font-size:14.5px;color:var(--ink-mute);margin:0 0 18px;line-height:1.55;}
+.todo-lines{list-style:none;padding:0;margin:0;}
+.todo-lines li{
+  padding:10px 0 10px 30px;position:relative;
+  border-bottom:1px dotted var(--line);
+  min-height:30px;color:transparent;user-select:none;
+}
+.todo-lines li::before{
+  content:"☐";position:absolute;left:0;top:10px;
+  color:var(--green-deep);font-size:16px;user-select:text;
+}
+
+/* ЗАДАНИЯ — КАРТОЧКИ */
+.assignments{display:grid;grid-template-columns:1fr 1fr;gap:22px;}
+.assignment{
+  position:relative;overflow:hidden;
+  border-radius:26px;padding:38px 40px;
+  transition:transform .2s,box-shadow .2s;
+}
+.assignment:hover{transform:translateY(-3px);box-shadow:0 16px 36px rgba(200,130,50,.18);}
+.assignment-1{
+  background:linear-gradient(135deg,#ef7d40 0%,#f08a51 50%,#f4a276 100%);
+  color:#fff8e4;box-shadow:0 14px 36px rgba(200,100,40,.20);
+}
+.assignment-2{
+  background:linear-gradient(135deg,#aaa336 0%,#b6b143 50%,#c5c265 100%);
+  color:#fff8e4;box-shadow:0 14px 36px rgba(140,150,40,.22);
+}
+.assignment::before{
+  content:"";position:absolute;top:-60px;right:-50px;width:180px;height:180px;
+  background:radial-gradient(circle, rgba(255,255,255,.30) 0%, transparent 65%);
+  border-radius:50%;pointer-events:none;
+}
+.assignment-tag{
+  display:inline-block;
+  background:rgba(255,255,255,.22);
+  padding:7px 16px;border-radius:999px;
+  font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;
+  font-weight:500;margin-bottom:18px;
+  position:relative;z-index:1;
+}
+.assignment h3{
+  font-family:'Cormorant Garamond',serif;font-weight:600;
+  font-size:32px;line-height:1.08;letter-spacing:-.012em;
+  margin:0 0 16px;position:relative;z-index:1;
+}
+.assignment h3 i{font-style:italic;font-weight:500}
+.assignment p{
+  font-size:15px;line-height:1.6;margin:0 0 12px;
+  opacity:.95;position:relative;z-index:1;
+}
+.assignment p strong{font-weight:700}
+.assignment p:last-child{margin-bottom:0}
+.assignment .hint{
+  font-size:13px;font-style:italic;opacity:.85;
+  border-top:1px solid rgba(255,255,255,.25);
+  padding-top:14px;margin-top:16px;
+}
+
+/* РЕКОМЕНДАЦИИ */
+.tips-wrap{display:grid;grid-template-columns:1fr 1fr;gap:24px;}
+.tips-card{
+  background:var(--paper);
+  border-radius:24px;padding:36px 38px;
+  border:1px solid rgba(140,90,40,.06);
+  box-shadow:var(--shadow-sm);
+}
+.tips-card.green{
+  background:#fffdf3;
+  border-color:rgba(140,160,90,.18);
+}
+.tips-card h3{
+  font-family:'Cormorant Garamond',serif;font-weight:600;
+  font-size:30px;margin:0 0 8px;
+  color:var(--orange);letter-spacing:-.01em;
+}
+.tips-card.green h3{color:var(--green-deep);}
+.tips-card .tag{
+  display:inline-block;background:var(--orange-50);color:var(--orange);
+  padding:5px 13px;border-radius:999px;
+  font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-weight:500;
+  margin-bottom:18px;
+}
+.tips-card.green .tag{background:var(--green-50);color:var(--green-deep);}
+
+.tip-item{
+  padding:18px 0;border-bottom:1px dashed var(--line);
+}
+.tip-item:first-of-type{padding-top:6px}
+.tip-item:last-child{border-bottom:none;padding-bottom:0}
+.tip-title{
+  font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:600;
+  font-size:19px;color:var(--ink);margin:0 0 6px;line-height:1.3;
+}
+.tip-body{font-size:14.5px;color:var(--ink-soft);line-height:1.6;margin:0;}
+
+/* ЕЖЕНЕДЕЛЬНЫЙ ОТЧЁТ */
+.report{
+  background:linear-gradient(135deg,#fff5e3 0%,#fdebcf 60%,#fbd9b0 100%);
+  border-radius:28px;padding:48px 56px;
+  box-shadow:0 18px 44px rgba(200,130,50,.14);
+  position:relative;overflow:hidden;
+  margin-bottom:30px;
+}
+.report::before{
+  content:"";position:absolute;top:-100px;right:-80px;width:280px;height:280px;
+  background:radial-gradient(circle, rgba(255,255,255,.50) 0%, transparent 65%);
+  border-radius:50%;pointer-events:none;
+}
+.report-inner{position:relative;z-index:1}
+.report-when{
+  display:inline-flex;align-items:center;gap:8px;
+  background:rgba(255,255,255,.7);
+  padding:8px 18px;border-radius:999px;
+  font-size:12px;letter-spacing:.14em;text-transform:uppercase;
+  font-weight:500;color:var(--orange);margin-bottom:18px;
+}
+.report-when .dot{width:7px;height:7px;border-radius:50%;background:var(--orange);}
+.report h3{
+  font-family:'Cormorant Garamond',serif;font-weight:600;
+  font-size:36px;letter-spacing:-.012em;line-height:1.1;
+  margin:0 0 24px;color:var(--ink);
+}
+.report h3 i{font-style:italic;font-weight:500;color:var(--orange)}
+.report ol{margin:0;padding-left:0;list-style:none;counter-reset:r;}
+.report ol > li{
+  counter-increment:r;
+  padding:14px 0 14px 46px;
+  border-bottom:1px solid rgba(255,255,255,.45);
+  position:relative;
+  font-size:15.5px;color:var(--ink);line-height:1.55;
+}
+.report ol > li:last-child{border-bottom:none}
+.report ol > li::before{
+  content:counter(r,decimal-leading-zero);
+  position:absolute;left:0;top:15px;
+  font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:600;
+  font-size:18px;color:var(--orange);
+}
+
+/* ТАБЛИЦА */
+.tracker{
+  background:var(--paper);
+  border-radius:24px;padding:36px 38px;
+  border:1px solid rgba(140,90,40,.06);
+  box-shadow:var(--shadow-sm);
+}
+.tracker h4{
+  font-family:'Cormorant Garamond',serif;font-weight:600;font-size:26px;
+  margin:0 0 6px;color:var(--ink);
+}
+.tracker h4 i{font-style:italic;font-weight:500;color:var(--orange)}
+.tracker .tracker-sub{
+  font-size:14px;color:var(--ink-mute);margin:0 0 22px;
+}
+.tracker-table{
+  width:100%;border-collapse:separate;border-spacing:0;
+  font-size:14px;
+}
+.tracker-table th,.tracker-table td{
+  padding:14px 16px;text-align:left;vertical-align:top;
+}
+.tracker-table th{
+  font-family:'Cormorant Garamond',serif;font-weight:600;font-style:italic;
+  font-size:15px;color:var(--orange);
+  border-bottom:2px solid var(--orange-100);
+  letter-spacing:-.005em;
+}
+.tracker-table td{
+  color:var(--ink-soft);border-bottom:1px solid var(--line);line-height:1.55;
+}
+.tracker-table tr:last-child td{border-bottom:none}
+.tracker-table strong{color:var(--ink);font-weight:600}
+.tracker-foot{
+  margin-top:18px;text-align:center;
+  font-size:13.5px;color:var(--ink-mute);font-style:italic;
+}
+
+/* ФУТЕР */
+.foot-quote{
+  padding:90px 0 70px;text-align:center;
+  border-top:1px solid var(--line);margin-top:60px;
+}
+.foot-quote p{
+  font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:500;
+  font-size:30px;line-height:1.35;color:var(--ink-soft);
+  margin:0 auto 22px;max-width:680px;text-wrap:balance;
+}
+.foot-quote p i{color:var(--orange);font-style:italic;}
+.foot-sign{
+  display:inline-block;
+  font-size:12px;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--orange);font-weight:500;
+  padding:8px 18px;background:var(--orange-50);border-radius:999px;
+}
+
+/* DIVIDER */
+.divider{
+  height:1px;background:var(--line);margin:60px 0;position:relative;
+}
+.divider::after{
+  content:"☀";position:absolute;top:-14px;left:50%;transform:translateX(-50%);
+  background:var(--bg);padding:0 18px;color:var(--orange);font-size:18px;
+}
+
+/* ===== BUILDER / КОНСТРУКТОР ПЛАНА ===== */
+/* Большая золотистая плашка-обёртка повторяет твою welcome-секцию: тот же градиент,
+   те же декоративные радиальные блики, та же геометрия скруглений. */
+.builder{
+  background:linear-gradient(135deg,#fff5e3 0%,#fdebcf 60%,#fbd9b0 100%);
+  border-radius:32px;padding:50px 56px;
+  box-shadow:0 18px 44px rgba(200,130,50,.14);
+  position:relative;overflow:hidden;
+}
+.builder::before{
+  content:"";position:absolute;top:-100px;right:-80px;width:340px;height:340px;
+  background:radial-gradient(circle, rgba(255,255,255,.55) 0%, transparent 65%);
+  border-radius:50%;pointer-events:none;
+}
+.builder::after{
+  content:"";position:absolute;bottom:-120px;left:-60px;width:280px;height:280px;
+  background:radial-gradient(circle, rgba(185,207,138,.30) 0%, transparent 65%);
+  border-radius:50%;pointer-events:none;
+}
+
+/* Каждый из 6 шагов — это белая карточка внутри золотистой плашки.
+   Большой курсивный номер слева, как в твоей секции «активности». */
+.builder-step{
+  background:var(--paper);
+  border-radius:22px;padding:30px 34px;
+  margin-bottom:18px;
+  box-shadow:0 4px 18px rgba(160,110,40,.06);
+  position:relative;z-index:1;
+}
+.builder-step:nth-of-type(6){margin-bottom:24px}
+.bs-head{
+  display:flex;align-items:baseline;gap:18px;
+  margin-bottom:18px;flex-wrap:wrap;
+}
+.bs-num{
+  font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:500;
+  font-size:34px;color:var(--orange);line-height:1;flex-shrink:0;
+}
+.bs-title{
+  font-family:'Cormorant Garamond',serif;font-weight:600;font-size:22px;
+  margin:0;color:var(--ink);line-height:1.25;flex:1;letter-spacing:-.01em;
+}
+.bs-title i{font-style:italic;font-weight:500;color:var(--orange)}
+
+/* Счётчик X / 6 — пилюля справа от заголовка. Оранжевая, пока не набрали 6,
+   потом зелёная, как сигнал «выбор закрыт». */
+.bs-counter{
+  display:inline-flex;align-items:center;gap:6px;
+  background:var(--orange-50);color:var(--orange);
+  padding:6px 14px;border-radius:999px;
+  font-size:13px;font-weight:600;letter-spacing:.02em;
+}
+.bs-counter.full{background:var(--green-50);color:var(--green-deep);}
+.bs-counter.full::before{content:"✓";font-size:12px;}
+
+/* Поля ввода — стилизованы как поля в твоей pricing-модалке. */
+.bs-input,.bs-textarea{
+  width:100%;padding:14px 18px;border-radius:14px;
+  background:#fffdf6;border:1.4px solid var(--line);
+  font-family:'Onest',sans-serif;font-size:15px;color:var(--ink);
+  transition:border-color .2s,background .2s,box-shadow .2s;
+}
+.bs-input::placeholder,.bs-textarea::placeholder{color:#c4b59a}
+.bs-input:focus,.bs-textarea:focus{
+  outline:none;border-color:var(--orange);background:#fff;
+  box-shadow:0 0 0 3px rgba(233,109,42,.12);
+}
+.bs-textarea{min-height:88px;resize:vertical;line-height:1.55;}
+
+.bs-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;}
+.bs-row-2{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.bs-field{display:flex;flex-direction:column;gap:6px;}
+.bs-field label{
+  font-size:12.5px;color:var(--ink-mute);font-weight:500;
+  letter-spacing:.04em;padding-left:4px;
+}
+
+/* Группы сфер — каждая со своим оранжевым eyebrow-заголовком. */
+.bs-sphere-group{margin-bottom:18px}
+.bs-sphere-group:last-child{margin-bottom:0}
+.bs-sphere-group-title{
+  font-size:11px;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--orange);font-weight:600;margin:0 0 10px;padding-left:2px;
+}
+.bs-chips{display:flex;flex-wrap:wrap;gap:8px;}
+
+/* Чипсы сфер. Не выбрана — белая с серой обводкой; выбрана — оранжевая залитая
+   с галочкой. Когда уже выбрано 6, остальные становятся серыми и не кликаются —
+   повторяет логику .wf-card.wf-full из твоего welcome-флоу. */
+.bs-chip{
+  display:inline-flex;align-items:center;gap:6px;
+  background:#fffdf6;border:1.5px solid var(--line);
+  padding:9px 15px;border-radius:999px;
+  font-size:13.5px;color:var(--ink-soft);font-weight:500;
+  font-family:'Onest',sans-serif;cursor:pointer;
+  transition:all .15s ease;
+}
+.bs-chip:hover{border-color:var(--orange-100);transform:translateY(-1px);}
+.bs-chip.selected{
+  background:var(--orange);color:#fff;border-color:var(--orange);
+  box-shadow:0 4px 14px rgba(233,109,42,.28);
+  padding-left:13px;
+}
+.bs-chip.selected::before{content:"✓";font-weight:700;font-size:12px;}
+.bs-chip.disabled{
+  opacity:.4;cursor:not-allowed;pointer-events:none;
+  filter:grayscale(.4);
+}
+
+/* Кнопка сабмита — та же геометрия и анимация, что у твоей welcome-submit. */
+.builder-submit{
+  display:block;width:100%;
+  padding:18px 30px;border-radius:999px;
+  background:var(--orange);color:#fff;
+  font-size:15.5px;font-weight:500;border:none;cursor:pointer;
+  font-family:'Onest',sans-serif;
+  transition:background .2s,transform .15s,box-shadow .2s;
+  box-shadow:0 10px 26px rgba(233,109,42,.28);
+  position:relative;z-index:1;
+}
+.builder-submit:hover{
+  background:#d46820;transform:translateY(-2px);
+  box-shadow:0 14px 32px rgba(233,109,42,.36);
+}
+.builder-hint{
+  text-align:center;font-size:13px;color:var(--ink-mute);
+  margin:14px 0 0;font-style:italic;position:relative;z-index:1;
+}
+
+/* МОДАЛКА. Префикс b- (от «builder»), чтобы не конфликтовать с .modal на твоём
+   основном сайте, если когда-нибудь встроишь конспект в общую страницу. */
+.b-modal-backdrop{
+  position:fixed;inset:0;
+  background:rgba(40,20,8,.55);backdrop-filter:blur(6px);
+  z-index:200;display:flex;align-items:center;justify-content:center;
+  padding:24px;opacity:0;visibility:hidden;
+  transition:opacity .25s,visibility .25s;
+}
+.b-modal-backdrop.open{opacity:1;visibility:visible}
+.b-modal{
+  position:relative;background:var(--paper-soft);
+  border-radius:26px;padding:40px 44px 32px;
+  width:100%;max-width:640px;max-height:92vh;overflow-y:auto;
+  box-shadow:0 24px 60px rgba(0,0,0,.32);
+  transform:translateY(20px) scale(.97);transition:transform .3s;
+}
+.b-modal-backdrop.open .b-modal{transform:translateY(0) scale(1)}
+.b-modal-close{
+  position:absolute;top:22px;right:22px;width:42px;height:42px;
+  border-radius:50%;background:#e8dfc6;color:var(--ink-soft);
+  font-size:18px;display:inline-flex;align-items:center;justify-content:center;
+  transition:background .2s,transform .2s;
+  border:none;cursor:pointer;font-family:'Onest',sans-serif;
+}
+.b-modal-close:hover{background:#dfd3b3;transform:rotate(90deg)}
+.b-modal h2{
+  font-family:'Cormorant Garamond',serif;font-weight:600;font-size:36px;
+  margin:0 0 8px;line-height:1.1;letter-spacing:-.014em;
+}
+.b-modal h2 i{font-style:italic;font-weight:500;color:var(--orange)}
+.b-modal-sub{font-size:14px;color:var(--ink-mute);margin:0 0 24px;line-height:1.55;}
+
+/* Контейнер с готовым текстом плана. Моноширинный отступ, чтобы выглядело как
+   готовое сообщение для чата. */
+.b-result-card{
+  background:#fffdf6;border:1.5px solid var(--orange-100);border-radius:18px;
+  padding:24px 26px;margin-bottom:20px;
+  font-family:'Onest',sans-serif;font-size:14px;color:var(--ink-soft);
+  line-height:1.65;white-space:pre-wrap;
+  max-height:340px;overflow-y:auto;
+}
+
+/* Три кнопки действий внизу модалки: основная оранжевая «Скопировать»,
+   и две вторичные с обводкой — «Скачать» и «Печать». */
+.b-actions{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;}
+.b-action-btn{
+  padding:14px 16px;border-radius:14px;
+  background:var(--orange);color:#fff;
+  border:none;cursor:pointer;font-family:'Onest',sans-serif;
+  font-size:13px;font-weight:500;
+  display:inline-flex;align-items:center;justify-content:center;gap:7px;
+  transition:background .2s,transform .15s,box-shadow .2s;
+}
+.b-action-btn:hover{background:#d46820;transform:translateY(-1px)}
+.b-action-btn.secondary{
+  background:#fffdf6;color:var(--orange);
+  box-shadow:inset 0 0 0 1.5px var(--orange);
+}
+.b-action-btn.secondary:hover{background:var(--orange-50);}
+.b-action-btn.copied{background:var(--green-deep) !important;color:#fff !important;box-shadow:none !important;}
+
+
+@media (max-width:880px){
+  .container{padding:0 22px}
+  .hero{padding:40px 0 60px}
+  .hero-grid{grid-template-columns:1fr;gap:36px}
+  .hero h1{font-size:48px}
+  .section{padding:48px 0}
+  .section h2{font-size:38px}
+  .block{padding:28px 24px}
+  .block-title{font-size:22px}
+  .block ol > li{padding-left:38px;font-size:15px}
+  .assignments,.tips-wrap{grid-template-columns:1fr}
+  .assignment{padding:30px 26px}
+  .assignment h3{font-size:26px}
+  .tips-card{padding:28px 26px}
+  .tips-card h3{font-size:26px}
+  .report{padding:34px 26px}
+  .report h3{font-size:28px}
+  .tracker{padding:26px}
+  .nav{display:none}
+  .week-row{flex-wrap:wrap;gap:8px}
+  .week-label{min-width:auto}
+  .foot-quote p{font-size:22px}
+  /* конструктор на мобильном — карточки шагов схлопываются по вертикали,
+     поля «3 в ряд» становятся однополосными, кнопки модалки тоже в столбик */
+  .builder{padding:30px 22px;border-radius:24px;}
+  .builder-step{padding:22px;border-radius:18px;}
+  .bs-head{gap:12px;}
+  .bs-num{font-size:28px;}
+  .bs-title{font-size:18px;}
+  .bs-row,.bs-row-2{grid-template-columns:1fr;}
+  .b-modal{padding:28px 22px;}
+  .b-modal h2{font-size:26px;}
+  .b-actions{grid-template-columns:1fr;}
+}
+
+@media print{
+  body{background:white}
+  .block,.tips-card,.report,.tracker,.sphere-card,.month-card,.assignment{box-shadow:none;break-inside:avoid;}
+  .section{break-inside:avoid-page}
+  .header{display:none}
+}
+</style>
+</head>
+<body>
+
+<header class="header">
+  <div class="container header-inner">
+    <a href="#" class="logo">Рассвет</a>
+    <nav class="nav">
+      <a href="#spring">Итоги весны</a>
+      <a href="#wheel">Колесо</a>
+      <a href="#goals">Цели лета</a>
+      <a href="#assignments">Задания</a>
+      <a href="#builder">Конструктор</a>
+      <a href="#tips">Рекомендации</a>
+      <a href="#report">Отчёт</a>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container hero-grid">
+    <div>
+      <span class="eyebrow-pill">Стратсессия клуба · Май → Сентябрь</span>
+      <h1>Итоги весны и&nbsp;план <i>на лето</i></h1>
+      <p class="lead">Конспект встречи. 19 дней до старта летнего цикла, шесть сфер на фокус и одно слово, которым мы назовём это лето.</p>
+      <div class="hero-meta">
+        <span class="meta-chip"><span class="dot"></span>3 блока рефлексии</span>
+        <span class="meta-chip green"><span class="dot"></span>6 сфер фокуса</span>
+        <span class="meta-chip olive"><span class="dot"></span>2 челленджа</span>
+      </div>
+    </div>
+
+    <div class="hero-card">
+      <div class="hero-card-inner">
+        <span class="hero-card-tag"><span class="dot"></span>что внутри</span>
+        <h3>Один <i>конспект</i> — три горизонта</h3>
+        <ul>
+          <li>Подвести весну за 15 минут</li>
+          <li>Собрать колесо баланса на лето</li>
+          <li>Разложить июнь по неделям</li>
+          <li>Выбрать челлендж и мудборд</li>
+          <li>Завести ритуал недельного отчёта</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ИТОГИ ВЕСНЫ -->
+<section id="spring" class="section">
+  <div class="container">
+    <span class="section-eyebrow">подведение итогов</span>
+    <h2>Итоги <i>весны</i></h2>
+    <p class="lead">Три коротких блока: фотопамять, выгрузка головы и переход в лето. Всего 15–17 минут, но именно они задают тон всему циклу.</p>
+
+    <div class="block-row">
+
+      <div class="block">
+        <div class="block-head">
+          <h3 class="block-title">Блок 1. Крутые события весны <i>по фотоплёнке</i></h3>
+          <span class="timer-pill">5 минут</span>
+        </div>
+        <p class="intro">Откройте галерею телефона за март, апрель, май и пролистайте от начала к концу. Не оценивайте — просто отмечайте то, что цепляет.</p>
+        <ol>
+          <li>5–7 самых ярких событий этой весны — личных, по клубу, по работе, любых.</li>
+          <li>Какое из них — главное воспоминание весны?</li>
+        </ol>
+      </div>
+
+      <div class="block">
+        <div class="block-head">
+          <h3 class="block-title">Блок 2. <i>Brain dump</i> — что висит в голове</h3>
+          <span class="timer-pill">5–7 минут</span>
+        </div>
+        <p class="intro">Выгрузите всё, что крутится в голове прямо сейчас. Без сортировки, без оценок, без редактирования. Чем сырее — тем честнее.</p>
+        <ol>
+          <li>Что не закончено с весны и тянется за мной?</li>
+          <li>Что тревожит или висит фоном?</li>
+          <li>Какие идеи, мысли, планы в голове, но пока без действий?</li>
+          <li>Что я давно собираюсь сделать, но всё откладываю?</li>
+        </ol>
+      </div>
+
+      <div class="block">
+        <div class="block-head">
+          <h3 class="block-title">Блок 3. <i>Главное</i> и переход в лето</h3>
+          <span class="timer-pill">5 минут</span>
+        </div>
+        <p class="intro">Сейчас задача — собрать весну в одну точку и почувствовать, с чем мы входим в новый сезон.</p>
+        <ol>
+          <li>Главный урок весны — одной фразой.</li>
+          <li>С каким состоянием или настроением я захожу в лето?</li>
+          <li>Чего мне сейчас не хватает, чтобы двигаться дальше? <span class="example-hint">ресурс, навык, поддержка, ясность</span></li>
+        </ol>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="container"><div class="divider"></div></div>
+
+<!-- КОЛЕСО БАЛАНСА -->
+<section id="wheel" class="section">
+  <div class="container">
+    <span class="section-eyebrow">колесо баланса</span>
+    <h2>Шесть <i>сфер фокуса</i></h2>
+    <p class="lead">Не пытаемся охватить всё. Выбираем шесть сфер, которые станут рамкой для летних целей.</p>
+
+    <div class="wheel-note">
+      <strong>Как работать:</strong> просмотрите весь список. Отметьте сферы, в которые хочется вложиться этим летом. Из отмеченного оставьте <strong>ровно 6</strong> — это и будет фокус сезона. Остальное не отменяется, просто отходит на второй план.
+    </div>
+
+    <div class="wheel-grid">
+      <div class="sphere-card">
+        <h4 class="sphere-name">Тело и здоровье</h4>
+        <ul>
+          <li>Здоровье и тело</li>
+          <li>Физическая активность / спорт</li>
+          <li>Питание</li>
+          <li>Сон и восстановление</li>
+          <li>Энергия / состояние</li>
+          <li>Внешность и стиль</li>
+        </ul>
+      </div>
+
+      <div class="sphere-card">
+        <h4 class="sphere-name">Отношения</h4>
+        <ul>
+          <li>Партнёр / любовные отношения</li>
+          <li>Семья / родители</li>
+          <li>Дети</li>
+          <li>Дружба</li>
+          <li>Сексуальность</li>
+          <li>Окружение / люди вокруг</li>
+        </ul>
+      </div>
+
+      <div class="sphere-card">
+        <h4 class="sphere-name">Деньги и дело</h4>
+        <ul>
+          <li>Финансы / доход</li>
+          <li>Карьера / работа по найму</li>
+          <li>Бизнес / своё дело</li>
+          <li>Профессиональный рост</li>
+          <li>Личный бренд / публичность</li>
+        </ul>
+      </div>
+
+      <div class="sphere-card">
+        <h4 class="sphere-name">Внутреннее</h4>
+        <ul>
+          <li>Личностный рост / саморазвитие</li>
+          <li>Психика / эмоции / внутренняя работа</li>
+          <li>Духовность / смыслы</li>
+          <li>Дисциплина и привычки</li>
+          <li>Обучение / новые знания</li>
+        </ul>
+      </div>
+
+      <div class="sphere-card">
+        <h4 class="sphere-name">Жизнь и среда</h4>
+        <ul>
+          <li>Хобби и увлечения</li>
+          <li>Творчество и творческая реализация</li>
+          <li>Отдых и восстановление</li>
+          <li>Путешествия и приключения</li>
+          <li>Дом и быт</li>
+          <li>Время и тайм-менеджмент</li>
+          <li>Комьюнити / клуб / своё сообщество</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="container"><div class="divider"></div></div>
+
+<!-- ЦЕЛИ НА ЛЕТО -->
+<section id="goals" class="section">
+  <div class="container">
+    <span class="section-eyebrow">стратегия</span>
+    <h2>Цели <i>на лето</i></h2>
+    <p class="lead">Три уровня масштаба: лето целиком, помесячная карта и подробная декомпозиция июня.</p>
+
+    <div class="block-row">
+
+      <div class="block">
+        <div class="block-head">
+          <h3 class="block-title">А. <i>Большая картина</i> — лето целиком</h3>
+          <span class="timer-pill">5 минут</span>
+        </div>
+        <p class="intro">Сначала зум аут. Не задачи, а смысл и образ результата.</p>
+        <ol>
+          <li>Одно слово, которым я опишу своё лето: <span class="write-line">________</span>
+            <span class="example-hint">примеры: трансформация, фундамент, прорыв, отдых, разгон, рост</span>
+          </li>
+          <li>Какие 2–3 главных результата я хочу получить к 31 августа?</li>
+          <li>Если в начале сентября я оглянусь и скажу «это лето было 🔥», то что произошло?</li>
+        </ol>
+      </div>
+
+      <div class="block">
+        <div class="block-head">
+          <h3 class="block-title">Б. <i>Распределение</i> по месяцам</h3>
+          <span class="timer-pill">5 минут</span>
+        </div>
+        <p class="intro">Каждый месяц — отдельная роль. Перегружать все три бессмысленно: один задаёт фундамент, другой разгоняет, третий собирает результат.</p>
+
+        <div class="months">
+          <div class="month-card">
+            <div class="mname">Июнь</div>
+            <div class="mdates">01.06 — 30.06</div>
+            <div class="mline"></div>
+            <div class="mexample">например: заложить фундамент</div>
+          </div>
+          <div class="month-card">
+            <div class="mname">Июль</div>
+            <div class="mdates">01.07 — 31.07</div>
+            <div class="mline"></div>
+            <div class="mexample">например: разогнать, протестировать</div>
+          </div>
+          <div class="month-card">
+            <div class="mname">Август</div>
+            <div class="mdates">01.08 — 31.08</div>
+            <div class="mline"></div>
+            <div class="mexample">например: масштабировать, отдохнуть</div>
+          </div>
+        </div>
+
+        <p class="intro" style="margin-top:18px;">Что логично делать в каком месяце? Распределите большие задачи по июню, июлю и августу.</p>
+      </div>
+
+      <div class="block">
+        <div class="block-head">
+          <h3 class="block-title">В. <i>Декомпозиция</i> июня</h3>
+          <span class="timer-pill">10–15 минут</span>
+        </div>
+        <p class="intro">Самый плотный блок. Берём 6 сфер из колеса и спускаемся от целей к неделям.</p>
+
+        <ol>
+          <li>По каждой из 6 выбранных сфер — какая 1 главная цель на июнь?</li>
+          <li>Какие 3–5 конкретных задач нужно сделать в июне, чтобы цели сдвинулись?</li>
+          <li>Разбивка задач по неделям июня:
+            <div class="weeks-list">
+              <div class="week-row">
+                <span class="week-label">Неделя 1</span>
+                <span class="week-dates">01 — 07 июня</span>
+                <span class="write-line"></span>
+              </div>
+              <div class="week-row">
+                <span class="week-label">Неделя 2</span>
+                <span class="week-dates">08 — 14 июня</span>
+                <span class="write-line"></span>
+              </div>
+              <div class="week-row">
+                <span class="week-label">Неделя 3</span>
+                <span class="week-dates">15 — 21 июня</span>
+                <span class="write-line"></span>
+              </div>
+              <div class="week-row">
+                <span class="week-label">Неделя 4</span>
+                <span class="week-dates">22 — 28 июня</span>
+                <span class="write-line"></span>
+              </div>
+              <div class="week-row">
+                <span class="week-label">Хвост</span>
+                <span class="week-dates">29 — 30 июня</span>
+                <span class="write-line"></span>
+              </div>
+            </div>
+          </li>
+          <li>Кто или что мне нужно, чтобы это случилось? <span class="example-hint">поддержка, ресурс, информация, человек</span></li>
+          <li>От чего я готов(а) отказаться в июне, чтобы освободить силы для главного?</li>
+        </ol>
+      </div>
+
+    </div>
+
+    <div class="todo-col">
+      <h4>Отдельная колонка <i>«Сделать»</i></h4>
+      <p>Это не цели и не привычки. Это разовые задачи: что-то отвезти, куда-то съездить, кому-то позвонить, что-то решить, купить, оформить. Они не должны мешаться в основном списке — у них своё место.</p>
+      <ul class="todo-lines">
+        <li></li><li></li><li></li><li></li><li></li><li></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<div class="container"><div class="divider"></div></div>
+
+<!-- ЗАДАНИЯ -->
+<section id="assignments" class="section">
+  <div class="container">
+    <span class="section-eyebrow">задания к старту</span>
+    <h2>Два задания <i>на старте лета</i></h2>
+    <p class="lead">Лето открывается двумя действиями — визуальным и волевым. Одно настраивает оптику, второе — характер.</p>
+
+    <div class="assignments">
+
+      <div class="assignment assignment-1">
+        <span class="assignment-tag">Задание №1</span>
+        <h3>Прислать свой <i>moodboard лета</i></h3>
+        <p>Соберите 6–12 картинок, которые передают то лето, которое вы хотите прожить. Не «красивые фотки», а образы состояния, ритма, цвета сезона. Pinterest, скрины из ленты, кадры из фильмов — любой источник. Загрузите в чат клуба до старта цикла.</p>
+        <p class="hint">Совет: сначала наберите 25–30 картинок не думая, потом уберите всё, в чём нет искренней «да». Останется ваш мудборд.</p>
+      </div>
+
+      <div class="assignment assignment-2">
+        <span class="assignment-tag">Задание №2 · Челлендж</span>
+        <h3>Выбрать самую <i>сложную задачу</i></h3>
+        <p>Из всех целей и задач, что вы расписали на июнь, выберите <strong>максимум 2</strong> — те, к которым сложнее всего подступиться. Не самые большие, а именно те, которые хочется обойти. Они станут вашими челленджами на ближайшие <strong>19 дней</strong>.</p>
+        <p class="hint">Принцип: то, чего избегаешь — обычно и есть ключ к следующему уровню. Челлендж не «успеть всё», а «перестать обходить». Берите максимум два — иначе фокус расплывётся.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="container"><div class="divider"></div></div>
+
+<!-- ===== КОНСТРУКТОР ПЛАНА — ИНТЕРАКТИВНЫЙ МОДУЛЬ ===== -->
+<!-- Этот блок — единственное место в конспекте, где участница не просто читает,
+     а вводит свои ответы. Все 6 шагов сохраняются в localStorage сразу при вводе,
+     так что вкладку можно закрыть и вернуться позже. В конце генерируется
+     текстовое сообщение, готовое для копирования в чат клуба. -->
+<section id="builder" class="section">
+  <div class="container">
+    <span class="section-eyebrow">конструктор плана</span>
+    <h2>Соберите свой <i>план лета</i></h2>
+    <p class="lead">Заполните прямо здесь — в конце получите готовое сообщение для чата клуба. Все ответы сохраняются автоматически, можно вернуться позже.</p>
+
+    <div class="builder">
+
+      <!-- Шаг 01: Одно слово лета -->
+      <div class="builder-step">
+        <div class="bs-head">
+          <span class="bs-num">01</span>
+          <h3 class="bs-title">Одно слово, которым я опишу <i>своё лето</i></h3>
+        </div>
+        <input type="text" id="b-word" class="bs-input" placeholder="трансформация · фундамент · прорыв · отдых · разгон · рост" maxlength="40" />
+      </div>
+
+      <!-- Шаг 02: Выбор 6 сфер. Чипсы генерируются JS-ом из массива SPHERE_GROUPS -->
+      <div class="builder-step">
+        <div class="bs-head">
+          <span class="bs-num">02</span>
+          <h3 class="bs-title">Шесть <i>сфер фокуса</i> на лето</h3>
+          <span class="bs-counter" id="b-counter">0 / 6</span>
+        </div>
+        <div id="b-spheres"><!-- группы чипсов рендерятся скриптом ниже --></div>
+      </div>
+
+      <!-- Шаг 03: Фокус трёх месяцев -->
+      <div class="builder-step">
+        <div class="bs-head">
+          <span class="bs-num">03</span>
+          <h3 class="bs-title">Фокус каждого <i>месяца</i></h3>
+        </div>
+        <div class="bs-row">
+          <div class="bs-field">
+            <label>Июнь</label>
+            <input type="text" id="b-june" class="bs-input" placeholder="заложить фундамент" maxlength="60" />
+          </div>
+          <div class="bs-field">
+            <label>Июль</label>
+            <input type="text" id="b-july" class="bs-input" placeholder="разогнать, протестировать" maxlength="60" />
+          </div>
+          <div class="bs-field">
+            <label>Август</label>
+            <input type="text" id="b-august" class="bs-input" placeholder="масштабировать, отдохнуть" maxlength="60" />
+          </div>
+        </div>
+      </div>
+
+      <!-- Шаг 04: Максимум 2 челленджа. Даты в подписи к полям совпадают с
+           датами в xlsx-трекере, чтобы участница видела единую картину. -->
+      <div class="builder-step">
+        <div class="bs-head">
+          <span class="bs-num">04</span>
+          <h3 class="bs-title">Максимум <i>2 челленджа</i> — самые сложные задачи</h3>
+        </div>
+        <div class="bs-row-2">
+          <div class="bs-field">
+            <label>Челлендж №1 · 01.06 — 19.06</label>
+            <input type="text" id="b-ch1" class="bs-input" placeholder="та задача, к которой сложнее всего подступиться" maxlength="120" />
+          </div>
+          <div class="bs-field">
+            <label>Челлендж №2 · 13.07 — 31.07 (необязательно)</label>
+            <input type="text" id="b-ch2" class="bs-input" placeholder="второй челлендж, если хочется" maxlength="120" />
+          </div>
+        </div>
+      </div>
+
+      <!-- Шаг 05: От чего отказываюсь -->
+      <div class="builder-step">
+        <div class="bs-head">
+          <span class="bs-num">05</span>
+          <h3 class="bs-title">От чего я <i>откажусь в&nbsp;июне</i></h3>
+        </div>
+        <textarea id="b-no" class="bs-textarea" placeholder="2–3 вещи, которые освободят силы для главного. Например: не беру новых проектов, не сижу в соцсетях после 22:00, не назначаю встреч на воскресенье"></textarea>
+      </div>
+
+      <!-- Шаг 06: Запрос к группе -->
+      <div class="builder-step">
+        <div class="bs-head">
+          <span class="bs-num">06</span>
+          <h3 class="bs-title">Что мне нужно <i>от группы</i></h3>
+        </div>
+        <input type="text" id="b-need" class="bs-input" placeholder="совет · поддержка · ресурс · ничего" maxlength="120" />
+      </div>
+
+      <button class="builder-submit" id="b-submit" type="button">Собрать план →</button>
+      <p class="builder-hint">☀ план откроется в окне — копируйте в чат клуба или скачайте файлом</p>
+    </div>
+  </div>
+</section>
+
+<div class="container"><div class="divider"></div></div>
+
+<!-- РЕКОМЕНДАЦИИ -->
+<section id="tips" class="section">
+  <div class="container">
+    <span class="section-eyebrow">инструменты</span>
+    <h2>Рекомендации <i>по планированию и&nbsp;дисциплине</i></h2>
+    <p class="lead">Принципы, которые работают на дистанции в три месяца. Не догма — но то, что мы видели на десятках сезонов клуба.</p>
+
+    <div class="tips-wrap">
+
+      <div class="tips-card">
+        <span class="tag">Планирование</span>
+        <h3>Как устроить себе ясный июнь</h3>
+
+        <div class="tip-item">
+          <p class="tip-title">Правило трёх главных задач в день</p>
+          <p class="tip-body">Каждое утро выберите ТРИ задачи, которые сдвинут июньские цели. Не пять, не десять — три. Всё остальное — бонус. Если из 3 сделали 2 — день уже состоялся.</p>
+        </div>
+
+        <div class="tip-item">
+          <p class="tip-title">Воскресная сборка недели</p>
+          <p class="tip-body">30 минут вечером в воскресенье, не утром в понедельник. Посмотрите на 6 сфер, выберите 1–2 задачи в каждую на неделю, расставьте по дням. В понедельник вы уже работаете, а не «вкатываетесь».</p>
+        </div>
+
+        <div class="tip-item">
+          <p class="tip-title">Закладывайте 70%, не 100%</p>
+          <p class="tip-body">Самая частая ошибка — пихать в неделю столько, сколько влезает в идеальный мир. Планируйте на 70% от мощности: остальные 30% съест жизнь. Если жизнь не съела — у вас есть бонусное время.</p>
+        </div>
+
+        <div class="tip-item">
+          <p class="tip-title">Time-boxing вместо to-do</p>
+          <p class="tip-body">Не просто «написать пост», а «вторник, 9:00–10:00 — пост». Задача без слота во времени — это пожелание. Задача со слотом — это план.</p>
+        </div>
+
+        <div class="tip-item">
+          <p class="tip-title">Принцип одного следующего шага</p>
+          <p class="tip-body">Если задача стоит больше недели — она слишком крупная. Разбейте её до уровня «что я могу сделать в ближайшие 60 минут». Не «запустить запуск», а «написать черновик письма для базы».</p>
+        </div>
+
+        <div class="tip-item">
+          <p class="tip-title">Пятничный smoke-чек</p>
+          <p class="tip-body">15 минут в пятницу: что сделано, что не сделано, что переносим в следующую неделю, что убираем совсем. Это и есть основа еженедельного отчёта в клуб.</p>
+        </div>
+
+        <div class="tip-item">
+          <p class="tip-title">Зона «нет» — обязательна</p>
+          <p class="tip-body">У каждого месячного фокуса должен быть список «от чего я отказываюсь». Без этого новое не помещается — старое не двигается. Запишите три вещи, которые не делаете в июне.</p>
+        </div>
+      </div>
+
+      <div class="tips-card green">
+        <span class="tag">Дисциплина</span>
+        <h3>Как держать ритм без надрыва</h3>
+
+        <div class="tip-item">
+          <p class="tip-title">Сначала система, потом мотивация</p>
+          <p class="tip-body">Мотивация — топливо, но не двигатель. Двигатель — это рутина: время, место, триггер. Решите заранее: «бегаю по понедельникам, средам и пятницам в 7:00». В момент, когда не хочется, уже не нужно решать — нужно просто делать.</p>
+        </div>
+
+        <div class="tip-item">
+          <p class="tip-title">Минимум, а не максимум</p>
+          <p class="tip-body">Установите для привычки минимальную планку, которую невозможно не выполнить. 5 минут английского. 10 приседаний. Одно предложение в дневник. Когда легко — делаете больше. Когда плохо — делаете минимум и не выбиваетесь.</p>
+        </div>
+
+        <div class="tip-item">
+          <p class="tip-title">Никогда дважды подряд</p>
+          <p class="tip-body">Пропустить один день — нормально. Пропустить два дня подряд — это уже не пауза, а начало откатывания. Поэтому: что бы ни случилось, второй раз подряд не пропускаем. Никогда.</p>
+        </div>
+
+        <div class="tip-item">
+          <p class="tip-title">Привязка к существующему</p>
+          <p class="tip-body">Новую привычку легче приклеить к старой, чем впихнуть в пустое место. «После утреннего кофе — 10 минут планирования дня». «После того как закрыла ноутбук вечером — записываю 3 итога дня». Цепляйтесь за то, что уже стабильно.</p>
+        </div>
+
+        <div class="tip-item">
+          <p class="tip-title">Видимость — половина успеха</p>
+          <p class="tip-body">Что не отслеживается — то не растёт. Заведите простой трекер: галочка в день. Через 2 недели вы увидите паттерн, через 4 — характер. Без записи всё это сольётся в туман «вроде делала».</p>
+        </div>
+
+        <div class="tip-item">
+          <p class="tip-title">Публичное обязательство</p>
+          <p class="tip-body">Для этого и существует чат клуба. Озвученное при свидетелях обязательство выполняется в 2–3 раза чаще, чем тихое внутреннее. Пишите цели открыто, пишите промежуточные результаты, пишите даже срывы — особенно срывы.</p>
+        </div>
+
+        <div class="tip-item">
+          <p class="tip-title">Энергия важнее времени</p>
+          <p class="tip-body">Можно иметь 3 часа и ничего не сделать. Можно иметь 40 минут и сдвинуть ключевую задачу. Ставьте самое важное в окно максимальной энергии (у большинства — первые 2–3 часа после пробуждения). Не отдавайте этот ресурс на почту и чаты.</p>
+        </div>
+
+        <div class="tip-item">
+          <p class="tip-title">Восстановление — часть дисциплины</p>
+          <p class="tip-body">Сон, прогулки, выходной без работы — это не «бонус», а инфраструктура для всего остального. Запланируйте отдых так же конкретно, как задачи. Иначе он либо не случится, либо случится в виде выгорания.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="container"><div class="divider"></div></div>
+
+<!-- ЕЖЕНЕДЕЛЬНЫЙ ОТЧЁТ -->
+<section id="report" class="section">
+  <div class="container">
+    <span class="section-eyebrow">ритм клуба</span>
+    <h2>Еженедельный <i>отчёт в&nbsp;клуб</i></h2>
+    <p class="lead">Раз в неделю — в пятницу или в воскресенье на ваш выбор — каждый пишет в чат клуба короткий отчёт. Это не для оценки, это для движения.</p>
+
+    <div class="report">
+      <div class="report-inner">
+        <span class="report-when"><span class="dot"></span>каждая пятница / воскресенье · 10–15 минут</span>
+        <h3>Структура <i>отчёта</i></h3>
+        <ol>
+          <li>Что сделано за неделю по моим задачам июня — конкретно, списком.</li>
+          <li>Главный результат / победа недели — одной фразой.</li>
+          <li>Где застряла / с чем сложность?</li>
+          <li>% выполнения моих задач на сегодня — среднее по всем задачам месяца.</li>
+          <li>Фокус на следующую неделю — 2–3 пункта.</li>
+          <li>Что мне нужно от группы? <span class="example-hint">совет, поддержка, ресурс, ничего</span></li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="tracker">
+      <h4>Что внутри <i>Google-таблицы</i></h4>
+      <p class="tracker-sub">Готовый файл .xlsx прикреплён к встрече — открывайте через Google Sheets и работайте.</p>
+      <table class="tracker-table">
+        <thead>
+          <tr>
+            <th>Лист</th>
+            <th>Что отслеживает</th>
+            <th>Когда заполнять</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Цели июня</strong></td>
+            <td>6 сфер, главные цели, задачи, % выполнения</td>
+            <td>В начале месяца + апдейт раз в неделю</td>
+          </tr>
+          <tr>
+            <td><strong>Недельные отчёты</strong></td>
+            <td>Сделано, победа, сложность, %, фокус, запрос</td>
+            <td>Раз в неделю — пятница или воскресенье</td>
+          </tr>
+          <tr>
+            <td><strong>Ежедневная рефлексия</strong></td>
+            <td>Энергия, 3 главных дела, что получилось, благодарность</td>
+            <td>Каждый вечер, 5 минут</td>
+          </tr>
+          <tr>
+            <td><strong>Челленджи</strong></td>
+            <td>До 2 челленджей по 19 дней, ежедневная галочка, заметки</td>
+            <td>Каждый день в течение челленджа</td>
+          </tr>
+          <tr>
+            <td><strong>«Сделать»</strong></td>
+            <td>Разовые задачи без привязки к сфере</td>
+            <td>По мере появления</td>
+          </tr>
+        </tbody>
+      </table>
+      <p class="tracker-foot">☀ всё считается автоматически — вы только заполняете</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== МОДАЛКА КОНСТРУКТОРА =====
+     Открывается по клику на «Собрать план». Внутри — готовый текст для копирования
+     в чат клуба плюс три кнопки действий: копировать, скачать .txt, распечатать.
+     Структура повторяет твою pricing-модалку: затемнённый бэкдроп с blur,
+     центрированная карточка, крестик-закрыть в правом верхнем углу. -->
+<div class="b-modal-backdrop" id="b-modal" role="dialog" aria-modal="true" aria-labelledby="b-modal-title">
+  <div class="b-modal">
+    <button class="b-modal-close" id="b-close" type="button" aria-label="Закрыть">✕</button>
+    <h2 id="b-modal-title">Твой план <i>лета 2026</i></h2>
+    <p class="b-modal-sub">Скопируйте в чат клуба, сохраните файлом или распечатайте — план у вас на руках.</p>
+    <div class="b-result-card" id="b-result">текст плана появится здесь</div>
+    <div class="b-actions">
+      <button class="b-action-btn" id="b-copy" type="button">📋 Скопировать</button>
+      <button class="b-action-btn secondary" id="b-download" type="button">⬇ Скачать .txt</button>
+      <button class="b-action-btn secondary" id="b-print" type="button">🖨 Распечатать</button>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ===== КОНСТРУКТОР ПЛАНА — логика =====
+   Архитектура простая: одно состояние `state`, которое отражает все ответы участницы.
+   При любом изменении (клик по чипсу, ввод в поле) state перезаписывается и
+   сохраняется в localStorage. При следующем открытии страницы state восстанавливается.
+   В конце state превращается в форматированный текст для чата. */
+
+// 1) ДАННЫЕ: все сферы из колеса баланса, сгруппированные по разделам.
+// Этот же список — в HTML выше, в секции #wheel. Если меняешь там — поменяй и тут.
+const SPHERE_GROUPS = [
+  { name: "Тело и здоровье", items: [
+      "Здоровье и тело", "Физическая активность / спорт", "Питание",
+      "Сон и восстановление", "Энергия / состояние", "Внешность и стиль"
+  ]},
+  { name: "Отношения", items: [
+      "Партнёр / любовные отношения", "Семья / родители", "Дети",
+      "Дружба", "Сексуальность", "Окружение / люди вокруг"
+  ]},
+  { name: "Деньги и дело", items: [
+      "Финансы / доход", "Карьера / работа по найму", "Бизнес / своё дело",
+      "Профессиональный рост", "Личный бренд / публичность"
+  ]},
+  { name: "Внутреннее", items: [
+      "Личностный рост / саморазвитие", "Психика / эмоции / внутренняя работа",
+      "Духовность / смыслы", "Дисциплина и привычки", "Обучение / новые знания"
+  ]},
+  { name: "Жизнь и среда", items: [
+      "Хобби и увлечения", "Творчество и творческая реализация",
+      "Отдых и восстановление", "Путешествия и приключения",
+      "Дом и быт", "Время и тайм-менеджмент", "Комьюнити / клуб / своё сообщество"
+  ]}
+];
+
+const MAX_SPHERES = 6;
+const LS_KEY = "rassvet-summer-plan-2026";
+
+// 2) СОСТОЯНИЕ: единый объект, отражающий все 6 шагов. Все поля — строки,
+// кроме spheres (массив выбранных названий сфер).
+let state = {
+  word: "",
+  spheres: [],
+  june: "", july: "", august: "",
+  ch1: "", ch2: "",
+  no: "", need: ""
+};
+
+// 3) ВОССТАНОВЛЕНИЕ ИЗ LOCALSTORAGE при загрузке страницы.
+// Обёрнуто в try/catch — если хранилище заблокировано (incognito, политика
+// браузера, embed в iframe), просто работаем без сохранения.
+try {
+  const saved = localStorage.getItem(LS_KEY);
+  if (saved) {
+    const parsed = JSON.parse(saved);
+    state = Object.assign(state, parsed);
+    // защита: spheres должен быть массивом, а не каким-то мусором
+    if (!Array.isArray(state.spheres)) state.spheres = [];
+  }
+} catch (e) { /* пропускаем */ }
+
+function saveState() {
+  try { localStorage.setItem(LS_KEY, JSON.stringify(state)); }
+  catch (e) { /* не критично, просто не сохранится */ }
+}
+
+// 4) РЕНДЕР ЧИПСОВ. Перерисовываем весь блок целиком при каждом изменении —
+// это проще, чем точечно менять классы, и работает мгновенно для 28 чипсов.
+const spheresEl = document.getElementById("b-spheres");
+const counterEl = document.getElementById("b-counter");
+
+function renderSpheres() {
+  spheresEl.innerHTML = "";
+  SPHERE_GROUPS.forEach(group => {
+    const wrap = document.createElement("div");
+    wrap.className = "bs-sphere-group";
+
+    const title = document.createElement("p");
+    title.className = "bs-sphere-group-title";
+    title.textContent = group.name;
+    wrap.appendChild(title);
+
+    const chips = document.createElement("div");
+    chips.className = "bs-chips";
+
+    group.items.forEach(name => {
+      const btn = document.createElement("button");
+      btn.type = "button";
+      btn.className = "bs-chip";
+      btn.textContent = name;
+      btn.dataset.name = name;
+
+      const isSelected = state.spheres.includes(name);
+      const limitReached = state.spheres.length >= MAX_SPHERES;
+
+      if (isSelected) {
+        btn.classList.add("selected");
+      } else if (limitReached) {
+        btn.classList.add("disabled");
+      }
+
+      // Клик переключает выбор. Логика: если уже выбрано — снимаем;
+      // если не выбрано и лимит не достигнут — добавляем.
+      btn.addEventListener("click", () => {
+        const idx = state.spheres.indexOf(name);
+        if (idx >= 0) {
+          state.spheres.splice(idx, 1);
+        } else if (state.spheres.length < MAX_SPHERES) {
+          state.spheres.push(name);
+        }
+        saveState();
+        renderSpheres();
+        updateCounter();
+      });
+
+      chips.appendChild(btn);
+    });
+
+    wrap.appendChild(chips);
+    spheresEl.appendChild(wrap);
+  });
+}
+
+function updateCounter() {
+  counterEl.textContent = state.spheres.length + " / 6";
+  // когда выбрано ровно 6 — счётчик становится зелёным, сигнал «выбор закрыт»
+  counterEl.classList.toggle("full", state.spheres.length === MAX_SPHERES);
+}
+
+renderSpheres();
+updateCounter();
+
+// 5) ПРИВЯЗКА ТЕКСТОВЫХ ПОЛЕЙ. Перечисляем ключи state, для каждого находим
+// инпут по id `b-<ключ>`, восстанавливаем значение и вешаем onInput-слушатель.
+const FIELDS = ["word", "june", "july", "august", "ch1", "ch2", "no", "need"];
+FIELDS.forEach(key => {
+  const el = document.getElementById("b-" + key);
+  if (!el) return;
+  el.value = state[key] || "";
+  el.addEventListener("input", () => {
+    state[key] = el.value;
+    saveState();
+  });
+});
+
+// 6) ГЕНЕРАЦИЯ ТЕКСТА ПЛАНА.
+// Собираем построчно. Пустые блоки пропускаются, чтобы не было «болванок»
+// в финальном сообщении.
+function generatePlanText() {
+  const L = [];
+  L.push("☀ МОЙ ПЛАН ЛЕТА 2026 · РАССВЕТ ☀");
+  L.push("");
+
+  if (state.word.trim()) {
+    L.push("ОДНО СЛОВО ЛЕТА: " + state.word.trim());
+    L.push("");
+  }
+
+  if (state.spheres.length > 0) {
+    L.push("🎯 МОИ СФЕРЫ ФОКУСА (" + state.spheres.length + "/6):");
+    state.spheres.forEach((s, i) => L.push((i + 1) + ". " + s));
+    L.push("");
+  }
+
+  const hasMonth = state.june.trim() || state.july.trim() || state.august.trim();
+  if (hasMonth) {
+    L.push("📅 ФОКУС МЕСЯЦЕВ:");
+    if (state.june.trim())   L.push("Июнь — "   + state.june.trim());
+    if (state.july.trim())   L.push("Июль — "   + state.july.trim());
+    if (state.august.trim()) L.push("Август — " + state.august.trim());
+    L.push("");
+  }
+
+  if (state.ch1.trim() || state.ch2.trim()) {
+    L.push("🔥 ЧЕЛЛЕНДЖИ (до 2):");
+    if (state.ch1.trim()) L.push("1. " + state.ch1.trim() + "  ·  01.06 — 19.06");
+    if (state.ch2.trim()) L.push("2. " + state.ch2.trim() + "  ·  13.07 — 31.07");
+    L.push("");
+  }
+
+  if (state.no.trim()) {
+    L.push("⛔ ОТ ЧЕГО ОТКАЗЫВАЮСЬ В ИЮНЕ:");
+    L.push(state.no.trim());
+    L.push("");
+  }
+
+  if (state.need.trim()) {
+    L.push("🙏 ЧТО МНЕ НУЖНО ОТ ГРУППЫ:");
+    L.push(state.need.trim());
+    L.push("");
+  }
+
+  L.push("— Рассвет, стратсессия");
+  return L.join("\n");
+}
+
+// 7) УПРАВЛЕНИЕ МОДАЛКОЙ.
+const modal       = document.getElementById("b-modal");
+const resultEl    = document.getElementById("b-result");
+const submitBtn   = document.getElementById("b-submit");
+const closeBtn    = document.getElementById("b-close");
+const copyBtn     = document.getElementById("b-copy");
+const downloadBtn = document.getElementById("b-download");
+const printBtn    = document.getElementById("b-print");
+
+function openModal() {
+  resultEl.textContent = generatePlanText();
+  modal.classList.add("open");
+  document.body.style.overflow = "hidden";
+  // через 300мс (после анимации) фокусируем кнопку копирования —
+  // удобно для тех, кто работает с клавиатуры
+  setTimeout(() => copyBtn.focus(), 320);
+}
+
+function closeModal() {
+  modal.classList.remove("open");
+  document.body.style.overflow = "";
+}
+
+submitBtn.addEventListener("click", openModal);
+closeBtn.addEventListener("click", closeModal);
+// клик по фону вне карточки тоже закрывает
+modal.addEventListener("click", e => { if (e.target === modal) closeModal(); });
+// Escape — стандартное поведение для модалок
+document.addEventListener("keydown", e => {
+  if (e.key === "Escape" && modal.classList.contains("open")) closeModal();
+});
+
+// 8) ДЕЙСТВИЕ «СКОПИРОВАТЬ».
+// Сначала пробуем современный navigator.clipboard, на старых браузерах
+// падаем в textarea+execCommand. Кнопка на 2 секунды зеленеет с галочкой —
+// визуальное подтверждение, что копирование сработало.
+copyBtn.addEventListener("click", async () => {
+  const text = resultEl.textContent;
+  const showSuccess = () => {
+    copyBtn.textContent = "✓ Скопировано";
+    copyBtn.classList.add("copied");
+    setTimeout(() => {
+      copyBtn.textContent = "📋 Скопировать";
+      copyBtn.classList.remove("copied");
+    }, 2000);
+  };
+
+  try {
+    await navigator.clipboard.writeText(text);
+    showSuccess();
+  } catch (e) {
+    // запасной путь для старых браузеров и небезопасных контекстов (file://)
+    const ta = document.createElement("textarea");
+    ta.value = text;
+    ta.style.position = "fixed";
+    ta.style.left = "-9999px";
+    document.body.appendChild(ta);
+    ta.select();
+    try { document.execCommand("copy"); showSuccess(); }
+    catch (e2) { alert("Не удалось скопировать. Выделите текст и нажмите Ctrl/Cmd + C."); }
+    document.body.removeChild(ta);
+  }
+});
+
+// 9) ДЕЙСТВИЕ «СКАЧАТЬ .TXT».
+// Создаём Blob, делаем временную ссылку, эмулируем клик — стандартный
+// браузерный паттерн скачивания файла без серверной части.
+downloadBtn.addEventListener("click", () => {
+  const text = resultEl.textContent;
+  const blob = new Blob([text], { type: "text/plain;charset=utf-8" });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = "rassvet-plan-leto-2026.txt";
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  // освобождаем память — иначе blob висит в браузере до перезагрузки
+  setTimeout(() => URL.revokeObjectURL(url), 100);
+});
+
+// 10) ДЕЙСТВИЕ «РАСПЕЧАТАТЬ».
+// Открываем новое окно с минимальной HTML-разметкой, в нём вызываем window.print().
+// Так мы печатаем только план, а не всю страницу со всеми разделами.
+printBtn.addEventListener("click", () => {
+  const text = resultEl.textContent;
+  // экранируем HTML-небезопасные символы, чтобы не сломать вёрстку нового окна
+  const safe = text.replace(/[<>&]/g, c => ({"<":"&lt;",">":"&gt;","&":"&amp;"}[c]));
+  const w = window.open("", "_blank", "width=720,height=900");
+  if (!w) { alert("Разрешите всплывающие окна, чтобы распечатать."); return; }
+  w.document.write(
+    '<!DOCTYPE html><html lang="ru"><head><meta charset="UTF-8">' +
+    '<title>План лета 2026 — Рассвет</title>' +
+    '<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;1,500&family=Onest:wght@400;500&display=swap" rel="stylesheet">' +
+    '<style>' +
+      'body{font-family:Onest,Georgia,serif;max-width:620px;margin:50px auto;padding:0 24px;line-height:1.7;color:#1d150c;}' +
+      'h1{font-family:"Cormorant Garamond",Georgia,serif;color:#e96d2a;font-style:italic;font-weight:600;margin:0 0 24px;font-size:42px;letter-spacing:-.012em;}' +
+      'pre{white-space:pre-wrap;font-family:inherit;font-size:14.5px;background:#fffaf0;padding:24px 28px;border-radius:14px;border:1.5px solid #fbcfb1;}' +
+      'footer{margin-top:30px;font-size:12px;color:#8a7558;font-style:italic;text-align:center;}' +
+      '@media print{body{margin:20px auto}}' +
+    '</style></head>' +
+    '<body><h1>План лета 2026</h1><pre>' + safe + '</pre>' +
+    '<footer>Сгенерировано из конспекта стратсессии · Рассвет</footer>' +
+    '<scr' + 'ipt>window.onload=function(){setTimeout(window.print,250)};<\/script>' +
+    '</body></html>'
+  );
+  w.document.close();
+});
+</script>
+
+
+<div class="container">
+  <div class="foot-quote">
+    <p>Лето — это не три месяца,<br>а <i>одно слово</i>, шесть фокусов и одно решение начать.</p>
+    <span class="foot-sign">Рассвет · стратсессия</span>
+  </div>
+</div>
+
+</body>
+</html>
