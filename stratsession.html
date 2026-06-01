@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Рассвет · Стратсессия — итоги весны и план на лето</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Onest:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -18,540 +19,739 @@
 }
 *,*::before,*::after{box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{margin:0;font-family:'Onest','Inter',Arial,sans-serif;font-size:15px;line-height:1.55;color:var(--ink);background:var(--bg);-webkit-font-smoothing:antialiased;}
-body.modal-open{overflow:hidden}
+body{
+  margin:0;
+  font-family:'Onest','Inter',Arial,sans-serif;
+  font-size:15px;line-height:1.55;color:var(--ink);background:var(--bg);
+  -webkit-font-smoothing:antialiased;
+}
 img{max-width:100%;display:block}
-button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit}
 a{color:inherit;text-decoration:none}
-.container{max-width:1240px;margin:0 auto;padding:0 36px}
+.container{max-width:1100px;margin:0 auto;padding:0 36px}
 h1,h2,h3,h4{letter-spacing:-.01em}
 
 /* HEADER */
-.header{position:sticky;top:0;z-index:50;background:rgba(250,243,231,.86);backdrop-filter:saturate(140%) blur(10px);border-bottom:1px solid rgba(140,90,40,.06);}
+.header{
+  position:sticky;top:0;z-index:50;
+  background:rgba(250,243,231,.86);backdrop-filter:saturate(140%) blur(10px);
+  border-bottom:1px solid rgba(140,90,40,.06);
+}
 .header-inner{display:flex;align-items:center;justify-content:space-between;height:78px}
 .logo{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:600;font-size:30px;color:var(--orange);}
-.nav{display:flex;gap:38px}
-.nav a{font-size:14.5px;color:var(--ink-soft);transition:color .2s}
+.nav{display:flex;gap:32px}
+.nav a{font-size:14px;color:var(--ink-soft);transition:color .2s}
 .nav a:hover{color:var(--orange)}
-.btn{display:inline-flex;align-items:center;justify-content:center;border-radius:999px;padding:14px 28px;font-size:14.5px;font-weight:500;transition:transform .15s,background .2s,box-shadow .2s,color .2s;white-space:nowrap;border:none;}
-.btn-primary{background:var(--orange);color:#fff}
-.btn-primary:hover{background:#d46820;transform:translateY(-1px);box-shadow:0 6px 20px rgba(233,109,42,.35)}
-.btn-ghost{background:transparent;color:var(--ink);box-shadow:inset 0 0 0 1.5px #cc8b13}
-.btn-ghost:hover{background:rgba(233,109,42,.06);box-shadow:inset 0 0 0 1.5px var(--orange);color:var(--orange)}
 
 /* HERO */
-.hero{padding:32px 0 100px}
-.hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center;}
-.eyebrow-pill{display:inline-block;background:var(--orange-50);color:var(--ink-soft);font-size:12px;letter-spacing:.14em;text-transform:uppercase;padding:9px 20px;border-radius:999px;margin-bottom:36px;font-weight:500;}
-.hero h1{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:90px;line-height:.98;margin:0 0 30px;letter-spacing:-.012em;text-wrap:balance;}
-.hero h1 i{font-style:italic;font-weight:500;color:var(--orange);}
-.hero p.lead{max-width:520px;font-size:16.5px;line-height:1.6;color:var(--ink-mute);margin:0 0 36px;}
-.hero-buttons{display:flex;gap:14px;flex-wrap:wrap}
-.hero-img-wrap{position:relative;border-radius:26px;aspect-ratio:.82/1;background:#cdc4ad;box-shadow:var(--shadow-md);}
-.hero-img-wrap img{width:100%;height:100%;object-fit:cover;border-radius:26px;display:block}
-.hero-pill{position:absolute;left:18px;bottom:-22px;background:#fffaf0;padding:13px 24px;border-radius:999px;font-size:14.5px;color:var(--ink);box-shadow:0 0 0 6px rgba(185,207,138,.35),0 0 32px 6px rgba(185,207,138,.55),0 8px 24px rgba(80,40,10,.10);display:flex;align-items:center;gap:10px;font-weight:500;z-index:2;}
-
-/* ABOUT */
-.about{padding:60px 0 80px}
-.about-grid{display:grid;grid-template-columns:.95fr 1.1fr;gap:72px;align-items:start;}
-.collage{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:auto auto;gap:16px;}
-.collage>div{border-radius:22px;overflow:hidden;background:#d8d2c2}
-.collage>div img{width:100%;height:100%;object-fit:cover;display:block}
-.collage .c1{grid-column:1;grid-row:1/span 2;aspect-ratio:.76/1}
-.collage .c2{grid-column:2;grid-row:1;aspect-ratio:1/1}
-.collage .c3{grid-column:2;grid-row:2;aspect-ratio:1/1}
-.about-text{padding-top:6px}
-.section-eyebrow{display:inline-block;font-size:12px;color:var(--orange);letter-spacing:.16em;text-transform:uppercase;margin-bottom:22px;font-weight:500;}
-.section-eyebrow::before{content:"— "}
-.about h2{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:50px;line-height:1.06;margin:0 0 30px;letter-spacing:-.012em;text-wrap:balance;}
-.about h2 i{font-style:italic;font-weight:500;color:var(--orange);}
-.about-text p{font-size:16px;color:var(--ink-soft);line-height:1.65;margin:0 0 18px;max-width:520px;}
-.about-text strong{color:var(--ink);font-weight:600}
-
-/* ───────────────── WELCOME СЕКЦИЯ ───────────────── */
-.welcome-wrap{padding:30px 0 50px}
-.welcome{
-  position:relative;overflow:hidden;
-  display:grid;grid-template-columns:1.15fr .85fr;gap:60px;align-items:center;
-  background:linear-gradient(135deg,#fff5e3 0%,#fdebcf 55%,#fbd9b0 100%);
-  border-radius:32px;
-  padding:56px 64px;
-  box-shadow:0 18px 44px rgba(200,130,50,.14);
+.hero{padding:60px 0 80px}
+.hero-grid{display:grid;grid-template-columns:1.2fr .9fr;gap:60px;align-items:center;}
+.eyebrow-pill{display:inline-block;background:var(--orange-50);color:var(--ink-soft);font-size:12px;letter-spacing:.14em;text-transform:uppercase;padding:9px 20px;border-radius:999px;margin-bottom:32px;font-weight:500;}
+.hero h1{
+  font-family:'Cormorant Garamond',serif;font-weight:600;
+  font-size:76px;line-height:.98;
+  margin:0 0 26px;letter-spacing:-.012em;text-wrap:balance;
 }
-.welcome::before{
-  content:"";position:absolute;top:-100px;right:-80px;width:340px;height:340px;
+.hero h1 i{font-style:italic;font-weight:500;color:var(--orange);}
+.hero p.lead{
+  max-width:520px;font-size:16.5px;line-height:1.6;
+  color:var(--ink-mute);margin:0 0 32px;
+}
+.hero-meta{display:flex;gap:20px;flex-wrap:wrap;margin-top:8px}
+.meta-chip{
+  display:inline-flex;align-items:center;gap:8px;
+  background:#fffaf0;border:1.4px solid var(--line);
+  padding:9px 16px;border-radius:999px;
+  font-size:13px;color:var(--ink-soft);font-weight:500;
+}
+.meta-chip .dot{width:7px;height:7px;border-radius:50%;background:var(--orange);}
+.meta-chip.green .dot{background:var(--green-deep);}
+.meta-chip.olive .dot{background:var(--olive);}
+
+.hero-card{
+  position:relative;
+  background:linear-gradient(135deg,#fff5e3 0%,#fdebcf 55%,#fbd9b0 100%);
+  border-radius:28px;padding:44px 40px;
+  box-shadow:0 18px 44px rgba(200,130,50,.14);
+  overflow:hidden;
+}
+.hero-card::before{
+  content:"";position:absolute;top:-100px;right:-80px;width:280px;height:280px;
   background:radial-gradient(circle, rgba(255,255,255,.55) 0%, transparent 65%);
   border-radius:50%;pointer-events:none;
 }
-.welcome::after{
-  content:"";position:absolute;bottom:-120px;left:-60px;width:280px;height:280px;
+.hero-card::after{
+  content:"";position:absolute;bottom:-100px;left:-60px;width:240px;height:240px;
   background:radial-gradient(circle, rgba(185,207,138,.30) 0%, transparent 65%);
   border-radius:50%;pointer-events:none;
 }
-.welcome-content{position:relative;z-index:2}
-.welcome-eyebrow{
+.hero-card-inner{position:relative;z-index:2}
+.hero-card-tag{
   display:inline-flex;align-items:center;gap:8px;
-  background:rgba(255,255,255,.7);
-  padding:9px 18px;border-radius:999px;
-  font-size:12px;letter-spacing:.14em;text-transform:uppercase;
-  font-weight:500;color:var(--orange);
-  margin-bottom:24px;
+  background:rgba(255,255,255,.7);padding:8px 16px;border-radius:999px;
+  font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;
+  font-weight:500;color:var(--orange);margin-bottom:18px;
 }
-.welcome-eyebrow .dot{width:7px;height:7px;border-radius:50%;background:var(--orange);animation:pdot 2s infinite;}
-.welcome h2{
-  font-family:'Cormorant Garamond',serif;
-  font-weight:600;font-size:54px;line-height:1.02;
-  margin:0 0 22px;letter-spacing:-.014em;text-wrap:balance;
-}
-.welcome h2 i{font-style:italic;font-weight:500;color:var(--orange);}
-.welcome-lead{
-  font-size:16.5px;line-height:1.6;color:var(--ink-soft);
-  max-width:520px;margin:0 0 30px;
-}
-.welcome-lead strong{color:var(--ink);font-weight:600}
-.welcome-bullets{
-  list-style:none;padding:0;margin:0 0 32px;
-  display:flex;flex-direction:column;gap:12px;max-width:520px;
-}
-.welcome-bullets li{
-  font-size:15px;color:var(--ink-soft);line-height:1.5;
-  display:flex;gap:12px;align-items:flex-start;
-}
-.welcome-bullets li::before{
-  content:"☀";color:var(--orange);font-size:15px;flex-shrink:0;margin-top:1px;
-}
-.welcome-cta-row{display:flex;align-items:center;gap:20px;flex-wrap:wrap}
-.welcome-cta{
-  background:var(--orange);color:#fff;
-  padding:16px 32px;border-radius:999px;
-  font-size:14.5px;font-weight:500;
-  display:inline-flex;align-items:center;gap:10px;
-  transition:transform .15s ease, background .2s ease, box-shadow .2s ease;
-  box-shadow:0 8px 22px rgba(233,109,42,.28);
-}
-.welcome-cta:hover{background:#d46820;transform:translateY(-2px);box-shadow:0 12px 28px rgba(233,109,42,.36)}
-.welcome-cta .arr{transition:transform .2s}
-.welcome-cta:hover .arr{transform:translateX(4px)}
-.welcome-note{font-size:13.5px;color:var(--ink-mute);max-width:260px;line-height:1.45}
-
-.welcome-card{
-  position:relative;z-index:2;
-  background:#fffaf0;border-radius:24px;
-  padding:36px 32px;
-  box-shadow:0 14px 32px rgba(160,110,40,.14);
-  transform:rotate(1.5deg);
-  transition:transform .3s ease;
-}
-.welcome-card:hover{transform:rotate(0deg) translateY(-4px)}
-.welcome-card-tag{
-  position:absolute;top:-14px;left:24px;
-  background:var(--green-deep);color:#fff8e4;
-  font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;
-  padding:6px 16px;border-radius:999px;font-weight:500;
-}
-.welcome-card-price{
-  font-family:'Cormorant Garamond',serif;
-  font-size:80px;font-weight:600;line-height:1;
-  color:var(--ink);margin:6px 0 4px;
-  display:flex;align-items:flex-start;gap:2px;
-}
-.welcome-card-price .ruble{font-size:28px;margin-top:18px;margin-left:6px;opacity:.7}
-.welcome-card-sub{font-size:14px;color:var(--ink-mute);font-style:italic;margin-bottom:24px}
-.welcome-card-list{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:11px}
-.welcome-card-list li{font-size:14.5px;color:var(--ink-soft);line-height:1.45;display:flex;gap:10px;align-items:flex-start}
-.welcome-card-list li::before{content:"✓";color:var(--orange);font-weight:700;font-size:13px;margin-top:2px;flex-shrink:0}
-.welcome-card-hint{
-  margin-top:22px;padding-top:18px;
-  border-top:1px dashed var(--line);
-  font-size:13px;color:var(--ink-mute);line-height:1.5;
-  font-style:italic;
-}
-
-/* ── Welcome форматы ─────────────────────── */
-.welcome-step-label{
-  font-size:14px;letter-spacing:.12em;text-transform:uppercase;
-  color:var(--orange);font-weight:600;margin:0 0 14px;
-}
-.welcome-formats{
-  display:grid;grid-template-columns:1fr 1fr;gap:12px;
-  max-width:520px;margin-bottom:28px;
-}
-.wf-card{
-  display:flex;flex-direction:column;align-items:flex-start;gap:4px;
-  background:#fffaf0;border:2px solid var(--line);
-  border-radius:18px;padding:18px 20px;
-  text-align:left;cursor:pointer;
-  transition:border-color .2s,transform .18s,box-shadow .18s,background .2s;
-}
-.wf-card:hover{border-color:var(--orange-100);transform:translateY(-2px);box-shadow:0 8px 20px rgba(200,130,50,.12)}
-.wf-card.selected{
-  border-color:var(--orange);background:#fef0e0;
-  box-shadow:0 0 0 3px rgba(233,109,42,.18),0 8px 20px rgba(200,130,50,.12);
-  transform:translateY(-2px);
-}
-.wf-icon{font-size:24px;line-height:1;margin-bottom:2px}
-.wf-name{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:19px;color:var(--ink);line-height:1.2}
-.wf-when{font-size:12.5px;color:var(--ink-mute);line-height:1.3}
-
-.welcome-form-wrap{
-  max-width:520px;
-  animation:wfSlideIn .35s ease;
-}
-@keyframes wfSlideIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
-.welcome-chosen{
-  display:inline-flex;align-items:center;gap:8px;
-  background:var(--green-50);border:1.5px solid #cad9a9;
-  padding:8px 18px;border-radius:999px;
-  font-size:13.5px;font-weight:500;color:var(--green-deep);
-  margin-bottom:18px;
-}
-.wf-fields{
-  display:grid;grid-template-columns:1fr 1fr;gap:14px;
-  margin-bottom:16px;
-}
-.welcome-submit{
-  width:100%;padding:17px 30px;border-radius:999px;
-  background:var(--orange);color:#fff;
-  font-size:15px;font-weight:500;border:none;cursor:pointer;
-  transition:background .2s,transform .15s,box-shadow .2s;
-  box-shadow:0 8px 22px rgba(233,109,42,.28);
-}
-.welcome-submit:hover{background:#d46820;transform:translateY(-2px);box-shadow:0 12px 28px rgba(233,109,42,.36)}
-.welcome-submit:disabled{opacity:.5;cursor:not-allowed;transform:none!important}
-.welcome-form-note{
-  font-size:13px;color:var(--ink-mute);line-height:1.5;
-  margin:14px 0 0;max-width:460px;
-}
-.wf-spots{
-  display:block;margin-top:6px;
-  font-family:'Onest',sans-serif;
-  font-size:11.5px;font-weight:500;
-  color:var(--green-deep);
-}
-.wf-spots-few{color:#e67e22;font-weight:600}
-.wf-spots-none{color:#c0392b}
-.wf-card.wf-full{
-  opacity:.45;cursor:not-allowed;
-  pointer-events:none;
-  filter:grayscale(.4);
-}
-
-/* SCHEDULE TEASER */
-.schedule-wrap{padding:30px 0 50px}
-.schedule{border-radius:28px;background:var(--paper);border:1px solid var(--line);box-shadow:0 8px 28px rgba(160,110,40,.05);padding:46px 52px 38px;}
-.schedule-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:36px;gap:20px;flex-wrap:wrap;}
-.schedule h3{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:34px;margin:0;}
-.schedule h3 i{font-style:italic;font-weight:500;color:var(--orange)}
-.schedule-link{display:inline-flex;align-items:center;gap:8px;font-size:14px;color:var(--orange);padding:10px 22px;border-radius:999px;background:var(--orange-50);font-weight:500;transition:transform .15s ease, background .2s ease, color .2s ease;}
-.schedule-link:hover{background:var(--orange);color:#fff;transform:translateY(-1px)}
-.schedule-link .arr{transition:transform .2s ease}
-.schedule-link:hover .arr{transform:translateX(3px)}
-.week{display:grid;grid-template-columns:repeat(7,1fr);gap:14px;align-items:start;}
-.day{display:flex;flex-direction:column;align-items:center;gap:12px;min-height:130px}
-.day-name{font-size:12px;letter-spacing:.14em;color:var(--ink-mute);text-transform:uppercase}
-.event{width:100%;border-radius:14px;padding:11px 8px;text-align:center;font-size:13.5px;line-height:1.35;font-weight:500;background:#fef0e0;color:#c45a1b;border:1.4px solid var(--orange-100);}
-.event.green{background:var(--green-50);color:var(--green-deep);border-color:#cad9a9;}
-.event.yellow{background:#fcefc6;color:#a87c1c;border-color:#f0db9b;}
-.event.tiny{padding:8px 6px;font-size:12.5px}
-.event-time{display:block;font-weight:400;font-size:11.5px;color:var(--ink-mute);margin-top:3px}
-.day .empty{width:100%;border-radius:14px;padding:18px 8px;background:#f3ead4;text-align:center;color:#cdb98e;font-size:18px;}
-.schedule-foot{text-align:center;font-size:13.5px;color:var(--ink-mute);margin-top:28px;}
-
-/* MANIFESTO */
-.manifesto-wrap{padding:30px 0 60px}
-.manifesto{color:#8ea35a;font-family:'Cormorant Garamond',serif;font-size:25px;line-height:1.45;font-weight:900;}
-
-/* ACTIVITIES */
-.activities{padding:90px 0 100px}
-.activities-head{display:grid;grid-template-columns:1fr 1fr;align-items:end;margin-bottom:50px;gap:40px;}
-.section-title{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:72px;line-height:1;margin:6px 0 0;letter-spacing:-.018em;}
-.section-title i{font-style:italic;font-weight:500;color:var(--orange);}
-.activities-sub{font-size:16px;color:var(--ink-mute);text-align:right;}
-.activity-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px 22px;}
-.activity{display:grid;grid-template-columns:36px 1fr auto;align-items:center;gap:18px;padding:18px 24px;border-radius:18px;min-height:64px;transition:transform .18s,box-shadow .18s;}
-.activity:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(120,80,30,.08)}
-.activity .num{font-family:'Cormorant Garamond',serif;font-size:22px;color:var(--orange);font-weight:500;}
-.activity .a-text{display:flex;flex-direction:column;gap:2px}
-.activity .a-title{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:20px;line-height:1.2;color:var(--ink);}
-.activity .a-desc{font-size:13px;color:var(--ink-soft);opacity:.68;line-height:1.35;}
-.tag{font-size:12px;padding:6px 13px;border-radius:999px;background:rgba(255,255,255,.65);color:var(--ink-soft);font-weight:500;white-space:nowrap;}
-.act-peach{background:#fbe5cf}
-.act-yellow{background:#fbecb1}
-
-/* GALLERY */
-.gallery-wrap{padding:50px 0 80px}
-.gallery-eyebrow{margin-bottom:32px}
-.gallery{display:grid;grid-template-columns:.78fr 1fr 1fr 1fr;gap:18px;align-items:start;}
-.gallery .g{border-radius:22px;background:#cdc6b6;overflow:hidden;aspect-ratio:1/1;}
-.gallery .g.tall{aspect-ratio:.78/1.13}
-.gallery .g img{width:100%;height:100%;object-fit:cover;display:block}
-
-/* BENEFITS */
-.benefits{background:radial-gradient(60% 80% at 12% 18%,#fbd5d8 0%,transparent 60%),radial-gradient(55% 70% at 92% 32%,#f8c9b3 0%,transparent 60%),linear-gradient(160deg,#fbe1d3 0%,#fce3c4 45%,#fceeb0 100%);padding:110px 0;color:var(--ink);}
-.benefits .section-eyebrow{color:var(--orange)}
-.benefits .section-title{color:var(--ink);margin-bottom:48px}
-.benefits .section-title i{color:var(--green-deep)}
-.benefits-grid{display:grid;grid-template-columns:1fr 1fr;gap:26px;max-width:1100px;margin:0 auto;}
-.b-card{background:#fffaf0;border:1px solid rgba(140,90,40,.08);border-radius:26px;padding:40px 44px;box-shadow:0 4px 18px rgba(160,110,40,.06);}
-.b-card.right{background:#fffdf3;border-color:rgba(140,160,90,.18);}
-.b-card h3{font-family:'Cormorant Garamond',serif;color:var(--orange);font-size:26px;font-weight:600;margin:0 0 26px;}
-.b-card.right h3{color:var(--green-deep)}
-.b-card ul{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:16px}
-.b-card li{font-size:15px;color:var(--ink-soft);line-height:1.5;display:flex;gap:14px;align-items:flex-start;}
-.b-card li::before{content:"✓";color:var(--orange);font-weight:700;font-size:14px;margin-top:2px;flex-shrink:0;}
-.b-card.right li::before{content:"✦";color:var(--green-deep)}
-
-/* PRICING */
-.pricing{padding:100px 0 110px;background:var(--bg)}
-.pricing .activities-head{align-items:start;margin-bottom:50px}
-.pricing-sub{font-size:16px;color:var(--ink-mute);max-width:400px;line-height:1.55;margin:0;text-align:right;}
-.tariffs{display:grid;grid-template-columns:1fr 1fr;gap:26px;max-width:1100px;margin:0 auto;}
-.tariff{position:relative;border-radius:28px;padding:40px 42px 36px;display:flex;flex-direction:column;transition:transform .2s,box-shadow .2s;}
-.tariff:hover{transform:translateY(-3px)}
-.tariff.base{background:var(--paper);box-shadow:var(--shadow-sm)}
-.tariff.dance{background:linear-gradient(135deg,#ef7d40 0%,#f08a51 45%,#f4a276 100%);color:#fff8e4;box-shadow:0 14px 36px rgba(200,100,40,.20);}
-.tariff .tnum{font-size:13px;color:rgba(60,40,20,.45);font-weight:500;letter-spacing:.08em;margin-bottom:24px;}
-.tariff.dance .tnum{color:rgba(255,240,210,.78)}
-.tariff .tname{font-family:'Cormorant Garamond',serif;font-size:40px;font-weight:600;margin:0 0 10px;}
-.tariff .tsub{font-size:14.5px;color:var(--ink-mute);margin-bottom:20px}
-.tariff.dance .tsub{color:rgba(255,240,210,.85)}
-.tariff .price{font-family:'Cormorant Garamond',serif;font-size:72px;font-weight:600;line-height:1;letter-spacing:-.02em;display:flex;align-items:flex-start;gap:2px;}
-.tariff .price .ruble{font-size:26px;margin-top:14px;margin-left:6px;font-weight:500;opacity:.85}
-.tariff .price-cap{font-size:13.5px;color:var(--ink-mute);margin-top:6px;margin-bottom:20px;}
-.tariff.dance .price-cap{color:rgba(255,240,210,.78)}
-.tariff.dance .price-cap s{opacity:.7}
-.tariff .features{list-style:none;padding:0;margin:0 0 24px;display:flex;flex-direction:column;gap:14px;flex:1}
-.tariff .features li{font-size:15px;line-height:1.45;display:flex;gap:12px}
-.tariff .features li::before{content:"✓";color:var(--orange);font-weight:700}
-.tariff.dance .features li::before{color:#fff8e4}
-.tariff.dance .features li.hi{font-weight:600;color:#fff}
-.tariff .cta-btn{align-self:stretch;width:100%;margin-top:auto;border-radius:999px;padding:18px 30px;font-size:14px;letter-spacing:.05em;text-transform:lowercase;font-weight:500;transition:transform .15s,background .2s,color .2s;}
-.tariff.base .cta-btn{background:transparent;color:var(--orange);box-shadow:inset 0 0 0 1.5px var(--orange)}
-.tariff.base .cta-btn:hover:not(:disabled){background:var(--orange);color:#fff;transform:translateY(-1px)}
-.tariff.dance .cta-btn{background:#fffaf0;color:var(--orange)}
-.tariff.dance .cta-btn:hover:not(:disabled){background:#fff;transform:translateY(-1px)}
-.tariff .cta-btn:disabled{opacity:.4;cursor:not-allowed;transform:none!important}
-.tariff-badge{position:absolute;top:20px;right:24px;background:rgba(255,255,255,.22);color:#fff8e4;font-size:12.5px;padding:8px 16px;border-radius:999px;backdrop-filter:blur(4px);}
-
-/* SPOTS BADGE */
-.spots-badge{display:inline-flex;align-items:center;gap:8px;border-radius:999px;padding:9px 18px;font-size:13px;font-weight:500;margin-bottom:18px;background:#fff3e8;border:1.5px solid var(--orange-100);color:var(--ink-soft);}
-.tariff.dance .spots-badge{background:rgba(255,255,255,.15);border-color:rgba(255,255,255,.3);color:#fff8e4;}
-.spots-dot{width:8px;height:8px;border-radius:50%;background:#4caf50;flex-shrink:0;animation:pdot 2s infinite;}
-.spots-badge.few .spots-dot{background:#ff9800}
-.spots-badge.none .spots-dot{background:#f44336;animation:none}
+.hero-card-tag .dot{width:7px;height:7px;border-radius:50%;background:var(--orange);animation:pdot 2s infinite;}
 @keyframes pdot{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(1.4)}}
+.hero-card h3{
+  font-family:'Cormorant Garamond',serif;font-weight:600;
+  font-size:30px;margin:0 0 18px;line-height:1.1;color:var(--ink);
+}
+.hero-card h3 i{font-style:italic;color:var(--orange);font-weight:500}
+.hero-card ul{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:11px}
+.hero-card li{
+  font-size:14.5px;color:var(--ink-soft);line-height:1.5;
+  display:flex;gap:11px;align-items:flex-start;
+}
+.hero-card li::before{content:"☀";color:var(--orange);font-size:15px;flex-shrink:0;margin-top:1px;}
 
-/* STORY */
-.story{padding:100px 0 90px}
-.story-title{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:60px;line-height:1.05;letter-spacing:-.018em;margin:0 auto 44px;max-width:1100px;text-wrap:balance;}
-.story-title i{font-style:italic;font-weight:500;color:var(--orange);}
-.story-body{max-width:760px;font-size:16.5px;line-height:1.75;color:var(--ink-soft);}
-.story-body p{margin:0 0 22px}
-.story-body strong{color:var(--ink);font-weight:600}
+/* SECTION HEAD */
+.section-eyebrow{display:inline-block;font-size:12px;color:var(--orange);letter-spacing:.16em;text-transform:uppercase;margin-bottom:18px;font-weight:500;}
+.section-eyebrow::before{content:"— "}
 
-/* FAQ */
-.faq{padding:90px 0 110px}
-.faq .section-title{text-align:left;margin-bottom:48px}
-.faq-list{max-width:920px;display:flex;flex-direction:column;gap:14px}
-.faq-item{background:var(--paper);border-radius:18px;box-shadow:var(--shadow-sm);overflow:hidden;transition:box-shadow .2s;}
-.faq-item.open{box-shadow:0 8px 24px rgba(140,90,40,.10)}
-.faq-q{display:flex;align-items:center;justify-content:space-between;width:100%;padding:24px 28px;text-align:left;font-size:16px;color:var(--ink);font-weight:500;transition:background .15s;}
-.faq-q:hover{background:#fffefa}
-.faq-icon{color:var(--orange);font-size:22px;transition:transform .25s;line-height:1;width:24px;height:24px;display:inline-flex;align-items:center;justify-content:center;}
-.faq-item.open .faq-icon{transform:rotate(45deg)}
-.faq-a{max-height:0;overflow:hidden;transition:max-height .35s;padding:0 28px;color:var(--ink-mute);font-size:15px;line-height:1.65;}
-.faq-item.open .faq-a{max-height:320px;padding:0 28px 24px}
+.section{padding:64px 0}
+.section h2{
+  font-family:'Cormorant Garamond',serif;font-weight:600;
+  font-size:54px;line-height:1.04;letter-spacing:-.014em;
+  margin:0 0 22px;text-wrap:balance;
+}
+.section h2 i{font-style:italic;font-weight:500;color:var(--orange);}
+.section .lead{
+  font-size:16.5px;color:var(--ink-mute);line-height:1.6;
+  max-width:620px;margin:0 0 44px;
+}
 
-/* ── CTA ПЛАШКА ── */
-.cta-wrap{
-  padding:60px 0 80px;
-  background:var(--bg);
+/* СПРИНГ — БЛОКИ */
+.block-row{display:flex;flex-direction:column;gap:20px;}
+.block{
+  background:var(--paper);
+  border-radius:24px;
+  padding:38px 44px;
+  box-shadow:var(--shadow-sm);
+  border:1px solid rgba(140,90,40,.05);
+  transition:transform .2s,box-shadow .2s;
 }
-.cta-plate{
-  position:relative;overflow:hidden;
-  background:#3b2314;
-  border-radius:32px;
-  padding:80px 72px;
-  text-align:center;
-  box-shadow:0 24px 60px rgba(30,15,5,.22);
+.block:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(120,80,30,.08);}
+.block-head{
+  display:flex;align-items:baseline;justify-content:space-between;
+  gap:20px;flex-wrap:wrap;margin-bottom:22px;
+  padding-bottom:18px;border-bottom:1px dashed var(--line);
 }
-.cta-plate::before{
-  content:"";position:absolute;
-  top:-140px;left:50%;transform:translateX(-50%);
-  width:600px;height:600px;
-  background:radial-gradient(circle, rgba(120,60,20,.45) 0%, transparent 65%);
-  border-radius:50%;pointer-events:none;
+.block-title{
+  font-family:'Cormorant Garamond',serif;font-weight:600;font-size:28px;
+  margin:0;line-height:1.15;letter-spacing:-.01em;color:var(--ink);
 }
-.cta-plate::after{
-  content:"";position:absolute;
-  bottom:-80px;right:-60px;
-  width:320px;height:320px;
-  background:radial-gradient(circle, rgba(185,207,138,.08) 0%, transparent 65%);
-  border-radius:50%;pointer-events:none;
+.block-title i{font-style:italic;font-weight:500;color:var(--orange)}
+.timer-pill{
+  display:inline-flex;align-items:center;gap:7px;
+  background:var(--orange-50);color:var(--orange);
+  padding:7px 14px;border-radius:999px;
+  font-size:12px;font-weight:500;letter-spacing:.05em;
+  white-space:nowrap;
 }
-.cta-plate h2{
-  font-family:'Cormorant Garamond',serif;
-  font-weight:600;font-size:72px;line-height:1.02;
-  letter-spacing:-.018em;
-  color:#f5e6c8;
-  margin:0 0 18px;
-  text-wrap:balance;
-  position:relative;z-index:1;
+.timer-pill::before{content:"⏱";font-size:13px}
+.block .intro{font-size:15px;color:var(--ink-mute);margin:0 0 18px;line-height:1.6;}
+.block ol{margin:0;padding-left:0;list-style:none;counter-reset:q;}
+.block ol > li{
+  counter-increment:q;
+  padding:13px 0 13px 46px;
+  border-bottom:1px solid rgba(236,225,200,.5);
+  position:relative;
+  font-size:15.5px;color:var(--ink);line-height:1.55;
 }
-.cta-plate h2 i{
-  font-style:italic;font-weight:500;
-  color:#f0d596;
+.block ol > li:last-child{border-bottom:none;padding-bottom:0;}
+.block ol > li::before{
+  content:counter(q,decimal-leading-zero);
+  position:absolute;left:0;top:14px;
+  font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:500;
+  font-size:18px;color:var(--orange);
 }
-.cta-plate p{
-  color:rgba(245,230,200,.72);
-  font-size:16px;line-height:1.6;
-  margin:0 auto 44px;
-  max-width:520px;
-  position:relative;z-index:1;
+.write-line{
+  display:inline-block;min-width:200px;
+  border-bottom:1px dotted var(--ink-mute);
+  margin:0 6px;color:transparent;user-select:none;
 }
-.cta-tg-btn{
-  display:inline-flex;align-items:center;gap:14px;
-  background:#f5e6c8;color:#3b2314;
-  padding:18px 44px;border-radius:999px;
-  font-size:15.5px;font-weight:600;
-  transition:transform .2s,background .2s,box-shadow .2s;
-  box-shadow:0 10px 28px rgba(0,0,0,.18);
-  position:relative;z-index:1;
-  letter-spacing:.01em;
+.example-hint{
+  font-size:13px;color:var(--ink-mute);font-style:italic;
+  display:block;margin-top:4px;
 }
-.cta-tg-btn:hover{
-  background:#fff8e8;
+
+/* КОЛЕСО БАЛАНСА */
+.wheel-note{
+  background:linear-gradient(135deg,#fff5e3 0%,#fbe5d0 100%);
+  border-radius:20px;padding:24px 32px;
+  margin-bottom:32px;
+  font-size:15px;line-height:1.6;color:var(--ink-soft);
+}
+.wheel-note strong{color:var(--ink);font-weight:600}
+.wheel-grid{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:18px;
+}
+.sphere-card{
+  background:var(--paper);
+  border-radius:22px;padding:28px 30px;
+  border:1px solid rgba(140,90,40,.06);
+  box-shadow:var(--shadow-sm);
+  transition:transform .2s,box-shadow .2s,border-color .2s;
+}
+.sphere-card:hover{
   transform:translateY(-3px);
-  box-shadow:0 16px 36px rgba(0,0,0,.22);
+  box-shadow:0 12px 28px rgba(120,80,30,.10);
+  border-color:var(--orange-100);
 }
-.cta-tg-btn:hover .cta-arr{transform:translateX(5px)}
-.cta-tg-icon{
-  width:32px;height:32px;border-radius:50%;
-  background:var(--orange);color:#fff;
-  display:inline-flex;align-items:center;justify-content:center;
-  font-size:16px;flex-shrink:0;
+.sphere-name{
+  font-family:'Cormorant Garamond',serif;font-weight:600;font-style:italic;
+  font-size:24px;color:var(--orange);
+  margin:0 0 16px;padding-bottom:14px;
+  border-bottom:1px solid var(--line);
+  letter-spacing:-.005em;
 }
-.cta-arr{
-  font-size:18px;opacity:.7;
-  transition:transform .25s ease;
+.sphere-card ul{list-style:none;padding:0;margin:0}
+.sphere-card ul li{
+  padding:7px 0 7px 22px;position:relative;
+  font-size:14.5px;color:var(--ink-soft);line-height:1.5;
+}
+.sphere-card ul li::before{
+  content:"";position:absolute;left:4px;top:14px;
+  width:6px;height:6px;border-radius:50%;background:var(--orange-100);
 }
 
-/* FOOTER */
-.footer{background:#1c1107;color:#a89a7c;padding:74px 0 32px}
-.footer-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:48px;padding-bottom:44px;border-bottom:1px solid rgba(255,240,200,.08);}
-.footer .logo{color:#ed8a4e;font-size:28px}
-.footer-about{color:#8a7a5e;font-size:14px;line-height:1.55;max-width:300px;margin-top:18px}
-.footer h4{color:#f0e2b3;font-size:14.5px;font-weight:500;margin:0 0 20px}
-.footer ul{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:10px}
-.footer ul a{font-size:14.5px;color:#a89a7c;transition:color .2s}
-.footer ul a:hover{color:#fff8e8}
-.footer-copy{padding-top:28px;font-size:12.5px;color:#5a4d35}
-
-/* MODAL */
-.modal-backdrop{position:fixed;inset:0;background:rgba(40,20,8,.55);backdrop-filter:blur(6px);z-index:200;display:flex;align-items:center;justify-content:center;padding:24px;opacity:0;visibility:hidden;transition:opacity .25s,visibility .25s;}
-.modal-backdrop.open{opacity:1;visibility:visible}
-.modal{position:relative;background:var(--paper-soft);border-radius:26px;padding:44px 50px 38px;width:100%;max-width:520px;max-height:92vh;overflow-y:auto;box-shadow:0 24px 60px rgba(0,0,0,.32);transform:translateY(20px) scale(.97);transition:transform .3s;}
-.modal-backdrop.open .modal{transform:translateY(0) scale(1)}
-.modal-close{position:absolute;top:22px;right:22px;width:42px;height:42px;border-radius:50%;background:#e8dfc6;color:var(--ink-soft);font-size:18px;display:inline-flex;align-items:center;justify-content:center;transition:background .2s,transform .2s;}
-.modal-close:hover{background:#dfd3b3;transform:rotate(90deg)}
-.modal h2{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:38px;margin:0 0 12px;}
-.modal-tariff{color:var(--orange);font-size:15px;margin-bottom:30px;font-weight:500;}
-.field{display:flex;flex-direction:column;gap:8px;margin-bottom:18px}
-.field label{font-size:14.5px;color:var(--ink);font-weight:500}
-.field input,.field select{width:100%;padding:15px 18px;border-radius:14px;background:rgba(255,250,240,.7);border:1.4px solid #ece1c8;font-family:inherit;font-size:15px;color:var(--ink);transition:border-color .2s,background .2s;}
-.field input::placeholder{color:#c4b59a}
-.field input:focus,.field select:focus{outline:none;border-color:var(--orange);background:#fff}
-.field select{appearance:none;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'><path fill='%238a7558' d='M6 8 0 0h12z'/></svg>");background-repeat:no-repeat;background-position:right 18px center;padding-right:40px;}
-.price-summary{background:#fef0e0;border-radius:14px;padding:16px 20px;margin-bottom:18px;font-size:15px;color:var(--ink-soft);line-height:1.5;}
-.modal .submit{width:100%;margin-top:12px;padding:18px;border-radius:999px;background:var(--olive);color:#fff8e4;font-size:16px;font-weight:500;transition:background .2s,transform .15s;}
-.modal .submit:hover:not(:disabled){background:var(--olive-dark);transform:translateY(-1px)}
-.modal .submit:disabled{opacity:.5;cursor:not-allowed}
-.pay-methods{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin:22px 0 16px;}
-.pay-methods span{background:#f0e7c8;color:var(--ink-soft);font-size:13px;padding:8px 16px;border-radius:999px;font-weight:500;}
-.security{text-align:center;font-size:13px;color:var(--ink-mute)}
-.modal-success{text-align:center;padding:24px 0 8px}
-.modal-success .check{width:64px;height:64px;border-radius:50%;background:var(--orange);color:#fff;display:inline-flex;align-items:center;justify-content:center;font-size:32px;margin-bottom:18px;}
-.modal-success h3{font-family:'Cormorant Garamond',serif;font-size:30px;font-weight:600;margin:0 0 10px;}
-.modal-success p{color:var(--ink-mute);font-size:15px;margin:0}
-.modal-success .pay-direct-btn{display:inline-block;margin-top:20px;padding:14px 32px;border-radius:999px;background:var(--orange);color:#fff;font-size:15px;font-weight:500;text-decoration:none;transition:background .2s,transform .15s;}
-.modal-success .pay-direct-btn:hover{background:#d46820;transform:translateY(-1px)}
-
-@media(max-width:1080px){.gallery{grid-template-columns:repeat(2,1fr)}.gallery .g.tall{aspect-ratio:1/1}}
-@media(max-width:880px){
-  .container{padding:0 22px}
-  .hero-grid,.about-grid,.benefits-grid,.tariffs,.footer-grid,.activities-head{grid-template-columns:1fr;gap:36px}
-  .activities-sub,.pricing-sub{text-align:left;max-width:none}
-  .activity-grid{grid-template-columns:1fr}
-  .hero h1{font-size:56px}.about h2{font-size:38px}.section-title{font-size:48px}
-  .schedule{padding:32px 22px}.week{grid-template-columns:repeat(4,1fr)}
-  .manifesto{padding:36px 28px;font-size:19px}
-  .gallery{grid-template-columns:1fr 1fr}.nav{display:none}
-  .story-title{font-size:36px}
-  .modal{padding:32px 24px}.modal h2{font-size:28px}
-  .welcome{grid-template-columns:1fr;padding:38px 28px;gap:36px}
-  .welcome h2{font-size:36px}
-  .welcome-card{transform:rotate(0deg)}
-  .welcome-card-price{font-size:64px}
-  .welcome-formats{grid-template-columns:1fr 1fr;gap:10px}
-  .wf-fields{grid-template-columns:1fr}
-  .cta-plate{padding:52px 28px}
-  .cta-plate h2{font-size:42px}
+/* МЕСЯЦЫ */
+.months{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:18px;margin:24px 0;
 }
-</style>
-<style>
-.checklist-banner{padding:30px 0 0}
-.checklist-banner-inner{
-  display:flex;align-items:center;justify-content:space-between;gap:36px;
-  background:linear-gradient(135deg,#ef7d40 0%,#f08a51 50%,#f4a276 100%);
-  border-radius:28px;padding:48px 56px;
-  color:#fff8e4;
-  box-shadow:0 18px 40px rgba(200,100,40,.22);
+.month-card{
+  background:var(--paper);
+  border-radius:22px;padding:28px 24px;text-align:center;
+  border:1px solid var(--line);
   position:relative;overflow:hidden;
-  transition:transform .25s ease, box-shadow .25s ease;
-  text-decoration:none;
 }
-.checklist-banner-inner:hover{transform:translateY(-3px);box-shadow:0 24px 48px rgba(200,100,40,.30)}
-.checklist-banner-inner::before{
-  content:"";position:absolute;top:-60px;right:-40px;width:240px;height:240px;
+.month-card::before{
+  content:"";position:absolute;top:-40px;right:-40px;width:120px;height:120px;
+  background:radial-gradient(circle, rgba(253,227,208,.6) 0%, transparent 70%);
+  border-radius:50%;pointer-events:none;
+}
+.month-card .mname{
+  font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:600;
+  font-size:30px;color:var(--orange);position:relative;
+}
+.month-card .mdates{
+  font-size:12px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--ink-mute);margin:6px 0 18px;position:relative;
+}
+.month-card .mline{
+  border-bottom:1px dotted var(--ink-mute);
+  height:28px;margin:0 6px;
+}
+.month-card .mexample{
+  font-size:12.5px;color:var(--ink-mute);font-style:italic;
+  margin-top:12px;line-height:1.45;
+}
+
+/* НЕДЕЛИ */
+.weeks-list{margin-top:14px;display:flex;flex-direction:column;gap:0;}
+.week-row{
+  display:flex;align-items:center;gap:18px;
+  padding:14px 0;border-bottom:1px solid var(--line);
+}
+.week-row:last-child{border-bottom:none}
+.week-label{
+  font-family:'Cormorant Garamond',serif;font-weight:600;font-style:italic;
+  color:var(--orange);font-size:17px;min-width:120px;
+}
+.week-dates{font-size:13px;color:var(--ink-mute);min-width:120px;}
+.week-row .write-line{flex:1;height:22px;}
+
+/* TODO КОЛОНКА */
+.todo-col{
+  background:var(--paper);
+  border-radius:24px;padding:32px 38px;
+  border:1px solid rgba(140,160,90,.18);
+  margin-top:24px;
+  position:relative;overflow:hidden;
+}
+.todo-col::before{
+  content:"";position:absolute;top:0;left:0;bottom:0;width:5px;
+  background:var(--green-deep);
+}
+.todo-col h4{
+  font-family:'Cormorant Garamond',serif;font-weight:600;font-size:24px;
+  margin:0 0 10px;color:var(--green-deep);
+}
+.todo-col h4 i{font-style:italic;font-weight:500;color:var(--orange)}
+.todo-col p{font-size:14.5px;color:var(--ink-mute);margin:0 0 18px;line-height:1.55;}
+.todo-lines{list-style:none;padding:0;margin:0;}
+.todo-lines li{
+  padding:10px 0 10px 30px;position:relative;
+  border-bottom:1px dotted var(--line);
+  min-height:30px;color:transparent;user-select:none;
+}
+.todo-lines li::before{
+  content:"☐";position:absolute;left:0;top:10px;
+  color:var(--green-deep);font-size:16px;user-select:text;
+}
+
+/* ЗАДАНИЯ — КАРТОЧКИ */
+.assignments{display:grid;grid-template-columns:1fr 1fr;gap:22px;}
+.assignment{
+  position:relative;overflow:hidden;
+  border-radius:26px;padding:38px 40px;
+  transition:transform .2s,box-shadow .2s;
+}
+.assignment:hover{transform:translateY(-3px);box-shadow:0 16px 36px rgba(200,130,50,.18);}
+.assignment-1{
+  background:linear-gradient(135deg,#ef7d40 0%,#f08a51 50%,#f4a276 100%);
+  color:#fff8e4;box-shadow:0 14px 36px rgba(200,100,40,.20);
+}
+.assignment-2{
+  background:linear-gradient(135deg,#aaa336 0%,#b6b143 50%,#c5c265 100%);
+  color:#fff8e4;box-shadow:0 14px 36px rgba(140,150,40,.22);
+}
+.assignment::before{
+  content:"";position:absolute;top:-60px;right:-50px;width:180px;height:180px;
   background:radial-gradient(circle, rgba(255,255,255,.30) 0%, transparent 65%);
   border-radius:50%;pointer-events:none;
 }
-.cb-text{flex:1;position:relative;z-index:1}
-.cb-eyebrow{
+.assignment-tag{
   display:inline-block;
   background:rgba(255,255,255,.22);
   padding:7px 16px;border-radius:999px;
   font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;
-  font-weight:500;margin-bottom:16px;
+  font-weight:500;margin-bottom:18px;
+  position:relative;z-index:1;
 }
-.cb-title{
-  font-family:'Cormorant Garamond',serif;
-  font-weight:600;font-size:46px;line-height:1.02;
-  margin:0 0 12px;letter-spacing:-.018em;
-  text-wrap:balance;
+.assignment h3{
+  font-family:'Cormorant Garamond',serif;font-weight:600;
+  font-size:32px;line-height:1.08;letter-spacing:-.012em;
+  margin:0 0 16px;position:relative;z-index:1;
 }
-.cb-title i{font-style:italic;font-weight:500}
-.cb-title .big{
+.assignment h3 i{font-style:italic;font-weight:500}
+.assignment p{
+  font-size:15px;line-height:1.6;margin:0 0 12px;
+  opacity:.95;position:relative;z-index:1;
+}
+.assignment p strong{font-weight:700}
+.assignment p:last-child{margin-bottom:0}
+.assignment .hint{
+  font-size:13px;font-style:italic;opacity:.85;
+  border-top:1px solid rgba(255,255,255,.25);
+  padding-top:14px;margin-top:16px;
+}
+
+/* РЕКОМЕНДАЦИИ */
+.tips-wrap{display:grid;grid-template-columns:1fr 1fr;gap:24px;}
+.tips-card{
+  background:var(--paper);
+  border-radius:24px;padding:36px 38px;
+  border:1px solid rgba(140,90,40,.06);
+  box-shadow:var(--shadow-sm);
+}
+.tips-card.green{
+  background:#fffdf3;
+  border-color:rgba(140,160,90,.18);
+}
+.tips-card h3{
+  font-family:'Cormorant Garamond',serif;font-weight:600;
+  font-size:30px;margin:0 0 8px;
+  color:var(--orange);letter-spacing:-.01em;
+}
+.tips-card.green h3{color:var(--green-deep);}
+.tips-card .tag{
+  display:inline-block;background:var(--orange-50);color:var(--orange);
+  padding:5px 13px;border-radius:999px;
+  font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-weight:500;
+  margin-bottom:18px;
+}
+.tips-card.green .tag{background:var(--green-50);color:var(--green-deep);}
+
+.tip-item{
+  padding:18px 0;border-bottom:1px dashed var(--line);
+}
+.tip-item:first-of-type{padding-top:6px}
+.tip-item:last-child{border-bottom:none;padding-bottom:0}
+.tip-title{
+  font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:600;
+  font-size:19px;color:var(--ink);margin:0 0 6px;line-height:1.3;
+}
+.tip-body{font-size:14.5px;color:var(--ink-soft);line-height:1.6;margin:0;}
+
+/* ЕЖЕНЕДЕЛЬНЫЙ ОТЧЁТ */
+.report{
+  background:linear-gradient(135deg,#fff5e3 0%,#fdebcf 60%,#fbd9b0 100%);
+  border-radius:28px;padding:48px 56px;
+  box-shadow:0 18px 44px rgba(200,130,50,.14);
+  position:relative;overflow:hidden;
+  margin-bottom:30px;
+}
+.report::before{
+  content:"";position:absolute;top:-100px;right:-80px;width:280px;height:280px;
+  background:radial-gradient(circle, rgba(255,255,255,.50) 0%, transparent 65%);
+  border-radius:50%;pointer-events:none;
+}
+.report-inner{position:relative;z-index:1}
+.report-when{
+  display:inline-flex;align-items:center;gap:8px;
+  background:rgba(255,255,255,.7);
+  padding:8px 18px;border-radius:999px;
+  font-size:12px;letter-spacing:.14em;text-transform:uppercase;
+  font-weight:500;color:var(--orange);margin-bottom:18px;
+}
+.report-when .dot{width:7px;height:7px;border-radius:50%;background:var(--orange);}
+.report h3{
+  font-family:'Cormorant Garamond',serif;font-weight:600;
+  font-size:36px;letter-spacing:-.012em;line-height:1.1;
+  margin:0 0 24px;color:var(--ink);
+}
+.report h3 i{font-style:italic;font-weight:500;color:var(--orange)}
+.report ol{margin:0;padding-left:0;list-style:none;counter-reset:r;}
+.report ol > li{
+  counter-increment:r;
+  padding:14px 0 14px 46px;
+  border-bottom:1px solid rgba(255,255,255,.45);
+  position:relative;
+  font-size:15.5px;color:var(--ink);line-height:1.55;
+}
+.report ol > li:last-child{border-bottom:none}
+.report ol > li::before{
+  content:counter(r,decimal-leading-zero);
+  position:absolute;left:0;top:15px;
+  font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:600;
+  font-size:18px;color:var(--orange);
+}
+
+/* ТАБЛИЦА */
+.tracker{
+  background:var(--paper);
+  border-radius:24px;padding:36px 38px;
+  border:1px solid rgba(140,90,40,.06);
+  box-shadow:var(--shadow-sm);
+}
+.tracker h4{
+  font-family:'Cormorant Garamond',serif;font-weight:600;font-size:26px;
+  margin:0 0 6px;color:var(--ink);
+}
+.tracker h4 i{font-style:italic;font-weight:500;color:var(--orange)}
+.tracker .tracker-sub{
+  font-size:14px;color:var(--ink-mute);margin:0 0 22px;
+}
+.tracker-table{
+  width:100%;border-collapse:separate;border-spacing:0;
+  font-size:14px;
+}
+.tracker-table th,.tracker-table td{
+  padding:14px 16px;text-align:left;vertical-align:top;
+}
+.tracker-table th{
+  font-family:'Cormorant Garamond',serif;font-weight:600;font-style:italic;
+  font-size:15px;color:var(--orange);
+  border-bottom:2px solid var(--orange-100);
+  letter-spacing:-.005em;
+}
+.tracker-table td{
+  color:var(--ink-soft);border-bottom:1px solid var(--line);line-height:1.55;
+}
+.tracker-table tr:last-child td{border-bottom:none}
+.tracker-table strong{color:var(--ink);font-weight:600}
+.tracker-foot{
+  margin-top:18px;text-align:center;
+  font-size:13.5px;color:var(--ink-mute);font-style:italic;
+}
+
+/* ФУТЕР */
+.foot-quote{
+  padding:90px 0 70px;text-align:center;
+  border-top:1px solid var(--line);margin-top:60px;
+}
+.foot-quote p{
+  font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:500;
+  font-size:30px;line-height:1.35;color:var(--ink-soft);
+  margin:0 auto 22px;max-width:680px;text-wrap:balance;
+}
+.foot-quote p i{color:var(--orange);font-style:italic;}
+.foot-sign{
   display:inline-block;
-  background:#fff8e4;color:var(--orange);
-  padding:0 14px;border-radius:10px;
-  font-size:.92em;transform:rotate(-2deg);margin-right:4px;
+  font-size:12px;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--orange);font-weight:500;
+  padding:8px 18px;background:var(--orange-50);border-radius:999px;
 }
-.cb-sub{font-size:15px;line-height:1.55;max-width:520px;opacity:.95;margin:0}
-.cb-arrow{
-  flex-shrink:0;position:relative;z-index:1;
-  width:72px;height:72px;border-radius:50%;
-  background:#fff8e4;color:var(--orange);
-  display:inline-flex;align-items:center;justify-content:center;
-  font-size:30px;
-  box-shadow:0 8px 24px rgba(0,0,0,.12);
-  transition:transform .25s ease;
+
+/* DIVIDER */
+.divider{
+  height:1px;background:var(--line);margin:60px 0;position:relative;
 }
-.checklist-banner-inner:hover .cb-arrow{transform:translateX(6px)}
+.divider::after{
+  content:"☀";position:absolute;top:-14px;left:50%;transform:translateX(-50%);
+  background:var(--bg);padding:0 18px;color:var(--orange);font-size:18px;
+}
+
+/* ===== BUILDER / КОНСТРУКТОР ПЛАНА ===== */
+/* Большая золотистая плашка-обёртка повторяет твою welcome-секцию: тот же градиент,
+   те же декоративные радиальные блики, та же геометрия скруглений. */
+.builder{
+  background:linear-gradient(135deg,#fff5e3 0%,#fdebcf 60%,#fbd9b0 100%);
+  border-radius:32px;padding:50px 56px;
+  box-shadow:0 18px 44px rgba(200,130,50,.14);
+  position:relative;overflow:hidden;
+}
+.builder::before{
+  content:"";position:absolute;top:-100px;right:-80px;width:340px;height:340px;
+  background:radial-gradient(circle, rgba(255,255,255,.55) 0%, transparent 65%);
+  border-radius:50%;pointer-events:none;
+}
+.builder::after{
+  content:"";position:absolute;bottom:-120px;left:-60px;width:280px;height:280px;
+  background:radial-gradient(circle, rgba(185,207,138,.30) 0%, transparent 65%);
+  border-radius:50%;pointer-events:none;
+}
+
+/* Каждый из 6 шагов — это белая карточка внутри золотистой плашки.
+   Большой курсивный номер слева, как в твоей секции «активности». */
+.builder-step{
+  background:var(--paper);
+  border-radius:22px;padding:30px 34px;
+  margin-bottom:18px;
+  box-shadow:0 4px 18px rgba(160,110,40,.06);
+  position:relative;z-index:1;
+}
+.builder-step:nth-of-type(6){margin-bottom:24px}
+.bs-head{
+  display:flex;align-items:baseline;gap:18px;
+  margin-bottom:18px;flex-wrap:wrap;
+}
+.bs-num{
+  font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:500;
+  font-size:34px;color:var(--orange);line-height:1;flex-shrink:0;
+}
+.bs-title{
+  font-family:'Cormorant Garamond',serif;font-weight:600;font-size:22px;
+  margin:0;color:var(--ink);line-height:1.25;flex:1;letter-spacing:-.01em;
+}
+.bs-title i{font-style:italic;font-weight:500;color:var(--orange)}
+
+/* Счётчик X / 6 — пилюля справа от заголовка. Оранжевая, пока не набрали 6,
+   потом зелёная, как сигнал «выбор закрыт». */
+.bs-counter{
+  display:inline-flex;align-items:center;gap:6px;
+  background:var(--orange-50);color:var(--orange);
+  padding:6px 14px;border-radius:999px;
+  font-size:13px;font-weight:600;letter-spacing:.02em;
+}
+.bs-counter.full{background:var(--green-50);color:var(--green-deep);}
+.bs-counter.full::before{content:"✓";font-size:12px;}
+
+/* Поля ввода — стилизованы как поля в твоей pricing-модалке. */
+.bs-input,.bs-textarea{
+  width:100%;padding:14px 18px;border-radius:14px;
+  background:#fffdf6;border:1.4px solid var(--line);
+  font-family:'Onest',sans-serif;font-size:15px;color:var(--ink);
+  transition:border-color .2s,background .2s,box-shadow .2s;
+}
+.bs-input::placeholder,.bs-textarea::placeholder{color:#c4b59a}
+.bs-input:focus,.bs-textarea:focus{
+  outline:none;border-color:var(--orange);background:#fff;
+  box-shadow:0 0 0 3px rgba(233,109,42,.12);
+}
+.bs-textarea{min-height:88px;resize:vertical;line-height:1.55;}
+
+.bs-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;}
+.bs-row-2{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.bs-field{display:flex;flex-direction:column;gap:6px;}
+.bs-field label{
+  font-size:12.5px;color:var(--ink-mute);font-weight:500;
+  letter-spacing:.04em;padding-left:4px;
+}
+
+/* Группы сфер — каждая со своим оранжевым eyebrow-заголовком. */
+.bs-sphere-group{margin-bottom:18px}
+.bs-sphere-group:last-child{margin-bottom:0}
+.bs-sphere-group-title{
+  font-size:11px;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--orange);font-weight:600;margin:0 0 10px;padding-left:2px;
+}
+.bs-chips{display:flex;flex-wrap:wrap;gap:8px;}
+
+/* Чипсы сфер. Не выбрана — белая с серой обводкой; выбрана — оранжевая залитая
+   с галочкой. Когда уже выбрано 6, остальные становятся серыми и не кликаются —
+   повторяет логику .wf-card.wf-full из твоего welcome-флоу. */
+.bs-chip{
+  display:inline-flex;align-items:center;gap:6px;
+  background:#fffdf6;border:1.5px solid var(--line);
+  padding:9px 15px;border-radius:999px;
+  font-size:13.5px;color:var(--ink-soft);font-weight:500;
+  font-family:'Onest',sans-serif;cursor:pointer;
+  transition:all .15s ease;
+}
+.bs-chip:hover{border-color:var(--orange-100);transform:translateY(-1px);}
+.bs-chip.selected{
+  background:var(--orange);color:#fff;border-color:var(--orange);
+  box-shadow:0 4px 14px rgba(233,109,42,.28);
+  padding-left:13px;
+}
+.bs-chip.selected::before{content:"✓";font-weight:700;font-size:12px;}
+.bs-chip.disabled{
+  opacity:.4;cursor:not-allowed;pointer-events:none;
+  filter:grayscale(.4);
+}
+
+/* Под-карточки челленджей внутри шага 04. Каждая — компактная карточка с
+   номером челленджа, датами периода и двумя полями для задач. Стилистически —
+   мини-версия .builder-step, чтобы визуально читалось «карточка в карточке». */
+.bs-challenges{display:flex;flex-direction:column;gap:12px;}
+.bs-challenge{
+  background:#fffdf6;
+  border:1px solid var(--line);
+  border-radius:14px;
+  padding:18px 22px;
+  transition:border-color .2s, box-shadow .2s;
+}
+.bs-challenge:hover{
+  border-color:var(--orange-100);
+  box-shadow:0 4px 14px rgba(200,130,50,.08);
+}
+.bs-challenge-head{
+  display:flex;align-items:baseline;gap:12px;
+  margin-bottom:12px;flex-wrap:wrap;
+}
+.bs-challenge-num{
+  font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:600;
+  font-size:22px;color:var(--orange);line-height:1;letter-spacing:-.01em;
+}
+.bs-challenge-dates{
+  font-size:13px;color:var(--ink-mute);font-weight:500;letter-spacing:.02em;
+}
+.bs-challenge-days{
+  margin-left:auto;font-size:11.5px;color:var(--ink-mute);
+  background:var(--orange-50);color:var(--orange);
+  padding:3px 10px;border-radius:999px;font-weight:600;letter-spacing:.04em;
+}
+.bs-challenge .bs-row-2{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+.bs-challenge input{padding:11px 14px;font-size:14px;}
+
+/* Кнопка сабмита — та же геометрия и анимация, что у твоей welcome-submit. */
+.builder-submit{
+  display:block;width:100%;
+  padding:18px 30px;border-radius:999px;
+  background:var(--orange);color:#fff;
+  font-size:15.5px;font-weight:500;border:none;cursor:pointer;
+  font-family:'Onest',sans-serif;
+  transition:background .2s,transform .15s,box-shadow .2s;
+  box-shadow:0 10px 26px rgba(233,109,42,.28);
+  position:relative;z-index:1;
+}
+.builder-submit:hover{
+  background:#d46820;transform:translateY(-2px);
+  box-shadow:0 14px 32px rgba(233,109,42,.36);
+}
+.builder-hint{
+  text-align:center;font-size:13px;color:var(--ink-mute);
+  margin:14px 0 0;font-style:italic;position:relative;z-index:1;
+}
+
+/* МОДАЛКА. Префикс b- (от «builder»), чтобы не конфликтовать с .modal на твоём
+   основном сайте, если когда-нибудь встроишь конспект в общую страницу. */
+.b-modal-backdrop{
+  position:fixed;inset:0;
+  background:rgba(40,20,8,.55);backdrop-filter:blur(6px);
+  z-index:200;display:flex;align-items:center;justify-content:center;
+  padding:24px;opacity:0;visibility:hidden;
+  transition:opacity .25s,visibility .25s;
+}
+.b-modal-backdrop.open{opacity:1;visibility:visible}
+.b-modal{
+  position:relative;background:var(--paper-soft);
+  border-radius:26px;padding:40px 44px 32px;
+  width:100%;max-width:640px;max-height:92vh;overflow-y:auto;
+  box-shadow:0 24px 60px rgba(0,0,0,.32);
+  transform:translateY(20px) scale(.97);transition:transform .3s;
+}
+.b-modal-backdrop.open .b-modal{transform:translateY(0) scale(1)}
+.b-modal-close{
+  position:absolute;top:22px;right:22px;width:42px;height:42px;
+  border-radius:50%;background:#e8dfc6;color:var(--ink-soft);
+  font-size:18px;display:inline-flex;align-items:center;justify-content:center;
+  transition:background .2s,transform .2s;
+  border:none;cursor:pointer;font-family:'Onest',sans-serif;
+}
+.b-modal-close:hover{background:#dfd3b3;transform:rotate(90deg)}
+.b-modal h2{
+  font-family:'Cormorant Garamond',serif;font-weight:600;font-size:36px;
+  margin:0 0 8px;line-height:1.1;letter-spacing:-.014em;
+}
+.b-modal h2 i{font-style:italic;font-weight:500;color:var(--orange)}
+.b-modal-sub{font-size:14px;color:var(--ink-mute);margin:0 0 24px;line-height:1.55;}
+
+/* Контейнер с готовым текстом плана. Моноширинный отступ, чтобы выглядело как
+   готовое сообщение для чата. */
+.b-result-card{
+  background:#fffdf6;border:1.5px solid var(--orange-100);border-radius:18px;
+  padding:24px 26px;margin-bottom:20px;
+  font-family:'Onest',sans-serif;font-size:14px;color:var(--ink-soft);
+  line-height:1.65;white-space:pre-wrap;
+  max-height:340px;overflow-y:auto;
+}
+
+/* Три кнопки действий внизу модалки: основная оранжевая «Скопировать»,
+   и две вторичные с обводкой — «Скачать» и «Печать». */
+.b-actions{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;}
+.b-action-btn{
+  padding:14px 16px;border-radius:14px;
+  background:var(--orange);color:#fff;
+  border:none;cursor:pointer;font-family:'Onest',sans-serif;
+  font-size:13px;font-weight:500;
+  display:inline-flex;align-items:center;justify-content:center;gap:7px;
+  transition:background .2s,transform .15s,box-shadow .2s;
+}
+.b-action-btn:hover{background:#d46820;transform:translateY(-1px)}
+.b-action-btn.secondary{
+  background:#fffdf6;color:var(--orange);
+  box-shadow:inset 0 0 0 1.5px var(--orange);
+}
+.b-action-btn.secondary:hover{background:var(--orange-50);}
+.b-action-btn.copied{background:var(--green-deep) !important;color:#fff !important;box-shadow:none !important;}
+
+
 @media (max-width:880px){
-  .checklist-banner-inner{flex-direction:column;align-items:flex-start;text-align:left;padding:34px 28px;gap:24px}
-  .cb-title{font-size:32px}
-  .cb-arrow{width:56px;height:56px;font-size:24px}
+  .container{padding:0 22px}
+  .hero{padding:40px 0 60px}
+  .hero-grid{grid-template-columns:1fr;gap:36px}
+  .hero h1{font-size:48px}
+  .section{padding:48px 0}
+  .section h2{font-size:38px}
+  .block{padding:28px 24px}
+  .block-title{font-size:22px}
+  .block ol > li{padding-left:38px;font-size:15px}
+  .assignments,.tips-wrap{grid-template-columns:1fr}
+  .assignment{padding:30px 26px}
+  .assignment h3{font-size:26px}
+  .tips-card{padding:28px 26px}
+  .tips-card h3{font-size:26px}
+  .report{padding:34px 26px}
+  .report h3{font-size:28px}
+  .tracker{padding:26px}
+  .nav{display:none}
+  .week-row{flex-wrap:wrap;gap:8px}
+  .week-label{min-width:auto}
+  .foot-quote p{font-size:22px}
+  /* конструктор на мобильном — карточки шагов схлопываются по вертикали,
+     поля «3 в ряд» становятся однополосными, кнопки модалки тоже в столбик */
+  .builder{padding:30px 22px;border-radius:24px;}
+  .builder-step{padding:22px;border-radius:18px;}
+  .bs-head{gap:12px;}
+  .bs-num{font-size:28px;}
+  .bs-title{font-size:18px;}
+  .bs-row,.bs-row-2{grid-template-columns:1fr;}
+  .b-modal{padding:28px 22px;}
+  .b-modal h2{font-size:26px;}
+  .b-actions{grid-template-columns:1fr;}
+}
+
+@media print{
+  body{background:white}
+  .block,.tips-card,.report,.tracker,.sphere-card,.month-card,.assignment{box-shadow:none;break-inside:avoid;}
+  .section{break-inside:avoid-page}
+  .header{display:none}
 }
 </style>
 </head>
@@ -561,691 +761,1007 @@ h1,h2,h3,h4{letter-spacing:-.01em}
   <div class="container header-inner">
     <a href="#" class="logo">Рассвет</a>
     <nav class="nav">
-      <a href="#about">О клубе</a>
-      <a href="#activities">Активности</a>
-      <a href="schedule.html">Наше расписание</a>
-      <a href="#pricing">Тарифы</a>
-      <a href="#faq">Вопросы</a>
+      <a href="#spring">Итоги весны</a>
+      <a href="#wheel">Колесо</a>
+      <a href="#goals">Цели лета</a>
+      <a href="#assignments">Задания</a>
+      <a href="#builder">Конструктор</a>
+      <a href="#tips">Рекомендации</a>
+      <a href="#report">Отчёт</a>
     </nav>
-    <a href="#pricing" class="btn btn-primary">Присоединиться</a>
   </div>
 </header>
 
+<!-- HERO -->
 <section class="hero">
   <div class="container hero-grid">
     <div>
-      <span class="eyebrow-pill">Клуб для девушек · 26.05–30.06</span>
-      <h1>Твоя неделя станет <i>ярче</i></h1>
-      <p class="lead">Место, где общие ценности объединяют людей. Где у недели появляется ритм, а у дней — яркость. Тут ты можешь быть собой, чувствовать себя в кругу своих и помнить, ради чего живёшь.</p>
-      <div class="hero-buttons">
-        <a href="#pricing" class="btn btn-primary">Выбрать тариф</a>
-        <a href="#about" class="btn btn-ghost">Что внутри</a>
+      <h1>Итоги весны и&nbsp;план <i>на лето</i></h1>
+      <p class="lead">Конспект стратсессии. Пять челленджей впереди, шесть сфер в фокусе и одно слово, которым мы назовём это лето.</p>
+      <div class="hero-meta">
+        <span class="meta-chip"><span class="dot"></span>3 блока рефлексии</span>
+        <span class="meta-chip green"><span class="dot"></span>6 сфер фокуса</span>
+        <span class="meta-chip olive"><span class="dot"></span>5 челленджей</span>
       </div>
     </div>
-    <div class="hero-img-wrap">
-      <img src="hero.png" alt="Девушки клуба Рассвет"/>
-      <span class="hero-pill">☀ тут хорошо</span>
-    </div>
-  </div>
-</section>
 
-<section id="about" class="about">
-  <div class="container about-grid">
-    <div class="collage">
-      <div class="c1"><img src="about-1.png" alt=""/></div>
-      <div class="c2"><img src="about-2.png" alt=""/></div>
-      <div class="c3"><img src="about-3.png" alt=""/></div>
-    </div>
-    <div class="about-text">
-      <span class="section-eyebrow">о клубе</span>
-      <h2>В клубе каждую неделю ты будешь <i>ощущать радость</i></h2>
-      <p>Рассвет — это закрытое сообщество для девушек, которые хотят наполнить жизнь движением, общением и внутренней гармонией. Встречаемся <strong>несколько раз в неделю</strong>, а вы сами выбираете, что ближе.</p>
-      <p>Тебе не нужно ломать голову, чем заняться — расписание уже готово. Пробежки по выходным, танцы в обед, книжный клуб по вечерам, пикники и встречи в течение недели. Тёплая компания, движение и вдохновение уже ждут тебя.</p>
-    </div>
-  </div>
-</section>
-
-<section class="schedule-wrap">
-  <div class="container">
-    <div class="schedule">
-      <div class="schedule-head">
-        <h3>Пример расписания <i>на неделю</i></h3>
-        <a href="schedule.html" class="schedule-link">Полное расписание июня <span class="arr">→</span></a>
-      </div>
-      <div class="week">
-        <div class="day"><span class="day-name">Пн</span><div class="event">Танцы<span class="event-time">18:00–20:00</span></div></div>
-        <div class="day"><span class="day-name">Вт</span><div class="event yellow">Отдыхаем и общаемся в чате<span class="event-time">весь день</span></div></div>
-        <div class="day"><span class="day-name">Ср</span><div class="event green">Тренировка в парке<span class="event-time">10:00–11:00</span></div></div>
-        <div class="day"><span class="day-name">Чт</span><div class="event yellow">Книжный / кино клуб<span class="event-time">18:00–19:00</span></div><div class="event tiny">+ пикник</div></div>
-        <div class="day"><span class="day-name">Пт</span><div class="event">Делимся рецептами на ужин<span class="event-time">вечер</span></div></div>
-        <div class="day"><span class="day-name">Сб</span><div class="event green">Пробежка<span class="event-time">10:00–11:30</span></div></div>
-        <div class="day"><span class="day-name">Вс</span><div class="event yellow">Отдыхаем<span class="event-time">весь день ☀</span></div></div>
-      </div>
-      <div class="schedule-foot">Помимо основного расписания — тренировки в парке, фотодни, велопрогулки и воплощение ваших идей</div>
-    </div>
-  </div>
-</section>
-
-<section class="manifesto-wrap">
-  <div class="container">
-    <div class="manifesto">
-      Рассвет — это пространство, где девушки собираются вместе, чтобы разделять события и эмоции, общаться и активничать. Я верю, что регулярные встречи с единомышленницами меняют качество жизни: появляется лёгкость, уверенность и ощущение, что ты на своём месте. В клубе мы бегаем, танцуем по вечерам, обсуждаем книги и фильмы, ходим на пикники — чтобы каждый раз уходить с улыбкой. Это не курс и не марафон — это образ жизни.
-    </div>
-  </div>
-</section>
-
-<section id="activities" class="activities">
-  <div class="container">
-    <div class="activities-head">
-      <div>
-        <span class="section-eyebrow">активности</span>
-        <h2 class="section-title">Что тебя <i>ждёт</i></h2>
-      </div>
-      <div class="activities-sub">8+ идей, чем мы займёмся</div>
-    </div>
-    <div class="activity-grid">
-      <div class="activity act-peach"><span class="num">01</span><div class="a-text"><span class="a-title">Танцевальные тренировки</span></div><span class="tag">4 ч/мес · 2 раза/нед</span></div>
-      <div class="activity act-yellow"><span class="num">02</span><div class="a-text"><span class="a-title">Пробежки</span><span class="a-desc">По красивым маршрутам</span></div><span class="tag">1 раз/нед</span></div>
-      <div class="activity act-peach"><span class="num">03</span><div class="a-text"><span class="a-title">Онлайн марафоны</span><span class="a-desc">Челленджи и марафоны</span></div><span class="tag">1 раз/мес</span></div>
-      <div class="activity act-yellow"><span class="num">04</span><div class="a-text"><span class="a-title">Пикники и игры</span><span class="a-desc">Отдых на свежем воздухе</span></div><span class="tag">3 раза/мес</span></div>
-      <div class="activity act-peach"><span class="num">05</span><div class="a-text"><span class="a-title">Книжный / кино клуб</span><span class="a-desc">Книги и впечатления</span></div><span class="tag">1 раз/нед</span></div>
-      <div class="activity act-yellow"><span class="num">06</span><div class="a-text"><span class="a-title">Тренировки на воздухе</span><span class="a-desc">Спорт в парках</span></div><span class="tag">1 раз/нед</span></div>
-      <div class="activity act-peach"><span class="num">07</span><div class="a-text"><span class="a-title">Творческие съёмки</span></div><span class="tag">по запросу</span></div>
-      <div class="activity act-yellow"><span class="num">08</span><div class="a-text"><span class="a-title">Реализация ваших идей</span></div><span class="tag">2 раза/мес</span></div>
-    </div>
-  </div>
-</section>
-
-<section class="checklist-banner">
-  <div class="container">
-    <a href="checklist.html" class="checklist-banner-inner">
-      <div class="cb-text">
-        <span class="cb-eyebrow">✨ Подарок от клуба</span>
-        <h2 class="cb-title"><span class="big">45+</span> вещей, которые <i>веселее делать вместе</i></h2>
-        <p class="cb-sub">Памятка-чек-лист со всеми идеями Рассвета. Отмечай галочки, распечатывай на стену и зови подругу.</p>
-      </div>
-      <span class="cb-arrow">→</span>
-    </a>
-  </div>
-</section>
-
-<section class="gallery-wrap">
-  <div class="container">
-    <div class="gallery-eyebrow"><span class="section-eyebrow">атмосфера</span></div>
-    <div class="gallery">
-      <div class="g tall"><img src="gal-1.png" alt=""/></div>
-      <div class="g"><img src="gal-2.png" alt=""/></div>
-      <div class="g"><img src="gal-3.png" alt=""/></div>
-      <div class="g"><img src="gal-4.png" alt=""/></div>
-    </div>
-  </div>
-</section>
-
-<section class="benefits">
-  <div class="container">
-    <span class="section-eyebrow">миссия</span>
-    <h2 class="section-title">Не просто клуб — <i>стиль жизни</i></h2>
-    <div class="benefits-grid">
-      <div class="b-card">
-        <h3>Для тебя</h3>
+    <div class="hero-card">
+      <div class="hero-card-inner">
+        <span class="hero-card-tag"><span class="dot"></span>что внутри</span>
+        <h3>Один <i>конспект</i></h3>
         <ul>
-          <li>Крутая атмосфера и общение с вдохновляющими девушками</li>
-          <li>Не нужно думать, чем заняться — расписание уже готово</li>
-          <li>Реализация себя и закрытое комьюнити</li>
-          <li>Разнообразие активностей в одном месте</li>
-          <li>Свобода выбора — вы выбираете, что сейчас вам подходит</li>
-          <li>Чувство единства и поддержки каждую неделю</li>
-        </ul>
-      </div>
-      <div class="b-card right">
-        <h3>Моя миссия</h3>
-        <ul>
-          <li>Вдохновлять и влиять на жизнь девушек к лучшему</li>
-          <li>Делиться опытом в разных сферах активности</li>
-          <li>Создавать пространство для взаимного роста</li>
-          <li>Знакомить классных людей друг с другом</li>
-          <li>Просто люблю людей и хочу быть полезной</li>
+          <li>Подвести весну за 15 минут</li>
+          <li>Собрать колесо баланса на лето</li>
+          <li>Разложить июнь по неделям</li>
+          <li>Выбрать первый челлендж и&nbsp;мудборд</li>
+          <li>Завести ритуал недельного отчёта</li>
         </ul>
       </div>
     </div>
   </div>
 </section>
 
-<section id="pricing" class="pricing">
+<!-- ИТОГИ ВЕСНЫ -->
+<section id="spring" class="section">
   <div class="container">
-    <div class="activities-head">
-      <div>
-        <span class="section-eyebrow">тарифы</span>
-        <h2 class="section-title">Выбери <i>свой формат</i></h2>
-      </div>
-      <p class="pricing-sub">Все активности клуба входят в базу. Танцы — отдельный трек, который можно добавить к членству или купить отдельно.</p>
-    </div>
-    <div class="tariffs">
+    <span class="section-eyebrow">подведение итогов</span>
+    <h2>Итоги <i>весны</i></h2>
+    <p class="lead">Три коротких блока: фотопамять, выгрузка головы и переход в лето. Всего 15–17 минут, но именно они задают тон всему циклу.</p>
 
-      <div class="tariff base">
-        <div class="tnum">01</div>
-        <h3 class="tname">База</h3>
-        <div class="tsub">Все активности клуба, кроме танцев. Идеально, если ты хочешь полную программу и общение, но без танцевальных тренировок.</div>
-        <div class="price">2000<span class="ruble">₽</span></div>
-        <div class="price-cap">в месяц</div>
-        <ul class="features">
-          <li>Еженедельные пробежки</li>
-          <li>Книжный / кино клуб</li>
-          <li>Тренировки fullbody / растяжка</li>
-          <li>Пикники, настолки и велопрогулки</li>
-          <li>Фото и видеосъёмки</li>
-          <li>Онлайн-марафоны с призами</li>
-          <li>Доступ к закрытому чату</li>
-        </ul>
-        <div class="spots-badge" id="spots-base"><span class="spots-dot"></span><span id="spots-base-text">загрузка…</span></div>
-        <button class="cta-btn" data-pay="base" data-price="2000">присоединиться</button>
-      </div>
+    <div class="block-row">
 
-      <div class="tariff dance">
-        <span class="tariff-badge">Для тех, кто давно мечтал танцевать</span>
-        <div class="tnum">02</div>
-        <h3 class="tname">Клуб + танцы</h3>
-        <div class="tsub">Всё из базы + 4 часа танцев в месяц.</div>
-        <div class="price">3800<span class="ruble">₽</span></div>
-        <div class="price-cap">в месяц <s>вместо 5000 ₽</s></div>
-        <ul class="features">
-          <li>Всё из тарифа «База»</li>
-          <li class="hi">3 часа танцев в месяц</li>
-          <li>Пластика и работа с телом</li>
-          <li>Закрытый канал участниц танцев</li>
-          <li>Подборки музыки и хореографии</li>
-        </ul>
-        <div class="spots-badge" id="spots-dance"><span class="spots-dot"></span><span id="spots-dance-text">загрузка…</span></div>
-        <button class="cta-btn" data-pay="dance" data-price="3800">присоединиться</button>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- ───────────── WELCOME ВСТРЕЧА ───────────── -->
-<section id="welcome" class="welcome-wrap">
-  <div class="container">
-    <div class="welcome">
-      <div class="welcome-content">
-        <span class="welcome-eyebrow"><span class="dot"></span>Знакомство с клубом</span>
-        <h2>Не готова сразу? <i>Попробуй одну встречу</i></h2>
-        <p class="welcome-lead">
-          Раз в месяц у нас открыта <strong>Welcome-встреча</strong> — выбери активность, запишись и приходи. По цене чашки кофе, без обязательств. Просто чтобы почувствовать атмосферу и познакомиться.
-        </p>
-
-        <p class="welcome-step-label">Выбери формат:</p>
-        <div class="welcome-formats" id="welcome-formats">
-          <button class="wf-card" data-format="run" type="button">
-            <span class="wf-icon">🏃‍♀️</span>
-            <span class="wf-name">Пробежка</span>
-            <span class="wf-when">По красивым маршрутам</span>
-          </button>
-          <button class="wf-card" data-format="picnic" type="button">
-            <span class="wf-icon">🧺</span>
-            <span class="wf-name">Пикник и игры</span>
-            <span class="wf-when">Отдых на свежем воздухе</span>
-          </button>
-          <button class="wf-card" data-format="book" type="button">
-            <span class="wf-icon">📖</span>
-            <span class="wf-name">Книжный клуб</span>
-            <span class="wf-when">Обсуждения и эмоции</span>
-          </button>
-          <button class="wf-card" data-format="workout" type="button">
-            <span class="wf-icon">💪</span>
-            <span class="wf-name">Тренировка на улице</span>
-            <span class="wf-when">Fullbody в парке</span>
-          </button>
+      <div class="block">
+        <div class="block-head">
+          <h3 class="block-title">Блок 1. Крутые события весны <i>по фотоплёнке</i></h3>
+          <span class="timer-pill">5 минут</span>
         </div>
+        <p class="intro">Откройте галерею телефона за март, апрель, май и пролистайте от начала к концу. Не оценивайте — просто отмечайте то, что цепляет.</p>
+        <ol>
+          <li>5–7 самых ярких событий этой весны — личных, по клубу, по работе, любых.</li>
+          <li>Какое из них — главное воспоминание весны?</li>
+        </ol>
+      </div>
 
-        <div class="welcome-form-wrap" id="welcome-form-wrap" hidden>
-          <div class="welcome-chosen" id="welcome-chosen"></div>
-          <div class="wf-fields">
-            <div class="field"><label for="wf-name">Твоё имя</label><input id="wf-name" type="text" placeholder="Анна" required/></div>
-            <div class="field"><label for="wf-tg">Telegram</label><input id="wf-tg" type="text" placeholder="@anna" required/></div>
+      <div class="block">
+        <div class="block-head">
+          <h3 class="block-title">Блок 2. <i>Brain dump</i> — что висит в голове</h3>
+          <span class="timer-pill">5–7 минут</span>
+        </div>
+        <p class="intro">Выгрузите всё, что крутится в голове прямо сейчас.</p>
+        <ol>
+          <li>Что не закончено с весны и тянется за мной?</li>
+          <li>Что тревожит или висит фоном?</li>
+          <li>Какие идеи, мысли, планы в голове, но пока без действий?</li>
+          <li>Что я давно собираюсь сделать, но всё откладываю?</li>
+        </ol>
+      </div>
+
+      <div class="block">
+        <div class="block-head">
+          <h3 class="block-title">Блок 3. <i>Главное</i> и переход в лето</h3>
+          <span class="timer-pill">5 минут</span>
+        </div>
+        <p class="intro">Сейчас задача — собрать весну в одну точку и почувствовать, с чем мы входим в новый сезон.</p>
+        <ol>
+          <li>Главный урок весны — одной фразой.</li>
+          <li>С каким состоянием или настроением я захожу в лето?</li>
+          <li>Чего мне сейчас не хватает, чтобы двигаться дальше? <span class="example-hint">ресурс, навык, поддержка, ясность</span></li>
+        </ol>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="container"><div class="divider"></div></div>
+
+<!-- КОЛЕСО БАЛАНСА -->
+<section id="wheel" class="section">
+  <div class="container">
+    <span class="section-eyebrow">колесо баланса</span>
+    <h2>Шесть <i>сфер фокуса</i></h2>
+    <p class="lead">Не пытаемся охватить всё. Выбираем шесть сфер, которые станут рамкой для летних целей.</p>
+
+    <div class="wheel-note">
+      <strong>Как работать:</strong> просмотрите весь список. Отметьте сферы, в которые хочется вложиться этим летом. Из отмеченного оставьте <strong>ровно 6</strong> — это и будет фокус сезона. Остальное не отменяется, просто отходит на второй план.
+    </div>
+
+    <div class="wheel-grid">
+      <div class="sphere-card">
+        <h4 class="sphere-name">Тело и здоровье</h4>
+        <ul>
+          <li>Здоровье и тело</li>
+          <li>Физическая активность / спорт</li>
+          <li>Питание</li>
+          <li>Сон и восстановление</li>
+          <li>Энергия / состояние</li>
+          <li>Внешность и стиль</li>
+        </ul>
+      </div>
+
+      <div class="sphere-card">
+        <h4 class="sphere-name">Отношения</h4>
+        <ul>
+          <li>Партнёр / любовные отношения</li>
+          <li>Семья / родители</li>
+          <li>Дети</li>
+          <li>Дружба</li>
+          <li>Сексуальность</li>
+          <li>Окружение / люди вокруг</li>
+        </ul>
+      </div>
+
+      <div class="sphere-card">
+        <h4 class="sphere-name">Деньги и дело</h4>
+        <ul>
+          <li>Финансы / доход</li>
+          <li>Карьера / работа по найму</li>
+          <li>Бизнес / своё дело</li>
+          <li>Профессиональный рост</li>
+          <li>Личный бренд / публичность</li>
+        </ul>
+      </div>
+
+      <div class="sphere-card">
+        <h4 class="sphere-name">Внутреннее</h4>
+        <ul>
+          <li>Личностный рост / саморазвитие</li>
+          <li>Психика / эмоции / внутренняя работа</li>
+          <li>Духовность / смыслы</li>
+          <li>Дисциплина и привычки</li>
+          <li>Обучение / новые знания</li>
+        </ul>
+      </div>
+
+      <div class="sphere-card">
+        <h4 class="sphere-name">Жизнь и среда</h4>
+        <ul>
+          <li>Хобби и увлечения</li>
+          <li>Творчество и творческая реализация</li>
+          <li>Отдых и восстановление</li>
+          <li>Путешествия и приключения</li>
+          <li>Дом и быт</li>
+          <li>Время и тайм-менеджмент</li>
+          <li>Комьюнити / клуб / своё сообщество</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="container"><div class="divider"></div></div>
+
+<!-- ЦЕЛИ НА ЛЕТО -->
+<section id="goals" class="section">
+  <div class="container">
+    <span class="section-eyebrow">стратегия</span>
+    <h2>Цели <i>на лето</i></h2>
+    <p class="lead">Три уровня масштаба: лето целиком, помесячная карта и подробная декомпозиция июня.</p>
+
+    <div class="block-row">
+
+      <div class="block">
+        <div class="block-head">
+          <h3 class="block-title">А. <i>Большая картина</i> — лето целиком</h3>
+          <span class="timer-pill">5 минут</span>
+        </div>
+        <p class="intro">Сначала зум аут. Не задачи, а смысл и образ результата.</p>
+        <ol>
+          <li>Одно слово, которым я опишу своё лето: <span class="write-line">________</span>
+            <span class="example-hint">примеры: трансформация, фундамент, прорыв, отдых, разгон, рост</span>
+          </li>
+          <li>Какие 2–3 главных результата я хочу получить к 31 августа?</li>
+          <li>Если в начале сентября я оглянусь и скажу «это лето было 🔥», то что произошло?</li>
+        </ol>
+      </div>
+
+      <div class="block">
+        <div class="block-head">
+          <h3 class="block-title">Б. <i>Распределение</i> по месяцам</h3>
+          <span class="timer-pill">5 минут</span>
+        </div>
+        <p class="intro">Каждый месяц — отдельная роль. Перегружать все три бессмысленно: один задаёт фундамент, другой разгоняет, третий собирает результат.</p>
+
+        <div class="months">
+          <div class="month-card">
+            <div class="mname">Июнь</div>
+            <div class="mdates">01.06 — 30.06</div>
+            <div class="mline"></div>
+            <div class="mexample">например: заложить фундамент</div>
           </div>
-          <button type="button" class="welcome-submit" id="welcome-submit">Записаться за 500 ₽ →</button>
-          <p class="welcome-form-note">После записи перенаправим на страницу оплаты. Я свяжусь с тобой в Telegram и расскажу все детали!</p>
+          <div class="month-card">
+            <div class="mname">Июль</div>
+            <div class="mdates">01.07 — 31.07</div>
+            <div class="mline"></div>
+            <div class="mexample">например: разогнать, протестировать</div>
+          </div>
+          <div class="month-card">
+            <div class="mname">Август</div>
+            <div class="mdates">01.08 — 31.08</div>
+            <div class="mline"></div>
+            <div class="mexample">например: масштабировать, отдохнуть</div>
+          </div>
+        </div>
+
+        <p class="intro" style="margin-top:18px;">Что логично делать в каком месяце? Распределите большие задачи по июню, июлю и августу.</p>
+      </div>
+
+      <div class="block">
+        <div class="block-head">
+          <h3 class="block-title">В. <i>Декомпозиция</i> июня</h3>
+          <span class="timer-pill">10–15 минут</span>
+        </div>
+        <p class="intro">Самый плотный блок. Берём 6 сфер из колеса и спускаемся от целей к неделям.</p>
+
+        <ol>
+          <li>По каждой из 6 выбранных сфер — какая 1 главная цель на июнь?</li>
+          <li>Какие 3–5 конкретных задач нужно сделать в июне, чтобы цели сдвинулись?</li>
+          <li>Разбивка задач по неделям июня:
+            <div class="weeks-list">
+              <div class="week-row">
+                <span class="week-label">Неделя 1</span>
+                <span class="week-dates">01 — 07 июня</span>
+                <span class="write-line"></span>
+              </div>
+              <div class="week-row">
+                <span class="week-label">Неделя 2</span>
+                <span class="week-dates">08 — 14 июня</span>
+                <span class="write-line"></span>
+              </div>
+              <div class="week-row">
+                <span class="week-label">Неделя 3</span>
+                <span class="week-dates">15 — 21 июня</span>
+                <span class="write-line"></span>
+              </div>
+              <div class="week-row">
+                <span class="week-label">Неделя 4</span>
+                <span class="week-dates">22 — 28 июня</span>
+                <span class="write-line"></span>
+              </div>
+              <div class="week-row">
+                <span class="week-label">Хвост</span>
+                <span class="week-dates">29 — 30 июня</span>
+                <span class="write-line"></span>
+              </div>
+            </div>
+          </li>
+          <li>Кто или что мне нужно, чтобы это случилось? <span class="example-hint">поддержка, ресурс, информация, человек</span></li>
+          <li>От чего я готов(а) отказаться в июне, чтобы освободить силы для главного?</li>
+        </ol>
+      </div>
+
+    </div>
+
+    <div class="todo-col">
+      <h4>Отдельная колонка <i>«Сделать»</i></h4>
+      <p>Это не цели и не привычки. Это разовые задачи: что-то отвезти, куда-то съездить, кому-то позвонить, что-то решить, купить, оформить. Они не должны мешаться в основном списке — у них своё место.</p>
+      <ul class="todo-lines">
+        <li></li><li></li><li></li><li></li><li></li><li></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<div class="container"><div class="divider"></div></div>
+
+<!-- ЗАДАНИЯ -->
+<section id="assignments" class="section">
+  <div class="container">
+    <span class="section-eyebrow">задания к старту</span>
+    <h2>Два задания <i>на старте лета</i></h2>
+    <p class="lead">Лето открывается двумя действиями — визуальным и волевым. Одно настраивает оптику, второе — характер.</p>
+
+    <div class="assignments">
+
+      <div class="assignment assignment-1">
+        <span class="assignment-tag">Задание №1</span>
+        <h3>Прислать свой <i>moodboard лета</i></h3>
+        <p>Соберите 6–12 картинок, которые передают то лето, которое вы хотите прожить. Не «красивые фотки», а образы состояния, ритма, цвета сезона. Pinterest, скрины из ленты, кадры из фильмов — любой источник. Загрузите в чат клуба до старта цикла.</p>
+        <p class="hint">Совет: сначала наберите 25–30 картинок не думая, потом уберите всё, в чём нет искренней «да». Останется ваш мудборд.</p>
+      </div>
+
+      <div class="assignment assignment-2">
+        <span class="assignment-tag">Задание №2 · Челленджи</span>
+        <h3>Выбрать <i>2 самые сложные задачи</i> на каждый период</h3>
+        <p>Лето делится на <strong>5 челленджей</strong> по 19–20 дней. На каждый челлендж вы выбираете <strong>максимум 2 задачи</strong>, к которым сложнее всего подступиться, и каждый день отмечаете выполнение. Задача может быть конкретной (например, «3 тренировки в неделю») или одноразовой («запустить лендинг»).</p>
+        <p class="hint">Принцип: то, чего избегаешь — обычно и есть ключ к следующему уровню. Челлендж не «успеть всё», а «перестать обходить». Берите максимум две задачи на период — иначе фокус расплывётся.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="container"><div class="divider"></div></div>
+
+<!-- ===== КОНСТРУКТОР ПЛАНА — ИНТЕРАКТИВНЫЙ МОДУЛЬ ===== -->
+<!-- Этот блок — единственное место в конспекте, где участница не просто читает,
+     а вводит свои ответы. Все 6 шагов сохраняются в localStorage сразу при вводе,
+     так что вкладку можно закрыть и вернуться позже. В конце генерируется
+     текстовое сообщение, готовое для копирования в чат клуба. -->
+<section id="builder" class="section">
+  <div class="container">
+    <span class="section-eyebrow">конструктор плана</span>
+    <h2>Соберите свой <i>план лета</i></h2>
+    <p class="lead">Заполните прямо здесь — в конце получите готовое сообщение для чата клуба. Все ответы сохраняются автоматически, можно вернуться позже.</p>
+
+    <div class="builder">
+
+      <!-- Шаг 01: Одно слово лета -->
+      <div class="builder-step">
+        <div class="bs-head">
+          <span class="bs-num">01</span>
+          <h3 class="bs-title">Одно слово, которым я опишу <i>своё лето</i></h3>
+        </div>
+        <input type="text" id="b-word" class="bs-input" placeholder="трансформация · фундамент · прорыв · отдых · разгон · рост" maxlength="40" />
+      </div>
+
+      <!-- Шаг 02: Выбор 6 сфер. Чипсы генерируются JS-ом из массива SPHERE_GROUPS -->
+      <div class="builder-step">
+        <div class="bs-head">
+          <span class="bs-num">02</span>
+          <h3 class="bs-title">Шесть <i>сфер фокуса</i> на лето</h3>
+          <span class="bs-counter" id="b-counter">0 / 6</span>
+        </div>
+        <div id="b-spheres"><!-- группы чипсов рендерятся скриптом ниже --></div>
+      </div>
+
+      <!-- Шаг 03: Фокус трёх месяцев -->
+      <div class="builder-step">
+        <div class="bs-head">
+          <span class="bs-num">03</span>
+          <h3 class="bs-title">Фокус каждого <i>месяца</i></h3>
+        </div>
+        <div class="bs-row">
+          <div class="bs-field">
+            <label>Июнь</label>
+            <input type="text" id="b-june" class="bs-input" placeholder="заложить фундамент" maxlength="60" />
+          </div>
+          <div class="bs-field">
+            <label>Июль</label>
+            <input type="text" id="b-july" class="bs-input" placeholder="разогнать, протестировать" maxlength="60" />
+          </div>
+          <div class="bs-field">
+            <label>Август</label>
+            <input type="text" id="b-august" class="bs-input" placeholder="масштабировать, отдохнуть" maxlength="60" />
+          </div>
         </div>
       </div>
 
-      <div class="welcome-card">
-        <span class="welcome-card-tag">Раз в месяц</span>
-        <div class="welcome-card-price">500<span class="ruble">₽</span></div>
-        <div class="welcome-card-sub">— как чашка кофе</div>
-        <ul class="welcome-card-list">
-          <li>Одна активность на выбор</li>
-          <li>Разовое посещение, без подписки</li>
-          <li>Тёплый круг и общение</li>
-          <li>Возможность задать вопросы лично</li>
-        </ul>
-        <div class="welcome-card-hint">
-          После Welcome-встречи можно вступить в клуб со скидкой 10% на первый месяц.
+      <!-- Шаг 04: Пять челленджей-периодов через всё лето, в каждом — максимум
+           2 задачи. Это правильная структура курса: лето нарезано на 5 отрезков
+           по ~19-20 дней, и на каждом участница выбирает не более двух задач,
+           по которым будет отчитываться каждый день. -->
+      <div class="builder-step">
+        <div class="bs-head">
+          <span class="bs-num">04</span>
+          <h3 class="bs-title">Пять <i>челленджей лета</i> — до 2 задач в каждом</h3>
+        </div>
+        <p class="intro" style="margin:-8px 0 16px;font-size:14px;color:var(--ink-mute);line-height:1.55;">
+          Каждые ~19–20 дней — новый челлендж. Задача может быть регулярной («3 тренировки в неделю») или разовой («запустить лендинг»). Сейчас можно подробно расписать только Челлендж №1, остальные — наметить общим направлением, конкретику добавите позже.
+        </p>
+        <div class="bs-challenges" id="b-challenges"><!-- 5 под-карточек рендерятся скриптом ниже --></div>
+      </div>
+
+      <!-- Шаг 05: От чего отказываюсь -->
+      <div class="builder-step">
+        <div class="bs-head">
+          <span class="bs-num">05</span>
+          <h3 class="bs-title">От чего я <i>откажусь в&nbsp;июне</i></h3>
+        </div>
+        <textarea id="b-no" class="bs-textarea" placeholder="2–3 вещи, которые освободят силы для главного. Например: не беру новых проектов, не сижу в соцсетях после 22:00, не назначаю встреч на воскресенье"></textarea>
+      </div>
+
+      <!-- Шаг 06: Запрос к группе -->
+      <div class="builder-step">
+        <div class="bs-head">
+          <span class="bs-num">06</span>
+          <h3 class="bs-title">Что мне нужно <i>от группы</i></h3>
+        </div>
+        <input type="text" id="b-need" class="bs-input" placeholder="совет · поддержка · ресурс · ничего" maxlength="120" />
+      </div>
+
+      <button class="builder-submit" id="b-submit" type="button">Собрать план →</button>
+      <p class="builder-hint">☀ план откроется в окне — копируйте в чат клуба или скачайте файлом</p>
+    </div>
+  </div>
+</section>
+
+<div class="container"><div class="divider"></div></div>
+
+<!-- РЕКОМЕНДАЦИИ -->
+<section id="tips" class="section">
+  <div class="container">
+    <span class="section-eyebrow">инструменты</span>
+    <h2>Рекомендации <i>по планированию и&nbsp;дисциплине</i></h2>
+    <p class="lead">Принципы, которые работают на дистанции в три месяца. Не догма — но то, что мы видели на десятках сезонов клуба.</p>
+
+    <div class="tips-wrap">
+
+      <div class="tips-card">
+        <span class="tag">Планирование</span>
+        <h3>Как устроить себе ясный июнь</h3>
+
+        <div class="tip-item">
+          <p class="tip-title">Правило трёх главных задач в день</p>
+          <p class="tip-body">Каждое утро выберите ТРИ задачи, которые сдвинут июньские цели. Не пять, не десять — три. Всё остальное — бонус. Если из 3 сделали 2 — день уже состоялся.</p>
+        </div>
+
+        <div class="tip-item">
+          <p class="tip-title">Воскресная сборка недели</p>
+          <p class="tip-body">30 минут вечером в воскресенье, не утром в понедельник. Посмотрите на 6 сфер, выберите 1–2 задачи в каждую на неделю, расставьте по дням. В понедельник вы уже работаете, а не «вкатываетесь».</p>
+        </div>
+
+        <div class="tip-item">
+          <p class="tip-title">Закладывайте 70%, не 100%</p>
+          <p class="tip-body">Самая частая ошибка — пихать в неделю столько, сколько влезает в идеальный мир. Планируйте на 70% от мощности: остальные 30% съест жизнь. Если жизнь не съела — у вас есть бонусное время.</p>
+        </div>
+
+        <div class="tip-item">
+          <p class="tip-title">Time-boxing вместо to-do</p>
+          <p class="tip-body">Не просто «написать пост», а «вторник, 9:00–10:00 — пост». Задача без слота во времени — это пожелание. Задача со слотом — это план.</p>
+        </div>
+
+        <div class="tip-item">
+          <p class="tip-title">Принцип одного следующего шага</p>
+          <p class="tip-body">Если задача стоит больше недели — она слишком крупная. Разбейте её до уровня «что я могу сделать в ближайшие 60 минут». Не «запустить запуск», а «написать черновик письма для базы».</p>
+        </div>
+
+        <div class="tip-item">
+          <p class="tip-title">Пятничный smoke-чек</p>
+          <p class="tip-body">15 минут в пятницу: что сделано, что не сделано, что переносим в следующую неделю, что убираем совсем. Это и есть основа еженедельного отчёта в клуб.</p>
+        </div>
+
+        <div class="tip-item">
+          <p class="tip-title">Зона «нет» — обязательна</p>
+          <p class="tip-body">У каждого месячного фокуса должен быть список «от чего я отказываюсь». Без этого новое не помещается — старое не двигается. Запишите три вещи, которые не делаете в июне.</p>
         </div>
       </div>
-    </div>
-  </div>
-</section>
 
-<section class="story">
-  <div class="container">
-    <span class="section-eyebrow">почему я создала рассвет</span>
-    <h2 class="story-title">Этот клуб вдохновлён <i>личной историей</i></h2>
-    <div class="story-body">
-      <p>Когда я переехала в Москву, я была уверена, что быстро найду своё окружение. Но на деле оказалось сложнее — я долго не могла почувствовать себя частью чего-то. Свободное время пугало, и я заполняла его бегом, тренировками, учёбой — но внутри оставалось одиночество.</p>
-      <p>Я помню вечер, когда звонила маме и плакала от того, что снова проведу воскресенье одна — красивая, с планами, но без людей рядом. Это было тяжело. Но именно это стало толчком: я решила взять всё в свои руки и начать знакомиться.</p>
-      <p>Постепенно в мою жизнь пришли люди, события, танцы — то, о чём я мечтала с десяти лет. И спустя пять лет я поняла: я такая не одна. Многим девушкам не хватает того же — тёплого окружения, заполненной недели, чувства, что ты нужна и интересна.</p>
-      <p>Так родился Рассвет. Идеальное комбо, которое помогло мне: <strong>общение + расписание недели + движение</strong>. В Рассвете есть всё, что я хотела бы иметь в те годы — и я хочу разделить это с вами.</p>
-    </div>
-  </div>
-</section>
+      <div class="tips-card green">
+        <span class="tag">Дисциплина</span>
+        <h3>Как держать ритм без надрыва</h3>
 
-<section id="faq" class="faq">
-  <div class="container">
-    <span class="section-eyebrow">ответы</span>
-    <h2 class="section-title">Частые <i>вопросы</i></h2>
-    <div class="faq-list">
-      <div class="faq-item open">
-        <button class="faq-q">А если я не смогу прийти на встречу? <span class="faq-icon">+</span></button>
-        <div class="faq-a"><p>Ничего страшного — выбирай активности, которые тебе интересны и удобны по времени.</p></div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-q">Я никого не знаю, будет ли мне комфортно? <span class="faq-icon">+</span></button>
-        <div class="faq-a"><p>Здесь тебя ждут и поддержат!</p></div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-q">Я в плохой физической форме, подходит ли мне? <span class="faq-icon">+</span></button>
-        <div class="faq-a"><p>Да. Все тренировки и пробежки адаптируются под уровень участниц. Главное — желание двигаться.</p></div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-q">Можно ли попробовать перед оплатой? <span class="faq-icon">+</span></button>
-        <div class="faq-a"><p>Да! Раз в месяц можно прийти на Welcome-встречу — любую активность клуба за 500 ₽. Это разовое посещение без обязательств. Подробнее в блоке «Знакомство с клубом» выше.</p></div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-q">Что если я хочу заморозить участие? <span class="faq-icon">+</span></button>
-        <div class="faq-a"><p>На период отпуска или отъезда мы можем договориться о твоем отсутствии.</p></div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-q">Какая аудитория клуба? <span class="faq-icon">+</span></button>
-        <div class="faq-a"><p>Девушки 17–28 лет из Москвы, которые ценят активный образ жизни, развитие и комфортное окружение.</p></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ── НОВАЯ CTA ПЛАШКА ── -->
-<section id="cta" class="cta-wrap">
-  <div class="container">
-    <div class="cta-plate">
-      <h2>Готова к нам —<br><i>присоединиться?</i></h2>
-      <p>Пиши, если остались вопросы</p>
-      <a href="https://t.me/evavasilyyevna" target="_blank" rel="noopener" class="cta-tg-btn">
-        <span class="cta-tg-icon">✈</span>
-        Написать в Telegram
-        <span class="cta-arr">→</span>
-      </a>
-    </div>
-  </div>
-</section>
-
-<footer class="footer">
-  <div class="container">
-    <div class="footer-grid">
-      <div>
-        <div class="logo">Рассвет</div>
-        <div class="footer-about">Клуб активностей для тех, кто хочет наполнить жизнь движением, творчеством и общением.</div>
-      </div>
-      <div>
-        <h4>Разделы</h4>
-        <ul>
-          <li><a href="#about">О клубе</a></li>
-          <li><a href="#activities">Активности</a></li>
-          <li><a href="schedule.html">Наше расписание</a></li>
-          <li><a href="#pricing">Тарифы</a></li>
-          <li><a href="#faq">Вопросы</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4>Связь</h4>
-        <ul>
-          <li><a href="https://t.me/evavasilyyevna" target="_blank" rel="noopener">Telegram</a></li>
-          <li><a href="#">Instagram</a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="footer-copy">© 2026 Рассвет. Все права защищены.</div>
-  </div>
-</footer>
-
-<!-- MODAL -->
-<div class="modal-backdrop" id="modal" role="dialog" aria-modal="true">
-  <div class="modal">
-    <button class="modal-close" id="modal-close">✕</button>
-    <div id="modal-form">
-      <h2>Оформление</h2>
-      <div class="modal-tariff" id="modal-tariff"></div>
-      <form id="pay-form" novalidate>
-        <div class="field"><label for="f-name">Ваше имя</label><input id="f-name" type="text" placeholder="Анна" required/></div>
-        <div class="field"><label for="f-tg">Telegram</label><input id="f-tg" type="text" placeholder="@anna" required/></div>
-        <div class="field"><label for="f-phone">Телефон</label><input id="f-phone" type="tel" placeholder="+7 (___) ___-__-__" required/></div>
-        <div class="field">
-          <label for="f-period">Период оплаты</label>
-          <select id="f-period">
-            <option value="1">1 месяц</option>
-            <option value="3">3 месяца — скидка 10%</option>
-          </select>
+        <div class="tip-item">
+          <p class="tip-title">Сначала система, потом мотивация</p>
+          <p class="tip-body">Мотивация — топливо, но не двигатель. Двигатель — это рутина: время, место, триггер. Решите заранее: «бегаю по понедельникам, средам и пятницам в 7:00». В момент, когда не хочется, уже не нужно решать — нужно просто делать.</p>
         </div>
-        <div class="price-summary" id="price-summary"></div>
-        <button type="submit" class="submit" id="submit-btn">Перейти к оплате</button>
-        <div class="pay-methods"><span>СБП</span><span>Visa / MC</span><span>МИР</span><span>ЮMoney</span></div>
-        <div class="security">Безопасная оплата</div>
-      </form>
+
+        <div class="tip-item">
+          <p class="tip-title">Минимум, а не максимум</p>
+          <p class="tip-body">Установите для привычки минимальную планку, которую невозможно не выполнить. 5 минут английского. 10 приседаний. Одно предложение в дневник. Когда легко — делаете больше. Когда плохо — делаете минимум и не выбиваетесь.</p>
+        </div>
+
+        <div class="tip-item">
+          <p class="tip-title">Никогда дважды подряд</p>
+          <p class="tip-body">Пропустить один день — нормально. Пропустить два дня подряд — это уже не пауза, а начало откатывания. Поэтому: что бы ни случилось, второй раз подряд не пропускаем. Никогда.</p>
+        </div>
+
+        <div class="tip-item">
+          <p class="tip-title">Привязка к существующему</p>
+          <p class="tip-body">Новую привычку легче приклеить к старой, чем впихнуть в пустое место. «После утреннего кофе — 10 минут планирования дня». «После того как закрыла ноутбук вечером — записываю 3 итога дня». Цепляйтесь за то, что уже стабильно.</p>
+        </div>
+
+        <div class="tip-item">
+          <p class="tip-title">Видимость — половина успеха</p>
+          <p class="tip-body">Что не отслеживается — то не растёт. Заведите простой трекер: галочка в день. Через 2 недели вы увидите паттерн, через 4 — характер. Без записи всё это сольётся в туман «вроде делала».</p>
+        </div>
+
+        <div class="tip-item">
+          <p class="tip-title">Публичное обязательство</p>
+          <p class="tip-body">Для этого и существует чат клуба. Озвученное при свидетелях обязательство выполняется в 2–3 раза чаще, чем тихое внутреннее. Пишите цели открыто, пишите промежуточные результаты, пишите даже срывы — особенно срывы.</p>
+        </div>
+
+        <div class="tip-item">
+          <p class="tip-title">Энергия важнее времени</p>
+          <p class="tip-body">Можно иметь 3 часа и ничего не сделать. Можно иметь 40 минут и сдвинуть ключевую задачу. Ставьте самое важное в окно максимальной энергии (у большинства — первые 2–3 часа после пробуждения). Не отдавайте этот ресурс на почту и чаты.</p>
+        </div>
+
+        <div class="tip-item">
+          <p class="tip-title">Восстановление — часть дисциплины</p>
+          <p class="tip-body">Сон, прогулки, выходной без работы — это не «бонус», а инфраструктура для всего остального. Запланируйте отдых так же конкретно, как задачи. Иначе он либо не случится, либо случится в виде выгорания.</p>
+        </div>
+      </div>
+
     </div>
-    <div id="modal-success" class="modal-success" hidden>
-      <div class="check">✓</div>
-      <h3>Почти готово!</h3>
-      <p>Нажми кнопку ниже, чтобы перейти к оплате.<br>После оплаты я свяжусь с тобой в Telegram.</p>
-      <a id="pay-direct-btn" href="#" target="_blank" rel="noopener" class="pay-direct-btn">Перейти к оплате →</a>
+  </div>
+</section>
+
+<div class="container"><div class="divider"></div></div>
+
+<!-- ЕЖЕНЕДЕЛЬНЫЙ ОТЧЁТ -->
+<section id="report" class="section">
+  <div class="container">
+    <span class="section-eyebrow">ритм клуба</span>
+    <h2>Еженедельный <i>отчёт в&nbsp;клуб</i></h2>
+    <p class="lead">Раз в неделю — в пятницу или в воскресенье на ваш выбор — каждый пишет в чат клуба короткий отчёт. Это не для оценки, это для движения.</p>
+
+    <div class="report">
+      <div class="report-inner">
+        <span class="report-when"><span class="dot"></span>каждая пятница / воскресенье · 10–15 минут</span>
+        <h3>Структура <i>отчёта</i></h3>
+        <ol>
+          <li>Что сделано за неделю по моим задачам июня — конкретно, списком.</li>
+          <li>Главный результат / победа недели — одной фразой.</li>
+          <li>Где застряла / с чем сложность?</li>
+          <li>% выполнения моих задач на сегодня — среднее по всем задачам месяца.</li>
+          <li>Фокус на следующую неделю — 2–3 пункта.</li>
+          <li>Что мне нужно от группы? <span class="example-hint">совет, поддержка, ресурс, ничего</span></li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="tracker">
+      <h4>Что внутри <i>Google-таблицы</i></h4>
+      <p class="tracker-sub">Готовый файл .xlsx прикреплён к встрече — открывайте через Google Sheets и работайте.</p>
+      <table class="tracker-table">
+        <thead>
+          <tr>
+            <th>Лист</th>
+            <th>Что отслеживает</th>
+            <th>Когда заполнять</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Цели июня</strong></td>
+            <td>6 сфер, главные цели, задачи, % выполнения</td>
+            <td>В начале месяца + апдейт раз в неделю</td>
+          </tr>
+          <tr>
+            <td><strong>Недельные отчёты</strong></td>
+            <td>Сделано, победа, сложность, %, фокус, запрос</td>
+            <td>Раз в неделю — пятница или воскресенье</td>
+          </tr>
+          <tr>
+            <td><strong>Ежедневная рефлексия</strong></td>
+            <td>Энергия, 3 главных дела, что получилось, благодарность</td>
+            <td>Каждый вечер, 5 минут</td>
+          </tr>
+          <tr>
+            <td><strong>Челленджи</strong></td>
+            <td>5 челленджей-периодов, до 2 задач в каждом, ежедневная галочка</td>
+            <td>Каждый день в течение челленджа</td>
+          </tr>
+          <tr>
+            <td><strong>«Сделать»</strong></td>
+            <td>Разовые задачи без привязки к сфере</td>
+            <td>По мере появления</td>
+          </tr>
+        </tbody>
+      </table>
+      <p class="tracker-foot">☀ всё считается автоматически — вы только заполняете</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== МОДАЛКА КОНСТРУКТОРА =====
+     Открывается по клику на «Собрать план». Внутри — готовый текст для копирования
+     в чат клуба плюс три кнопки действий: копировать, скачать .txt, распечатать.
+     Структура повторяет твою pricing-модалку: затемнённый бэкдроп с blur,
+     центрированная карточка, крестик-закрыть в правом верхнем углу. -->
+<div class="b-modal-backdrop" id="b-modal" role="dialog" aria-modal="true" aria-labelledby="b-modal-title">
+  <div class="b-modal">
+    <button class="b-modal-close" id="b-close" type="button" aria-label="Закрыть">✕</button>
+    <h2 id="b-modal-title">Твой план <i>лета 2026</i></h2>
+    <p class="b-modal-sub">Скопируйте в чат клуба, сохраните файлом или распечатайте — план у вас на руках.</p>
+    <div class="b-result-card" id="b-result">текст плана появится здесь</div>
+    <div class="b-actions">
+      <button class="b-action-btn" id="b-copy" type="button">📋 Скопировать</button>
+      <button class="b-action-btn secondary" id="b-download" type="button">⬇ Скачать .txt</button>
+      <button class="b-action-btn secondary" id="b-print" type="button">🖨 Распечатать</button>
     </div>
   </div>
 </div>
 
 <script>
-// FAQ
-document.querySelectorAll('.faq-q').forEach(btn => {
-  btn.addEventListener('click', () => {
-    const item = btn.closest('.faq-item'), wasOpen = item.classList.contains('open');
-    document.querySelectorAll('.faq-item.open').forEach(o => o.classList.remove('open'));
-    if (!wasOpen) item.classList.add('open');
-  });
-});
+/* ===== КОНСТРУКТОР ПЛАНА — логика =====
+   Архитектура простая: одно состояние `state`, которое отражает все ответы участницы.
+   При любом изменении (клик по чипсу, ввод в поле) state перезаписывается и
+   сохраняется в localStorage. При следующем открытии страницы state восстанавливается.
+   В конце state превращается в форматированный текст для чата. */
 
-// Smooth scroll (only for in-page anchors, not links to other files)
-document.querySelectorAll('a[href^="#"]').forEach(a => {
-  a.addEventListener('click', e => {
-    const t = document.querySelector(a.getAttribute('href'));
-    if (!t) return;
-    e.preventDefault();
-    window.scrollTo({ top: t.getBoundingClientRect().top + window.scrollY - 78, behavior:'smooth' });
-  });
-});
+// 1) ДАННЫЕ: все сферы из колеса баланса, сгруппированные по разделам.
+// Этот же список — в HTML выше, в секции #wheel. Если меняешь там — поменяй и тут.
+const SPHERE_GROUPS = [
+  { name: "Тело и здоровье", items: [
+      "Здоровье и тело", "Физическая активность / спорт", "Питание",
+      "Сон и восстановление", "Энергия / состояние", "Внешность и стиль"
+  ]},
+  { name: "Отношения", items: [
+      "Партнёр / любовные отношения", "Семья / родители", "Дети",
+      "Дружба", "Сексуальность", "Окружение / люди вокруг"
+  ]},
+  { name: "Деньги и дело", items: [
+      "Финансы / доход", "Карьера / работа по найму", "Бизнес / своё дело",
+      "Профессиональный рост", "Личный бренд / публичность"
+  ]},
+  { name: "Внутреннее", items: [
+      "Личностный рост / саморазвитие", "Психика / эмоции / внутренняя работа",
+      "Духовность / смыслы", "Дисциплина и привычки", "Обучение / новые знания"
+  ]},
+  { name: "Жизнь и среда", items: [
+      "Хобби и увлечения", "Творчество и творческая реализация",
+      "Отдых и восстановление", "Путешествия и приключения",
+      "Дом и быт", "Время и тайм-менеджмент", "Комьюнити / клуб / своё сообщество"
+  ]}
+];
 
-// ── Spots counter ──────────────────────────────────────
-const SHEETS_URL = 'https://script.google.com/macros/s/AKfycbzAc1FgNoTqr07sgHr2L1U7k6HuZUskb37rnULz4kO88SSRRMd2-XHIXu8B76Qo0OIKjg/exec';
+// Пять периодов челленджей. Первый и второй заданы стратсессией явно,
+// остальные — продолжение ритма 19-20 дней до конца августа.
+const CHALLENGE_PERIODS = [
+  { num: 1, label: "01 — 19 июня",         days: 19 },
+  { num: 2, label: "20 июня — 09 июля",    days: 20 },
+  { num: 3, label: "10 — 29 июля",         days: 20 },
+  { num: 4, label: "30 июля — 18 августа", days: 20 },
+  { num: 5, label: "19 — 31 августа",      days: 13 }
+];
 
-function plural(n) {
-  if (n%10===1 && n%100!==11) return 'место';
-  if ([2,3,4].includes(n%10) && ![12,13,14].includes(n%100)) return 'места';
-  return 'мест';
-}
+const MAX_SPHERES = 6;
+const LS_KEY = "rassvet-summer-plan-2026";
 
-function updateBadge(tariff, count) {
-  const badge = document.getElementById(`spots-${tariff}`);
-  const text  = document.getElementById(`spots-${tariff}-text`);
-  const btn   = document.querySelector(`[data-pay="${tariff}"]`);
-  badge.classList.remove('few','none');
-  if (count <= 0) {
-    badge.classList.add('none');
-    text.textContent = 'Мест нет';
-    btn.disabled = true;
-    btn.textContent = 'Мест нет';
-  } else if (count <= 5) {
-    badge.classList.add('few');
-    text.textContent = `Осталось ${count} ${plural(count)}`;
-  } else {
-    text.textContent = `Осталось ${count} ${plural(count)}`;
-  }
-}
-
-async function loadSpots() {
-  try {
-    const r = await fetch(SHEETS_URL, { method: 'GET', redirect: 'follow' });
-    const d = JSON.parse(await r.text());
-    updateBadge('base',  d.base);
-    updateBadge('dance', d.dance);
-  } catch {
-    document.getElementById('spots-base-text').textContent  = 'Осталось несколько мест';
-    document.getElementById('spots-dance-text').textContent = 'Осталось несколько мест';
-  }
-}
-
-const SUCCESS_URL = 'https://ВАШСАЙТ.ru/success.html';
-
-function addSuccessUrl(link) {
-  const url = new URL(link);
-  url.searchParams.set('success_url', SUCCESS_URL);
-  return url.toString();
-}
-
-const PAY_LINKS = {
-  base:  {
-    1: addSuccessUrl('https://link.payform.ru/?paymentLinkId=b08a5d9c-4db7-4634-8e24-36875168300b'),
-    3: addSuccessUrl('https://link.payform.ru/?paymentLinkId=189279c5-1ea1-48f6-838b-b15a8cc178d4')
-  },
-  dance: {
-    1: addSuccessUrl('https://link.payform.ru/?paymentLinkId=31df960d-eef9-4bb7-847e-1bea1ae29529'),
-    3: addSuccessUrl('https://link.payform.ru/?paymentLinkId=458c66bd-f748-4508-ad3a-59842f967e4a')
-  }
+// 2) СОСТОЯНИЕ: единый объект, отражающий все 6 шагов. Для челленджей —
+// массив из 5 объектов, каждый с массивом задач (до 2). Это даёт нам
+// чистый JSON для сохранения и легко превращается в текст плана в конце.
+let state = {
+  word: "",
+  spheres: [],
+  june: "", july: "", august: "",
+  challenges: CHALLENGE_PERIODS.map(() => ({ tasks: ["", ""] })),
+  no: "", need: ""
 };
 
-// ── Modal ─────────────────────────────────────────────
-const modal        = document.getElementById('modal');
-const modalTariff  = document.getElementById('modal-tariff');
-const priceSummary = document.getElementById('price-summary');
-const modalForm    = document.getElementById('modal-form');
-const modalSuccess = document.getElementById('modal-success');
-const payForm      = document.getElementById('pay-form');
-const submitBtn    = document.getElementById('submit-btn');
-const payDirectBtn = document.getElementById('pay-direct-btn');
-const fName        = document.getElementById('f-name');
-const fTg          = document.getElementById('f-tg');
-const fPhone       = document.getElementById('f-phone');
-const fPeriod      = document.getElementById('f-period');
-
-const PRICES = { base:{name:'База',price:2000}, dance:{name:'Клуб + танцы',price:3800} };
-const fmt = n => n.toLocaleString('ru-RU');
-
-function updatePriceSummary() {
-  const t = PRICES[modal.dataset.tariff]; if (!t) return;
-  const p = parseInt(fPeriod.value) || 1;
-  modalTariff.textContent = `Тариф «${t.name}»`;
-  if (p === 1) {
-    priceSummary.innerHTML = `<strong style="font-size:20px;color:var(--ink)">${fmt(t.price)} ₽</strong> — за 1 месяц`;
-  } else {
-    const disc = Math.round(t.price * .9), total = disc * p, saved = t.price * p - total;
-    priceSummary.innerHTML =
-      `<strong style="font-size:20px;color:var(--ink)">${fmt(total)} ₽</strong> — итого за 3 месяца` +
-      `<br><span style="font-size:13px;color:var(--ink-mute)">${fmt(disc)} ₽/мес вместо ${fmt(t.price)} ₽ · экономия ${fmt(saved)} ₽</span>`;
-  }
-}
-
-function openModal(key) {
-  modal.dataset.tariff = key;
-  fPeriod.value = '1';
-  modalForm.hidden = false;
-  modalSuccess.hidden = true;
-  updatePriceSummary();
-  modal.classList.add('open');
-  document.body.classList.add('modal-open');
-  setTimeout(() => fName.focus(), 280);
-}
-function closeModal() { modal.classList.remove('open'); document.body.classList.remove('modal-open'); }
-
-fPeriod.addEventListener('change', updatePriceSummary);
-document.querySelectorAll('[data-pay]').forEach(btn => {
-  btn.addEventListener('click', e => { e.preventDefault(); if (!btn.disabled) openModal(btn.dataset.pay); });
-});
-document.getElementById('modal-close').addEventListener('click', closeModal);
-modal.addEventListener('click', e => { if (e.target === modal) closeModal(); });
-document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
-
-// Phone mask
-fPhone.addEventListener('input', () => {
-  let d = fPhone.value.replace(/\D/g, '');
-  if (d.startsWith('8')) d = '7' + d.slice(1);
-  if (!d.startsWith('7')) d = '7' + d;
-  d = d.slice(0, 11);
-  let o = '+7';
-  if (d.length > 1)  o += ' (' + d.slice(1, 4);
-  if (d.length >= 4) o += ') ' + d.slice(4, 7);
-  if (d.length >= 7) o += '-' + d.slice(7, 9);
-  if (d.length >= 9) o += '-' + d.slice(9, 11);
-  fPhone.value = o;
-});
-
-// Submit
-payForm.addEventListener('submit', async e => {
-  e.preventDefault();
-  if (!fName.value.trim())  { fName.focus();  return; }
-  if (!fTg.value.trim())    { fTg.focus();    return; }
-  if (fPhone.value.replace(/\D/g, '').length < 11) { fPhone.focus(); return; }
-
-  const tariff = modal.dataset.tariff;
-  const period = parseInt(fPeriod.value) || 1;
-  const payUrl = PAY_LINKS[tariff]?.[period];
-
-  if (payUrl) payDirectBtn.href = payUrl;
-  submitBtn.textContent = 'Создаём заказ…';
-  submitBtn.disabled = true;
-  modalForm.hidden = true;
-  modalSuccess.hidden = false;
-
-  try {
-    await fetch(SHEETS_URL, {
-      method: 'POST',
-      redirect: 'follow',
-      headers: { 'Content-Type': 'text/plain' },
-      body: JSON.stringify({
-        name: fName.value.trim(),
-        telegram: fTg.value.trim(),
-        phone: fPhone.value.trim(),
-        tariff: tariff,
-        period: period
-      })
-    });
-  } catch { /* не блокируем оплату */ }
-
-  submitBtn.textContent = 'Перейти к оплате';
-  submitBtn.disabled = false;
-});
-
-// ── Welcome-встреча ──────────────────────────────────
-const WELCOME_PAY_URL = 'https://link.payform.ru/?paymentLinkId=84f25917-d488-44fc-b4dc-94f0fecf068e';
-const FORMAT_LABELS = {
-  run:     '🏃‍♀️ Пробежка',
-  picnic:  '🧺 Пикник и игры',
-  book:    '📖 Книжный клуб',
-  workout: '💪 Тренировка на улице'
-};
-
-let selectedWelcomeFormat = null;
-let welcomeSpots = { run: 3, picnic: 3, book: 3, workout: 3 };
-
-async function loadSpotsWithWelcome() {
-  try {
-    const r = await fetch(SHEETS_URL, { method: 'GET', redirect: 'follow' });
-    const d = JSON.parse(await r.text());
-    updateBadge('base',  d.base);
-    updateBadge('dance', d.dance);
-    if (d.welcome) {
-      welcomeSpots = d.welcome;
-      updateWelcomeCards();
-    }
-  } catch {
-    document.getElementById('spots-base-text').textContent  = 'Осталось несколько мест';
-    document.getElementById('spots-dance-text').textContent = 'Осталось несколько мест';
-  }
-}
-loadSpotsWithWelcome();
-
-function updateWelcomeCards() {
-  document.querySelectorAll('.wf-card').forEach(card => {
-    const key   = card.dataset.format;
-    const spots = welcomeSpots[key];
-    let badge   = card.querySelector('.wf-spots');
-
-    if (!badge) {
-      badge = document.createElement('span');
-      badge.className = 'wf-spots';
-      card.appendChild(badge);
-    }
-
-    if (spots <= 0) {
-      badge.textContent = 'Мест нет';
-      badge.classList.add('wf-spots-none');
-      card.classList.add('wf-full');
-      card.disabled = true;
-    } else if (spots <= 1) {
-      badge.textContent = 'Последнее место!';
-      badge.classList.add('wf-spots-few');
+// 3) ВОССТАНОВЛЕНИЕ ИЗ LOCALSTORAGE при загрузке страницы.
+// Обёрнуто в try/catch — если хранилище заблокировано (incognito, политика
+// браузера, embed в iframe), просто работаем без сохранения.
+try {
+  const saved = localStorage.getItem(LS_KEY);
+  if (saved) {
+    const parsed = JSON.parse(saved);
+    state = Object.assign(state, parsed);
+    // защита: spheres должен быть массивом, а не каким-то мусором
+    if (!Array.isArray(state.spheres)) state.spheres = [];
+    // защита для челленджей: если структура старая или битая — восстанавливаем
+    // правильную форму, иначе цикл рендера упадёт
+    if (!Array.isArray(state.challenges) || state.challenges.length !== CHALLENGE_PERIODS.length) {
+      state.challenges = CHALLENGE_PERIODS.map(() => ({ tasks: ["", ""] }));
     } else {
-      badge.textContent = `Осталось ${spots} ${plural(spots)}`;
+      state.challenges = state.challenges.map(ch => ({
+        tasks: Array.isArray(ch?.tasks) ? [ch.tasks[0] || "", ch.tasks[1] || ""] : ["", ""]
+      }));
     }
+  }
+} catch (e) { /* пропускаем */ }
+
+function saveState() {
+  try { localStorage.setItem(LS_KEY, JSON.stringify(state)); }
+  catch (e) { /* не критично, просто не сохранится */ }
+}
+
+// 4) РЕНДЕР ЧИПСОВ. Перерисовываем весь блок целиком при каждом изменении —
+// это проще, чем точечно менять классы, и работает мгновенно для 28 чипсов.
+const spheresEl = document.getElementById("b-spheres");
+const counterEl = document.getElementById("b-counter");
+
+function renderSpheres() {
+  spheresEl.innerHTML = "";
+  SPHERE_GROUPS.forEach(group => {
+    const wrap = document.createElement("div");
+    wrap.className = "bs-sphere-group";
+
+    const title = document.createElement("p");
+    title.className = "bs-sphere-group-title";
+    title.textContent = group.name;
+    wrap.appendChild(title);
+
+    const chips = document.createElement("div");
+    chips.className = "bs-chips";
+
+    group.items.forEach(name => {
+      const btn = document.createElement("button");
+      btn.type = "button";
+      btn.className = "bs-chip";
+      btn.textContent = name;
+      btn.dataset.name = name;
+
+      const isSelected = state.spheres.includes(name);
+      const limitReached = state.spheres.length >= MAX_SPHERES;
+
+      if (isSelected) {
+        btn.classList.add("selected");
+      } else if (limitReached) {
+        btn.classList.add("disabled");
+      }
+
+      // Клик переключает выбор. Логика: если уже выбрано — снимаем;
+      // если не выбрано и лимит не достигнут — добавляем.
+      btn.addEventListener("click", () => {
+        const idx = state.spheres.indexOf(name);
+        if (idx >= 0) {
+          state.spheres.splice(idx, 1);
+        } else if (state.spheres.length < MAX_SPHERES) {
+          state.spheres.push(name);
+        }
+        saveState();
+        renderSpheres();
+        updateCounter();
+      });
+
+      chips.appendChild(btn);
+    });
+
+    wrap.appendChild(chips);
+    spheresEl.appendChild(wrap);
   });
 }
 
-document.querySelectorAll('.wf-card').forEach(card => {
-  card.addEventListener('click', () => {
-    if (card.classList.contains('wf-full')) return;
+function updateCounter() {
+  counterEl.textContent = state.spheres.length + " / 6";
+  // когда выбрано ровно 6 — счётчик становится зелёным, сигнал «выбор закрыт»
+  counterEl.classList.toggle("full", state.spheres.length === MAX_SPHERES);
+}
 
-    document.querySelectorAll('.wf-card').forEach(c => c.classList.remove('selected'));
-    card.classList.add('selected');
-    selectedWelcomeFormat = card.dataset.format;
+renderSpheres();
+updateCounter();
 
-    const formWrap = document.getElementById('welcome-form-wrap');
-    const chosen   = document.getElementById('welcome-chosen');
-    chosen.textContent = '✓ ' + FORMAT_LABELS[selectedWelcomeFormat];
-    formWrap.hidden = false;
-    formWrap.scrollIntoView({ behavior:'smooth', block:'nearest' });
+// 5) ПРИВЯЗКА ТЕКСТОВЫХ ПОЛЕЙ. Перечисляем ключи state, для каждого находим
+// инпут по id `b-<ключ>`, восстанавливаем значение и вешаем onInput-слушатель.
+// Поля челленджей здесь не упоминаем — они генерируются и привязываются отдельно
+// в функции renderChallenges ниже, потому что их 10 (5 челленджей × 2 задачи)
+// и они создаются динамически.
+const FIELDS = ["word", "june", "july", "august", "no", "need"];
+FIELDS.forEach(key => {
+  const el = document.getElementById("b-" + key);
+  if (!el) return;
+  el.value = state[key] || "";
+  el.addEventListener("input", () => {
+    state[key] = el.value;
+    saveState();
   });
 });
 
-document.getElementById('welcome-submit').addEventListener('click', async () => {
-  const wfName = document.getElementById('wf-name');
-  const wfTg   = document.getElementById('wf-tg');
-  const btn    = document.getElementById('welcome-submit');
+// 5a) РЕНДЕР ЧЕЛЛЕНДЖЕЙ. Создаём 5 под-карточек, в каждой — заголовок с номером,
+// датами периода, бейджем с числом дней, и два поля для задач. Подписи к полям
+// дают понять, что вторая задача необязательна.
+const challengesEl = document.getElementById("b-challenges");
 
-  if (!selectedWelcomeFormat) return;
-  if (!wfName.value.trim()) { wfName.focus(); return; }
-  if (!wfTg.value.trim())   { wfTg.focus();   return; }
+function renderChallenges() {
+  challengesEl.innerHTML = "";
+  CHALLENGE_PERIODS.forEach((period, cIdx) => {
+    const card = document.createElement("div");
+    card.className = "bs-challenge";
 
-  btn.textContent = 'Записываем…';
-  btn.disabled = true;
+    // Шапка карточки: №, даты, бейдж «N дней»
+    const head = document.createElement("div");
+    head.className = "bs-challenge-head";
+    head.innerHTML =
+      '<span class="bs-challenge-num">№' + period.num + '</span>' +
+      '<span class="bs-challenge-dates">' + period.label + '</span>' +
+      '<span class="bs-challenge-days">' + period.days + ' дней</span>';
+    card.appendChild(head);
 
-  try {
-    const r = await fetch(SHEETS_URL, {
-      method: 'POST',
-      redirect: 'follow',
-      headers: { 'Content-Type': 'text/plain' },
-      body: JSON.stringify({
-        name: wfName.value.trim(),
-        telegram: wfTg.value.trim(),
-        phone: '',
-        tariff: 'welcome',
-        period: 1,
-        welcome_format: FORMAT_LABELS[selectedWelcomeFormat]
-      })
+    // Две колонки полей для задач
+    const row = document.createElement("div");
+    row.className = "bs-row-2";
+
+    [0, 1].forEach(tIdx => {
+      const field = document.createElement("div");
+      field.className = "bs-field";
+
+      const label = document.createElement("label");
+      label.textContent = tIdx === 0
+        ? "Задача 1"
+        : "Задача 2 (необязательно)";
+      field.appendChild(label);
+
+      const input = document.createElement("input");
+      input.type = "text";
+      input.className = "bs-input";
+      input.placeholder = tIdx === 0
+        ? (cIdx === 0
+            ? "например: 3 тренировки в неделю"
+            : "одна сложная задача периода")
+        : "ещё одна, если нужна";
+      input.maxLength = 120;
+      input.value = state.challenges[cIdx]?.tasks[tIdx] || "";
+
+      // Сохраняем в state при каждом изменении
+      input.addEventListener("input", () => {
+        if (!state.challenges[cIdx]) state.challenges[cIdx] = { tasks: ["", ""] };
+        state.challenges[cIdx].tasks[tIdx] = input.value;
+        saveState();
+      });
+
+      field.appendChild(input);
+      row.appendChild(field);
     });
-    const result = JSON.parse(await r.text());
 
-    if (result.status === 'full') {
-      btn.textContent = 'Мест нет — выбери другой формат';
-      btn.disabled = false;
-      setTimeout(() => { btn.textContent = 'Записаться за 500 ₽ →'; }, 3000);
-      return;
-    }
-  } catch { /* не блокируем */ }
+    card.appendChild(row);
+    challengesEl.appendChild(card);
+  });
+}
 
-  if (welcomeSpots[selectedWelcomeFormat] > 0) {
-    welcomeSpots[selectedWelcomeFormat]--;
-    updateWelcomeCards();
+renderChallenges();
+
+// 6) ГЕНЕРАЦИЯ ТЕКСТА ПЛАНА.
+// Собираем построчно. Пустые блоки пропускаются, чтобы не было «болванок»
+// в финальном сообщении.
+function generatePlanText() {
+  const L = [];
+  L.push("☀ МОЙ ПЛАН ЛЕТА 2026 · РАССВЕТ ☀");
+  L.push("");
+
+  if (state.word.trim()) {
+    L.push("ОДНО СЛОВО ЛЕТА: " + state.word.trim());
+    L.push("");
   }
 
-  window.open(WELCOME_PAY_URL, '_blank');
+  if (state.spheres.length > 0) {
+    L.push("🎯 МОИ СФЕРЫ ФОКУСА (" + state.spheres.length + "/6):");
+    state.spheres.forEach((s, i) => L.push((i + 1) + ". " + s));
+    L.push("");
+  }
 
-  btn.textContent = 'Записаться за 500 ₽ →';
-  btn.disabled = false;
+  const hasMonth = state.june.trim() || state.july.trim() || state.august.trim();
+  if (hasMonth) {
+    L.push("📅 ФОКУС МЕСЯЦЕВ:");
+    if (state.june.trim())   L.push("Июнь — "   + state.june.trim());
+    if (state.july.trim())   L.push("Июль — "   + state.july.trim());
+    if (state.august.trim()) L.push("Август — " + state.august.trim());
+    L.push("");
+  }
+
+  // ЧЕЛЛЕНДЖИ: проходим по всем 5 периодам, в каждом печатаем только те задачи,
+  // которые участница реально заполнила. Если за весь период ни одной задачи —
+  // блок пропускаем целиком, чтобы в финальном плане не было пустых заголовков.
+  const anyChallengeFilled = state.challenges.some(ch =>
+    ch && Array.isArray(ch.tasks) && ch.tasks.some(t => (t || "").trim())
+  );
+  if (anyChallengeFilled) {
+    L.push("🔥 ЧЕЛЛЕНДЖИ ЛЕТА (5 периодов · до 2 задач в каждом):");
+    state.challenges.forEach((ch, i) => {
+      const period = CHALLENGE_PERIODS[i];
+      const filledTasks = (ch?.tasks || []).filter(t => (t || "").trim());
+      if (filledTasks.length === 0) return;  // период пуст — пропускаем
+      L.push("");
+      L.push("Челлендж №" + period.num + " · " + period.label + ":");
+      filledTasks.forEach(t => L.push("  • " + t.trim()));
+    });
+    L.push("");
+  }
+
+  if (state.no.trim()) {
+    L.push("⛔ ОТ ЧЕГО ОТКАЗЫВАЮСЬ В ИЮНЕ:");
+    L.push(state.no.trim());
+    L.push("");
+  }
+
+  if (state.need.trim()) {
+    L.push("🙏 ЧТО МНЕ НУЖНО ОТ ГРУППЫ:");
+    L.push(state.need.trim());
+    L.push("");
+  }
+
+  L.push("— Рассвет, стратсессия");
+  return L.join("\n");
+}
+
+// 7) УПРАВЛЕНИЕ МОДАЛКОЙ.
+const modal       = document.getElementById("b-modal");
+const resultEl    = document.getElementById("b-result");
+const submitBtn   = document.getElementById("b-submit");
+const closeBtn    = document.getElementById("b-close");
+const copyBtn     = document.getElementById("b-copy");
+const downloadBtn = document.getElementById("b-download");
+const printBtn    = document.getElementById("b-print");
+
+function openModal() {
+  resultEl.textContent = generatePlanText();
+  modal.classList.add("open");
+  document.body.style.overflow = "hidden";
+  // через 300мс (после анимации) фокусируем кнопку копирования —
+  // удобно для тех, кто работает с клавиатуры
+  setTimeout(() => copyBtn.focus(), 320);
+}
+
+function closeModal() {
+  modal.classList.remove("open");
+  document.body.style.overflow = "";
+}
+
+submitBtn.addEventListener("click", openModal);
+closeBtn.addEventListener("click", closeModal);
+// клик по фону вне карточки тоже закрывает
+modal.addEventListener("click", e => { if (e.target === modal) closeModal(); });
+// Escape — стандартное поведение для модалок
+document.addEventListener("keydown", e => {
+  if (e.key === "Escape" && modal.classList.contains("open")) closeModal();
+});
+
+// 8) ДЕЙСТВИЕ «СКОПИРОВАТЬ».
+// Сначала пробуем современный navigator.clipboard, на старых браузерах
+// падаем в textarea+execCommand. Кнопка на 2 секунды зеленеет с галочкой —
+// визуальное подтверждение, что копирование сработало.
+copyBtn.addEventListener("click", async () => {
+  const text = resultEl.textContent;
+  const showSuccess = () => {
+    copyBtn.textContent = "✓ Скопировано";
+    copyBtn.classList.add("copied");
+    setTimeout(() => {
+      copyBtn.textContent = "📋 Скопировать";
+      copyBtn.classList.remove("copied");
+    }, 2000);
+  };
+
+  try {
+    await navigator.clipboard.writeText(text);
+    showSuccess();
+  } catch (e) {
+    // запасной путь для старых браузеров и небезопасных контекстов (file://)
+    const ta = document.createElement("textarea");
+    ta.value = text;
+    ta.style.position = "fixed";
+    ta.style.left = "-9999px";
+    document.body.appendChild(ta);
+    ta.select();
+    try { document.execCommand("copy"); showSuccess(); }
+    catch (e2) { alert("Не удалось скопировать. Выделите текст и нажмите Ctrl/Cmd + C."); }
+    document.body.removeChild(ta);
+  }
+});
+
+// 9) ДЕЙСТВИЕ «СКАЧАТЬ .TXT».
+// Создаём Blob, делаем временную ссылку, эмулируем клик — стандартный
+// браузерный паттерн скачивания файла без серверной части.
+downloadBtn.addEventListener("click", () => {
+  const text = resultEl.textContent;
+  const blob = new Blob([text], { type: "text/plain;charset=utf-8" });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = "rassvet-plan-leto-2026.txt";
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  // освобождаем память — иначе blob висит в браузере до перезагрузки
+  setTimeout(() => URL.revokeObjectURL(url), 100);
+});
+
+// 10) ДЕЙСТВИЕ «РАСПЕЧАТАТЬ».
+// Открываем новое окно с минимальной HTML-разметкой, в нём вызываем window.print().
+// Так мы печатаем только план, а не всю страницу со всеми разделами.
+printBtn.addEventListener("click", () => {
+  const text = resultEl.textContent;
+  // экранируем HTML-небезопасные символы, чтобы не сломать вёрстку нового окна
+  const safe = text.replace(/[<>&]/g, c => ({"<":"&lt;",">":"&gt;","&":"&amp;"}[c]));
+  const w = window.open("", "_blank", "width=720,height=900");
+  if (!w) { alert("Разрешите всплывающие окна, чтобы распечатать."); return; }
+  w.document.write(
+    '<!DOCTYPE html><html lang="ru"><head><meta charset="UTF-8">' +
+    '<title>План лета 2026 — Рассвет</title>' +
+    '<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;1,500&family=Onest:wght@400;500&display=swap" rel="stylesheet">' +
+    '<style>' +
+      'body{font-family:Onest,Georgia,serif;max-width:620px;margin:50px auto;padding:0 24px;line-height:1.7;color:#1d150c;}' +
+      'h1{font-family:"Cormorant Garamond",Georgia,serif;color:#e96d2a;font-style:italic;font-weight:600;margin:0 0 24px;font-size:42px;letter-spacing:-.012em;}' +
+      'pre{white-space:pre-wrap;font-family:inherit;font-size:14.5px;background:#fffaf0;padding:24px 28px;border-radius:14px;border:1.5px solid #fbcfb1;}' +
+      'footer{margin-top:30px;font-size:12px;color:#8a7558;font-style:italic;text-align:center;}' +
+      '@media print{body{margin:20px auto}}' +
+    '</style></head>' +
+    '<body><h1>План лета 2026</h1><pre>' + safe + '</pre>' +
+    '<footer>Сгенерировано из конспекта стратсессии · Рассвет</footer>' +
+    '<scr' + 'ipt>window.onload=function(){setTimeout(window.print,250)};<\/script>' +
+    '</body></html>'
+  );
+  w.document.close();
 });
 </script>
+
+
+<div class="container">
+  <div class="foot-quote">
+    <p>Лето — это не три месяца,<br>а <i>одно слово</i>, шесть фокусов и одно решение начать.</p>
+    <span class="foot-sign">Рассвет · стратсессия</span>
+  </div>
+</div>
+
 </body>
 </html>
