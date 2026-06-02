@@ -6,6 +6,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Onest:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
 <style>
 :root{
   --bg:#faf3e7;--paper:#fffaf0;--paper-soft:#fdf5e6;
@@ -341,13 +342,6 @@ h1,h2,h3,h4{letter-spacing:-.01em}
 .spots-badge.none .spots-dot{background:#f44336;animation:none}
 @keyframes pdot{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(1.4)}}
 
-/* STORY */
-.story{padding:100px 0 90px}
-.story-title{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:60px;line-height:1.05;letter-spacing:-.018em;margin:0 auto 44px;max-width:1100px;text-wrap:balance;}
-.story-title i{font-style:italic;font-weight:500;color:var(--orange);}
-.story-body{max-width:760px;font-size:16.5px;line-height:1.75;color:var(--ink-soft);}
-.story-body p{margin:0 0 22px}
-.story-body strong{color:var(--ink);font-weight:600}
 
 /* FAQ */
 .faq{padding:90px 0 110px}
@@ -497,7 +491,7 @@ h1,h2,h3,h4{letter-spacing:-.01em}
   .cta-plate{padding:52px 28px}
   .cta-plate h2{font-size:42px}
 }
-</style>
+
 <style>
 .checklist-banner{padding:30px 0 0}
 .checklist-banner-inner{
@@ -575,10 +569,10 @@ h1,h2,h3,h4{letter-spacing:-.01em}
   <div class="container hero-grid">
     <div>
       <span class="eyebrow-pill">Клуб для девушек · 26.05–30.06</span>
-      <h1>Твоя неделя станет <i>ярче</i></h1>
-      <p class="lead">Место, где общие ценности объединяют людей. Где у недели появляется ритм, а у дней — яркость. Тут ты можешь быть собой, чувствовать себя в кругу своих и помнить, ради чего живёшь.</p>
+      <h1>Проводишь выходные одна и хочется яркости? <i>Мы тебя ждём</i></h1>
+      <p class="lead">Пробежки по субботам, танцы по понедельникам, книжный клуб и пикники — каждую неделю в Москве, в кругу своих. Тебе остаётся только прийти.</p>
       <div class="hero-buttons">
-        <a href="#pricing" class="btn btn-primary">Выбрать тариф</a>
+        <a href="#welcome" class="btn btn-primary">Попробовать за 500 ₽</a>
         <a href="#about" class="btn btn-ghost">Что внутри</a>
       </div>
     </div>
@@ -604,7 +598,78 @@ h1,h2,h3,h4{letter-spacing:-.01em}
     </div>
   </div>
 </section>
+<!-- ── ДЛЯ КОГО ── -->
+<section class="for-whom">
+  <div class="container">
+    <span class="section-eyebrow">для кого</span>
+    <h2 class="section-title">Узнаёшь <i>себя?</i></h2>
+    <div class="for-whom-grid">
+      <div class="fw-card">
+        <span class="fw-emoji">🌆</span>
+        <h3 class="fw-title">Переехала в Москву</h3>
+        <p class="fw-desc">Ты в новом городе, на работе всё окей, но по выходным не знаешь, куда себя деть. Хочется своих людей рядом, а не случайных знакомств.</p>
+      </div>
+      <div class="fw-card">
+        <span class="fw-emoji">🏃‍♀️</span>
+        <h3 class="fw-title">Хочешь бегать, но одной лень</h3>
+        <p class="fw-desc">Ты знаешь, что спорт — это кайф, но мотивации хватает на два раза. В компании всё иначе: ноги сами несут на пробежку, когда тебя ждут.</p>
+      </div>
+      <div class="fw-card">
+        <span class="fw-emoji">📱</span>
+        <h3 class="fw-title">Листаешь чужие сторис</h3>
+        <p class="fw-desc">Смотришь, как другие ходят на пикники, танцуют и весело проводят время — и хочешь так же. Рассвет — это твоя компания для всего этого.</p>
+      </div>
+    </div>
+  </div>
+</section>
 
+<!-- ── ПОЧЕМУ КЛУБ, А НЕ… ── -->
+<section class="compare">
+  <div class="container">
+    <span class="section-eyebrow">почему клуб</span>
+    <h2 class="section-title">Рассвет vs <i>альтернативы</i></h2>
+    <div class="compare-grid">
+      <div class="cmp-card cmp-highlight">
+        <span class="cmp-badge">Рассвет</span>
+        <h3 class="cmp-name">Клуб «Рассвет»</h3>
+        <ul class="cmp-list">
+          <li class="cmp-yes">Готовое расписание на каждую неделю</li>
+          <li class="cmp-yes">Постоянная компания и новые подруги</li>
+          <li class="cmp-yes">8+ разных активностей в одном месте</li>
+          <li class="cmp-yes">Закрытый чат с поддержкой</li>
+          <li class="cmp-yes">Кто-то уже всё организовал за тебя</li>
+        </ul>
+      </div>
+      <div class="cmp-card">
+        <h3 class="cmp-name">Искать самой</h3>
+        <ul class="cmp-list">
+          <li class="cmp-no">Нужно самой всё планировать</li>
+          <li class="cmp-no">Люди отменяют в последний момент</li>
+          <li class="cmp-no">Нет постоянного круга</li>
+          <li class="cmp-meh">Бесплатно, но энергозатратно</li>
+        </ul>
+      </div>
+      <div class="cmp-card">
+        <h3 class="cmp-name">Разовые события</h3>
+        <ul class="cmp-list">
+          <li class="cmp-meh">Классно, но раз в месяц</li>
+          <li class="cmp-no">Каждый раз новые люди</li>
+          <li class="cmp-no">Нет ощущения «своих»</li>
+          <li class="cmp-no">Дорого за одну встречу</li>
+        </ul>
+      </div>
+      <div class="cmp-card">
+        <h3 class="cmp-name">Фитнес-клуб</h3>
+        <ul class="cmp-list">
+          <li class="cmp-yes">Регулярные тренировки</li>
+          <li class="cmp-no">Каждый сам по себе</li>
+          <li class="cmp-no">Нет общения и дружбы</li>
+          <li class="cmp-no">Только спорт, без разнообразия</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
 <section class="schedule-wrap">
   <div class="container">
     <div class="schedule">
@@ -829,13 +894,21 @@ h1,h2,h3,h4{letter-spacing:-.01em}
 
 <section class="story">
   <div class="container">
-    <span class="section-eyebrow">почему я создала рассвет</span>
-    <h2 class="story-title">Этот клуб вдохновлён <i>личной историей</i></h2>
-    <div class="story-body">
-      <p>Когда я переехала в Москву, я была уверена, что быстро найду своё окружение. Но на деле оказалось сложнее — я долго не могла почувствовать себя частью чего-то. Свободное время пугало, и я заполняла его бегом, тренировками, учёбой — но внутри оставалось одиночество.</p>
-      <p>Я помню вечер, когда звонила маме и плакала от того, что снова проведу воскресенье одна — красивая, с планами, но без людей рядом. Это было тяжело. Но именно это стало толчком: я решила взять всё в свои руки и начать знакомиться.</p>
-      <p>Постепенно в мою жизнь пришли люди, события, танцы — то, о чём я мечтала с десяти лет. И спустя пять лет я поняла: я такая не одна. Многим девушкам не хватает того же — тёплого окружения, заполненной недели, чувства, что ты нужна и интересна.</p>
-      <p>Так родился Рассвет. Идеальное комбо, которое помогло мне: <strong>общение + расписание недели + движение</strong>. В Рассвете есть всё, что я хотела бы иметь в те годы — и я хочу разделить это с вами.</p>
+    <div class="story-grid">
+      <div class="story-photo">
+        <img src="eva.jpg" alt="Ева — основательница клуба Рассвет"/>
+      </div>
+      <div class="story-text">
+        <span class="story-hey">Привет, это Ева</span>
+        <h2>Я создала клуб, которого мне <i>не хватало</i></h2>
+        <blockquote class="story-quote">Я помню вечер, когда звонила маме и плакала — снова в воскресенье одна. Мне катастрофично не хватало людей рядом.</blockquote>
+        <div class="story-body">
+          <p>Когда я переехала в Москву, свободное время пугало. Я заполняла его бегом, учёбой, тренировками — но внутри оставалось одиночество.</p>
+          <p>Потом в мою жизнь пришли люди, события, танцы — то, о чём я мечтала с десяти лет. И я поняла: <strong>я такая не одна</strong>. Многим девушкам не хватает того же — тёплого окружения, заполненной недели, чувства, что ты нужна и интересна.</p>
+          <p>Так родился Рассвет. <strong>Общение + расписание + движение</strong> — идеальное комбо, которое изменило мою жизнь. И я хочу разделить его с тобой.</p>
+        </div>
+        <span class="story-sign">— Ева</span>
+      </div>
     </div>
   </div>
 </section>
