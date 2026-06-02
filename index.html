@@ -3,6 +3,16 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Рассвет — клуб для девушек</title>
+<template id="__bundler_thumbnail" data-bg-color="#faf3e7">
+  <svg viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg">
+    <rect width="600" height="600" fill="#faf3e7"/>
+    <rect y="380" width="600" height="220" fill="#fbe1d3"/>
+    <circle cx="300" cy="320" r="118" fill="#e96d2a"/>
+    <path d="M0 400 Q150 370 300 400 T600 400 L600 410 Q450 380 300 410 T0 410 Z" fill="#fce3c4" opacity=".7"/>
+    <text x="300" y="520" text-anchor="middle" font-family="Cormorant Garamond, Georgia, serif" font-style="italic" font-weight="600" font-size="64" fill="#e96d2a">Рассвет</text>
+  </svg>
+</template>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Onest:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -43,7 +53,8 @@ h1,h2,h3,h4{letter-spacing:-.01em}
 /* HERO */
 .hero{padding:32px 0 100px}
 .hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center;}
-.eyebrow-pill{display:inline-block;background:var(--orange-50);color:var(--ink-soft);font-size:12px;letter-spacing:.14em;text-transform:uppercase;padding:9px 20px;border-radius:999px;margin-bottom:36px;font-weight:500;}
+.eyebrow-pill{display:inline-flex;align-items:center;gap:9px;background:var(--orange-50);color:var(--ink-soft);font-size:12px;letter-spacing:.14em;text-transform:uppercase;padding:9px 20px;border-radius:999px;margin-bottom:36px;font-weight:500;}
+.eyebrow-pill .pill-dot{width:7px;height:7px;border-radius:50%;background:var(--orange);animation:pdot 2s infinite;flex-shrink:0;}
 .hero h1{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:90px;line-height:.98;margin:0 0 30px;letter-spacing:-.012em;text-wrap:balance;}
 .hero h1 i{font-style:italic;font-weight:500;color:var(--orange);}
 .hero p.lead{max-width:520px;font-size:16.5px;line-height:1.6;color:var(--ink-mute);margin:0 0 36px;}
@@ -68,6 +79,190 @@ h1,h2,h3,h4{letter-spacing:-.01em}
 .about h2 i{font-style:italic;font-weight:500;color:var(--orange);}
 .about-text p{font-size:16px;color:var(--ink-soft);line-height:1.65;margin:0 0 18px;max-width:520px;}
 .about-text strong{color:var(--ink);font-weight:600}
+
+/* ─────────── ДЛЯ КОГО (минималистично) ─────────── */
+.for-whom{padding:60px 0 80px}
+.for-whom .section-title{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:72px;line-height:1;margin:6px 0 50px;letter-spacing:-.018em;}
+.for-whom .section-title i{font-style:italic;font-weight:500;color:var(--orange);}
+.for-whom-list{
+  display:grid;grid-template-columns:1fr;gap:1px;
+  background:var(--line);
+  border-top:1px solid var(--line);
+  border-bottom:1px solid var(--line);
+}
+.fw-row{
+  display:grid;grid-template-columns:.42fr .58fr;gap:48px;
+  align-items:start;padding:36px 4px;
+  background:var(--bg);
+  transition:background .25s ease, padding-left .25s ease;
+}
+.fw-row:hover{background:#fdebd9;padding-left:14px;}
+.fw-row-head{display:flex;align-items:baseline;gap:18px}
+.fw-num{
+  font-family:'Cormorant Garamond',serif;
+  font-style:italic;font-weight:500;
+  font-size:22px;color:var(--orange);
+  flex-shrink:0;letter-spacing:.02em;
+}
+.fw-title{
+  font-family:'Cormorant Garamond',serif;
+  font-weight:600;font-size:30px;line-height:1.1;
+  color:var(--ink);margin:0;letter-spacing:-.012em;text-wrap:balance;
+}
+.fw-desc{
+  font-size:16px;line-height:1.6;color:var(--ink-soft);
+  margin:0;max-width:540px;
+}
+
+/* ─────────── ПОЧЕМУ КЛУБ (full-bleed) ─────────── */
+.compare-wrap{
+  position:relative;
+  margin:40px 0 0;padding:110px 0 120px;
+  background:
+    radial-gradient(60% 70% at 8% 18%,#fbe1d3 0%,transparent 60%),
+    radial-gradient(50% 60% at 92% 80%,#e8f0d4 0%,transparent 60%),
+    linear-gradient(160deg,#fdf5e6 0%,#fbecd6 100%);
+  overflow:hidden;
+}
+.compare-head{display:flex;align-items:flex-end;justify-content:space-between;gap:48px;margin-bottom:54px;flex-wrap:wrap;}
+.compare-head .section-title{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:72px;line-height:1;margin:6px 0 0;letter-spacing:-.018em;}
+.compare-head .section-title i{font-style:italic;font-weight:500;color:var(--orange);}
+.compare-head p{font-size:16px;color:var(--ink-mute);max-width:340px;line-height:1.55;margin:0;text-align:right;}
+
+.compare-grid{
+  display:grid;grid-template-columns:1.25fr 1fr 1fr 1fr;gap:18px;
+  align-items:stretch;
+}
+.cmp-card{
+  position:relative;
+  background:#fffaf0;border:1px solid rgba(140,90,40,.08);
+  border-radius:24px;padding:34px 30px 30px;
+  display:flex;flex-direction:column;gap:18px;
+  box-shadow:0 4px 18px rgba(160,110,40,.05);
+  transition:transform .25s ease, box-shadow .25s ease;
+  opacity:0;transform:translateY(24px);
+}
+.cmp-card.in{opacity:1;transform:translateY(0);}
+.cmp-card:nth-child(1).in{transition-delay:0s}
+.cmp-card:nth-child(2).in{transition-delay:.08s}
+.cmp-card:nth-child(3).in{transition-delay:.16s}
+.cmp-card:nth-child(4).in{transition-delay:.24s}
+.cmp-card.in{transition:transform .55s cubic-bezier(.2,.7,.2,1), opacity .55s ease, box-shadow .25s ease}
+.cmp-card:hover{transform:translateY(-4px);box-shadow:0 16px 36px rgba(160,110,40,.12)}
+
+.cmp-card.cmp-highlight{
+  background:linear-gradient(160deg,#ef7d40 0%,#f08a51 50%,#f4a276 100%);
+  border:none;color:#fff8e4;
+  box-shadow:0 18px 40px rgba(200,100,40,.22);
+}
+.cmp-card.cmp-highlight:hover{box-shadow:0 24px 48px rgba(200,100,40,.30)}
+.cmp-badge{
+  align-self:flex-start;
+  background:rgba(255,255,255,.22);
+  padding:7px 16px;border-radius:999px;
+  font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;
+  font-weight:500;color:#fff8e4;
+  margin:-4px 0 4px;
+}
+.cmp-name{
+  font-family:'Cormorant Garamond',serif;
+  font-weight:600;font-size:28px;line-height:1.1;
+  margin:0;letter-spacing:-.012em;color:var(--ink);
+}
+.cmp-card.cmp-highlight .cmp-name{color:#fff8e4}
+.cmp-list{
+  list-style:none;padding:0;margin:6px 0 0;
+  display:flex;flex-direction:column;gap:14px;flex:1;
+}
+.cmp-list li{
+  font-size:14.5px;line-height:1.45;color:var(--ink-soft);
+  display:flex;gap:12px;align-items:flex-start;
+}
+.cmp-card.cmp-highlight .cmp-list li{color:rgba(255,248,228,.95)}
+.cmp-list li::before{
+  font-size:14px;font-weight:700;flex-shrink:0;
+  width:18px;height:18px;border-radius:50%;
+  display:inline-flex;align-items:center;justify-content:center;
+  margin-top:1px;line-height:1;
+}
+.cmp-list li.cmp-yes::before{content:"✓";background:var(--green-50);color:var(--green-deep)}
+.cmp-card.cmp-highlight .cmp-list li.cmp-yes::before{background:rgba(255,255,255,.25);color:#fff8e4}
+.cmp-list li.cmp-no::before{content:"–";background:#f7e4dc;color:#c0392b;font-weight:800}
+.cmp-list li.cmp-meh::before{content:"~";background:#fcefc6;color:#a87c1c}
+
+/* ─────────── ИСТОРИЯ ЕВЫ ─────────── */
+.story{padding:90px 0 100px;background:var(--bg)}
+.story-grid{
+  display:grid;grid-template-columns:.9fr 1.1fr;gap:72px;align-items:center;
+}
+.story-photo{
+  position:relative;
+  border-radius:26px;
+  background:linear-gradient(160deg,#fbe1d3,#fce3c4);
+  padding:14px;
+  box-shadow:var(--shadow-md);
+  transform:rotate(-1.2deg);
+  transition:transform .35s ease;
+}
+.story-photo:hover{transform:rotate(0deg)}
+.story-photo::before{
+  content:"";position:absolute;inset:-12px -12px auto auto;
+  width:120px;height:120px;border-radius:50%;
+  background:radial-gradient(circle,rgba(185,207,138,.45) 0%,transparent 70%);
+  z-index:-1;
+}
+.story-photo::after{
+  content:"☀";position:absolute;left:-14px;bottom:24px;
+  font-size:48px;color:var(--orange);opacity:.85;
+  transform:rotate(-12deg);
+}
+.story-photo-frame{
+  border-radius:18px;overflow:hidden;
+  aspect-ratio:.82/1;background:#cdc4ad;
+}
+.story-photo-frame img{width:100%;height:100%;object-fit:cover;display:block}
+.story-photo-cap{
+  position:absolute;left:50%;bottom:-18px;transform:translateX(-50%);
+  background:#fffaf0;
+  font-family:'Cormorant Garamond',serif;font-style:italic;
+  font-size:16px;color:var(--ink-soft);
+  padding:9px 22px;border-radius:999px;
+  box-shadow:0 8px 24px rgba(80,40,10,.10);
+  white-space:nowrap;
+}
+
+.story-text{padding-top:6px}
+.story-hey{
+  display:inline-block;
+  background:var(--orange-50);color:var(--ink-soft);
+  font-size:12px;letter-spacing:.14em;text-transform:uppercase;
+  padding:9px 20px;border-radius:999px;margin-bottom:24px;
+  font-weight:500;
+}
+.story-text h2{
+  font-family:'Cormorant Garamond',serif;
+  font-weight:600;font-size:54px;line-height:1.04;
+  margin:0 0 26px;letter-spacing:-.014em;text-wrap:balance;
+}
+.story-text h2 i{font-style:italic;font-weight:500;color:var(--orange);}
+.story-quote{
+  font-family:'Cormorant Garamond',serif;font-style:italic;
+  font-size:22px;line-height:1.4;color:var(--ink-soft);
+  margin:0 0 26px;padding-left:22px;
+  border-left:3px solid var(--orange);
+  max-width:540px;text-wrap:balance;
+}
+.story-body p{
+  font-family:'Onest',sans-serif;
+  font-size:16px;line-height:1.65;color:var(--ink-soft);
+  margin:0 0 16px;max-width:560px;
+}
+.story-body p strong{color:var(--ink);font-weight:600}
+.story-sign{
+  display:inline-block;margin-top:14px;
+  font-family:'Cormorant Garamond',serif;font-style:italic;
+  font-size:22px;color:var(--orange);font-weight:500;
+}
 
 /* ───────────────── WELCOME СЕКЦИЯ ───────────────── */
 .welcome-wrap{padding:30px 0 50px}
@@ -110,65 +305,6 @@ h1,h2,h3,h4{letter-spacing:-.01em}
   max-width:520px;margin:0 0 30px;
 }
 .welcome-lead strong{color:var(--ink);font-weight:600}
-.welcome-bullets{
-  list-style:none;padding:0;margin:0 0 32px;
-  display:flex;flex-direction:column;gap:12px;max-width:520px;
-}
-.welcome-bullets li{
-  font-size:15px;color:var(--ink-soft);line-height:1.5;
-  display:flex;gap:12px;align-items:flex-start;
-}
-.welcome-bullets li::before{
-  content:"☀";color:var(--orange);font-size:15px;flex-shrink:0;margin-top:1px;
-}
-.welcome-cta-row{display:flex;align-items:center;gap:20px;flex-wrap:wrap}
-.welcome-cta{
-  background:var(--orange);color:#fff;
-  padding:16px 32px;border-radius:999px;
-  font-size:14.5px;font-weight:500;
-  display:inline-flex;align-items:center;gap:10px;
-  transition:transform .15s ease, background .2s ease, box-shadow .2s ease;
-  box-shadow:0 8px 22px rgba(233,109,42,.28);
-}
-.welcome-cta:hover{background:#d46820;transform:translateY(-2px);box-shadow:0 12px 28px rgba(233,109,42,.36)}
-.welcome-cta .arr{transition:transform .2s}
-.welcome-cta:hover .arr{transform:translateX(4px)}
-.welcome-note{font-size:13.5px;color:var(--ink-mute);max-width:260px;line-height:1.45}
-
-.welcome-card{
-  position:relative;z-index:2;
-  background:#fffaf0;border-radius:24px;
-  padding:36px 32px;
-  box-shadow:0 14px 32px rgba(160,110,40,.14);
-  transform:rotate(1.5deg);
-  transition:transform .3s ease;
-}
-.welcome-card:hover{transform:rotate(0deg) translateY(-4px)}
-.welcome-card-tag{
-  position:absolute;top:-14px;left:24px;
-  background:var(--green-deep);color:#fff8e4;
-  font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;
-  padding:6px 16px;border-radius:999px;font-weight:500;
-}
-.welcome-card-price{
-  font-family:'Cormorant Garamond',serif;
-  font-size:80px;font-weight:600;line-height:1;
-  color:var(--ink);margin:6px 0 4px;
-  display:flex;align-items:flex-start;gap:2px;
-}
-.welcome-card-price .ruble{font-size:28px;margin-top:18px;margin-left:6px;opacity:.7}
-.welcome-card-sub{font-size:14px;color:var(--ink-mute);font-style:italic;margin-bottom:24px}
-.welcome-card-list{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:11px}
-.welcome-card-list li{font-size:14.5px;color:var(--ink-soft);line-height:1.45;display:flex;gap:10px;align-items:flex-start}
-.welcome-card-list li::before{content:"✓";color:var(--orange);font-weight:700;font-size:13px;margin-top:2px;flex-shrink:0}
-.welcome-card-hint{
-  margin-top:22px;padding-top:18px;
-  border-top:1px dashed var(--line);
-  font-size:13px;color:var(--ink-mute);line-height:1.5;
-  font-style:italic;
-}
-
-/* ── Welcome форматы ─────────────────────── */
 .welcome-step-label{
   font-size:14px;letter-spacing:.12em;text-transform:uppercase;
   color:var(--orange);font-weight:600;margin:0 0 14px;
@@ -237,6 +373,39 @@ h1,h2,h3,h4{letter-spacing:-.01em}
   filter:grayscale(.4);
 }
 
+.welcome-card{
+  position:relative;z-index:2;
+  background:#fffaf0;border-radius:24px;
+  padding:36px 32px;
+  box-shadow:0 14px 32px rgba(160,110,40,.14);
+  transform:rotate(1.5deg);
+  transition:transform .3s ease;
+}
+.welcome-card:hover{transform:rotate(0deg) translateY(-4px)}
+.welcome-card-tag{
+  position:absolute;top:-14px;left:24px;
+  background:var(--green-deep);color:#fff8e4;
+  font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;
+  padding:6px 16px;border-radius:999px;font-weight:500;
+}
+.welcome-card-price{
+  font-family:'Cormorant Garamond',serif;
+  font-size:80px;font-weight:600;line-height:1;
+  color:var(--ink);margin:6px 0 4px;
+  display:flex;align-items:flex-start;gap:2px;
+}
+.welcome-card-price .ruble{font-size:28px;margin-top:18px;margin-left:6px;opacity:.7}
+.welcome-card-sub{font-size:14px;color:var(--ink-mute);font-style:italic;margin-bottom:24px}
+.welcome-card-list{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:11px}
+.welcome-card-list li{font-size:14.5px;color:var(--ink-soft);line-height:1.45;display:flex;gap:10px;align-items:flex-start}
+.welcome-card-list li::before{content:"✓";color:var(--orange);font-weight:700;font-size:13px;margin-top:2px;flex-shrink:0}
+.welcome-card-hint{
+  margin-top:22px;padding-top:18px;
+  border-top:1px dashed var(--line);
+  font-size:13px;color:var(--ink-mute);line-height:1.5;
+  font-style:italic;
+}
+
 /* SCHEDULE TEASER */
 .schedule-wrap{padding:30px 0 50px}
 .schedule{border-radius:28px;background:var(--paper);border:1px solid var(--line);box-shadow:0 8px 28px rgba(160,110,40,.05);padding:46px 52px 38px;}
@@ -302,6 +471,157 @@ h1,h2,h3,h4{letter-spacing:-.01em}
 .b-card li::before{content:"✓";color:var(--orange);font-weight:700;font-size:14px;margin-top:2px;flex-shrink:0;}
 .b-card.right li::before{content:"✦";color:var(--green-deep)}
 
+/* ─────────── ЛИСТ ОЖИДАНИЯ НА ИЮЛЬ ─────────── */
+.waitlist-wrap{padding:40px 0 60px}
+.waitlist{
+  position:relative;overflow:hidden;
+  display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:center;
+  background:#fffaf0;
+  border:1px solid var(--line);
+  border-radius:32px;
+  padding:54px 60px;
+  box-shadow:0 14px 36px rgba(160,110,40,.08);
+}
+.waitlist::before{
+  content:"";position:absolute;top:-100px;left:-80px;
+  width:300px;height:300px;
+  background:radial-gradient(circle,rgba(233,109,42,.10) 0%,transparent 65%);
+  border-radius:50%;pointer-events:none;
+}
+.waitlist::after{
+  content:"";position:absolute;bottom:-120px;right:-80px;
+  width:280px;height:280px;
+  background:radial-gradient(circle,rgba(185,207,138,.18) 0%,transparent 65%);
+  border-radius:50%;pointer-events:none;
+}
+.waitlist-status{position:relative;z-index:1}
+.waitlist-title{
+  font-family:'Cormorant Garamond',serif;
+  font-weight:600;font-size:50px;line-height:1.04;
+  letter-spacing:-.014em;margin:6px 0 32px;text-wrap:balance;
+}
+.waitlist-title i{font-style:italic;font-weight:500;color:var(--orange)}
+.timeline{display:flex;flex-direction:column;gap:0;margin-bottom:28px;max-width:480px}
+.tl-item{display:flex;align-items:flex-start;gap:18px;position:relative}
+.tl-dot{
+  flex-shrink:0;width:18px;height:18px;border-radius:50%;
+  background:var(--orange);
+  box-shadow:0 0 0 4px rgba(233,109,42,.15);
+  margin-top:6px;position:relative;
+}
+.tl-item.active .tl-dot::before{
+  content:"";position:absolute;inset:-4px;border-radius:50%;
+  border:2px solid var(--orange);
+  animation:tlPing 2s ease-out infinite;
+}
+.tl-item.upcoming .tl-dot{
+  background:#fffaf0;
+  box-shadow:inset 0 0 0 2.5px var(--green-deep), 0 0 0 4px rgba(142,163,90,.15);
+}
+@keyframes tlPing{
+  0%{transform:scale(1);opacity:.7}
+  100%{transform:scale(1.8);opacity:0}
+}
+.tl-connector{
+  width:2px;height:34px;
+  background:repeating-linear-gradient(to bottom,#d8c9a6 0 5px,transparent 5px 10px);
+  margin-left:8px;
+}
+.tl-content{display:flex;flex-direction:column;gap:4px;padding-bottom:6px}
+.tl-label{
+  font-family:'Cormorant Garamond',serif;
+  font-weight:600;font-size:24px;line-height:1.2;color:var(--ink);
+  letter-spacing:-.01em;display:flex;align-items:center;gap:10px;flex-wrap:wrap;
+}
+.tl-badge{
+  font-family:'Onest',sans-serif;
+  font-size:11px;letter-spacing:.14em;text-transform:uppercase;
+  padding:4px 11px;border-radius:999px;font-weight:500;
+  vertical-align:middle;
+}
+.tl-badge.now{background:var(--green-50);color:var(--green-deep);}
+.tl-badge.soon{background:var(--orange-50);color:#c45a1b;}
+.tl-dates{font-size:14px;color:var(--ink-mute);font-family:'Onest',sans-serif}
+.tl-note{font-size:14.5px;color:var(--ink-soft);margin-top:4px;line-height:1.45;max-width:360px}
+.waitlist-lead{
+  font-size:15.5px;line-height:1.6;color:var(--ink-soft);
+  max-width:480px;margin:0;
+}
+.waitlist-lead strong{color:var(--ink);font-weight:600;background:linear-gradient(transparent 70%,rgba(233,109,42,.22) 70%);}
+
+.waitlist-cards{
+  position:relative;z-index:1;
+  display:flex;flex-direction:column;gap:16px;
+}
+.wl-card{
+  background:var(--bg);
+  border:1.5px solid var(--line);
+  border-radius:22px;
+  padding:24px 26px;
+  transition:transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+}
+.wl-card:hover{
+  transform:translateY(-2px);
+  border-color:var(--orange-100);
+  box-shadow:0 12px 28px rgba(200,130,50,.12);
+}
+.wl-card.dance{
+  background:linear-gradient(135deg,#ef7d40 0%,#f08a51 50%,#f4a276 100%);
+  border:none;color:#fff8e4;
+  box-shadow:0 14px 30px rgba(200,100,40,.18);
+}
+.wl-card.dance:hover{box-shadow:0 18px 36px rgba(200,100,40,.26)}
+.wl-card-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:14px}
+.wl-tag{
+  font-family:'Cormorant Garamond',serif;
+  font-weight:600;font-size:22px;color:var(--ink);
+  letter-spacing:-.01em;
+}
+.wl-card.dance .wl-tag{color:#fff8e4}
+.wl-spots{
+  font-size:12px;color:var(--green-deep);font-weight:500;
+  display:inline-flex;align-items:center;gap:6px;
+  white-space:nowrap;
+}
+.wl-card.dance .wl-spots{color:#fff8e4;opacity:.9}
+.wl-spots::before{
+  content:"";width:6px;height:6px;border-radius:50%;
+  background:var(--green-deep);animation:pdot 2s infinite;
+}
+.wl-card.dance .wl-spots::before{background:#fff8e4}
+.wl-spots.few{color:#cc6600}
+.wl-card.dance .wl-spots.few{color:#fff8e4}
+.wl-spots.few::before{background:#e67e22}
+.wl-card.dance .wl-spots.few::before{background:#fff8e4}
+.wl-price{
+  font-family:'Cormorant Garamond',serif;
+  font-size:56px;font-weight:600;line-height:1;
+  letter-spacing:-.02em;color:var(--ink);
+  display:flex;align-items:flex-start;gap:2px;
+}
+.wl-card.dance .wl-price{color:#fff8e4}
+.wl-price .ruble{font-size:20px;margin-top:10px;margin-left:5px;opacity:.75;font-weight:500}
+.wl-cap{
+  font-size:13px;color:var(--ink-mute);
+  margin-top:4px;margin-bottom:18px;
+  font-family:'Onest',sans-serif;
+}
+.wl-card.dance .wl-cap{color:rgba(255,248,228,.82)}
+.wl-btn{
+  width:100%;padding:14px 20px;border-radius:999px;
+  background:var(--orange);color:#fff;
+  font-size:14px;font-weight:500;
+  display:inline-flex;align-items:center;justify-content:center;gap:8px;
+  transition:background .2s, transform .15s, box-shadow .2s;
+  box-shadow:0 6px 18px rgba(233,109,42,.22);
+}
+.wl-btn:hover:not(:disabled){background:#d46820;transform:translateY(-1px);box-shadow:0 10px 24px rgba(233,109,42,.32)}
+.wl-card.dance .wl-btn{background:#fffaf0;color:var(--orange);box-shadow:0 6px 18px rgba(0,0,0,.12)}
+.wl-card.dance .wl-btn:hover:not(:disabled){background:#fff;box-shadow:0 10px 24px rgba(0,0,0,.18)}
+.wl-btn .arr{transition:transform .2s ease}
+.wl-btn:hover:not(:disabled) .arr{transform:translateX(4px)}
+.wl-btn:disabled{opacity:.5;cursor:not-allowed}
+
 /* PRICING */
 .pricing{padding:100px 0 110px;background:var(--bg)}
 .pricing .activities-head{align-items:start;margin-bottom:50px}
@@ -341,7 +661,6 @@ h1,h2,h3,h4{letter-spacing:-.01em}
 .spots-badge.few .spots-dot{background:#ff9800}
 .spots-badge.none .spots-dot{background:#f44336;animation:none}
 @keyframes pdot{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(1.4)}}
-
 
 /* FAQ */
 .faq{padding:90px 0 110px}
@@ -470,29 +789,7 @@ h1,h2,h3,h4{letter-spacing:-.01em}
 .modal-success .pay-direct-btn{display:inline-block;margin-top:20px;padding:14px 32px;border-radius:999px;background:var(--orange);color:#fff;font-size:15px;font-weight:500;text-decoration:none;transition:background .2s,transform .15s;}
 .modal-success .pay-direct-btn:hover{background:#d46820;transform:translateY(-1px)}
 
-@media(max-width:1080px){.gallery{grid-template-columns:repeat(2,1fr)}.gallery .g.tall{aspect-ratio:1/1}}
-@media(max-width:880px){
-  .container{padding:0 22px}
-  .hero-grid,.about-grid,.benefits-grid,.tariffs,.footer-grid,.activities-head{grid-template-columns:1fr;gap:36px}
-  .activities-sub,.pricing-sub{text-align:left;max-width:none}
-  .activity-grid{grid-template-columns:1fr}
-  .hero h1{font-size:56px}.about h2{font-size:38px}.section-title{font-size:48px}
-  .schedule{padding:32px 22px}.week{grid-template-columns:repeat(4,1fr)}
-  .manifesto{padding:36px 28px;font-size:19px}
-  .gallery{grid-template-columns:1fr 1fr}.nav{display:none}
-  .story-title{font-size:36px}
-  .modal{padding:32px 24px}.modal h2{font-size:28px}
-  .welcome{grid-template-columns:1fr;padding:38px 28px;gap:36px}
-  .welcome h2{font-size:36px}
-  .welcome-card{transform:rotate(0deg)}
-  .welcome-card-price{font-size:64px}
-  .welcome-formats{grid-template-columns:1fr 1fr;gap:10px}
-  .wf-fields{grid-template-columns:1fr}
-  .cta-plate{padding:52px 28px}
-  .cta-plate h2{font-size:42px}
-}
-
-<style>
+/* CHECKLIST BANNER */
 .checklist-banner{padding:30px 0 0}
 .checklist-banner-inner{
   display:flex;align-items:center;justify-content:space-between;gap:36px;
@@ -542,7 +839,42 @@ h1,h2,h3,h4{letter-spacing:-.01em}
   transition:transform .25s ease;
 }
 .checklist-banner-inner:hover .cb-arrow{transform:translateX(6px)}
-@media (max-width:880px){
+
+@media(max-width:1080px){
+  .gallery{grid-template-columns:repeat(2,1fr)}
+  .gallery .g.tall{aspect-ratio:1/1}
+  .compare-grid{grid-template-columns:1fr 1fr;gap:18px}
+}
+@media(max-width:880px){
+  .container{padding:0 22px}
+  .hero-grid,.about-grid,.benefits-grid,.tariffs,.footer-grid,.activities-head,.story-grid,.waitlist{grid-template-columns:1fr;gap:36px}
+  .waitlist{padding:38px 28px;gap:32px}
+  .waitlist-title{font-size:36px}
+  .wl-price{font-size:44px}
+  .activities-sub,.pricing-sub{text-align:left;max-width:none}
+  .activity-grid{grid-template-columns:1fr}
+  .hero h1{font-size:56px}.about h2{font-size:38px}.section-title{font-size:48px}
+  .for-whom .section-title{font-size:48px}
+  .compare-head .section-title{font-size:44px}
+  .compare-head p{text-align:left}
+  .compare-grid{grid-template-columns:1fr}
+  .schedule{padding:32px 22px}.week{grid-template-columns:repeat(4,1fr)}
+  .manifesto{padding:36px 28px;font-size:19px}
+  .gallery{grid-template-columns:1fr 1fr}.nav{display:none}
+  .modal{padding:32px 24px}.modal h2{font-size:28px}
+  .welcome{grid-template-columns:1fr;padding:38px 28px;gap:36px}
+  .welcome h2{font-size:36px}
+  .welcome-card{transform:rotate(0deg)}
+  .welcome-card-price{font-size:64px}
+  .welcome-formats{grid-template-columns:1fr 1fr;gap:10px}
+  .wf-fields{grid-template-columns:1fr}
+  .cta-plate{padding:52px 28px}
+  .cta-plate h2{font-size:42px}
+  .fw-row{grid-template-columns:1fr;gap:14px;padding:28px 4px}
+  .fw-title{font-size:24px}
+  .story-text h2{font-size:38px}
+  .story-quote{font-size:18px}
+  .story-photo{transform:rotate(0)}
   .checklist-banner-inner{flex-direction:column;align-items:flex-start;text-align:left;padding:34px 28px;gap:24px}
   .cb-title{font-size:32px}
   .cb-arrow{width:56px;height:56px;font-size:24px}
@@ -568,7 +900,7 @@ h1,h2,h3,h4{letter-spacing:-.01em}
 <section class="hero">
   <div class="container hero-grid">
     <div>
-      <span class="eyebrow-pill">Клуб для девушек · первый месяц: 26.05–30.06</span>
+      <span class="eyebrow-pill"><span class="pill-dot"></span>Первый поток идёт · 1.06–30.06 · следующий — июль</span>
       <h1>Проводишь выходные одна и хочется яркости? <i>Мы тебя ждём</i></h1>
       <p class="lead">Пробежки по субботам, танцы по понедельникам, книжный клуб и пикники — каждую неделю в Москве, в кругу своих. Тебе остаётся только прийти.</p>
       <div class="hero-buttons">
@@ -598,36 +930,55 @@ h1,h2,h3,h4{letter-spacing:-.01em}
     </div>
   </div>
 </section>
-<!-- ── ДЛЯ КОГО ── -->
+
+<!-- ─────────── ДЛЯ КОГО (лаконичный список) ─────────── -->
 <section class="for-whom">
   <div class="container">
     <span class="section-eyebrow">для кого</span>
     <h2 class="section-title">Узнаёшь <i>себя?</i></h2>
-    <div class="for-whom-grid">
-      <div class="fw-card">
-        <span class="fw-emoji">🌆</span>
-        <h3 class="fw-title">Переехала в Москву</h3>
-        <p class="fw-desc">Ты в новом городе, на работе всё окей, но по выходным не знаешь, куда себя деть. Хочется своих людей рядом, а не случайных знакомств.</p>
+    <div class="for-whom-list">
+      <div class="fw-row">
+        <div class="fw-row-head">
+          <span class="fw-num">01</span>
+          <h3 class="fw-title">У тебя новый период в жизни</h3>
+        </div>
+        <p class="fw-desc">Ты рассталась с парнем, или наоборот работаешь над своей автономностью в отношениях. Хочется поддержки и разнообразия в жизни, прочувствовать женскую энергию.</p>
       </div>
-      <div class="fw-card">
-        <span class="fw-emoji">🏃‍♀️</span>
-        <h3 class="fw-title">Хочешь бегать, но одной лень</h3>
-        <p class="fw-desc">Ты знаешь, что спорт — это кайф, но мотивации хватает на два раза. В компании всё иначе: ноги сами несут на пробежку, когда тебя ждут.</p>
+      <div class="fw-row">
+        <div class="fw-row-head">
+          <span class="fw-num">02</span>
+          <h3 class="fw-title">Переехала в Москву</h3>
+        </div>
+        <p class="fw-desc">Ты в новом городе, ещё нет друзей и устоявшегося сообщества, и по выходным не знаешь, куда себя деть. Хочется своих людей рядом, а не случайных знакомств.</p>
       </div>
-      <div class="fw-card">
-        <span class="fw-emoji">📱</span>
-        <h3 class="fw-title">Листаешь чужие сторис</h3>
-        <p class="fw-desc">Смотришь, как другие ходят на пикники, танцуют и весело проводят время — и хочешь так же. Рассвет — это твоя компания для всего этого.</p>
+      <div class="fw-row">
+        <div class="fw-row-head">
+          <span class="fw-num">03</span>
+          <h3 class="fw-title">Хочешь бегать, но одной лень</h3>
+        </div>
+        <p class="fw-desc">Ты знаешь, что спорт — это кайф, но мотивации хватает на два раза. В компании всё иначе: ноги сами несут на пробежку, когда тебя ждут!</p>
+      </div>
+      <div class="fw-row">
+        <div class="fw-row-head">
+          <span class="fw-num">04</span>
+          <h3 class="fw-title">Синдром FOMO и страх «пропустить» лето</h3>
+        </div>
+        <p class="fw-desc">Смотришь, как другие ходят на пикники, танцуют и весело проводят время — и хочешь так же. Рассвет — это твоя компания для всего этого!</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ── ПОЧЕМУ КЛУБ, А НЕ… ── -->
-<section class="compare">
+<!-- ─────────── ПОЧЕМУ КЛУБ (full-bleed) ─────────── -->
+<section class="compare-wrap">
   <div class="container">
-    <span class="section-eyebrow">почему клуб</span>
-    <h2 class="section-title">Рассвет vs <i>альтернативы</i></h2>
+    <div class="compare-head">
+      <div>
+        <span class="section-eyebrow">почему клуб</span>
+        <h2 class="section-title">Рассвет vs <i>альтернативы</i></h2>
+      </div>
+      <p>Можно искать всё самой — а можно прийти туда, где уже всё собрано: люди, ритм, идеи.</p>
+    </div>
     <div class="compare-grid">
       <div class="cmp-card cmp-highlight">
         <span class="cmp-badge">Рассвет</span>
@@ -670,6 +1021,7 @@ h1,h2,h3,h4{letter-spacing:-.01em}
     </div>
   </div>
 </section>
+
 <section class="schedule-wrap">
   <div class="container">
     <div class="schedule">
@@ -771,6 +1123,60 @@ h1,h2,h3,h4{letter-spacing:-.01em}
           <li>Знакомить классных людей друг с другом</li>
           <li>Просто люблю людей и хочу быть полезной</li>
         </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─────────── ЛИСТ ОЖИДАНИЯ НА ИЮЛЬ ─────────── -->
+<section id="waitlist" class="waitlist-wrap">
+  <div class="container">
+    <div class="waitlist">
+      <div class="waitlist-status">
+        <span class="section-eyebrow">потоки клуба</span>
+        <h2 class="waitlist-title">Сейчас клуб уже идёт. <i>А ты с нами в июле?</i></h2>
+
+        <div class="timeline">
+          <div class="tl-item active">
+            <span class="tl-dot"></span>
+            <div class="tl-content">
+              <span class="tl-label">Июнь <span class="tl-badge now">идёт сейчас</span></span>
+              <span class="tl-dates">1.06 — 30.06 · первый поток клуба</span>
+            </div>
+          </div>
+          <div class="tl-connector"></div>
+          <div class="tl-item upcoming">
+            <span class="tl-dot"></span>
+            <div class="tl-content">
+              <span class="tl-label">Июль <span class="tl-badge soon">лист ожидания</span></span>
+              <span class="tl-dates">1.07 — 31.07</span>
+              <span class="tl-note">Места ограничены — закрепи своё прямо сейчас.</span>
+            </div>
+          </div>
+        </div>
+
+        <p class="waitlist-lead">Хочешь к нам в июле? Оплати участие сейчас по <strong>цене июня</strong> — место в группе сразу твоё. Я свяжусь с тобой в Telegram перед стартом потока.</p>
+      </div>
+
+      <div class="waitlist-cards">
+        <div class="wl-card">
+          <div class="wl-card-head">
+            <span class="wl-tag">База · июль</span>
+            <span class="wl-spots" id="wl-base-spots">загрузка…</span>
+          </div>
+          <div class="wl-price">2000<span class="ruble">₽</span></div>
+          <div class="wl-cap">за месяц · цена июня</div>
+          <button class="wl-btn" data-pay="base" data-month="july">Закрепить место <span class="arr">→</span></button>
+        </div>
+        <div class="wl-card dance">
+          <div class="wl-card-head">
+            <span class="wl-tag">Клуб + танцы · июль</span>
+            <span class="wl-spots" id="wl-dance-spots">загрузка…</span>
+          </div>
+          <div class="wl-price">3800<span class="ruble">₽</span></div>
+          <div class="wl-cap">за месяц · цена июня</div>
+          <button class="wl-btn" data-pay="dance" data-month="july">Закрепить место <span class="arr">→</span></button>
+        </div>
       </div>
     </div>
   </div>
@@ -892,16 +1298,20 @@ h1,h2,h3,h4{letter-spacing:-.01em}
   </div>
 </section>
 
+<!-- ─────────── ИСТОРИЯ ЕВЫ ─────────── -->
 <section class="story">
   <div class="container">
     <div class="story-grid">
       <div class="story-photo">
-        <img src="eva.jpg" alt="Ева — основательница клуба Рассвет"/>
+        <div class="story-photo-frame">
+          <img src="eva.jpg" alt="Ева — основательница клуба Рассвет"/>
+        </div>
+        <span class="story-photo-cap">Ева · основательница</span>
       </div>
       <div class="story-text">
         <span class="story-hey">Привет, это Ева</span>
         <h2>Я создала клуб, которого мне <i>не хватало</i></h2>
-        <blockquote class="story-quote">Я помню вечер, когда звонила маме и плакала — снова в воскресенье одна. Мне катастрофично не хватало людей рядом.</blockquote>
+        <blockquote class="story-quote">Я помню вечер, когда звонила маме и плакала — снова в воскресенье одна. Мне катастрофически не хватало людей рядом.</blockquote>
         <div class="story-body">
           <p>Когда я переехала в Москву, свободное время пугало. Я заполняла его бегом, учёбой, тренировками — но внутри оставалось одиночество.</p>
           <p>Потом в мою жизнь пришли люди, события, танцы — то, о чём я мечтала с десяти лет. И я поняла: <strong>я такая не одна</strong>. Многим девушкам не хватает того же — тёплого окружения, заполненной недели, чувства, что ты нужна и интересна.</p>
@@ -946,7 +1356,7 @@ h1,h2,h3,h4{letter-spacing:-.01em}
   </div>
 </section>
 
-<!-- ── НОВАЯ CTA ПЛАШКА ── -->
+<!-- ── CTA ПЛАШКА ── -->
 <section id="cta" class="cta-wrap">
   <div class="container">
     <div class="cta-plate">
@@ -1033,7 +1443,7 @@ document.querySelectorAll('.faq-q').forEach(btn => {
   });
 });
 
-// Smooth scroll (only for in-page anchors, not links to other files)
+// Smooth scroll
 document.querySelectorAll('a[href^="#"]').forEach(a => {
   a.addEventListener('click', e => {
     const t = document.querySelector(a.getAttribute('href'));
@@ -1042,6 +1452,24 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
     window.scrollTo({ top: t.getBoundingClientRect().top + window.scrollY - 78, behavior:'smooth' });
   });
 });
+
+// Compare cards reveal-on-scroll
+(function(){
+  const cards = document.querySelectorAll('.cmp-card');
+  if (!('IntersectionObserver' in window) || !cards.length) {
+    cards.forEach(c => c.classList.add('in'));
+    return;
+  }
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in');
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+  cards.forEach(c => io.observe(c));
+})();
 
 // ── Spots counter ──────────────────────────────────────
 const SHEETS_URL = 'https://script.google.com/macros/s/AKfycbzAc1FgNoTqr07sgHr2L1U7k6HuZUskb37rnULz4kO88SSRRMd2-XHIXu8B76Qo0OIKjg/exec';
@@ -1055,13 +1483,13 @@ function plural(n) {
 function updateBadge(tariff, count) {
   const badge = document.getElementById(`spots-${tariff}`);
   const text  = document.getElementById(`spots-${tariff}-text`);
-  const btn   = document.querySelector(`[data-pay="${tariff}"]`);
+  const btn   = document.querySelector(`.tariff.${tariff} [data-pay="${tariff}"]`);
+  if (!badge || !text) return;
   badge.classList.remove('few','none');
   if (count <= 0) {
     badge.classList.add('none');
     text.textContent = 'Мест нет';
-    btn.disabled = true;
-    btn.textContent = 'Мест нет';
+    if (btn) { btn.disabled = true; btn.textContent = 'Мест нет'; }
   } else if (count <= 5) {
     badge.classList.add('few');
     text.textContent = `Осталось ${count} ${plural(count)}`;
@@ -1070,15 +1498,20 @@ function updateBadge(tariff, count) {
   }
 }
 
-async function loadSpots() {
-  try {
-    const r = await fetch(SHEETS_URL, { method: 'GET', redirect: 'follow' });
-    const d = JSON.parse(await r.text());
-    updateBadge('base',  d.base);
-    updateBadge('dance', d.dance);
-  } catch {
-    document.getElementById('spots-base-text').textContent  = 'Осталось несколько мест';
-    document.getElementById('spots-dance-text').textContent = 'Осталось несколько мест';
+function updateWaitlistSpots(key, count) {
+  const el = document.getElementById(`wl-${key}-spots`);
+  if (!el) return;
+  el.classList.remove('few');
+  const btn = document.querySelector(`.wl-card .wl-btn[data-pay="${key}"]`);
+  if (count <= 0) {
+    el.textContent = 'мест нет';
+    el.classList.add('few');
+    if (btn) { btn.disabled = true; btn.innerHTML = 'Мест нет'; }
+  } else if (count <= 3) {
+    el.textContent = `последние ${count} ${plural(count)}`;
+    el.classList.add('few');
+  } else {
+    el.textContent = `${count} ${plural(count)}`;
   }
 }
 
@@ -1121,7 +1554,8 @@ const fmt = n => n.toLocaleString('ru-RU');
 function updatePriceSummary() {
   const t = PRICES[modal.dataset.tariff]; if (!t) return;
   const p = parseInt(fPeriod.value) || 1;
-  modalTariff.textContent = `Тариф «${t.name}»`;
+  const monthLabel = modal.dataset.month === 'july' ? ' · июль (лист ожидания)' : '';
+  modalTariff.textContent = `Тариф «${t.name}»${monthLabel}`;
   if (p === 1) {
     priceSummary.innerHTML = `<strong style="font-size:20px;color:var(--ink)">${fmt(t.price)} ₽</strong> — за 1 месяц`;
   } else {
@@ -1132,8 +1566,9 @@ function updatePriceSummary() {
   }
 }
 
-function openModal(key) {
+function openModal(key, month) {
   modal.dataset.tariff = key;
+  modal.dataset.month = month || '';
   fPeriod.value = '1';
   modalForm.hidden = false;
   modalSuccess.hidden = true;
@@ -1146,7 +1581,7 @@ function closeModal() { modal.classList.remove('open'); document.body.classList.
 
 fPeriod.addEventListener('change', updatePriceSummary);
 document.querySelectorAll('[data-pay]').forEach(btn => {
-  btn.addEventListener('click', e => { e.preventDefault(); if (!btn.disabled) openModal(btn.dataset.pay); });
+  btn.addEventListener('click', e => { e.preventDefault(); if (!btn.disabled) openModal(btn.dataset.pay, btn.dataset.month); });
 });
 document.getElementById('modal-close').addEventListener('click', closeModal);
 modal.addEventListener('click', e => { if (e.target === modal) closeModal(); });
@@ -1193,7 +1628,8 @@ payForm.addEventListener('submit', async e => {
         telegram: fTg.value.trim(),
         phone: fPhone.value.trim(),
         tariff: tariff,
-        period: period
+        period: period,
+        month: modal.dataset.month || 'june'
       })
     });
   } catch { /* не блокируем оплату */ }
@@ -1220,13 +1656,19 @@ async function loadSpotsWithWelcome() {
     const d = JSON.parse(await r.text());
     updateBadge('base',  d.base);
     updateBadge('dance', d.dance);
+    updateWaitlistSpots('base',  d.wl_base  ?? 8);
+    updateWaitlistSpots('dance', d.wl_dance ?? 5);
     if (d.welcome) {
       welcomeSpots = d.welcome;
       updateWelcomeCards();
     }
   } catch {
-    document.getElementById('spots-base-text').textContent  = 'Осталось несколько мест';
-    document.getElementById('spots-dance-text').textContent = 'Осталось несколько мест';
+    const baseTxt  = document.getElementById('spots-base-text');
+    const danceTxt = document.getElementById('spots-dance-text');
+    if (baseTxt)  baseTxt.textContent  = 'Осталось несколько мест';
+    if (danceTxt) danceTxt.textContent = 'Осталось несколько мест';
+    updateWaitlistSpots('base',  8);
+    updateWaitlistSpots('dance', 5);
   }
 }
 loadSpotsWithWelcome();
@@ -1269,7 +1711,6 @@ document.querySelectorAll('.wf-card').forEach(card => {
     const chosen   = document.getElementById('welcome-chosen');
     chosen.textContent = '✓ ' + FORMAT_LABELS[selectedWelcomeFormat];
     formWrap.hidden = false;
-    formWrap.scrollIntoView({ behavior:'smooth', block:'nearest' });
   });
 });
 
