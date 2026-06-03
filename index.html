@@ -1527,8 +1527,9 @@ document.getElementById('welcome-submit').addEventListener('click', async () => 
     }
   } catch { /* не блокируем */ }
 
-  if (welcomeSpots[selectedWelcomeFormat] > 0) {
+if (welcomeSpots[selectedWelcomeFormat] > 0) {
     welcomeSpots[selectedWelcomeFormat]--;
+    updateWelcomeCards();
   }
 
   window.open(WELCOME_PAY_URL, '_blank');
