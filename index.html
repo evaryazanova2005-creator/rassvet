@@ -471,156 +471,60 @@ h1,h2,h3,h4{letter-spacing:-.01em}
 .b-card li::before{content:"✓";color:var(--orange);font-weight:700;font-size:14px;margin-top:2px;flex-shrink:0;}
 .b-card.right li::before{content:"✦";color:var(--green-deep)}
 
-/* ─────────── ЛИСТ ОЖИДАНИЯ НА ИЮЛЬ ─────────── */
-.waitlist-wrap{padding:40px 0 60px}
-.waitlist{
-  position:relative;overflow:hidden;
-  display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:center;
-  background:#fffaf0;
-  border:1px solid var(--line);
-  border-radius:32px;
-  padding:54px 60px;
-  box-shadow:0 14px 36px rgba(160,110,40,.08);
+/* ═══ ТАРИФЫ (обновлённые с таймлайном) ═══ */
+.pricing-timeline{
+  display:flex;align-items:center;gap:0;
+  margin-bottom:44px;max-width:560px;
 }
-.waitlist::before{
-  content:"";position:absolute;top:-100px;left:-80px;
-  width:300px;height:300px;
-  background:radial-gradient(circle,rgba(233,109,42,.10) 0%,transparent 65%);
-  border-radius:50%;pointer-events:none;
+.pt-step{
+  display:flex;align-items:center;gap:12px;
+  font-size:15px;color:var(--ink-soft);
 }
-.waitlist::after{
-  content:"";position:absolute;bottom:-120px;right:-80px;
-  width:280px;height:280px;
-  background:radial-gradient(circle,rgba(185,207,138,.18) 0%,transparent 65%);
-  border-radius:50%;pointer-events:none;
+.pt-dot{
+  width:14px;height:14px;border-radius:50%;flex-shrink:0;
+  position:relative;
 }
-.waitlist-status{position:relative;z-index:1}
-.waitlist-title{
-  font-family:'Cormorant Garamond',serif;
-  font-weight:600;font-size:50px;line-height:1.04;
-  letter-spacing:-.014em;margin:6px 0 32px;text-wrap:balance;
-}
-.waitlist-title i{font-style:italic;font-weight:500;color:var(--orange)}
-.timeline{display:flex;flex-direction:column;gap:0;margin-bottom:28px;max-width:480px}
-.tl-item{display:flex;align-items:flex-start;gap:18px;position:relative}
-.tl-dot{
-  flex-shrink:0;width:18px;height:18px;border-radius:50%;
-  background:var(--orange);
-  box-shadow:0 0 0 4px rgba(233,109,42,.15);
-  margin-top:6px;position:relative;
-}
-.tl-item.active .tl-dot::before{
+.pt-dot.active{background:var(--green-deep);box-shadow:0 0 0 4px rgba(142,163,90,.2)}
+.pt-dot.active::before{
   content:"";position:absolute;inset:-4px;border-radius:50%;
-  border:2px solid var(--orange);
-  animation:tlPing 2s ease-out infinite;
+  border:2px solid var(--green-deep);
+  animation:pdot 2s ease-out infinite;
 }
-.tl-item.upcoming .tl-dot{
-  background:#fffaf0;
-  box-shadow:inset 0 0 0 2.5px var(--green-deep), 0 0 0 4px rgba(142,163,90,.15);
+.pt-dot.next{background:var(--orange);box-shadow:0 0 0 4px rgba(233,109,42,.15)}
+.pt-label{display:flex;flex-direction:column;gap:1px}
+.pt-name{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:20px;color:var(--ink);line-height:1.2}
+.pt-badge{
+  display:inline-block;font-family:'Onest',sans-serif;
+  font-size:11px;letter-spacing:.12em;text-transform:uppercase;
+  padding:3px 10px;border-radius:999px;font-weight:500;width:fit-content;
 }
-@keyframes tlPing{
-  0%{transform:scale(1);opacity:.7}
-  100%{transform:scale(1.8);opacity:0}
+.pt-badge.now{background:var(--green-50);color:var(--green-deep)}
+.pt-badge.soon{background:var(--orange-50);color:#c45a1b}
+.pt-line{
+  flex:0 0 48px;height:2px;
+  background:repeating-linear-gradient(to right,var(--line) 0 5px,transparent 5px 10px);
+  margin:0 4px;
 }
-.tl-connector{
-  width:2px;height:34px;
-  background:repeating-linear-gradient(to bottom,#d8c9a6 0 5px,transparent 5px 10px);
-  margin-left:8px;
+.pricing-note{
+  font-size:15.5px;line-height:1.55;color:var(--ink-soft);
+  margin:0 0 8px;max-width:520px;
 }
-.tl-content{display:flex;flex-direction:column;gap:4px;padding-bottom:6px}
-.tl-label{
-  font-family:'Cormorant Garamond',serif;
-  font-weight:600;font-size:24px;line-height:1.2;color:var(--ink);
-  letter-spacing:-.01em;display:flex;align-items:center;gap:10px;flex-wrap:wrap;
+.pricing-note strong{
+  color:var(--ink);font-weight:600;
+  background:linear-gradient(transparent 70%,rgba(233,109,42,.18) 70%);
 }
-.tl-badge{
-  font-family:'Onest',sans-serif;
-  font-size:11px;letter-spacing:.14em;text-transform:uppercase;
-  padding:4px 11px;border-radius:999px;font-weight:500;
-  vertical-align:middle;
-}
-.tl-badge.now{background:var(--green-50);color:var(--green-deep);}
-.tl-badge.soon{background:var(--orange-50);color:#c45a1b;}
-.tl-dates{font-size:14px;color:var(--ink-mute);font-family:'Onest',sans-serif}
-.tl-note{font-size:14.5px;color:var(--ink-soft);margin-top:4px;line-height:1.45;max-width:360px}
-.waitlist-lead{
-  font-size:15.5px;line-height:1.6;color:var(--ink-soft);
-  max-width:480px;margin:0;
-}
-.waitlist-lead strong{color:var(--ink);font-weight:600;background:linear-gradient(transparent 70%,rgba(233,109,42,.22) 70%);}
 
-.waitlist-cards{
-  position:relative;z-index:1;
-  display:flex;flex-direction:column;gap:16px;
+/* тарифная карточка: плашка «июль» */
+.tariff-month{
+  display:inline-flex;align-items:center;gap:7px;
+  background:var(--orange-50);color:#c45a1b;
+  font-size:12px;letter-spacing:.1em;text-transform:uppercase;
+  padding:6px 14px;border-radius:999px;font-weight:500;
+  margin-bottom:14px;
 }
-.wl-card{
-  background:var(--bg);
-  border:1.5px solid var(--line);
-  border-radius:22px;
-  padding:24px 26px;
-  transition:transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+.tariff.dance .tariff-month{
+  background:rgba(255,255,255,.18);color:#fff8e4;
 }
-.wl-card:hover{
-  transform:translateY(-2px);
-  border-color:var(--orange-100);
-  box-shadow:0 12px 28px rgba(200,130,50,.12);
-}
-.wl-card.dance{
-  background:linear-gradient(135deg,#ef7d40 0%,#f08a51 50%,#f4a276 100%);
-  border:none;color:#fff8e4;
-  box-shadow:0 14px 30px rgba(200,100,40,.18);
-}
-.wl-card.dance:hover{box-shadow:0 18px 36px rgba(200,100,40,.26)}
-.wl-card-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:14px}
-.wl-tag{
-  font-family:'Cormorant Garamond',serif;
-  font-weight:600;font-size:22px;color:var(--ink);
-  letter-spacing:-.01em;
-}
-.wl-card.dance .wl-tag{color:#fff8e4}
-.wl-spots{
-  font-size:12px;color:var(--green-deep);font-weight:500;
-  display:inline-flex;align-items:center;gap:6px;
-  white-space:nowrap;
-}
-.wl-card.dance .wl-spots{color:#fff8e4;opacity:.9}
-.wl-spots::before{
-  content:"";width:6px;height:6px;border-radius:50%;
-  background:var(--green-deep);animation:pdot 2s infinite;
-}
-.wl-card.dance .wl-spots::before{background:#fff8e4}
-.wl-spots.few{color:#cc6600}
-.wl-card.dance .wl-spots.few{color:#fff8e4}
-.wl-spots.few::before{background:#e67e22}
-.wl-card.dance .wl-spots.few::before{background:#fff8e4}
-.wl-price{
-  font-family:'Cormorant Garamond',serif;
-  font-size:56px;font-weight:600;line-height:1;
-  letter-spacing:-.02em;color:var(--ink);
-  display:flex;align-items:flex-start;gap:2px;
-}
-.wl-card.dance .wl-price{color:#fff8e4}
-.wl-price .ruble{font-size:20px;margin-top:10px;margin-left:5px;opacity:.75;font-weight:500}
-.wl-cap{
-  font-size:13px;color:var(--ink-mute);
-  margin-top:4px;margin-bottom:18px;
-  font-family:'Onest',sans-serif;
-}
-.wl-card.dance .wl-cap{color:rgba(255,248,228,.82)}
-.wl-btn{
-  width:100%;padding:14px 20px;border-radius:999px;
-  background:var(--orange);color:#fff;
-  font-size:14px;font-weight:500;
-  display:inline-flex;align-items:center;justify-content:center;gap:8px;
-  transition:background .2s, transform .15s, box-shadow .2s;
-  box-shadow:0 6px 18px rgba(233,109,42,.22);
-}
-.wl-btn:hover:not(:disabled){background:#d46820;transform:translateY(-1px);box-shadow:0 10px 24px rgba(233,109,42,.32)}
-.wl-card.dance .wl-btn{background:#fffaf0;color:var(--orange);box-shadow:0 6px 18px rgba(0,0,0,.12)}
-.wl-card.dance .wl-btn:hover:not(:disabled){background:#fff;box-shadow:0 10px 24px rgba(0,0,0,.18)}
-.wl-btn .arr{transition:transform .2s ease}
-.wl-btn:hover:not(:disabled) .arr{transform:translateX(4px)}
-.wl-btn:disabled{opacity:.5;cursor:not-allowed}
 
 /* PRICING */
 .pricing{padding:100px 0 110px;background:var(--bg)}
@@ -1129,54 +1033,74 @@ h1,h2,h3,h4{letter-spacing:-.01em}
 </section>
 
 <!-- ─────────── ЛИСТ ОЖИДАНИЯ НА ИЮЛЬ ─────────── -->
-<section id="waitlist" class="waitlist-wrap">
+<section id="pricing" class="pricing">
   <div class="container">
-    <div class="waitlist">
-      <div class="waitlist-status">
-        <span class="section-eyebrow">потоки клуба</span>
-        <h2 class="waitlist-title">Сейчас клуб уже идёт. <i>А ты с нами в июле?</i></h2>
+    <div class="activities-head">
+      <div>
+        <span class="section-eyebrow">тарифы</span>
+        <h2 class="section-title">Выбери <i>свой формат</i></h2>
+      </div>
+      <p class="pricing-sub">Все активности клуба входят в базу. Танцы — отдельный трек, который можно добавить к членству.</p>
+    </div>
 
-        <div class="timeline">
-          <div class="tl-item active">
-            <span class="tl-dot"></span>
-            <div class="tl-content">
-              <span class="tl-label">Июнь <span class="tl-badge now">идёт сейчас</span></span>
-              <span class="tl-dates">1.06 — 30.06 · первый поток клуба</span>
-            </div>
-          </div>
-          <div class="tl-connector"></div>
-          <div class="tl-item upcoming">
-            <span class="tl-dot"></span>
-            <div class="tl-content">
-              <span class="tl-label">Июль <span class="tl-badge soon">лист ожидания</span></span>
-              <span class="tl-dates">1.07 — 31.07</span>
-              <span class="tl-note">Места ограничены — закрепи своё прямо сейчас.</span>
-            </div>
-          </div>
+    <div class="pricing-timeline">
+      <div class="pt-step">
+        <span class="pt-dot active"></span>
+        <div class="pt-label">
+          <span class="pt-name">Июнь</span>
+          <span class="pt-badge now">идёт сейчас</span>
         </div>
+      </div>
+      <div class="pt-line"></div>
+      <div class="pt-step">
+        <span class="pt-dot next"></span>
+        <div class="pt-label">
+          <span class="pt-name">Июль</span>
+          <span class="pt-badge soon">набор открыт</span>
+        </div>
+      </div>
+    </div>
 
-        <p class="waitlist-lead">Хочешь к нам в июле? Оплати участие сейчас по <strong>цене июня</strong> — место в группе сразу твоё. Я свяжусь с тобой в Telegram перед стартом потока.</p>
+    <p class="pricing-note">Сейчас идёт первый поток. Хочешь к нам в июле? Оплати участие сейчас по <strong>цене июня</strong> — место сразу твоё.</p>
+
+    <div class="tariffs">
+      <div class="tariff base">
+        <span class="tariff-month">☀ Июль</span>
+        <div class="tnum">01</div>
+        <h3 class="tname">База</h3>
+        <div class="tsub">Все активности клуба, кроме танцев. Идеально, если хочешь полную программу и общение.</div>
+        <div class="price">2000<span class="ruble">₽</span></div>
+        <div class="price-cap">в месяц</div>
+        <ul class="features">
+          <li>Еженедельные пробежки</li>
+          <li>Книжный / кино клуб</li>
+          <li>Тренировки fullbody / растяжка</li>
+          <li>Пикники, настолки и велопрогулки</li>
+          <li>Фото и видеосъёмки</li>
+          <li>Онлайн-марафоны с призами</li>
+          <li>Доступ к закрытому чату</li>
+        </ul>
+        <div class="spots-badge" id="spots-base"><span class="spots-dot"></span><span id="spots-base-text">загрузка…</span></div>
+        <button class="cta-btn" data-pay="base" data-price="2000" data-month="july">Закрепить место на июль</button>
       </div>
 
-      <div class="waitlist-cards">
-        <div class="wl-card">
-          <div class="wl-card-head">
-            <span class="wl-tag">База · июль</span>
-            <span class="wl-spots" id="wl-base-spots">загрузка…</span>
-          </div>
-          <div class="wl-price">2000<span class="ruble">₽</span></div>
-          <div class="wl-cap">за месяц · цена июня</div>
-          <button class="wl-btn" data-pay="base" data-month="july">Закрепить место <span class="arr">→</span></button>
-        </div>
-        <div class="wl-card dance">
-          <div class="wl-card-head">
-            <span class="wl-tag">Клуб + танцы · июль</span>
-            <span class="wl-spots" id="wl-dance-spots">загрузка…</span>
-          </div>
-          <div class="wl-price">3800<span class="ruble">₽</span></div>
-          <div class="wl-cap">за месяц · цена июня</div>
-          <button class="wl-btn" data-pay="dance" data-month="july">Закрепить место <span class="arr">→</span></button>
-        </div>
+      <div class="tariff dance">
+        <span class="tariff-badge">Для тех, кто давно мечтал танцевать</span>
+        <span class="tariff-month">☀ Июль</span>
+        <div class="tnum">02</div>
+        <h3 class="tname">Клуб + танцы</h3>
+        <div class="tsub">Всё из базы + танцевальные тренировки каждую неделю.</div>
+        <div class="price">3800<span class="ruble">₽</span></div>
+        <div class="price-cap">в месяц <s>вместо 5000 ₽</s></div>
+        <ul class="features">
+          <li>Всё из тарифа «База»</li>
+          <li class="hi">3 часа танцев в месяц</li>
+          <li>Пластика и работа с телом</li>
+          <li>Закрытый канал участниц танцев</li>
+          <li>Подборки музыки и хореографии</li>
+        </ul>
+        <div class="spots-badge" id="spots-dance"><span class="spots-dot"></span><span id="spots-dance-text">загрузка…</span></div>
+        <button class="cta-btn" data-pay="dance" data-price="3800" data-month="july">Закрепить место на июль</button>
       </div>
     </div>
   </div>
@@ -1498,23 +1422,6 @@ function updateBadge(tariff, count) {
   }
 }
 
-function updateWaitlistSpots(key, count) {
-  const el = document.getElementById(`wl-${key}-spots`);
-  if (!el) return;
-  el.classList.remove('few');
-  const btn = document.querySelector(`.wl-card .wl-btn[data-pay="${key}"]`);
-  if (count <= 0) {
-    el.textContent = 'мест нет';
-    el.classList.add('few');
-    if (btn) { btn.disabled = true; btn.innerHTML = 'Мест нет'; }
-  } else if (count <= 3) {
-    el.textContent = `последние ${count} ${plural(count)}`;
-    el.classList.add('few');
-  } else {
-    el.textContent = `${count} ${plural(count)}`;
-  }
-}
-
 const SUCCESS_URL = 'https://ВАШСАЙТ.ru/success.html';
 
 function addSuccessUrl(link) {
@@ -1656,8 +1563,7 @@ async function loadSpotsWithWelcome() {
     const d = JSON.parse(await r.text());
     updateBadge('base',  d.base);
     updateBadge('dance', d.dance);
-    updateWaitlistSpots('base',  d.wl_base  ?? 8);
-    updateWaitlistSpots('dance', d.wl_dance ?? 5);
+    
     if (d.welcome) {
       welcomeSpots = d.welcome;
       updateWelcomeCards();
@@ -1667,9 +1573,6 @@ async function loadSpotsWithWelcome() {
     const danceTxt = document.getElementById('spots-dance-text');
     if (baseTxt)  baseTxt.textContent  = 'Осталось несколько мест';
     if (danceTxt) danceTxt.textContent = 'Осталось несколько мест';
-    updateWaitlistSpots('base',  8);
-    updateWaitlistSpots('dance', 5);
-  }
 }
 loadSpotsWithWelcome();
 
@@ -1752,7 +1655,6 @@ document.getElementById('welcome-submit').addEventListener('click', async () => 
 
   if (welcomeSpots[selectedWelcomeFormat] > 0) {
     welcomeSpots[selectedWelcomeFormat]--;
-    updateWelcomeCards();
   }
 
   window.open(WELCOME_PAY_URL, '_blank');
