@@ -263,7 +263,79 @@ h1,h2,h3,h4{letter-spacing:-.01em}
   font-family:'Cormorant Garamond',serif;font-style:italic;
   font-size:22px;color:var(--orange);font-weight:500;
 }
+<!-- ═══ ТАРИФЫ ═══ -->
+<section id="pricing" class="pricing">
+  <div class="container">
+    <div class="activities-head">
+      <div>
+        <span class="section-eyebrow">тарифы</span>
+        <h2 class="section-title">Выбери <i>свой формат</i></h2>
+      </div>
+      <p class="pricing-sub">Все активности клуба входят в базу. Танцы — отдельный трек, который можно добавить к членству.</p>
+    </div>
 
+    <div class="pricing-timeline">
+      <div class="pt-step">
+        <span class="pt-dot active"></span>
+        <div class="pt-label">
+          <span class="pt-name">Июнь</span>
+          <span class="pt-badge now">идёт сейчас</span>
+        </div>
+      </div>
+      <div class="pt-line"></div>
+      <div class="pt-step">
+        <span class="pt-dot next"></span>
+        <div class="pt-label">
+          <span class="pt-name">Июль</span>
+          <span class="pt-badge soon">набор открыт</span>
+        </div>
+      </div>
+    </div>
+
+    <p class="pricing-note">Сейчас идёт первый поток. Хочешь к нам в июле? Оплати участие сейчас по <strong>цене июня</strong> — место сразу твоё.</p>
+
+    <div class="tariffs">
+      <div class="tariff base">
+        <span class="tariff-month">☀ Июль</span>
+        <div class="tnum">01</div>
+        <h3 class="tname">База</h3>
+        <div class="tsub">Все активности клуба, кроме танцев. Идеально, если хочешь полную программу и общение.</div>
+        <div class="price">2000<span class="ruble">₽</span></div>
+        <div class="price-cap">в месяц</div>
+        <ul class="features">
+          <li>Еженедельные пробежки</li>
+          <li>Книжный / кино клуб</li>
+          <li>Тренировки fullbody / растяжка</li>
+          <li>Пикники, настолки и велопрогулки</li>
+          <li>Фото и видеосъёмки</li>
+          <li>Онлайн-марафоны с призами</li>
+          <li>Доступ к закрытому чату</li>
+        </ul>
+        <div class="spots-badge" id="spots-base"><span class="spots-dot"></span><span id="spots-base-text">загрузка…</span></div>
+        <button class="cta-btn" data-pay="base" data-price="2000" data-month="july">Закрепить место на июль</button>
+      </div>
+
+      <div class="tariff dance">
+        <span class="tariff-badge">Для тех, кто давно мечтал танцевать</span>
+        <span class="tariff-month">☀ Июль</span>
+        <div class="tnum">02</div>
+        <h3 class="tname">Клуб + танцы</h3>
+        <div class="tsub">Всё из базы + танцевальные тренировки каждую неделю.</div>
+        <div class="price">3800<span class="ruble">₽</span></div>
+        <div class="price-cap">в месяц <s>вместо 5000 ₽</s></div>
+        <ul class="features">
+          <li>Всё из тарифа «База»</li>
+          <li class="hi">3 часа танцев в месяц</li>
+          <li>Пластика и работа с телом</li>
+          <li>Закрытый канал участниц танцев</li>
+          <li>Подборки музыки и хореографии</li>
+        </ul>
+        <div class="spots-badge" id="spots-dance"><span class="spots-dot"></span><span id="spots-dance-text">загрузка…</span></div>
+        <button class="cta-btn" data-pay="dance" data-price="3800" data-month="july">Закрепить место на июль</button>
+      </div>
+    </div>
+  </div>
+</section>
 /* ───────────────── WELCOME СЕКЦИЯ ───────────────── */
 .welcome-wrap{padding:30px 0 50px}
 .welcome{
@@ -1442,11 +1514,12 @@ async function loadSpotsWithWelcome() {
       welcomeSpots = d.welcome;
       updateWelcomeCards();
     }
-  } catch {
+} catch {
     const baseTxt  = document.getElementById('spots-base-text');
     const danceTxt = document.getElementById('spots-dance-text');
     if (baseTxt)  baseTxt.textContent  = 'Осталось несколько мест';
     if (danceTxt) danceTxt.textContent = 'Осталось несколько мест';
+  }
 }
 loadSpotsWithWelcome();
 
