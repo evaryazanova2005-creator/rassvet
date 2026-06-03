@@ -16,7 +16,6 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Onest:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
 <style>
 :root{
   --bg:#faf3e7;--paper:#fffaf0;--paper-soft:#fdf5e6;
@@ -37,7 +36,6 @@ a{color:inherit;text-decoration:none}
 .container{max-width:1240px;margin:0 auto;padding:0 36px}
 h1,h2,h3,h4{letter-spacing:-.01em}
 
-/* HEADER */
 .header{position:sticky;top:0;z-index:50;background:rgba(250,243,231,.86);backdrop-filter:saturate(140%) blur(10px);border-bottom:1px solid rgba(140,90,40,.06);}
 .header-inner{display:flex;align-items:center;justify-content:space-between;height:78px}
 .logo{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:600;font-size:30px;color:var(--orange);}
@@ -50,7 +48,6 @@ h1,h2,h3,h4{letter-spacing:-.01em}
 .btn-ghost{background:transparent;color:var(--ink);box-shadow:inset 0 0 0 1.5px #cc8b13}
 .btn-ghost:hover{background:rgba(233,109,42,.06);box-shadow:inset 0 0 0 1.5px var(--orange);color:var(--orange)}
 
-/* HERO */
 .hero{padding:32px 0 100px}
 .hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center;}
 .eyebrow-pill{display:inline-flex;align-items:center;gap:9px;background:var(--orange-50);color:var(--ink-soft);font-size:12px;letter-spacing:.14em;text-transform:uppercase;padding:9px 20px;border-radius:999px;margin-bottom:36px;font-weight:500;}
@@ -63,7 +60,6 @@ h1,h2,h3,h4{letter-spacing:-.01em}
 .hero-img-wrap img{width:100%;height:100%;object-fit:cover;border-radius:26px;display:block}
 .hero-pill{position:absolute;left:18px;bottom:-22px;background:#fffaf0;padding:13px 24px;border-radius:999px;font-size:14.5px;color:var(--ink);box-shadow:0 0 0 6px rgba(185,207,138,.35),0 0 32px 6px rgba(185,207,138,.55),0 8px 24px rgba(80,40,10,.10);display:flex;align-items:center;gap:10px;font-weight:500;z-index:2;}
 
-/* ABOUT */
 .about{padding:60px 0 80px}
 .about-grid{display:grid;grid-template-columns:.95fr 1.1fr;gap:72px;align-items:start;}
 .collage{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:auto auto;gap:16px;}
@@ -80,68 +76,24 @@ h1,h2,h3,h4{letter-spacing:-.01em}
 .about-text p{font-size:16px;color:var(--ink-soft);line-height:1.65;margin:0 0 18px;max-width:520px;}
 .about-text strong{color:var(--ink);font-weight:600}
 
-/* ─────────── ДЛЯ КОГО (минималистично) ─────────── */
 .for-whom{padding:60px 0 80px}
 .for-whom .section-title{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:72px;line-height:1;margin:6px 0 50px;letter-spacing:-.018em;}
 .for-whom .section-title i{font-style:italic;font-weight:500;color:var(--orange);}
-.for-whom-list{
-  display:grid;grid-template-columns:1fr;gap:1px;
-  background:var(--line);
-  border-top:1px solid var(--line);
-  border-bottom:1px solid var(--line);
-}
-.fw-row{
-  display:grid;grid-template-columns:.42fr .58fr;gap:48px;
-  align-items:start;padding:36px 4px;
-  background:var(--bg);
-  transition:background .25s ease, padding-left .25s ease;
-}
+.for-whom-list{display:grid;grid-template-columns:1fr;gap:1px;background:var(--line);border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
+.fw-row{display:grid;grid-template-columns:.42fr .58fr;gap:48px;align-items:start;padding:36px 4px;background:var(--bg);transition:background .25s ease, padding-left .25s ease;}
 .fw-row:hover{background:#fdebd9;padding-left:14px;}
 .fw-row-head{display:flex;align-items:baseline;gap:18px}
-.fw-num{
-  font-family:'Cormorant Garamond',serif;
-  font-style:italic;font-weight:500;
-  font-size:22px;color:var(--orange);
-  flex-shrink:0;letter-spacing:.02em;
-}
-.fw-title{
-  font-family:'Cormorant Garamond',serif;
-  font-weight:600;font-size:30px;line-height:1.1;
-  color:var(--ink);margin:0;letter-spacing:-.012em;text-wrap:balance;
-}
-.fw-desc{
-  font-size:16px;line-height:1.6;color:var(--ink-soft);
-  margin:0;max-width:540px;
-}
+.fw-num{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:500;font-size:22px;color:var(--orange);flex-shrink:0;letter-spacing:.02em;}
+.fw-title{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:30px;line-height:1.1;color:var(--ink);margin:0;letter-spacing:-.012em;text-wrap:balance;}
+.fw-desc{font-size:16px;line-height:1.6;color:var(--ink-soft);margin:0;max-width:540px;}
 
-/* ─────────── ПОЧЕМУ КЛУБ (full-bleed) ─────────── */
-.compare-wrap{
-  position:relative;
-  margin:40px 0 0;padding:110px 0 120px;
-  background:
-    radial-gradient(60% 70% at 8% 18%,#fbe1d3 0%,transparent 60%),
-    radial-gradient(50% 60% at 92% 80%,#e8f0d4 0%,transparent 60%),
-    linear-gradient(160deg,#fdf5e6 0%,#fbecd6 100%);
-  overflow:hidden;
-}
+.compare-wrap{position:relative;margin:40px 0 0;padding:110px 0 120px;background:radial-gradient(60% 70% at 8% 18%,#fbe1d3 0%,transparent 60%),radial-gradient(50% 60% at 92% 80%,#e8f0d4 0%,transparent 60%),linear-gradient(160deg,#fdf5e6 0%,#fbecd6 100%);overflow:hidden;}
 .compare-head{display:flex;align-items:flex-end;justify-content:space-between;gap:48px;margin-bottom:54px;flex-wrap:wrap;}
 .compare-head .section-title{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:72px;line-height:1;margin:6px 0 0;letter-spacing:-.018em;}
 .compare-head .section-title i{font-style:italic;font-weight:500;color:var(--orange);}
 .compare-head p{font-size:16px;color:var(--ink-mute);max-width:340px;line-height:1.55;margin:0;text-align:right;}
-
-.compare-grid{
-  display:grid;grid-template-columns:1.25fr 1fr 1fr 1fr;gap:18px;
-  align-items:stretch;
-}
-.cmp-card{
-  position:relative;
-  background:#fffaf0;border:1px solid rgba(140,90,40,.08);
-  border-radius:24px;padding:34px 30px 30px;
-  display:flex;flex-direction:column;gap:18px;
-  box-shadow:0 4px 18px rgba(160,110,40,.05);
-  transition:transform .25s ease, box-shadow .25s ease;
-  opacity:0;transform:translateY(24px);
-}
+.compare-grid{display:grid;grid-template-columns:1.25fr 1fr 1fr 1fr;gap:18px;align-items:stretch;}
+.cmp-card{position:relative;background:#fffaf0;border:1px solid rgba(140,90,40,.08);border-radius:24px;padding:34px 30px 30px;display:flex;flex-direction:column;gap:18px;box-shadow:0 4px 18px rgba(160,110,40,.05);transition:transform .25s ease, box-shadow .25s ease;opacity:0;transform:translateY(24px);}
 .cmp-card.in{opacity:1;transform:translateY(0);}
 .cmp-card:nth-child(1).in{transition-delay:0s}
 .cmp-card:nth-child(2).in{transition-delay:.08s}
@@ -149,334 +101,82 @@ h1,h2,h3,h4{letter-spacing:-.01em}
 .cmp-card:nth-child(4).in{transition-delay:.24s}
 .cmp-card.in{transition:transform .55s cubic-bezier(.2,.7,.2,1), opacity .55s ease, box-shadow .25s ease}
 .cmp-card:hover{transform:translateY(-4px);box-shadow:0 16px 36px rgba(160,110,40,.12)}
-
-.cmp-card.cmp-highlight{
-  background:linear-gradient(160deg,#ef7d40 0%,#f08a51 50%,#f4a276 100%);
-  border:none;color:#fff8e4;
-  box-shadow:0 18px 40px rgba(200,100,40,.22);
-}
+.cmp-card.cmp-highlight{background:linear-gradient(160deg,#ef7d40 0%,#f08a51 50%,#f4a276 100%);border:none;color:#fff8e4;box-shadow:0 18px 40px rgba(200,100,40,.22);}
 .cmp-card.cmp-highlight:hover{box-shadow:0 24px 48px rgba(200,100,40,.30)}
-.cmp-badge{
-  align-self:flex-start;
-  background:rgba(255,255,255,.22);
-  padding:7px 16px;border-radius:999px;
-  font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;
-  font-weight:500;color:#fff8e4;
-  margin:-4px 0 4px;
-}
-.cmp-name{
-  font-family:'Cormorant Garamond',serif;
-  font-weight:600;font-size:28px;line-height:1.1;
-  margin:0;letter-spacing:-.012em;color:var(--ink);
-}
+.cmp-badge{align-self:flex-start;background:rgba(255,255,255,.22);padding:7px 16px;border-radius:999px;font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;font-weight:500;color:#fff8e4;margin:-4px 0 4px;}
+.cmp-name{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:28px;line-height:1.1;margin:0;letter-spacing:-.012em;color:var(--ink);}
 .cmp-card.cmp-highlight .cmp-name{color:#fff8e4}
-.cmp-list{
-  list-style:none;padding:0;margin:6px 0 0;
-  display:flex;flex-direction:column;gap:14px;flex:1;
-}
-.cmp-list li{
-  font-size:14.5px;line-height:1.45;color:var(--ink-soft);
-  display:flex;gap:12px;align-items:flex-start;
-}
+.cmp-list{list-style:none;padding:0;margin:6px 0 0;display:flex;flex-direction:column;gap:14px;flex:1;}
+.cmp-list li{font-size:14.5px;line-height:1.45;color:var(--ink-soft);display:flex;gap:12px;align-items:flex-start;}
 .cmp-card.cmp-highlight .cmp-list li{color:rgba(255,248,228,.95)}
-.cmp-list li::before{
-  font-size:14px;font-weight:700;flex-shrink:0;
-  width:18px;height:18px;border-radius:50%;
-  display:inline-flex;align-items:center;justify-content:center;
-  margin-top:1px;line-height:1;
-}
+.cmp-list li::before{font-size:14px;font-weight:700;flex-shrink:0;width:18px;height:18px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;margin-top:1px;line-height:1;}
 .cmp-list li.cmp-yes::before{content:"✓";background:var(--green-50);color:var(--green-deep)}
 .cmp-card.cmp-highlight .cmp-list li.cmp-yes::before{background:rgba(255,255,255,.25);color:#fff8e4}
 .cmp-list li.cmp-no::before{content:"–";background:#f7e4dc;color:#c0392b;font-weight:800}
 .cmp-list li.cmp-meh::before{content:"~";background:#fcefc6;color:#a87c1c}
 
-/* ─────────── ИСТОРИЯ ЕВЫ ─────────── */
 .story{padding:90px 0 100px;background:var(--bg)}
-.story-grid{
-  display:grid;grid-template-columns:.9fr 1.1fr;gap:72px;align-items:center;
-}
-.story-photo{
-  position:relative;
-  border-radius:26px;
-  background:linear-gradient(160deg,#fbe1d3,#fce3c4);
-  padding:14px;
-  box-shadow:var(--shadow-md);
-  transform:rotate(-1.2deg);
-  transition:transform .35s ease;
-}
+.story-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:72px;align-items:center;}
+.story-photo{position:relative;border-radius:26px;background:linear-gradient(160deg,#fbe1d3,#fce3c4);padding:14px;box-shadow:var(--shadow-md);transform:rotate(-1.2deg);transition:transform .35s ease;}
 .story-photo:hover{transform:rotate(0deg)}
-.story-photo::before{
-  content:"";position:absolute;inset:-12px -12px auto auto;
-  width:120px;height:120px;border-radius:50%;
-  background:radial-gradient(circle,rgba(185,207,138,.45) 0%,transparent 70%);
-  z-index:-1;
-}
-.story-photo::after{
-  content:"☀";position:absolute;left:-14px;bottom:24px;
-  font-size:48px;color:var(--orange);opacity:.85;
-  transform:rotate(-12deg);
-}
-.story-photo-frame{
-  border-radius:18px;overflow:hidden;
-  aspect-ratio:.82/1;background:#cdc4ad;
-}
+.story-photo::before{content:"";position:absolute;inset:-12px -12px auto auto;width:120px;height:120px;border-radius:50%;background:radial-gradient(circle,rgba(185,207,138,.45) 0%,transparent 70%);z-index:-1;}
+.story-photo::after{content:"☀";position:absolute;left:-14px;bottom:24px;font-size:48px;color:var(--orange);opacity:.85;transform:rotate(-12deg);}
+.story-photo-frame{border-radius:18px;overflow:hidden;aspect-ratio:.82/1;background:#cdc4ad;}
 .story-photo-frame img{width:100%;height:100%;object-fit:cover;display:block}
-.story-photo-cap{
-  position:absolute;left:50%;bottom:-18px;transform:translateX(-50%);
-  background:#fffaf0;
-  font-family:'Cormorant Garamond',serif;font-style:italic;
-  font-size:16px;color:var(--ink-soft);
-  padding:9px 22px;border-radius:999px;
-  box-shadow:0 8px 24px rgba(80,40,10,.10);
-  white-space:nowrap;
-}
-
+.story-photo-cap{position:absolute;left:50%;bottom:-18px;transform:translateX(-50%);background:#fffaf0;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:16px;color:var(--ink-soft);padding:9px 22px;border-radius:999px;box-shadow:0 8px 24px rgba(80,40,10,.10);white-space:nowrap;}
 .story-text{padding-top:6px}
-.story-hey{
-  display:inline-block;
-  background:var(--orange-50);color:var(--ink-soft);
-  font-size:12px;letter-spacing:.14em;text-transform:uppercase;
-  padding:9px 20px;border-radius:999px;margin-bottom:24px;
-  font-weight:500;
-}
-.story-text h2{
-  font-family:'Cormorant Garamond',serif;
-  font-weight:600;font-size:54px;line-height:1.04;
-  margin:0 0 26px;letter-spacing:-.014em;text-wrap:balance;
-}
+.story-hey{display:inline-block;background:var(--orange-50);color:var(--ink-soft);font-size:12px;letter-spacing:.14em;text-transform:uppercase;padding:9px 20px;border-radius:999px;margin-bottom:24px;font-weight:500;}
+.story-text h2{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:54px;line-height:1.04;margin:0 0 26px;letter-spacing:-.014em;text-wrap:balance;}
 .story-text h2 i{font-style:italic;font-weight:500;color:var(--orange);}
-.story-quote{
-  font-family:'Cormorant Garamond',serif;font-style:italic;
-  font-size:22px;line-height:1.4;color:var(--ink-soft);
-  margin:0 0 26px;padding-left:22px;
-  border-left:3px solid var(--orange);
-  max-width:540px;text-wrap:balance;
-}
-.story-body p{
-  font-family:'Onest',sans-serif;
-  font-size:16px;line-height:1.65;color:var(--ink-soft);
-  margin:0 0 16px;max-width:560px;
-}
+.story-quote{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:22px;line-height:1.4;color:var(--ink-soft);margin:0 0 26px;padding-left:22px;border-left:3px solid var(--orange);max-width:540px;text-wrap:balance;}
+.story-body p{font-family:'Onest',sans-serif;font-size:16px;line-height:1.65;color:var(--ink-soft);margin:0 0 16px;max-width:560px;}
 .story-body p strong{color:var(--ink);font-weight:600}
-.story-sign{
-  display:inline-block;margin-top:14px;
-  font-family:'Cormorant Garamond',serif;font-style:italic;
-  font-size:22px;color:var(--orange);font-weight:500;
-}
-  
-<!-- ═══ ТАРИФЫ ═══ -->
-<section id="pricing" class="pricing">
-  <div class="container">
-    <div class="activities-head">
-      <div>
-        <span class="section-eyebrow">тарифы</span>
-        <h2 class="section-title">Выбери <i>свой формат</i></h2>
-      </div>
-      <p class="pricing-sub">Все активности клуба входят в базу. Танцы — отдельный трек, который можно добавить к членству.</p>
-    </div>
-    <div class="pricing-timeline">
-      <div class="pt-step">
-        <span class="pt-dot active"></span>
-        <div class="pt-label">
-          <span class="pt-name">Июнь</span>
-          <span class="pt-badge now">идёт сейчас</span>
-        </div>
-      </div>
-      <div class="pt-line"></div>
-      <div class="pt-step">
-        <span class="pt-dot next"></span>
-        <div class="pt-label">
-          <span class="pt-name">Июль</span>
-          <span class="pt-badge soon">набор открыт</span>
-        </div>
-      </div>
-    </div>
-    <p class="pricing-note">Сейчас идёт первый поток. Хочешь к нам в июле? Оплати участие сейчас по <strong>цене июня</strong> — место сразу твоё.</p>
-    <div class="tariffs">
-      <div class="tariff base">
-        <span class="tariff-month">☀ Июль</span>
-        <div class="tnum">01</div>
-        <h3 class="tname">База</h3>
-        <div class="tsub">Все активности клуба, кроме танцев. Идеально, если хочешь полную программу и общение.</div>
-        <div class="price">2000<span class="ruble">₽</span></div>
-        <div class="price-cap">в месяц</div>
-        <ul class="features">
-          <li>Еженедельные пробежки</li>
-          <li>Книжный / кино клуб</li>
-          <li>Тренировки fullbody / растяжка</li>
-          <li>Пикники, настолки и велопрогулки</li>
-          <li>Фото и видеосъёмки</li>
-          <li>Онлайн-марафоны с призами</li>
-          <li>Доступ к закрытому чату</li>
-        </ul>
-        <div class="spots-badge" id="spots-base"><span class="spots-dot"></span><span id="spots-base-text">загрузка…</span></div>
-        <button class="cta-btn" data-pay="base" data-price="2000" data-month="july">Закрепить место на июль</button>
-      </div>
-      <div class="tariff dance">
-        <span class="tariff-badge">Для тех, кто давно мечтал танцевать</span>
-        <span class="tariff-month">☀ Июль</span>
-        <div class="tnum">02</div>
-        <h3 class="tname">Клуб + танцы</h3>
-        <div class="tsub">Всё из базы + танцевальные тренировки каждую неделю.</div>
-        <div class="price">3800<span class="ruble">₽</span></div>
-        <div class="price-cap">в месяц <s>вместо 5000 ₽</s></div>
-        <ul class="features">
-          <li>Всё из тарифа «База»</li>
-          <li class="hi">3 часа танцев в месяц</li>
-          <li>Пластика и работа с телом</li>
-          <li>Закрытый канал участниц танцев</li>
-          <li>Подборки музыки и хореографии</li>
-        </ul>
-        <div class="spots-badge" id="spots-dance"><span class="spots-dot"></span><span id="spots-dance-text">загрузка…</span></div>
-        <button class="cta-btn" data-pay="dance" data-price="3800" data-month="july">Закрепить место на июль</button>
-      </div>
-    </div>
-  </div>
-</section>
+.story-sign{display:inline-block;margin-top:14px;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:22px;color:var(--orange);font-weight:500;}
 
-/* ───────────────── WELCOME СЕКЦИЯ ───────────────── */
+/* WELCOME */
 .welcome-wrap{padding:30px 0 50px}
-.welcome{
-  position:relative;overflow:hidden;
-  display:grid;grid-template-columns:1.15fr .85fr;gap:60px;align-items:center;
-  background:linear-gradient(135deg,#fff5e3 0%,#fdebcf 55%,#fbd9b0 100%);
-  border-radius:32px;
-  padding:56px 64px;
-  box-shadow:0 18px 44px rgba(200,130,50,.14);
-}
-.welcome::before{
-  content:"";position:absolute;top:-100px;right:-80px;width:340px;height:340px;
-  background:radial-gradient(circle, rgba(255,255,255,.55) 0%, transparent 65%);
-  border-radius:50%;pointer-events:none;
-}
-.welcome::after{
-  content:"";position:absolute;bottom:-120px;left:-60px;width:280px;height:280px;
-  background:radial-gradient(circle, rgba(185,207,138,.30) 0%, transparent 65%);
-  border-radius:50%;pointer-events:none;
-}
+.welcome{position:relative;overflow:hidden;display:grid;grid-template-columns:1.15fr .85fr;gap:60px;align-items:center;background:linear-gradient(135deg,#fff5e3 0%,#fdebcf 55%,#fbd9b0 100%);border-radius:32px;padding:56px 64px;box-shadow:0 18px 44px rgba(200,130,50,.14);}
+.welcome::before{content:"";position:absolute;top:-100px;right:-80px;width:340px;height:340px;background:radial-gradient(circle, rgba(255,255,255,.55) 0%, transparent 65%);border-radius:50%;pointer-events:none;}
+.welcome::after{content:"";position:absolute;bottom:-120px;left:-60px;width:280px;height:280px;background:radial-gradient(circle, rgba(185,207,138,.30) 0%, transparent 65%);border-radius:50%;pointer-events:none;}
 .welcome-content{position:relative;z-index:2}
-.welcome-eyebrow{
-  display:inline-flex;align-items:center;gap:8px;
-  background:rgba(255,255,255,.7);
-  padding:9px 18px;border-radius:999px;
-  font-size:12px;letter-spacing:.14em;text-transform:uppercase;
-  font-weight:500;color:var(--orange);
-  margin-bottom:24px;
-}
+.welcome-eyebrow{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.7);padding:9px 18px;border-radius:999px;font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:500;color:var(--orange);margin-bottom:24px;}
 .welcome-eyebrow .dot{width:7px;height:7px;border-radius:50%;background:var(--orange);animation:pdot 2s infinite;}
-.welcome h2{
-  font-family:'Cormorant Garamond',serif;
-  font-weight:600;font-size:54px;line-height:1.02;
-  margin:0 0 22px;letter-spacing:-.014em;text-wrap:balance;
-}
+.welcome h2{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:54px;line-height:1.02;margin:0 0 22px;letter-spacing:-.014em;text-wrap:balance;}
 .welcome h2 i{font-style:italic;font-weight:500;color:var(--orange);}
-.welcome-lead{
-  font-size:16.5px;line-height:1.6;color:var(--ink-soft);
-  max-width:520px;margin:0 0 30px;
-}
+.welcome-lead{font-size:16.5px;line-height:1.6;color:var(--ink-soft);max-width:520px;margin:0 0 30px;}
 .welcome-lead strong{color:var(--ink);font-weight:600}
-.welcome-step-label{
-  font-size:14px;letter-spacing:.12em;text-transform:uppercase;
-  color:var(--orange);font-weight:600;margin:0 0 14px;
-}
-.welcome-formats{
-  display:grid;grid-template-columns:1fr 1fr;gap:12px;
-  max-width:520px;margin-bottom:28px;
-}
-.wf-card{
-  display:flex;flex-direction:column;align-items:flex-start;gap:4px;
-  background:#fffaf0;border:2px solid var(--line);
-  border-radius:18px;padding:18px 20px;
-  text-align:left;cursor:pointer;
-  transition:border-color .2s,transform .18s,box-shadow .18s,background .2s;
-}
+.welcome-step-label{font-size:14px;letter-spacing:.12em;text-transform:uppercase;color:var(--orange);font-weight:600;margin:0 0 14px;}
+.welcome-formats{display:grid;grid-template-columns:1fr 1fr;gap:12px;max-width:520px;margin-bottom:28px;}
+.wf-card{display:flex;flex-direction:column;align-items:flex-start;gap:4px;background:#fffaf0;border:2px solid var(--line);border-radius:18px;padding:18px 20px;text-align:left;cursor:pointer;transition:border-color .2s,transform .18s,box-shadow .18s,background .2s;}
 .wf-card:hover{border-color:var(--orange-100);transform:translateY(-2px);box-shadow:0 8px 20px rgba(200,130,50,.12)}
-.wf-card.selected{
-  border-color:var(--orange);background:#fef0e0;
-  box-shadow:0 0 0 3px rgba(233,109,42,.18),0 8px 20px rgba(200,130,50,.12);
-  transform:translateY(-2px);
-}
+.wf-card.selected{border-color:var(--orange);background:#fef0e0;box-shadow:0 0 0 3px rgba(233,109,42,.18),0 8px 20px rgba(200,130,50,.12);transform:translateY(-2px);}
 .wf-icon{font-size:24px;line-height:1;margin-bottom:2px}
 .wf-name{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:19px;color:var(--ink);line-height:1.2}
 .wf-when{font-size:12.5px;color:var(--ink-mute);line-height:1.3}
-
-.welcome-form-wrap{
-  max-width:520px;
-  animation:wfSlideIn .35s ease;
-}
+.welcome-form-wrap{max-width:520px;animation:wfSlideIn .35s ease;}
 @keyframes wfSlideIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
-.welcome-chosen{
-  display:inline-flex;align-items:center;gap:8px;
-  background:var(--green-50);border:1.5px solid #cad9a9;
-  padding:8px 18px;border-radius:999px;
-  font-size:13.5px;font-weight:500;color:var(--green-deep);
-  margin-bottom:18px;
-}
-.wf-fields{
-  display:grid;grid-template-columns:1fr 1fr;gap:14px;
-  margin-bottom:16px;
-}
-.welcome-submit{
-  width:100%;padding:17px 30px;border-radius:999px;
-  background:var(--orange);color:#fff;
-  font-size:15px;font-weight:500;border:none;cursor:pointer;
-  transition:background .2s,transform .15s,box-shadow .2s;
-  box-shadow:0 8px 22px rgba(233,109,42,.28);
-}
+.welcome-chosen{display:inline-flex;align-items:center;gap:8px;background:var(--green-50);border:1.5px solid #cad9a9;padding:8px 18px;border-radius:999px;font-size:13.5px;font-weight:500;color:var(--green-deep);margin-bottom:18px;}
+.wf-fields{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:16px;}
+.welcome-submit{width:100%;padding:17px 30px;border-radius:999px;background:var(--orange);color:#fff;font-size:15px;font-weight:500;border:none;cursor:pointer;transition:background .2s,transform .15s,box-shadow .2s;box-shadow:0 8px 22px rgba(233,109,42,.28);}
 .welcome-submit:hover{background:#d46820;transform:translateY(-2px);box-shadow:0 12px 28px rgba(233,109,42,.36)}
 .welcome-submit:disabled{opacity:.5;cursor:not-allowed;transform:none!important}
-.welcome-form-note{
-  font-size:13px;color:var(--ink-mute);line-height:1.5;
-  margin:14px 0 0;max-width:460px;
-}
-.wf-spots{
-  display:block;margin-top:6px;
-  font-family:'Onest',sans-serif;
-  font-size:11.5px;font-weight:500;
-  color:var(--green-deep);
-}
+.welcome-form-note{font-size:13px;color:var(--ink-mute);line-height:1.5;margin:14px 0 0;max-width:460px;}
+.wf-spots{display:block;margin-top:6px;font-family:'Onest',sans-serif;font-size:11.5px;font-weight:500;color:var(--green-deep);}
 .wf-spots-few{color:#e67e22;font-weight:600}
 .wf-spots-none{color:#c0392b}
-.wf-card.wf-full{
-  opacity:.45;cursor:not-allowed;
-  pointer-events:none;
-  filter:grayscale(.4);
-}
-
-.welcome-card{
-  position:relative;z-index:2;
-  background:#fffaf0;border-radius:24px;
-  padding:36px 32px;
-  box-shadow:0 14px 32px rgba(160,110,40,.14);
-  transform:rotate(1.5deg);
-  transition:transform .3s ease;
-}
+.wf-card.wf-full{opacity:.45;cursor:not-allowed;pointer-events:none;filter:grayscale(.4);}
+.welcome-card{position:relative;z-index:2;background:#fffaf0;border-radius:24px;padding:36px 32px;box-shadow:0 14px 32px rgba(160,110,40,.14);transform:rotate(1.5deg);transition:transform .3s ease;}
 .welcome-card:hover{transform:rotate(0deg) translateY(-4px)}
-.welcome-card-tag{
-  position:absolute;top:-14px;left:24px;
-  background:var(--green-deep);color:#fff8e4;
-  font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;
-  padding:6px 16px;border-radius:999px;font-weight:500;
-}
-.welcome-card-price{
-  font-family:'Cormorant Garamond',serif;
-  font-size:80px;font-weight:600;line-height:1;
-  color:var(--ink);margin:6px 0 4px;
-  display:flex;align-items:flex-start;gap:2px;
-}
+.welcome-card-tag{position:absolute;top:-14px;left:24px;background:var(--green-deep);color:#fff8e4;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;padding:6px 16px;border-radius:999px;font-weight:500;}
+.welcome-card-price{font-family:'Cormorant Garamond',serif;font-size:80px;font-weight:600;line-height:1;color:var(--ink);margin:6px 0 4px;display:flex;align-items:flex-start;gap:2px;}
 .welcome-card-price .ruble{font-size:28px;margin-top:18px;margin-left:6px;opacity:.7}
 .welcome-card-sub{font-size:14px;color:var(--ink-mute);font-style:italic;margin-bottom:24px}
 .welcome-card-list{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:11px}
 .welcome-card-list li{font-size:14.5px;color:var(--ink-soft);line-height:1.45;display:flex;gap:10px;align-items:flex-start}
 .welcome-card-list li::before{content:"✓";color:var(--orange);font-weight:700;font-size:13px;margin-top:2px;flex-shrink:0}
-.welcome-card-hint{
-  margin-top:22px;padding-top:18px;
-  border-top:1px dashed var(--line);
-  font-size:13px;color:var(--ink-mute);line-height:1.5;
-  font-style:italic;
-}
+.welcome-card-hint{margin-top:22px;padding-top:18px;border-top:1px dashed var(--line);font-size:13px;color:var(--ink-mute);line-height:1.5;font-style:italic;}
 
-/* SCHEDULE TEASER */
+/* SCHEDULE */
 .schedule-wrap{padding:30px 0 50px}
 .schedule{border-radius:28px;background:var(--paper);border:1px solid var(--line);box-shadow:0 8px 28px rgba(160,110,40,.05);padding:46px 52px 38px;}
 .schedule-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:36px;gap:20px;flex-wrap:wrap;}
@@ -527,74 +227,41 @@ h1,h2,h3,h4{letter-spacing:-.01em}
 .gallery .g img{width:100%;height:100%;object-fit:cover;display:block}
 
 /* BENEFITS */
-.benefits{background:radial-gradient(60% 80% at 12% 18%,#fbd5d8 0%,transparent 60%),radial-gradient(55% 70% at 92% 32%,#f8c9b3 0%,transparent 60%),linear-gradient(160deg,#fbe1d3 0%,#fce3c4 45%,#fceeb0 100%);padding:110px 0;color:var(--ink);}
-.benefits .section-eyebrow{color:var(--orange)}
-.benefits .section-title{color:var(--ink);margin-bottom:48px}
-.benefits .section-title i{color:var(--green-deep)}
+.benefits{background:var(--bg);padding:60px 0 80px;color:var(--ink);}
+.benefits .container{position:relative;overflow:hidden;background:#9fa84b;border-radius:32px;padding:80px 72px;box-shadow:0 24px 60px rgba(100,110,40,.18);}
+.benefits .section-eyebrow{color:rgba(255,255,255,.75);}
+.benefits .section-eyebrow::before{content:"— ";color:rgba(255,255,255,.5)}
+.benefits .section-title{color:#fff;margin-bottom:48px}
+.benefits .section-title i{color:#e8f0c8}
 .benefits-grid{display:grid;grid-template-columns:1fr 1fr;gap:26px;max-width:1100px;margin:0 auto;}
-.b-card{background:#fffaf0;border:1px solid rgba(140,90,40,.08);border-radius:26px;padding:40px 44px;box-shadow:0 4px 18px rgba(160,110,40,.06);}
-.b-card.right{background:#fffdf3;border-color:rgba(140,160,90,.18);}
+.b-card{background:rgba(255,255,255,.92);border:none;border-radius:26px;padding:40px 44px;box-shadow:0 8px 24px rgba(80,90,30,.12);}
+.b-card.right{background:rgba(255,255,255,.85);}
 .b-card h3{font-family:'Cormorant Garamond',serif;color:var(--orange);font-size:26px;font-weight:600;margin:0 0 26px;}
-.b-card.right h3{color:var(--green-deep)}
+.b-card.right h3{color:#7a8230}
 .b-card ul{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:16px}
 .b-card li{font-size:15px;color:var(--ink-soft);line-height:1.5;display:flex;gap:14px;align-items:flex-start;}
 .b-card li::before{content:"✓";color:var(--orange);font-weight:700;font-size:14px;margin-top:2px;flex-shrink:0;}
 .b-card.right li::before{content:"✦";color:var(--green-deep)}
 
-/* ═══ ТАРИФЫ (обновлённые с таймлайном) ═══ */
-.pricing-timeline{
-  display:flex;align-items:center;gap:0;
-  margin-bottom:44px;max-width:560px;
-}
-.pt-step{
-  display:flex;align-items:center;gap:12px;
-  font-size:15px;color:var(--ink-soft);
-}
-.pt-dot{
-  width:14px;height:14px;border-radius:50%;flex-shrink:0;
-  position:relative;
-}
+/* PRICING TIMELINE */
+.pricing-timeline{display:flex;align-items:center;gap:0;margin-bottom:44px;max-width:560px;}
+.pt-step{display:flex;align-items:center;gap:12px;font-size:15px;color:var(--ink-soft);}
+.pt-dot{width:14px;height:14px;border-radius:50%;flex-shrink:0;position:relative;}
 .pt-dot.active{background:var(--green-deep);box-shadow:0 0 0 4px rgba(142,163,90,.2)}
-.pt-dot.active::before{
-  content:"";position:absolute;inset:-4px;border-radius:50%;
-  border:2px solid var(--green-deep);
-  animation:pdot 2s ease-out infinite;
-}
+.pt-dot.active::before{content:"";position:absolute;inset:-4px;border-radius:50%;border:2px solid var(--green-deep);animation:pdot 2s ease-out infinite;}
 .pt-dot.next{background:var(--orange);box-shadow:0 0 0 4px rgba(233,109,42,.15)}
 .pt-label{display:flex;flex-direction:column;gap:1px}
 .pt-name{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:20px;color:var(--ink);line-height:1.2}
-.pt-badge{
-  display:inline-block;font-family:'Onest',sans-serif;
-  font-size:11px;letter-spacing:.12em;text-transform:uppercase;
-  padding:3px 10px;border-radius:999px;font-weight:500;width:fit-content;
-}
+.pt-badge{display:inline-block;font-family:'Onest',sans-serif;font-size:11px;letter-spacing:.12em;text-transform:uppercase;padding:3px 10px;border-radius:999px;font-weight:500;width:fit-content;}
 .pt-badge.now{background:var(--green-50);color:var(--green-deep)}
 .pt-badge.soon{background:var(--orange-50);color:#c45a1b}
-.pt-line{
-  flex:0 0 48px;height:2px;
-  background:repeating-linear-gradient(to right,var(--line) 0 5px,transparent 5px 10px);
-  margin:0 4px;
-}
-.pricing-note{
-  font-size:15.5px;line-height:1.55;color:var(--ink-soft);
-  margin:0 0 8px;max-width:520px;
-}
-.pricing-note strong{
-  color:var(--ink);font-weight:600;
-  background:linear-gradient(transparent 70%,rgba(233,109,42,.18) 70%);
-}
+.pt-line{flex:0 0 48px;height:2px;background:repeating-linear-gradient(to right,var(--line) 0 5px,transparent 5px 10px);margin:0 4px;}
+.pricing-note{font-size:15.5px;line-height:1.55;color:var(--ink-soft);margin:0 0 8px;max-width:520px;}
+.pricing-note strong{color:var(--ink);font-weight:600;background:linear-gradient(transparent 70%,rgba(233,109,42,.18) 70%);}
 
-/* тарифная карточка: плашка «июль» */
-.tariff-month{
-  display:inline-flex;align-items:center;gap:7px;
-  background:var(--orange-50);color:#c45a1b;
-  font-size:12px;letter-spacing:.1em;text-transform:uppercase;
-  padding:6px 14px;border-radius:999px;font-weight:500;
-  margin-bottom:14px;
-}
-.tariff.dance .tariff-month{
-  background:rgba(255,255,255,.18);color:#fff8e4;
-}
+/* TARIFF MONTH PILL */
+.tariff-month{display:inline-flex;align-items:center;gap:7px;background:var(--orange-50);color:#c45a1b;font-size:12px;letter-spacing:.1em;text-transform:uppercase;padding:6px 14px;border-radius:999px;font-weight:500;margin-bottom:14px;}
+.tariff.dance .tariff-month{background:rgba(255,255,255,.18);color:#fff8e4;}
 
 /* PRICING */
 .pricing{padding:100px 0 110px;background:var(--bg)}
@@ -610,11 +277,6 @@ h1,h2,h3,h4{letter-spacing:-.01em}
 .tariff .tname{font-family:'Cormorant Garamond',serif;font-size:40px;font-weight:600;margin:0 0 10px;}
 .tariff .tsub{font-size:14.5px;color:var(--ink-mute);margin-bottom:20px}
 .tariff.dance .tsub{color:rgba(255,240,210,.85)}
-.tariff .price{font-family:'Cormorant Garamond',serif;font-size:72px;font-weight:600;line-height:1;letter-spacing:-.02em;display:flex;align-items:flex-start;gap:2px;}
-.tariff .price .ruble{font-size:26px;margin-top:14px;margin-left:6px;font-weight:500;opacity:.85}
-.tariff .price-cap{font-size:13.5px;color:var(--ink-mute);margin-top:6px;margin-bottom:20px;}
-.tariff.dance .price-cap{color:rgba(255,240,210,.78)}
-.tariff.dance .price-cap s{opacity:.7}
 .tariff .features{list-style:none;padding:0;margin:0 0 24px;display:flex;flex-direction:column;gap:14px;flex:1}
 .tariff .features li{font-size:15px;line-height:1.45;display:flex;gap:12px}
 .tariff .features li::before{content:"✓";color:var(--orange);font-weight:700}
@@ -627,6 +289,108 @@ h1,h2,h3,h4{letter-spacing:-.01em}
 .tariff.dance .cta-btn:hover:not(:disabled){background:#fff;transform:translateY(-1px)}
 .tariff .cta-btn:disabled{opacity:.4;cursor:not-allowed;transform:none!important}
 .tariff-badge{position:absolute;top:20px;right:24px;background:rgba(255,255,255,.22);color:#fff8e4;font-size:12.5px;padding:8px 16px;border-radius:999px;backdrop-filter:blur(4px);}
+
+/* ═══ PERIOD TOGGLE (на карточках тарифов) ═══ */
+.period-toggle{
+  display:grid;grid-template-columns:1fr 1fr;gap:10px;
+  margin-bottom:24px;
+}
+.period-card{
+  position:relative;
+  border-radius:16px;padding:16px 18px;
+  text-align:left;cursor:pointer;
+  border:2px solid var(--line);
+  background:rgba(255,250,240,.7);
+  transition:border-color .2s,background .2s,transform .18s,box-shadow .18s;
+}
+.period-card:hover{
+  border-color:var(--orange-100);
+  transform:translateY(-1px);
+  box-shadow:0 4px 14px rgba(200,130,50,.08);
+}
+.period-card.selected{
+  border-color:var(--orange);
+  background:#fef0e0;
+  box-shadow:0 0 0 3px rgba(233,109,42,.14);
+}
+.period-card .pc-label{
+  font-size:13.5px;font-weight:500;
+  color:var(--ink-soft);margin-bottom:6px;
+}
+.period-card .pc-price{
+  font-family:'Cormorant Garamond',serif;
+  font-weight:600;font-size:28px;line-height:1.1;
+  color:var(--ink);
+}
+.period-card .pc-sub{
+  font-size:12px;color:var(--ink-mute);
+  margin-top:5px;line-height:1.35;
+}
+.period-card .pc-badge{
+  position:absolute;top:-10px;right:12px;
+  background:var(--green-deep);color:#fff;
+  font-size:11px;font-weight:600;
+  padding:4px 12px;border-radius:999px;
+  letter-spacing:.03em;
+}
+/* dance (оранжевый фон) */
+.tariff.dance .period-card{
+  border-color:rgba(255,255,255,.22);
+  background:rgba(255,255,255,.08);
+}
+.tariff.dance .period-card:hover{
+  border-color:rgba(255,255,255,.45);
+  box-shadow:0 4px 14px rgba(0,0,0,.08);
+}
+.tariff.dance .period-card.selected{
+  border-color:#fff;
+  background:rgba(255,255,255,.18);
+  box-shadow:0 0 0 3px rgba(255,255,255,.14);
+}
+.tariff.dance .period-card .pc-label{color:rgba(255,248,228,.7)}
+.tariff.dance .period-card .pc-price{color:#fff8e4}
+.tariff.dance .period-card .pc-sub{color:rgba(255,248,228,.6)}
+.tariff.dance .period-card .pc-badge{background:rgba(255,255,255,.25);color:#fff8e4}
+
+/* ═══ PERIOD TOGGLE (в модалке) ═══ */
+.modal-period-toggle{
+  display:grid;grid-template-columns:1fr 1fr;gap:10px;
+  margin-bottom:20px;
+}
+.modal-period-card{
+  position:relative;
+  border-radius:14px;padding:14px 16px;
+  text-align:left;cursor:pointer;
+  border:2px solid var(--line);
+  background:rgba(255,250,240,.5);
+  transition:border-color .2s,background .2s,transform .15s,box-shadow .15s;
+}
+.modal-period-card:hover{
+  border-color:var(--orange-100);
+  transform:translateY(-1px);
+}
+.modal-period-card.selected{
+  border-color:var(--orange);
+  background:#fef0e0;
+  box-shadow:0 0 0 3px rgba(233,109,42,.12);
+}
+.modal-period-card .mpc-label{
+  font-size:14px;font-weight:500;color:var(--ink);
+  margin-bottom:3px;
+}
+.modal-period-card .mpc-price{
+  font-family:'Cormorant Garamond',serif;
+  font-weight:600;font-size:22px;color:var(--ink);line-height:1.1;
+}
+.modal-period-card .mpc-sub{
+  font-size:11.5px;color:var(--ink-mute);margin-top:3px;line-height:1.3;
+}
+.modal-period-card .mpc-badge{
+  position:absolute;top:-8px;right:10px;
+  background:var(--green-deep);color:#fff;
+  font-size:10px;font-weight:600;
+  padding:3px 10px;border-radius:999px;
+}
 
 /* SPOTS BADGE */
 .spots-badge{display:inline-flex;align-items:center;gap:8px;border-radius:999px;padding:9px 18px;font-size:13px;font-weight:500;margin-bottom:18px;background:#fff3e8;border:1.5px solid var(--orange-100);color:var(--ink-soft);}
@@ -649,79 +413,33 @@ h1,h2,h3,h4{letter-spacing:-.01em}
 .faq-a{max-height:0;overflow:hidden;transition:max-height .35s;padding:0 28px;color:var(--ink-mute);font-size:15px;line-height:1.65;}
 .faq-item.open .faq-a{max-height:320px;padding:0 28px 24px}
 
-/* ── CTA ПЛАШКА ── */
-.cta-wrap{
-  padding:60px 0 80px;
-  background:var(--bg);
-}
-.cta-plate{
-  position:relative;overflow:hidden;
-  background:#3b2314;
-  border-radius:32px;
-  padding:80px 72px;
-  text-align:center;
-  box-shadow:0 24px 60px rgba(30,15,5,.22);
-}
-.cta-plate::before{
-  content:"";position:absolute;
-  top:-140px;left:50%;transform:translateX(-50%);
-  width:600px;height:600px;
-  background:radial-gradient(circle, rgba(120,60,20,.45) 0%, transparent 65%);
-  border-radius:50%;pointer-events:none;
-}
-.cta-plate::after{
-  content:"";position:absolute;
-  bottom:-80px;right:-60px;
-  width:320px;height:320px;
-  background:radial-gradient(circle, rgba(185,207,138,.08) 0%, transparent 65%);
-  border-radius:50%;pointer-events:none;
-}
-.cta-plate h2{
-  font-family:'Cormorant Garamond',serif;
-  font-weight:600;font-size:72px;line-height:1.02;
-  letter-spacing:-.018em;
-  color:#f5e6c8;
-  margin:0 0 18px;
-  text-wrap:balance;
-  position:relative;z-index:1;
-}
-.cta-plate h2 i{
-  font-style:italic;font-weight:500;
-  color:#f0d596;
-}
-.cta-plate p{
-  color:rgba(245,230,200,.72);
-  font-size:16px;line-height:1.6;
-  margin:0 auto 44px;
-  max-width:520px;
-  position:relative;z-index:1;
-}
-.cta-tg-btn{
-  display:inline-flex;align-items:center;gap:14px;
-  background:#f5e6c8;color:#3b2314;
-  padding:18px 44px;border-radius:999px;
-  font-size:15.5px;font-weight:600;
-  transition:transform .2s,background .2s,box-shadow .2s;
-  box-shadow:0 10px 28px rgba(0,0,0,.18);
-  position:relative;z-index:1;
-  letter-spacing:.01em;
-}
-.cta-tg-btn:hover{
-  background:#fff8e8;
-  transform:translateY(-3px);
-  box-shadow:0 16px 36px rgba(0,0,0,.22);
-}
+/* CTA */
+.cta-wrap{padding:60px 0 80px;background:var(--bg);}
+.cta-plate{position:relative;overflow:hidden;background:#3b2314;border-radius:32px;padding:80px 72px;text-align:center;box-shadow:0 24px 60px rgba(30,15,5,.22);}
+.cta-plate::before{content:"";position:absolute;top:-140px;left:50%;transform:translateX(-50%);width:600px;height:600px;background:radial-gradient(circle, rgba(120,60,20,.45) 0%, transparent 65%);border-radius:50%;pointer-events:none;}
+.cta-plate::after{content:"";position:absolute;bottom:-80px;right:-60px;width:320px;height:320px;background:radial-gradient(circle, rgba(185,207,138,.08) 0%, transparent 65%);border-radius:50%;pointer-events:none;}
+.cta-plate h2{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:72px;line-height:1.02;letter-spacing:-.018em;color:#f5e6c8;margin:0 0 18px;text-wrap:balance;position:relative;z-index:1;}
+.cta-plate h2 i{font-style:italic;font-weight:500;color:#f0d596;}
+.cta-plate p{color:rgba(245,230,200,.72);font-size:16px;line-height:1.6;margin:0 auto 44px;max-width:520px;position:relative;z-index:1;}
+.cta-tg-btn{display:inline-flex;align-items:center;gap:14px;background:#f5e6c8;color:#3b2314;padding:18px 44px;border-radius:999px;font-size:15.5px;font-weight:600;transition:transform .2s,background .2s,box-shadow .2s;box-shadow:0 10px 28px rgba(0,0,0,.18);position:relative;z-index:1;letter-spacing:.01em;}
+.cta-tg-btn:hover{background:#fff8e8;transform:translateY(-3px);box-shadow:0 16px 36px rgba(0,0,0,.22);}
 .cta-tg-btn:hover .cta-arr{transform:translateX(5px)}
-.cta-tg-icon{
-  width:32px;height:32px;border-radius:50%;
-  background:var(--orange);color:#fff;
-  display:inline-flex;align-items:center;justify-content:center;
-  font-size:16px;flex-shrink:0;
-}
-.cta-arr{
-  font-size:18px;opacity:.7;
-  transition:transform .25s ease;
-}
+.cta-tg-icon{width:32px;height:32px;border-radius:50%;background:var(--orange);color:#fff;display:inline-flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;}
+.cta-arr{font-size:18px;opacity:.7;transition:transform .25s ease;}
+
+/* CHECKLIST BANNER */
+.checklist-banner{padding:30px 0 0}
+.checklist-banner-inner{display:flex;align-items:center;justify-content:space-between;gap:36px;background:linear-gradient(135deg,#ef7d40 0%,#f08a51 50%,#f4a276 100%);border-radius:28px;padding:48px 56px;color:#fff8e4;box-shadow:0 18px 40px rgba(200,100,40,.22);position:relative;overflow:hidden;transition:transform .25s ease, box-shadow .25s ease;text-decoration:none;}
+.checklist-banner-inner:hover{transform:translateY(-3px);box-shadow:0 24px 48px rgba(200,100,40,.30)}
+.checklist-banner-inner::before{content:"";position:absolute;top:-60px;right:-40px;width:240px;height:240px;background:radial-gradient(circle, rgba(255,255,255,.30) 0%, transparent 65%);border-radius:50%;pointer-events:none;}
+.cb-text{flex:1;position:relative;z-index:1}
+.cb-eyebrow{display:inline-block;background:rgba(255,255,255,.22);padding:7px 16px;border-radius:999px;font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;font-weight:500;margin-bottom:16px;}
+.cb-title{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:46px;line-height:1.02;margin:0 0 12px;letter-spacing:-.018em;text-wrap:balance;}
+.cb-title i{font-style:italic;font-weight:500}
+.cb-title .big{display:inline-block;background:#fff8e4;color:var(--orange);padding:0 14px;border-radius:10px;font-size:.92em;transform:rotate(-2deg);margin-right:4px;}
+.cb-sub{font-size:15px;line-height:1.55;max-width:520px;opacity:.95;margin:0}
+.cb-arrow{flex-shrink:0;position:relative;z-index:1;width:72px;height:72px;border-radius:50%;background:#fff8e4;color:var(--orange);display:inline-flex;align-items:center;justify-content:center;font-size:30px;box-shadow:0 8px 24px rgba(0,0,0,.12);transition:transform .25s ease;}
+.checklist-banner-inner:hover .cb-arrow{transform:translateX(6px)}
 
 /* FOOTER */
 .footer{background:#1c1107;color:#a89a7c;padding:74px 0 32px}
@@ -748,7 +466,6 @@ h1,h2,h3,h4{letter-spacing:-.01em}
 .field input,.field select{width:100%;padding:15px 18px;border-radius:14px;background:rgba(255,250,240,.7);border:1.4px solid #ece1c8;font-family:inherit;font-size:15px;color:var(--ink);transition:border-color .2s,background .2s;}
 .field input::placeholder{color:#c4b59a}
 .field input:focus,.field select:focus{outline:none;border-color:var(--orange);background:#fff}
-.field select{appearance:none;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'><path fill='%238a7558' d='M6 8 0 0h12z'/></svg>");background-repeat:no-repeat;background-position:right 18px center;padding-right:40px;}
 .price-summary{background:#fef0e0;border-radius:14px;padding:16px 20px;margin-bottom:18px;font-size:15px;color:var(--ink-soft);line-height:1.5;}
 .modal .submit{width:100%;margin-top:12px;padding:18px;border-radius:999px;background:var(--olive);color:#fff8e4;font-size:16px;font-weight:500;transition:background .2s,transform .15s;}
 .modal .submit:hover:not(:disabled){background:var(--olive-dark);transform:translateY(-1px)}
@@ -763,57 +480,6 @@ h1,h2,h3,h4{letter-spacing:-.01em}
 .modal-success .pay-direct-btn{display:inline-block;margin-top:20px;padding:14px 32px;border-radius:999px;background:var(--orange);color:#fff;font-size:15px;font-weight:500;text-decoration:none;transition:background .2s,transform .15s;}
 .modal-success .pay-direct-btn:hover{background:#d46820;transform:translateY(-1px)}
 
-/* CHECKLIST BANNER */
-.checklist-banner{padding:30px 0 0}
-.checklist-banner-inner{
-  display:flex;align-items:center;justify-content:space-between;gap:36px;
-  background:linear-gradient(135deg,#ef7d40 0%,#f08a51 50%,#f4a276 100%);
-  border-radius:28px;padding:48px 56px;
-  color:#fff8e4;
-  box-shadow:0 18px 40px rgba(200,100,40,.22);
-  position:relative;overflow:hidden;
-  transition:transform .25s ease, box-shadow .25s ease;
-  text-decoration:none;
-}
-.checklist-banner-inner:hover{transform:translateY(-3px);box-shadow:0 24px 48px rgba(200,100,40,.30)}
-.checklist-banner-inner::before{
-  content:"";position:absolute;top:-60px;right:-40px;width:240px;height:240px;
-  background:radial-gradient(circle, rgba(255,255,255,.30) 0%, transparent 65%);
-  border-radius:50%;pointer-events:none;
-}
-.cb-text{flex:1;position:relative;z-index:1}
-.cb-eyebrow{
-  display:inline-block;
-  background:rgba(255,255,255,.22);
-  padding:7px 16px;border-radius:999px;
-  font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;
-  font-weight:500;margin-bottom:16px;
-}
-.cb-title{
-  font-family:'Cormorant Garamond',serif;
-  font-weight:600;font-size:46px;line-height:1.02;
-  margin:0 0 12px;letter-spacing:-.018em;
-  text-wrap:balance;
-}
-.cb-title i{font-style:italic;font-weight:500}
-.cb-title .big{
-  display:inline-block;
-  background:#fff8e4;color:var(--orange);
-  padding:0 14px;border-radius:10px;
-  font-size:.92em;transform:rotate(-2deg);margin-right:4px;
-}
-.cb-sub{font-size:15px;line-height:1.55;max-width:520px;opacity:.95;margin:0}
-.cb-arrow{
-  flex-shrink:0;position:relative;z-index:1;
-  width:72px;height:72px;border-radius:50%;
-  background:#fff8e4;color:var(--orange);
-  display:inline-flex;align-items:center;justify-content:center;
-  font-size:30px;
-  box-shadow:0 8px 24px rgba(0,0,0,.12);
-  transition:transform .25s ease;
-}
-.checklist-banner-inner:hover .cb-arrow{transform:translateX(6px)}
-
 @media(max-width:1080px){
   .gallery{grid-template-columns:repeat(2,1fr)}
   .gallery .g.tall{aspect-ratio:1/1}
@@ -822,9 +488,6 @@ h1,h2,h3,h4{letter-spacing:-.01em}
 @media(max-width:880px){
   .container{padding:0 22px}
   .hero-grid,.about-grid,.benefits-grid,.tariffs,.footer-grid,.activities-head,.story-grid,.waitlist{grid-template-columns:1fr;gap:36px}
-  .waitlist{padding:38px 28px;gap:32px}
-  .waitlist-title{font-size:36px}
-  .wl-price{font-size:44px}
   .activities-sub,.pricing-sub{text-align:left;max-width:none}
   .activity-grid{grid-template-columns:1fr}
   .hero h1{font-size:56px}.about h2{font-size:38px}.section-title{font-size:48px}
@@ -833,6 +496,7 @@ h1,h2,h3,h4{letter-spacing:-.01em}
   .compare-head p{text-align:left}
   .compare-grid{grid-template-columns:1fr}
   .schedule{padding:32px 22px}.week{grid-template-columns:repeat(4,1fr)}
+  .benefits .container{padding:48px 28px;border-radius:24px}
   .manifesto{padding:36px 28px;font-size:19px}
   .gallery{grid-template-columns:1fr 1fr}.nav{display:none}
   .modal{padding:32px 24px}.modal h2{font-size:28px}
@@ -852,6 +516,9 @@ h1,h2,h3,h4{letter-spacing:-.01em}
   .checklist-banner-inner{flex-direction:column;align-items:flex-start;text-align:left;padding:34px 28px;gap:24px}
   .cb-title{font-size:32px}
   .cb-arrow{width:56px;height:56px;font-size:24px}
+  .period-toggle{gap:8px}
+  .period-card{padding:13px 14px}
+  .period-card .pc-price{font-size:24px}
 }
 </style>
 </head>
@@ -892,9 +559,9 @@ h1,h2,h3,h4{letter-spacing:-.01em}
 <section id="about" class="about">
   <div class="container about-grid">
     <div class="collage">
-      <div class="c1"><img src="about-1.png" alt=""/></div>
-      <div class="c2"><img src="about-2.png" alt=""/></div>
-      <div class="c3"><img src="about-3.png" alt=""/></div>
+      <div class="c1"><img src="about-1.png" alt=""></img></div>
+      <div class="c2"><img src="about-2.png" alt=""></img></div>
+      <div class="c3"><img src="about-3.png" alt=""></img></div>
     </div>
     <div class="about-text">
       <span class="section-eyebrow">о клубе</span>
@@ -905,45 +572,31 @@ h1,h2,h3,h4{letter-spacing:-.01em}
   </div>
 </section>
 
-<!-- ─────────── ДЛЯ КОГО (лаконичный список) ─────────── -->
 <section class="for-whom">
   <div class="container">
     <span class="section-eyebrow">для кого</span>
     <h2 class="section-title">Узнаёшь <i>себя?</i></h2>
     <div class="for-whom-list">
       <div class="fw-row">
-        <div class="fw-row-head">
-          <span class="fw-num">01</span>
-          <h3 class="fw-title">У тебя новый период в жизни</h3>
-        </div>
+        <div class="fw-row-head"><span class="fw-num">01</span><h3 class="fw-title">У тебя новый период в жизни</h3></div>
         <p class="fw-desc">Ты рассталась с парнем, или наоборот работаешь над своей автономностью в отношениях. Хочется поддержки и разнообразия в жизни, прочувствовать женскую энергию.</p>
       </div>
       <div class="fw-row">
-        <div class="fw-row-head">
-          <span class="fw-num">02</span>
-          <h3 class="fw-title">Переехала в Москву</h3>
-        </div>
+        <div class="fw-row-head"><span class="fw-num">02</span><h3 class="fw-title">Переехала в Москву</h3></div>
         <p class="fw-desc">Ты в новом городе, ещё нет друзей и устоявшегося сообщества, и по выходным не знаешь, куда себя деть. Хочется своих людей рядом, а не случайных знакомств.</p>
       </div>
       <div class="fw-row">
-        <div class="fw-row-head">
-          <span class="fw-num">03</span>
-          <h3 class="fw-title">Хочешь бегать, но одной лень</h3>
-        </div>
+        <div class="fw-row-head"><span class="fw-num">03</span><h3 class="fw-title">Хочешь бегать, но одной лень</h3></div>
         <p class="fw-desc">Ты знаешь, что спорт — это кайф, но мотивации хватает на два раза. В компании всё иначе: ноги сами несут на пробежку, когда тебя ждут!</p>
       </div>
       <div class="fw-row">
-        <div class="fw-row-head">
-          <span class="fw-num">04</span>
-          <h3 class="fw-title">Синдром FOMO и страх «пропустить» лето</h3>
-        </div>
+        <div class="fw-row-head"><span class="fw-num">04</span><h3 class="fw-title">Синдром FOMO и страх «пропустить» лето</h3></div>
         <p class="fw-desc">Смотришь, как другие ходят на пикники, танцуют и весело проводят время — и хочешь так же. Рассвет — это твоя компания для всего этого!</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ─────────── ПОЧЕМУ КЛУБ (full-bleed) ─────────── -->
 <section class="compare-wrap">
   <div class="container">
     <div class="compare-head">
@@ -1056,10 +709,10 @@ h1,h2,h3,h4{letter-spacing:-.01em}
   <div class="container">
     <div class="gallery-eyebrow"><span class="section-eyebrow">атмосфера</span></div>
     <div class="gallery">
-      <div class="g tall"><img src="gal-1.png" alt=""/></div>
-      <div class="g"><img src="gal-2.png" alt=""/></div>
-      <div class="g"><img src="gal-3.png" alt=""/></div>
-      <div class="g"><img src="gal-4.png" alt=""/></div>
+      <div class="g tall"><img src="gal-1.png" alt=""></img></div>
+      <div class="g"><img src="gal-2.png" alt=""></img></div>
+      <div class="g"><img src="gal-3.png" alt=""></img></div>
+      <div class="g"><img src="gal-4.png" alt=""></img></div>
     </div>
   </div>
 </section>
@@ -1093,7 +746,7 @@ h1,h2,h3,h4{letter-spacing:-.01em}
     </div>
   </div>
 </section>
-  
+
 <!-- ═══ ТАРИФЫ ═══ -->
 <section id="pricing" class="pricing">
   <div class="container">
@@ -1122,14 +775,28 @@ h1,h2,h3,h4{letter-spacing:-.01em}
       </div>
     </div>
     <p class="pricing-note">Сейчас идёт первый поток. Хочешь к нам в июле? Оплати участие сейчас по <strong>цене июня</strong> — место сразу твоё.</p>
+
     <div class="tariffs">
+      <!-- ── ТАРИФ: БАЗА ── -->
       <div class="tariff base">
         <span class="tariff-month">☀ Июль</span>
         <div class="tnum">01</div>
         <h3 class="tname">База</h3>
         <div class="tsub">Все активности клуба, кроме танцев. Идеально, если хочешь полную программу и общение.</div>
-        <div class="price">2000<span class="ruble">₽</span></div>
-        <div class="price-cap">в месяц</div>
+
+        <div class="period-toggle" data-tariff-key="base">
+          <button type="button" class="period-card selected" data-period="1">
+            <div class="pc-label">1 месяц</div>
+            <div class="pc-price">2 000 ₽</div>
+          </button>
+          <button type="button" class="period-card" data-period="3">
+            <span class="pc-badge">−10%</span>
+            <div class="pc-label">3 месяца</div>
+            <div class="pc-price">1 800 ₽/мес</div>
+            <div class="pc-sub">5 400 ₽ итого · экономия 600 ₽</div>
+          </button>
+        </div>
+
         <ul class="features">
           <li>Еженедельные пробежки</li>
           <li>Книжный / кино клуб</li>
@@ -1142,14 +809,29 @@ h1,h2,h3,h4{letter-spacing:-.01em}
         <div class="spots-badge" id="spots-base"><span class="spots-dot"></span><span id="spots-base-text">загрузка…</span></div>
         <button class="cta-btn" data-pay="base" data-price="2000" data-month="july">Закрепить место на июль</button>
       </div>
+
+      <!-- ── ТАРИФ: КЛУБ + ТАНЦЫ ── -->
       <div class="tariff dance">
         <span class="tariff-badge">Для тех, кто давно мечтал танцевать</span>
         <span class="tariff-month">☀ Июль</span>
         <div class="tnum">02</div>
         <h3 class="tname">Клуб + танцы</h3>
         <div class="tsub">Всё из базы + танцевальные тренировки каждую неделю.</div>
-        <div class="price">3800<span class="ruble">₽</span></div>
-        <div class="price-cap">в месяц <s>вместо 5000 ₽</s></div>
+
+        <div class="period-toggle" data-tariff-key="dance">
+          <button type="button" class="period-card selected" data-period="1">
+            <div class="pc-label">1 месяц</div>
+            <div class="pc-price">3 800 ₽</div>
+            <div class="pc-sub">вместо 5 000 ₽</div>
+          </button>
+          <button type="button" class="period-card" data-period="3">
+            <span class="pc-badge">−10%</span>
+            <div class="pc-label">3 месяца</div>
+            <div class="pc-price">3 420 ₽/мес</div>
+            <div class="pc-sub">10 260 ₽ итого · экономия 1 140 ₽</div>
+          </button>
+        </div>
+
         <ul class="features">
           <li>Всё из тарифа «База»</li>
           <li class="hi">3 часа танцев в месяц</li>
@@ -1163,7 +845,7 @@ h1,h2,h3,h4{letter-spacing:-.01em}
     </div>
   </div>
 </section>
-  
+
 <!-- ───────────── WELCOME ВСТРЕЧА ───────────── -->
 <section id="welcome" class="welcome-wrap">
   <div class="container">
@@ -1171,9 +853,7 @@ h1,h2,h3,h4{letter-spacing:-.01em}
       <div class="welcome-content">
         <span class="welcome-eyebrow"><span class="dot"></span>Знакомство с клубом</span>
         <h2>Не готова сразу? <i>Попробуй одну встречу</i></h2>
-        <p class="welcome-lead">
-          Раз в месяц у нас открыта <strong>Welcome-встреча</strong> — выбери активность, запишись и приходи. По цене чашки кофе, без обязательств. Просто чтобы почувствовать атмосферу и познакомиться.
-        </p>
+        <p class="welcome-lead">Раз в месяц у нас открыта <strong>Welcome-встреча</strong> — выбери активность, запишись и приходи. По цене чашки кофе, без обязательств. Просто чтобы почувствовать атмосферу и познакомиться.</p>
 
         <p class="welcome-step-label">Выбери формат:</p>
         <div class="welcome-formats" id="welcome-formats">
@@ -1202,8 +882,8 @@ h1,h2,h3,h4{letter-spacing:-.01em}
         <div class="welcome-form-wrap" id="welcome-form-wrap" hidden>
           <div class="welcome-chosen" id="welcome-chosen"></div>
           <div class="wf-fields">
-            <div class="field"><label for="wf-name">Твоё имя</label><input id="wf-name" type="text" placeholder="Анна" required/></div>
-            <div class="field"><label for="wf-tg">Telegram</label><input id="wf-tg" type="text" placeholder="@anna" required/></div>
+            <div class="field"><label for="wf-name">Твоё имя</label><input id="wf-name" type="text" placeholder="Анна" required></input></div>
+            <div class="field"><label for="wf-tg">Telegram</label><input id="wf-tg" type="text" placeholder="@anna" required></input></div>
           </div>
           <button type="button" class="welcome-submit" id="welcome-submit">Записаться за 500 ₽ →</button>
           <p class="welcome-form-note">После записи перенаправим на страницу оплаты. Я свяжусь с тобой в Telegram и расскажу все детали!</p>
@@ -1220,9 +900,7 @@ h1,h2,h3,h4{letter-spacing:-.01em}
           <li>Тёплый круг и общение</li>
           <li>Возможность задать вопросы лично</li>
         </ul>
-        <div class="welcome-card-hint">
-          После Welcome-встречи можно вступить в клуб со скидкой 10% на первый месяц.
-        </div>
+        <div class="welcome-card-hint">После Welcome-встречи можно вступить в клуб со скидкой 10% на первый месяц.</div>
       </div>
     </div>
   </div>
@@ -1286,7 +964,6 @@ h1,h2,h3,h4{letter-spacing:-.01em}
   </div>
 </section>
 
-<!-- ── CTA ПЛАШКА ── -->
 <section id="cta" class="cta-wrap">
   <div class="container">
     <div class="cta-plate">
@@ -1338,16 +1015,30 @@ h1,h2,h3,h4{letter-spacing:-.01em}
       <h2>Оформление</h2>
       <div class="modal-tariff" id="modal-tariff"></div>
       <form id="pay-form" novalidate>
-        <div class="field"><label for="f-name">Ваше имя</label><input id="f-name" type="text" placeholder="Анна" required/></div>
-        <div class="field"><label for="f-tg">Telegram</label><input id="f-tg" type="text" placeholder="@anna" required/></div>
-        <div class="field"><label for="f-phone">Телефон</label><input id="f-phone" type="tel" placeholder="+7 (___) ___-__-__" required/></div>
-        <div class="field">
-          <label for="f-period">Период оплаты</label>
-          <select id="f-period">
-            <option value="1">1 месяц</option>
-            <option value="3">3 месяца — скидка 10%</option>
-          </select>
+        <div class="field"><label for="f-name">Ваше имя</label><input id="f-name" type="text" placeholder="Анна" required></input></div>
+        <div class="field"><label for="f-tg">Telegram</label><input id="f-tg" type="text" placeholder="@anna" required></input></div>
+        <div class="field"><label for="f-phone">Телефон</label><input id="f-phone" type="tel" placeholder="+7 (___) ___-__-__" required></input></div>
+
+        <!-- Период оплаты — две плашки вместо dropdown -->
+        <label style="font-size:14.5px;color:var(--ink);font-weight:500;display:block;margin-bottom:10px">Период оплаты</label>
+        <div class="modal-period-toggle" id="modal-period-toggle">
+          <button type="button" class="modal-period-card selected" data-period="1">
+            <div class="mpc-label">1 месяц</div>
+            <div class="mpc-price" id="mpc-price-1"></div>
+          </button>
+          <button type="button" class="modal-period-card" data-period="3">
+            <span class="mpc-badge">−10%</span>
+            <div class="mpc-label">3 месяца</div>
+            <div class="mpc-price" id="mpc-price-3"></div>
+            <div class="mpc-sub" id="mpc-sub-3"></div>
+          </button>
         </div>
+        <!-- скрытый select для совместимости с JS -->
+        <select id="f-period" hidden>
+          <option value="1">1 месяц</option>
+          <option value="3">3 месяца — скидка 10%</option>
+        </select>
+
         <div class="price-summary" id="price-summary"></div>
         <button type="submit" class="submit" id="submit-btn">Перейти к оплате</button>
         <div class="pay-methods"><span>СБП</span><span>Visa / MC</span><span>МИР</span><span>ЮMoney</span></div>
@@ -1401,6 +1092,16 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
   cards.forEach(c => io.observe(c));
 })();
 
+// ── Period toggle on tariff cards ──────────────────────
+document.querySelectorAll('.period-toggle').forEach(toggle => {
+  toggle.querySelectorAll('.period-card').forEach(card => {
+    card.addEventListener('click', () => {
+      toggle.querySelectorAll('.period-card').forEach(c => c.classList.remove('selected'));
+      card.classList.add('selected');
+    });
+  });
+});
+
 // ── Spots counter ──────────────────────────────────────
 const SHEETS_URL = 'https://script.google.com/macros/s/AKfycbzAc1FgNoTqr07sgHr2L1U7k6HuZUskb37rnULz4kO88SSRRMd2-XHIXu8B76Qo0OIKjg/exec';
 
@@ -1411,9 +1112,9 @@ function plural(n) {
 }
 
 function updateBadge(tariff, count) {
-  const badge = document.getElementById(`spots-${tariff}`);
-  const text  = document.getElementById(`spots-${tariff}-text`);
-  const btn   = document.querySelector(`.tariff.${tariff} [data-pay="${tariff}"]`);
+  const badge = document.getElementById('spots-' + tariff);
+  const text  = document.getElementById('spots-' + tariff + '-text');
+  const btn   = document.querySelector('.tariff.' + tariff + ' [data-pay="' + tariff + '"]');
   if (!badge || !text) return;
   badge.classList.remove('few','none');
   if (count <= 0) {
@@ -1422,9 +1123,9 @@ function updateBadge(tariff, count) {
     if (btn) { btn.disabled = true; btn.textContent = 'Мест нет'; }
   } else if (count <= 5) {
     badge.classList.add('few');
-    text.textContent = `Осталось ${count} ${plural(count)}`;
+    text.textContent = 'Осталось ' + count + ' ' + plural(count);
   } else {
-    text.textContent = `Осталось ${count} ${plural(count)}`;
+    text.textContent = 'Осталось ' + count + ' ' + plural(count);
   }
 }
 
@@ -1464,27 +1165,52 @@ const fPeriod      = document.getElementById('f-period');
 const PRICES = { base:{name:'База',price:2000}, dance:{name:'Клуб + танцы',price:3800} };
 const fmt = n => n.toLocaleString('ru-RU');
 
+function updateModalPeriodCards() {
+  const t = PRICES[modal.dataset.tariff]; if (!t) return;
+  const p1El = document.getElementById('mpc-price-1');
+  const p3El = document.getElementById('mpc-price-3');
+  const s3El = document.getElementById('mpc-sub-3');
+  if (p1El) p1El.textContent = fmt(t.price) + ' ₽';
+  if (p3El) p3El.textContent = fmt(Math.round(t.price * 0.9)) + ' ₽/мес';
+  if (s3El) s3El.textContent = fmt(Math.round(t.price * 0.9) * 3) + ' ₽ итого';
+}
+
 function updatePriceSummary() {
   const t = PRICES[modal.dataset.tariff]; if (!t) return;
   const p = parseInt(fPeriod.value) || 1;
-  const monthLabel = modal.dataset.month === 'july' ? ' · июль (лист ожидания)' : '';
-  modalTariff.textContent = `Тариф «${t.name}»${monthLabel}`;
+  const monthLabel = modal.dataset.month === 'july' ? ' · июль' : '';
+  modalTariff.textContent = 'Тариф «' + t.name + '»' + monthLabel;
   if (p === 1) {
-    priceSummary.innerHTML = `<strong style="font-size:20px;color:var(--ink)">${fmt(t.price)} ₽</strong> — за 1 месяц`;
+    priceSummary.innerHTML = '<strong style="font-size:20px;color:var(--ink)">' + fmt(t.price) + ' ₽</strong> — за 1 месяц';
   } else {
     const disc = Math.round(t.price * .9), total = disc * p, saved = t.price * p - total;
     priceSummary.innerHTML =
-      `<strong style="font-size:20px;color:var(--ink)">${fmt(total)} ₽</strong> — итого за 3 месяца` +
-      `<br><span style="font-size:13px;color:var(--ink-mute)">${fmt(disc)} ₽/мес вместо ${fmt(t.price)} ₽ · экономия ${fmt(saved)} ₽</span>`;
+      '<strong style="font-size:20px;color:var(--ink)">' + fmt(total) + ' ₽</strong> — итого за 3 месяца' +
+      '<br><span style="font-size:13px;color:var(--ink-mute)">' + fmt(disc) + ' ₽/мес вместо ' + fmt(t.price) + ' ₽ · экономия ' + fmt(saved) + ' ₽</span>';
   }
 }
 
-function openModal(key, month) {
+// Modal period toggle
+document.querySelectorAll('.modal-period-card').forEach(card => {
+  card.addEventListener('click', () => {
+    document.querySelectorAll('.modal-period-card').forEach(c => c.classList.remove('selected'));
+    card.classList.add('selected');
+    fPeriod.value = card.dataset.period;
+    updatePriceSummary();
+  });
+});
+
+function openModal(key, month, period) {
   modal.dataset.tariff = key;
   modal.dataset.month = month || '';
-  fPeriod.value = '1';
+  fPeriod.value = period || '1';
+  // sync modal period cards
+  document.querySelectorAll('.modal-period-card').forEach(c => {
+    c.classList.toggle('selected', c.dataset.period === fPeriod.value);
+  });
   modalForm.hidden = false;
   modalSuccess.hidden = true;
+  updateModalPeriodCards();
   updatePriceSummary();
   modal.classList.add('open');
   document.body.classList.add('modal-open');
@@ -1492,9 +1218,16 @@ function openModal(key, month) {
 }
 function closeModal() { modal.classList.remove('open'); document.body.classList.remove('modal-open'); }
 
-fPeriod.addEventListener('change', updatePriceSummary);
 document.querySelectorAll('[data-pay]').forEach(btn => {
-  btn.addEventListener('click', e => { e.preventDefault(); if (!btn.disabled) openModal(btn.dataset.pay, btn.dataset.month); });
+  btn.addEventListener('click', e => {
+    e.preventDefault();
+    if (btn.disabled) return;
+    // read selected period from the tariff card
+    const tariffCard = btn.closest('.tariff');
+    const selectedPeriodCard = tariffCard ? tariffCard.querySelector('.period-card.selected') : null;
+    const period = selectedPeriodCard ? selectedPeriodCard.dataset.period : '1';
+    openModal(btn.dataset.pay, btn.dataset.month, period);
+  });
 });
 document.getElementById('modal-close').addEventListener('click', closeModal);
 modal.addEventListener('click', e => { if (e.target === modal) closeModal(); });
@@ -1523,7 +1256,7 @@ payForm.addEventListener('submit', async e => {
 
   const tariff = modal.dataset.tariff;
   const period = parseInt(fPeriod.value) || 1;
-  const payUrl = PAY_LINKS[tariff]?.[period];
+  const payUrl = PAY_LINKS[tariff] && PAY_LINKS[tariff][period];
 
   if (payUrl) payDirectBtn.href = payUrl;
   submitBtn.textContent = 'Создаём заказ…';
@@ -1545,7 +1278,7 @@ payForm.addEventListener('submit', async e => {
         month: modal.dataset.month || 'june'
       })
     });
-  } catch { /* не блокируем оплату */ }
+  } catch(err) { /* не блокируем оплату */ }
 
   submitBtn.textContent = 'Перейти к оплате';
   submitBtn.disabled = false;
@@ -1569,16 +1302,15 @@ async function loadSpotsWithWelcome() {
     const d = JSON.parse(await r.text());
     updateBadge('base',  d.base);
     updateBadge('dance', d.dance);
-    
     if (d.welcome) {
       welcomeSpots = d.welcome;
       updateWelcomeCards();
     }
- } catch {
+  } catch(err) {
     const baseTxt  = document.getElementById('spots-base-text');
     const danceTxt = document.getElementById('spots-dance-text');
     if (baseTxt)  baseTxt.textContent  = 'Осталось несколько мест';
-    if (danceTxt) danceTxt.textContent  = 'Осталось несколько мест';
+    if (danceTxt) danceTxt.textContent = 'Осталось несколько мест';
   }
 }
 loadSpotsWithWelcome();
@@ -1588,13 +1320,11 @@ function updateWelcomeCards() {
     const key   = card.dataset.format;
     const spots = welcomeSpots[key];
     let badge   = card.querySelector('.wf-spots');
-
     if (!badge) {
       badge = document.createElement('span');
       badge.className = 'wf-spots';
       card.appendChild(badge);
     }
-
     if (spots <= 0) {
       badge.textContent = 'Мест нет';
       badge.classList.add('wf-spots-none');
@@ -1604,7 +1334,7 @@ function updateWelcomeCards() {
       badge.textContent = 'Последнее место!';
       badge.classList.add('wf-spots-few');
     } else {
-      badge.textContent = `Осталось ${spots} ${plural(spots)}`;
+      badge.textContent = 'Осталось ' + spots + ' ' + plural(spots);
     }
   });
 }
@@ -1612,11 +1342,9 @@ function updateWelcomeCards() {
 document.querySelectorAll('.wf-card').forEach(card => {
   card.addEventListener('click', () => {
     if (card.classList.contains('wf-full')) return;
-
     document.querySelectorAll('.wf-card').forEach(c => c.classList.remove('selected'));
     card.classList.add('selected');
     selectedWelcomeFormat = card.dataset.format;
-
     const formWrap = document.getElementById('welcome-form-wrap');
     const chosen   = document.getElementById('welcome-chosen');
     chosen.textContent = '✓ ' + FORMAT_LABELS[selectedWelcomeFormat];
@@ -1628,14 +1356,11 @@ document.getElementById('welcome-submit').addEventListener('click', async () => 
   const wfName = document.getElementById('wf-name');
   const wfTg   = document.getElementById('wf-tg');
   const btn    = document.getElementById('welcome-submit');
-
   if (!selectedWelcomeFormat) return;
   if (!wfName.value.trim()) { wfName.focus(); return; }
   if (!wfTg.value.trim())   { wfTg.focus();   return; }
-
   btn.textContent = 'Записываем…';
   btn.disabled = true;
-
   try {
     const r = await fetch(SHEETS_URL, {
       method: 'POST',
@@ -1651,22 +1376,18 @@ document.getElementById('welcome-submit').addEventListener('click', async () => 
       })
     });
     const result = JSON.parse(await r.text());
-
     if (result.status === 'full') {
       btn.textContent = 'Мест нет — выбери другой формат';
       btn.disabled = false;
       setTimeout(() => { btn.textContent = 'Записаться за 500 ₽ →'; }, 3000);
       return;
     }
-  } catch { /* не блокируем */ }
-
-if (welcomeSpots[selectedWelcomeFormat] > 0) {
+  } catch(err) { /* не блокируем */ }
+  if (welcomeSpots[selectedWelcomeFormat] > 0) {
     welcomeSpots[selectedWelcomeFormat]--;
     updateWelcomeCards();
   }
-
   window.open(WELCOME_PAY_URL, '_blank');
-
   btn.textContent = 'Записаться за 500 ₽ →';
   btn.disabled = false;
 });
