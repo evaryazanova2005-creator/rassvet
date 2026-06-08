@@ -786,7 +786,7 @@ h1,h2,h3,h4{letter-spacing:-.01em}
     <div class="activities-head">
       <div>
         <span class="section-eyebrow">тарифы — онлайн и офлайн</span>
-        <h2 class="section-title">Выбери, как хочешь <i>быть в Рассвете</i></h2>
+        <h2 class="section-title">Выбери свой формат <i>членства в Рассвете</i></h2>
       </div>
       <p class="pricing-sub">Онлайн — для глубины и сообщества из любой точки. Офлайн — для живых встреч в Москве. В офлайн-тарифах онлайн уже включён.</p>
     </div>
@@ -807,27 +807,37 @@ h1,h2,h3,h4{letter-spacing:-.01em}
         </div>
       </div>
     </div>
-    <p class="pricing-note">Офлайн идёт в Москве потоками. Онлайн открыт постоянно — <strong>подключайся в любой день</strong>. Хочешь офлайн в июле? Оплати сейчас по цене июня.</p>
+    <p class="pricing-note">Офлайн проходит в Москве и вступить можно раз в месяц.</p>
 
     <div class="tariffs">
 
       <!-- ── ТАРИФ: ОНЛАЙН ── -->
       <div class="tariff online">
-        <span class="tariff-month">☀ Открыт постоянно</span>
+        <span class="tariff-month">☀ Вступление раз в месяц</span>
         <div class="tnum">01</div>
         <h3 class="tname">Онлайн</h3>
-        <div class="tsub">Каждую неделю — новый разговор, гость или подкаст. Из любой точки.</div>
+        <div class="tsub">Каждую неделю — разные темы, гость или подкаст. В любой точке мира в приливе вдохновения.</div>
 
-        <div class="online-price">1 190<span class="rub">₽</span><span class="per">/ мес</span></div>
-
+        <div class="period-toggle" data-tariff-key="online">
+  <button type="button" class="period-card selected" data-period="1">
+    <div class="pc-label">1 месяц</div>
+    <div class="pc-price">1 190 ₽</div>
+  </button>
+  <button type="button" class="period-card" data-period="3">
+    <span class="pc-badge">−15%</span>
+    <div class="pc-label">3 месяца</div>
+    <div class="pc-price">1 000 ₽/мес</div>
+    <div class="pc-sub">3 000 ₽ итого · экономия 570 ₽</div>
+  </button>
+</div>
         <ul class="features">
-          <li>Встречи с экспертами 2 раза в месяц (психолог и др.)</li>
-          <li>Подкасты от Евы — 2 раза в месяц</li>
+          <li>Встречи с гостями 2 раза в месяц (психолог и др.)</li>
+          <li>Подкасты от меня — 2 раза в месяц</li>
           <li>Книжный клуб онлайн — раз в месяц</li>
           <li>Киноклуб — раз в месяц</li>
-          <li>Стратсессия — итоги месяца и планы</li>
+          <li>Стратсессия — итоги месяца и планы на следующий</li>
           <li>Марафоны 21 день</li>
-          <li>Подборки от Евы каждую неделю</li>
+          <li>Подборки от меня каждую неделю</li>
           <li>Закрытый чат сообщества</li>
         </ul>
         <button class="cta-btn" data-pay="online" data-price="1190" data-month="july">Подключиться →</button>
@@ -862,7 +872,7 @@ h1,h2,h3,h4{letter-spacing:-.01em}
           <li>Онлайн-марафоны с призами</li>
           <li>Закрытый чат и сообщество</li>
         </ul>
-        <div class="online-bonus">Онлайн-клуб включён: встречи с экспертами, подкасты, подборки от Евы</div>
+        <div class="online-bonus">Онлайн-клуб включён: встречи с гостями, подкасты, подборки от меня</div>
         <div class="spots-badge" id="spots-base"><span class="spots-dot"></span><span id="spots-base-text">загрузка…</span></div>
         <button class="cta-btn" data-pay="base" data-price="2000" data-month="july">Закрепить место на июль</button>
       </div>
@@ -1213,7 +1223,8 @@ function updateBadge(tariff, count) {
 
 const PAY_LINKS = {
   online: {
-    1: '#', // TODO: вставить ссылку Prodamus для онлайн-тарифа
+    1: 'https://link.payform.ru/?paymentLinkId=2d4bb776-09a2-43df-a33e-3d8adfd9e6ff',
+    3: 'https://link.payform.ru/?paymentLinkId=d2d99e05-7b09-4642-9f99-f903244cd298',
   },
   base:  {
     1: 'https://link.payform.ru/?paymentLinkId=b08a5d9c-4db7-4634-8e24-36875168300b',
