@@ -491,7 +491,7 @@ h1,h2,h3,h4{letter-spacing:-.01em}
   .hero-grid,.about-grid,.benefits-grid,.tariffs,.footer-grid,.activities-head,.story-grid,.waitlist{grid-template-columns:1fr;gap:36px}
   .activities-sub,.pricing-sub{text-align:left;max-width:none}
   .activity-grid{grid-template-columns:1fr}
-  .hero h1{font-size:56px}.about h2{font-size:38px}.section-title{font-size:48px}
+  .hero h1{font-size:40px}.about h2{font-size:38px}.section-title{font-size:48px}
   .for-whom .section-title{font-size:48px}
   .compare-head .section-title{font-size:44px}
   .compare-head p{text-align:left}
@@ -846,7 +846,8 @@ h1,h2,h3,h4{letter-spacing:-.01em}
           <li>Встречи с гостями 2 раза в месяц (психолог и др.)</li>
           <li>Подкасты от меня — 2 раза в месяц</li>
           <li>Киноклуб — раз в месяц</li>
-          <li style="color:#b09a78;opacity:.7;list-style:none" class="no-check"><span style="display:inline-flex;align-items:center;justify-content:center;width:18px;height:18px;border-radius:50%;background:#f0e7d4;color:#c0392b;font-size:12px;font-weight:700;flex-shrink:0">✕</span> Без офлайн-встреч в Москве</li>        <button class="cta-btn" data-pay="online" data-price="1190" data-month="july">Подключиться →</button>
+          <li style="color:#b09a78;opacity:.7;list-style:none" class="no-check"><span style="display:inline-flex;align-items:center;justify-content:center;width:18px;height:18px;border-radius:50%;background:#f0e7d4;color:#c0392b;font-size:12px;font-weight:700;flex-shrink:0">✕</span> Без офлайн-встреч в Москве</li>        
+          <button class="cta-btn" data-pay="online" data-price="1190" data-month="july">Подключиться →</button>
       </div>
 
       <!-- ── ТАРИФ: БАЗА ── -->
@@ -1239,8 +1240,7 @@ const fTg          = document.getElementById('f-tg');
 const fPhone       = document.getElementById('f-phone');
 const fPeriod      = document.getElementById('f-period');
 
-const PRICES = { online:{name:'Онлайн',price:1190}, base:{name:'База',price:2000}, dance:{name:'Клуб + танцы',price:3800} };
-const fmt = n => n.toLocaleString('ru-RU');
+const PRICES = { online:{name:'Онлайн',price:1190,price3:3000}, base:{name:'База',price:2000}, dance:{name:'Клуб + танцы',price:3800} };const fmt = n => n.toLocaleString('ru-RU');
 
 function updateModalPeriodCards() {
   const t = PRICES[modal.dataset.tariff]; if (!t) return;
@@ -1248,8 +1248,10 @@ function updateModalPeriodCards() {
   const p3El = document.getElementById('mpc-price-3');
   const s3El = document.getElementById('mpc-sub-3');
   if (p1El) p1El.textContent = fmt(t.price) + ' ₽';
-  if (p3El) p3El.textContent = fmt(Math.round(t.price * 0.9)) + ' ₽/мес';
-  if (s3El) s3El.textContent = fmt(Math.round(t.price * 0.9) * 3) + ' ₽ итого';
+  const total3 = t.price3 || Math.round(t.price * 0.9) * 3;
+const perMonth3 = Math.round(total3 / 3);
+if (p3El) p3El.textContent = fmt(perMonth3) + ' ₽/мес';
+if (s3El) s3El.textContent = fmt(total3) + ' ₽ итого';
 }
 
 function updatePriceSummary() {
@@ -1260,7 +1262,9 @@ function updatePriceSummary() {
   if (p === 1) {
     priceSummary.innerHTML = '<strong style="font-size:20px;color:var(--ink)">' + fmt(t.price) + ' ₽</strong> — за 1 месяц';
   } else {
-    const disc = Math.round(t.price * .9), total = disc * p, saved = t.price * p - total;
+    const total = t.price3 && p===3 ? t.price3 : Math.round(t.price * .9) * p;
+const disc = Math.round(total / p);
+const saved = t.price * p - total;
     priceSummary.innerHTML =
       '<strong style="font-size:20px;color:var(--ink)">' + fmt(total) + ' ₽</strong> — итого за 3 месяца' +
       '<br><span style="font-size:13px;color:var(--ink-mute)">' + fmt(disc) + ' ₽/мес вместо ' + fmt(t.price) + ' ₽ · экономия ' + fmt(saved) + ' ₽</span>';
