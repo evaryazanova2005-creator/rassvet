@@ -260,7 +260,7 @@ h1,h2,h3,h4{letter-spacing:-.01em}
 .pricing-note strong{color:var(--ink);font-weight:600;background:linear-gradient(transparent 70%,rgba(233,109,42,.18) 70%);}
 
 /* TARIFF MONTH PILL */
-.tariff-month{display:inline-flex;align-items:center;gap:7px;background:var(--orange-50);color:#c45a1b;font-size:12px;letter-spacing:.1em;text-transform:uppercase;padding:6px 14px;border-radius:999px;font-weight:500;margin-bottom:14px;}
+.tariff-month{display:inline-flex;align-items:center;gap:7px;background:var(--orange-50);color:#c45a1b;font-size:11px;letter-spacing:.1em;text-transform:uppercase;padding:5px 12px;border-radius:999px;font-weight:500;margin-bottom:10px;position:relative;z-index:1;}
 .tariff.dance .tariff-month{background:rgba(255,255,255,.18);color:#fff8e4;}
 
 /* PRICING */
@@ -288,7 +288,7 @@ h1,h2,h3,h4{letter-spacing:-.01em}
 .tariff.dance .cta-btn{background:#fffaf0;color:var(--orange)}
 .tariff.dance .cta-btn:hover:not(:disabled){background:#fff;transform:translateY(-1px)}
 .tariff .cta-btn:disabled{opacity:.4;cursor:not-allowed;transform:none!important}
-.tariff-badge{position:absolute;top:20px;right:24px;background:rgba(255,255,255,.22);color:#fff8e4;font-size:12.5px;padding:8px 16px;border-radius:999px;backdrop-filter:blur(4px);}
+.tariff-badge{position:absolute;top:16px;right:16px;background:rgba(255,255,255,.22);color:#fff8e4;font-size:11px;padding:6px 14px;border-radius:999px;backdrop-filter:blur(4px);max-width:55%;text-align:center;line-height:1.3;z-index:2;}
 
 /* ═══ PERIOD TOGGLE (на карточках тарифов) ═══ */
 .period-toggle{
@@ -523,6 +523,8 @@ h1,h2,h3,h4{letter-spacing:-.01em}
   .period-toggle{gap:8px}
   .period-card{padding:13px 14px}
   .period-card .pc-price{font-size:24px}
+  .tariff-badge{position:static;display:inline-block;max-width:100%;margin-bottom:10px;font-size:11px;}
+.tariff.dance .tnum{margin-top:0}
 }
   /* ═══ ONLINE TARIFF ═══ */
 .tariffs{grid-template-columns:1fr 1fr 1fr}
