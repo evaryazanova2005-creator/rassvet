@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Рассвет — добро пожаловать в онлайн-клуб!</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Onest:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html,body{min-height:100%;font-family:'Onest',sans-serif;background:#faf3e7;color:#1d150c;-webkit-font-smoothing:antialiased;}
+
+body{
+  display:flex;align-items:center;justify-content:center;
+  min-height:100vh;padding:24px;
+  background:
+    radial-gradient(ellipse 70% 50% at 80% 10%, #e8f0d430 0%, transparent 60%),
+    radial-gradient(ellipse 60% 60% at 10% 90%, #f5c4a118 0%, transparent 60%),
+    #faf3e7;
+}
+
+.orb{position:fixed;border-radius:50%;pointer-events:none;z-index:0;}
+.orb1{width:500px;height:500px;top:-120px;right:-120px;background:radial-gradient(circle,#e8f0d422 0%,transparent 70%);}
+.orb2{width:400px;height:400px;bottom:-100px;left:-80px;background:radial-gradient(circle,#f5c4a115 0%,transparent 70%);}
+
+.card{
+  position:relative;z-index:1;
+  background:#fffaf0;
+  border-radius:32px;
+  padding:56px 52px 48px;
+  max-width:520px;width:100%;
+  box-shadow:0 24px 80px rgba(120,80,30,.10),0 4px 16px rgba(120,80,30,.06);
+  text-align:center;
+  animation:rise .6s cubic-bezier(.22,1,.36,1) both;
+}
+@keyframes rise{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:none}}
+
+.sun{
+  width:72px;height:72px;margin:0 auto 28px;
+  background:linear-gradient(135deg,#a4b85c,#8ea35a);
+  border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-size:34px;
+  box-shadow:0 0 0 12px rgba(142,163,90,.15), 0 8px 24px rgba(142,163,90,.25);
+  animation:pulse 3s ease-in-out infinite;
+}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 12px rgba(142,163,90,.15),0 8px 24px rgba(142,163,90,.25)}50%{box-shadow:0 0 0 20px rgba(142,163,90,.08),0 8px 32px rgba(142,163,90,.15)}}
+
+.badge{
+  display:inline-flex;align-items:center;gap:6px;
+  background:#e8f0d4;color:#6a7a30;
+  font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;
+  font-weight:500;padding:7px 16px;border-radius:999px;
+  margin-bottom:24px;
+}
+.badge-dot{width:6px;height:6px;border-radius:50%;background:#8ea35a;animation:pdot 2s infinite;}
+@keyframes pdot{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(1.3)}}
+
+h1{
+  font-family:'Cormorant Garamond',serif;
+  font-size:42px;font-weight:600;line-height:1.05;
+  margin-bottom:14px;letter-spacing:-.01em;
+}
+h1 i{font-style:italic;color:#8ea35a;}
+
+.sub{
+  font-size:15.5px;color:#8a7558;line-height:1.6;
+  margin-bottom:36px;max-width:400px;margin-left:auto;margin-right:auto;
+}
+
+.divider{
+  width:48px;height:2px;
+  background:linear-gradient(90deg,transparent,#b0c46a,transparent);
+  margin:0 auto 32px;border-radius:999px;
+}
+
+.step-label{
+  font-size:11px;letter-spacing:.16em;text-transform:uppercase;
+  color:#8ea35a;font-weight:500;margin-bottom:20px;
+}
+
+.btn-main{
+  display:flex;align-items:center;justify-content:center;gap:12px;
+  width:100%;padding:18px 24px;border-radius:999px;
+  background:linear-gradient(135deg,#a4b85c,#8ea35a);
+  color:#fff;font-family:'Onest',sans-serif;
+  font-size:15px;font-weight:500;
+  text-decoration:none;border:none;cursor:pointer;
+  box-shadow:0 6px 20px rgba(142,163,90,.35);
+  transition:transform .2s,box-shadow .2s;
+  margin-bottom:16px;
+}
+.btn-main:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(142,163,90,.40)}
+
+.btn-tg-icon{
+  width:28px;height:28px;border-radius:50%;
+  background:rgba(255,255,255,.25);
+  display:flex;align-items:center;justify-content:center;
+  font-size:14px;flex-shrink:0;
+}
+
+.what-next{
+  text-align:left;
+  margin-top:32px;padding-top:28px;
+  border-top:1px solid #ece1c8;
+}
+.what-next-title{
+  font-size:12px;letter-spacing:.14em;text-transform:uppercase;
+  color:#8ea35a;font-weight:500;margin-bottom:16px;
+}
+.what-next-list{list-style:none;display:flex;flex-direction:column;gap:12px}
+.what-next-list li{
+  font-size:14px;color:#5a4d35;line-height:1.5;
+  display:flex;gap:10px;align-items:flex-start;
+}
+.what-next-list li::before{
+  content:"✓";color:#8ea35a;font-weight:700;font-size:13px;
+  margin-top:2px;flex-shrink:0;
+}
+
+.note{
+  font-size:13px;color:#b09a78;line-height:1.55;
+  margin-top:24px;padding-top:20px;
+  border-top:1px solid #ece1c8;
+}
+
+.logo{
+  font-family:'Cormorant Garamond',serif;
+  font-style:italic;font-weight:600;
+  font-size:22px;color:#8ea35a;
+  margin-bottom:32px;display:block;
+}
+</style>
+</head>
+<body>
+<div class="orb orb1"></div>
+<div class="orb orb2"></div>
+
+<div class="card">
+  <span class="logo">Рассвет</span>
+
+  <div class="sun">☀</div>
+
+  <span class="badge"><span class="badge-dot"></span>Онлайн-клуб</span>
+
+  <h1>Добро пожаловать<br>в <i>Рассвет</i></h1>
+  <p class="sub">Оплата прошла успешно! Вступай в закрытый канал — там анонсы встреч, подкасты, подборки и жизнь онлайн-клуба.</p>
+
+  <div class="divider"></div>
+
+  <div class="step-label">следующий шаг</div>
+
+  <a href="https://t.me/+WRfVGL9xhllmMTUy" target="_blank" class="btn-main">
+    <span class="btn-tg-icon">✈</span>
+    Вступить в онлайн-клуб
+  </a>
+
+  <div class="what-next">
+    <div class="what-next-title">Что тебя ждёт</div>
+    <ul class="what-next-list">
+      <li>Встречи с экспертами — 2 раза в месяц</li>
+      <li>Подкасты от Евы — 2 раза в месяц</li>
+      <li>Книжный клуб, киноклуб, стратсессия</li>
+      <li>Подборки от Евы каждую неделю</li>
+      <li>Закрытый чат с резидентками</li>
+    </ul>
+  </div>
+
+  <p class="note">Я напишу тебе в Telegram в ближайшее время — познакомимся и расскажу, что будет на этой неделе 💛</p>
+</div>
+</body>
+</html>
