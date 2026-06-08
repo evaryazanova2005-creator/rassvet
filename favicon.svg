@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
+  <!-- Rays -->
+  <line x1="16" y1="2" x2="16" y2="8" stroke="#F5873A" stroke-width="2" stroke-linecap="round"/>
+  <line x1="9.5" y1="3.8" x2="11.8" y2="9.2" stroke="#F5873A" stroke-width="1.8" stroke-linecap="round"/>
+  <line x1="22.5" y1="3.8" x2="20.2" y2="9.2" stroke="#F5873A" stroke-width="1.8" stroke-linecap="round"/>
+  <line x1="4.5" y1="8.5" x2="8.5" y2="12" stroke="#F5873A" stroke-width="1.5" stroke-linecap="round"/>
+  <line x1="27.5" y1="8.5" x2="23.5" y2="12" stroke="#F5873A" stroke-width="1.5" stroke-linecap="round"/>
+  <line x1="2" y1="15" x2="7" y2="15" stroke="#F5873A" stroke-width="1.5" stroke-linecap="round"/>
+  <line x1="30" y1="15" x2="25" y2="15" stroke="#F5873A" stroke-width="1.5" stroke-linecap="round"/>
+  <!-- Sun (half circle) -->
+  <path d="M6 22 A10 10 0 0 1 26 22 Z" fill="#F5873A"/>
+  <!-- Horizon line -->
+  <line x1="2" y1="22" x2="30" y2="22" stroke="#E8A070" stroke-width="1.5" stroke-linecap="round"/>
+</svg>
