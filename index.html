@@ -25,6 +25,7 @@
   --olive:#aaa336;--olive-dark:#948c25;
   --shadow-sm:0 1px 2px rgba(120,80,30,.05),0 4px 12px rgba(120,80,30,.04);
   --shadow-md:0 14px 36px rgba(120,80,30,.10);
+    .features li.no-check::before{display:none!important}
 }
 *,*::before,*::after{box-sizing:border-box}
 html{scroll-behavior:smooth}
@@ -525,6 +526,8 @@ h1,h2,h3,h4{letter-spacing:-.01em}
   .period-card .pc-price{font-size:24px}
   .tariff-badge{position:static;display:inline-block;max-width:100%;margin-bottom:10px;font-size:11px;}
 .tariff.dance .tnum{margin-top:0}
+  .story{padding:50px 0 60px}
+.faq{padding:50px 0 70px}
 }
   /* ═══ ONLINE TARIFF ═══ */
 .tariffs{grid-template-columns:1fr 1fr 1fr}
@@ -576,8 +579,8 @@ h1,h2,h3,h4{letter-spacing:-.01em}
 <section class="hero">
   <div class="container hero-grid">
     <div>
-      <span class="eyebrow-pill"><span class="pill-dot"></span>Первый поток идёт · 1.06–30.06 · следующий — июль</span>
-      <h1>Проводишь выходные одна и хочется яркости? <i>Мы тебя ждём</i></h1>
+      <span class="eyebrow-pill"><span class="pill-dot"></span>офлайн Москва + онлайн · можно присоединиться к июльскому потоку</span>      
+      <h1>Проводишь лето одна или хочется яркости жизни? <i>Мы тебя ждём</i></h1>
       <p class="lead">Пробежки по субботам, танцы по понедельникам, книжный клуб и пикники — каждую неделю в Москве, в кругу своих. Тебе остаётся только прийти.</p>
       <div class="hero-buttons">
         <a href="#welcome" class="btn btn-primary">Попробовать за 500 ₽</a>
@@ -844,8 +847,7 @@ h1,h2,h3,h4{letter-spacing:-.01em}
           <li>Встречи с гостями 2 раза в месяц (психолог и др.)</li>
           <li>Подкасты от меня — 2 раза в месяц</li>
           <li>Киноклуб — раз в месяц</li>
-          <li style="color:#b09a78;opacity:.7"><span style="display:inline-flex;align-items:center;justify-content:center;width:18px;height:18px;border-radius:50%;background:#f0e7d4;color:#c0392b;font-size:12px;font-weight:700;flex-shrink:0;margin-right:2px">✕</span> Без офлайн-встреч в Москве</li>        </ul>
-        <button class="cta-btn" data-pay="online" data-price="1190" data-month="july">Подключиться →</button>
+          <li style="color:#b09a78;opacity:.7;list-style:none" class="no-check"><span style="display:inline-flex;align-items:center;justify-content:center;width:18px;height:18px;border-radius:50%;background:#f0e7d4;color:#c0392b;font-size:12px;font-weight:700;flex-shrink:0">✕</span> Без офлайн-встреч в Москве</li>        <button class="cta-btn" data-pay="online" data-price="1190" data-month="july">Подключиться →</button>
       </div>
 
       <!-- ── ТАРИФ: БАЗА ── -->
@@ -930,7 +932,7 @@ h1,h2,h3,h4{letter-spacing:-.01em}
         <h2>Не готова сразу? <i>Попробуй одну встречу</i></h2>
         <p class="welcome-lead">Раз в месяц у нас открыта <strong>Welcome-встреча</strong> — выбери активность, запишись и приходи. Чтобы почувствовать атмосферу, вдохновиться и познакомиться.</p>
 
-        <p class="welcome-step-label">Выбери формат:</p>
+        <p class="welcome-step-label">Выбери формат и нажми на иконку для записи:</p>
         <div class="welcome-formats" id="welcome-formats">
           <button class="wf-card" data-format="run" type="button">
             <span class="wf-icon">🏃‍♀️</span>
@@ -1003,6 +1005,7 @@ h1,h2,h3,h4{letter-spacing:-.01em}
     </div>
   </div>
 </section>
+  
 <section id="faq" class="faq">
   <div class="container">
     <span class="section-eyebrow">ответы</span>
