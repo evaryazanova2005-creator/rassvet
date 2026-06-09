@@ -1,0 +1,1259 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Рассвет · Еженедельный отчёт</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Onest:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  /* ============================================================
+     ДИЗАЙН-СИСТЕМА (те же токены, что на стратсессии)
+     ============================================================ */
+  :root {
+    --bg: #faf3e7;
+    --bg-card: #fffaf1;
+    --bg-soft: #f4ebd9;
+    --ink: #2c241b;
+    --ink-soft: #6b5d4a;
+    --accent: #e96d2a;
+    --accent-soft: #f4a974;
+    --border: #e8dcc4;
+    --radius-sm: 14px;
+    --radius: 22px;
+    --radius-lg: 28px;
+    --font-display: 'Cormorant Garamond', serif;
+    --font-body: 'Onest', system-ui, -apple-system, sans-serif;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: var(--font-body);
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.6;
+    font-size: 17px;
+    overflow-x: hidden;
+    position: relative;
+  }
+
+  body::before, body::after {
+    content: '';
+    position: fixed;
+    border-radius: 50%;
+    filter: blur(120px);
+    z-index: 0;
+    pointer-events: none;
+  }
+  body::before {
+    width: 500px; height: 500px;
+    background: radial-gradient(circle, rgba(233,109,42,0.18), transparent 70%);
+    top: -150px; right: -100px;
+  }
+  body::after {
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(244,169,116,0.15), transparent 70%);
+    bottom: -200px; left: -150px;
+  }
+
+  main, header, footer, nav, section { position: relative; z-index: 1; }
+
+  h1, h2, h3, h4 { font-family: var(--font-display); font-weight: 500; line-height: 1.15; color: var(--ink); }
+  h1 { font-size: clamp(2.4rem, 6vw, 4.2rem); letter-spacing: -0.01em; }
+  h2 { font-size: clamp(2rem, 4.5vw, 3rem); letter-spacing: -0.01em; margin-bottom: 0.6em; }
+  h3 { font-size: clamp(1.4rem, 2.6vw, 1.8rem); margin-bottom: 0.5em; }
+  h4 { font-size: 1.15rem; font-family: var(--font-body); font-weight: 600; letter-spacing: 0.02em; }
+
+  em { font-style: italic; color: var(--accent); }
+  p { margin-bottom: 1em; }
+  p:last-child { margin-bottom: 0; }
+  a { color: var(--accent); text-decoration: none; transition: opacity 0.2s; }
+  a:hover { opacity: 0.7; }
+  strong { font-weight: 600; }
+
+  /* ============================================================
+     ЛЕЙАУТ
+     ============================================================ */
+  .container { max-width: 760px; margin: 0 auto; padding: 0 24px; }
+  section { padding: 50px 0; }
+  section.tight { padding: 30px 0; }
+
+  .label {
+    display: inline-block;
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1.2em;
+  }
+
+  .pill {
+    display: inline-block;
+    padding: 5px 14px;
+    background: var(--bg-soft);
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    font-size: 0.85rem;
+    color: var(--ink-soft);
+    margin-right: 8px;
+  }
+
+  .card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 32px;
+    margin-bottom: 24px;
+  }
+  .card.soft { background: var(--bg-soft); }
+  .card.accent {
+    background: linear-gradient(135deg, rgba(233,109,42,0.08), rgba(244,169,116,0.04));
+    border-color: var(--accent-soft);
+  }
+
+  /* ============================================================
+     НАВИГАЦИЯ
+     ============================================================ */
+  nav {
+    padding: 22px 0;
+    border-bottom: 1px solid var(--border);
+    background: rgba(250, 243, 231, 0.85);
+    backdrop-filter: blur(8px);
+    position: sticky; top: 0; z-index: 100;
+  }
+  nav .container { display: flex; flex-wrap: wrap; gap: 20px; align-items: center; justify-content: space-between; max-width: 920px; }
+  nav .brand { font-family: var(--font-display); font-size: 1.4rem; font-weight: 500; color: var(--ink); }
+  nav .nav-links { display: flex; flex-wrap: wrap; gap: 22px; font-size: 0.9rem; }
+  nav .nav-links a { color: var(--ink-soft); }
+  nav .nav-links a:hover, nav .nav-links a.active { color: var(--accent); }
+
+  /* ============================================================
+     HERO
+     ============================================================ */
+  .hero { padding: 80px 0 40px; text-align: center; }
+  .hero h1 { margin-bottom: 0.4em; }
+  .hero .lead { font-size: 1.15rem; color: var(--ink-soft); max-width: 540px; margin: 0 auto 1.5em; }
+
+  /* ============================================================
+     ФОРМА — поля, лейблы, инпуты
+     ============================================================ */
+  .form-group { margin-bottom: 22px; }
+  .form-group:last-child { margin-bottom: 0; }
+
+  .form-label {
+    display: block;
+    font-weight: 600;
+    font-size: 0.95rem;
+    margin-bottom: 8px;
+    color: var(--ink);
+  }
+  .form-hint {
+    font-size: 0.85rem;
+    color: var(--ink-soft);
+    margin-bottom: 10px;
+    margin-top: -4px;
+  }
+
+  input[type="text"], textarea {
+    width: 100%;
+    padding: 12px 16px;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    font-family: var(--font-body);
+    font-size: 1rem;
+    color: var(--ink);
+    transition: border-color 0.2s, background 0.2s;
+  }
+  input[type="text"]:focus, textarea:focus {
+    outline: none;
+    border-color: var(--accent);
+    background: white;
+  }
+  textarea { resize: vertical; min-height: 80px; line-height: 1.5; }
+
+  /* Эмодзи-кнопки */
+  .emoji-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .emoji-btn {
+    width: 56px; height: 56px;
+    font-size: 1.7rem;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .emoji-btn:hover { transform: scale(1.05); border-color: var(--accent-soft); }
+  .emoji-btn.active {
+    background: var(--accent);
+    border-color: var(--accent);
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(233,109,42,0.25);
+  }
+
+  /* Pill-кнопки выбора */
+  .pill-options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .pill-btn {
+    padding: 10px 18px;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    font-family: var(--font-body);
+    font-size: 0.93rem;
+    color: var(--ink-soft);
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .pill-btn:hover { border-color: var(--accent-soft); color: var(--ink); }
+  .pill-btn.active {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: white;
+  }
+
+  /* Слайдер % */
+  .slider-wrap { display: flex; align-items: center; gap: 16px; }
+  .slider-wrap input[type="range"] {
+    flex: 1;
+    height: 6px;
+    appearance: none;
+    -webkit-appearance: none;
+    background: var(--bg-soft);
+    border-radius: 999px;
+    outline: none;
+  }
+  .slider-wrap input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 22px; height: 22px;
+    background: var(--accent);
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(233,109,42,0.3);
+  }
+  .slider-wrap input[type="range"]::-moz-range-thumb {
+    width: 22px; height: 22px;
+    background: var(--accent);
+    border-radius: 50%;
+    cursor: pointer;
+    border: none;
+    box-shadow: 0 2px 8px rgba(233,109,42,0.3);
+  }
+  .slider-value {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 1.8rem;
+    color: var(--accent);
+    min-width: 70px;
+    text-align: right;
+  }
+
+  /* Чекбоксы */
+  .checkbox-group { display: flex; flex-direction: column; gap: 10px; }
+  .checkbox-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 16px;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .checkbox-item:hover { border-color: var(--accent-soft); }
+  .checkbox-item.active {
+    background: rgba(233,109,42,0.06);
+    border-color: var(--accent);
+  }
+  .checkbox-mark {
+    width: 22px; height: 22px;
+    border-radius: 6px;
+    border: 1.5px solid var(--border);
+    background: white;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    transition: all 0.2s;
+  }
+  .checkbox-item.active .checkbox-mark {
+    background: var(--accent);
+    border-color: var(--accent);
+  }
+  .checkbox-mark::after {
+    content: '✓';
+    color: white;
+    font-size: 0.9rem;
+    opacity: 0;
+    transition: opacity 0.2s;
+  }
+  .checkbox-item.active .checkbox-mark::after { opacity: 1; }
+
+  /* Главная кнопка */
+  .primary-btn {
+    display: inline-block;
+    padding: 16px 32px;
+    background: var(--accent);
+    color: white;
+    border: none;
+    border-radius: 999px;
+    font-family: var(--font-body);
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    box-shadow: 0 4px 14px rgba(233,109,42,0.25);
+  }
+  .primary-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 18px rgba(233,109,42,0.35); }
+  .primary-btn:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+
+  .secondary-btn {
+    display: inline-block;
+    padding: 12px 24px;
+    background: white;
+    color: var(--ink);
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    font-family: var(--font-body);
+    font-size: 0.92rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .secondary-btn:hover { border-color: var(--accent); color: var(--accent); }
+
+  /* Поле задачи челленджа */
+  .task-row {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 16px;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    margin-bottom: 12px;
+  }
+  .task-row .task-label {
+    font-size: 0.85rem;
+    color: var(--ink-soft);
+    font-weight: 500;
+  }
+  .task-row input[type="text"] {
+    padding: 8px 12px;
+    font-size: 0.95rem;
+  }
+
+  /* Результат отчёта */
+  .result-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 32px;
+  }
+  .result-output {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 20px;
+    margin: 20px 0;
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    white-space: pre-wrap;
+    line-height: 1.5;
+    color: var(--ink);
+    max-height: 400px;
+    overflow-y: auto;
+  }
+  .result-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+
+  .toast {
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%) translateY(100px);
+    background: var(--ink);
+    color: white;
+    padding: 14px 26px;
+    border-radius: 999px;
+    font-size: 0.92rem;
+    opacity: 0;
+    transition: all 0.3s;
+    z-index: 1000;
+    pointer-events: none;
+  }
+  .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+  /* ============================================================
+     ИСТОРИЯ ОТЧЁТОВ
+     ============================================================ */
+  .history-banner {
+    background: var(--bg-soft);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 18px 26px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .history-banner p { margin: 0; color: var(--ink-soft); }
+  .history-banner a {
+    color: var(--accent);
+    text-decoration: underline;
+    font-weight: 500;
+  }
+
+  .history-item {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    margin-bottom: 12px;
+    overflow: hidden;
+    transition: border-color 0.2s;
+  }
+  .history-item:hover { border-color: var(--accent-soft); }
+  .history-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px 18px;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .history-meta {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    flex-wrap: wrap;
+  }
+  .history-emoji { font-size: 1.4rem; }
+  .history-date {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 1.15rem;
+    color: var(--ink);
+  }
+  .history-percent {
+    background: var(--accent);
+    color: white;
+    padding: 3px 12px;
+    border-radius: 999px;
+    font-size: 0.82rem;
+    font-weight: 600;
+  }
+  .history-toggle {
+    background: none;
+    border: none;
+    color: var(--accent);
+    cursor: pointer;
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    padding: 6px 10px;
+    border-radius: 999px;
+    transition: background 0.2s;
+  }
+  .history-toggle:hover { background: rgba(233,109,42,0.08); }
+  .history-body {
+    padding: 0 18px 18px;
+    border-top: 1px solid var(--border);
+  }
+  .history-text {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 14px 16px;
+    margin: 14px 0;
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    white-space: pre-wrap;
+    line-height: 1.5;
+    max-height: 280px;
+    overflow-y: auto;
+    color: var(--ink);
+  }
+  .history-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+  .history-empty {
+    text-align: center;
+    color: var(--ink-soft);
+    padding: 24px;
+    font-style: italic;
+  }
+  .delete-btn { color: #c4543a; }
+  .delete-btn:hover { border-color: #c4543a; color: #c4543a; }
+
+  /* ============================================================
+     FOOTER
+     ============================================================ */
+  footer {
+    padding: 60px 0 40px;
+    border-top: 1px solid var(--border);
+    margin-top: 40px;
+    text-align: center;
+  }
+  footer .quote {
+    font-family: var(--font-display);
+    font-size: clamp(1.3rem, 2.5vw, 1.8rem);
+    line-height: 1.3;
+    margin-bottom: 20px;
+    color: var(--ink);
+  }
+  footer .meta { color: var(--ink-soft); font-size: 0.9rem; }
+
+  @media (max-width: 600px) {
+    .card { padding: 24px; }
+    .emoji-btn { width: 50px; height: 50px; font-size: 1.5rem; }
+    nav .nav-links { gap: 14px; font-size: 0.82rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ============================================================
+     НАВИГАЦИЯ
+     ============================================================ -->
+<nav>
+  <div class="container">
+    <a href="/" class="brand">Рассвет</a>
+    <div class="nav-links">
+      <a href="/stratsession-july.html">Стратсессия</a>
+      <a href="/wheel.html">Колесо</a>
+      <a href="/plan.html">План</a>
+      <a href="/report.html" class="active">Отчёт</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ============================================================
+     HERO
+     ============================================================ -->
+<header class="hero">
+  <div class="container">
+    <h1>Еженедельный <em>отчёт</em></h1>
+    <p class="lead">Заполни форму — 10 минут — и получи готовое сообщение, которое можно скопировать в чат клуба.</p>
+    <div>
+      <span class="pill">воскресенье вечером</span>
+      <span class="pill">10 минут</span>
+    </div>
+  </div>
+</header>
+
+<!-- ============================================================
+     БАННЕР ИСТОРИИ (показывается, только если есть сохранённые отчёты)
+     ============================================================ -->
+<section class="tight" id="historyBanner" style="display: none;">
+  <div class="container">
+    <div class="history-banner">
+      <p>📅 У тебя <strong id="historyCount">0</strong> сохранённых отчётов</p>
+      <a href="#" id="historyLink">Посмотреть историю →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     ТЕКУЩИЙ ЧЕЛЛЕНДЖ — автоопределение по дате
+     ============================================================ -->
+<section class="tight">
+  <div class="container">
+    <div class="card accent">
+      <span class="label" id="challengeLabel">мой челлендж сейчас</span>
+      <h3 id="challengeTitle">Загружаем...</h3>
+      <p style="color: var(--ink-soft); margin-bottom: 20px;" id="challengeHint">Запиши свои 2 задачи на этот период. Они сохранятся в браузере и будут подтягиваться в каждый недельный отчёт.</p>
+
+      <div class="task-row">
+        <span class="task-label">Задача 1</span>
+        <input type="text" id="challengeTask1" placeholder="Например: 3 тренировки в неделю">
+      </div>
+      <div class="task-row">
+        <span class="task-label">Задача 2</span>
+        <input type="text" id="challengeTask2" placeholder="Например: записать 5 видео для нового курса">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     ФОРМА ОТЧЁТА
+     ============================================================ -->
+<section class="tight">
+  <div class="container">
+    <div class="card">
+      <span class="label">отчёт за неделю</span>
+      <h2>Расскажи, <em>как прошла</em></h2>
+
+      <!-- Имя -->
+      <div class="form-group">
+        <label class="form-label">Имя</label>
+        <input type="text" id="name" placeholder="Маша">
+      </div>
+
+      <!-- Эмодзи недели -->
+      <div class="form-group">
+        <label class="form-label">Эмодзи моей недели</label>
+        <p class="form-hint">Одним эмодзи — общее состояние недели</p>
+        <div class="emoji-grid" id="emojiGrid">
+          <button class="emoji-btn" data-emoji="🔥" title="огонь, в потоке">🔥</button>
+          <button class="emoji-btn" data-emoji="💪" title="через усилие, но вывезла">💪</button>
+          <button class="emoji-btn" data-emoji="✨" title="лёгко и красиво">✨</button>
+          <button class="emoji-btn" data-emoji="🎯" title="фокус, попадание">🎯</button>
+          <button class="emoji-btn" data-emoji="😮‍💨" title="вымоталась">😮‍💨</button>
+          <button class="emoji-btn" data-emoji="☁️" title="туман, неясно">☁️</button>
+          <button class="emoji-btn" data-emoji="🌧" title="тяжёлая неделя">🌧</button>
+          <button class="emoji-btn" data-emoji="🌪" title="хаос, всё перевернулось">🌪</button>
+        </div>
+      </div>
+
+      <!-- Что сделано -->
+      <div class="form-group">
+        <label class="form-label">Что сделано за неделю</label>
+        <p class="form-hint">3 главных пункта — каждый с новой строки</p>
+        <textarea id="done" rows="4" placeholder="— Запустила лендинг&#10;— Сходила на 3 тренировки&#10;— Закрыла переговоры с подрядчиком"></textarea>
+      </div>
+
+      <!-- Главная победа -->
+      <div class="form-group">
+        <label class="form-label">Главная победа недели</label>
+        <p class="form-hint">Одной фразой — чем горжусь</p>
+        <textarea id="win" rows="2" placeholder="Закрыла задачу, которую откладывала 3 месяца"></textarea>
+      </div>
+
+      <!-- Где застряла -->
+      <div class="form-group">
+        <label class="form-label">Где застряла / с чем сложность</label>
+        <textarea id="stuck" rows="2" placeholder="Не получается выделить время на запись курса — всё время съедают встречи"></textarea>
+      </div>
+
+      <!-- % выполнения -->
+      <div class="form-group">
+        <label class="form-label">Мой % выполнения задач месяца</label>
+        <p class="form-hint">Среднее по всем задачам июля</p>
+        <div class="slider-wrap">
+          <input type="range" id="percent" min="0" max="100" value="0">
+          <span class="slider-value" id="percentValue">0%</span>
+        </div>
+      </div>
+
+      <!-- Эксперимент июля -->
+      <div class="form-group">
+        <label class="form-label">Как идёт мой эксперимент июля</label>
+        <div class="pill-options" id="experimentOptions">
+          <button class="pill-btn" data-value="делаю стабильно">делаю стабильно</button>
+          <button class="pill-btn" data-value="срываюсь, но возвращаюсь">срываюсь, но возвращаюсь</button>
+          <button class="pill-btn" data-value="уже работает">уже работает</button>
+          <button class="pill-btn" data-value="забросила">забросила</button>
+        </div>
+      </div>
+
+      <!-- Челлендж: статус задач -->
+      <div class="form-group">
+        <label class="form-label">Прогресс по задачам челленджа</label>
+        <p class="form-hint" id="challengeFormHint">Челлендж подтянется автоматически из блока выше</p>
+
+        <div style="margin-top: 14px;">
+          <div style="font-size: 0.9rem; color: var(--ink-soft); margin-bottom: 8px;" id="task1Display">Задача 1</div>
+          <div class="pill-options" id="task1Options">
+            <button class="pill-btn" data-value="идёт">идёт</button>
+            <button class="pill-btn" data-value="срываюсь">срываюсь</button>
+            <button class="pill-btn" data-value="закрыла">закрыла</button>
+          </div>
+        </div>
+
+        <div style="margin-top: 18px;">
+          <div style="font-size: 0.9rem; color: var(--ink-soft); margin-bottom: 8px;" id="task2Display">Задача 2</div>
+          <div class="pill-options" id="task2Options">
+            <button class="pill-btn" data-value="идёт">идёт</button>
+            <button class="pill-btn" data-value="срываюсь">срываюсь</button>
+            <button class="pill-btn" data-value="закрыла">закрыла</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Фокус следующей недели -->
+      <div class="form-group">
+        <label class="form-label">Фокус следующей недели</label>
+        <p class="form-hint">2–3 пункта — каждый с новой строки</p>
+        <textarea id="focus" rows="3" placeholder="— Записать 3 видео&#10;— Провести 2 созвона с экспертами&#10;— Восстановить утренний ритуал"></textarea>
+      </div>
+
+      <!-- Что нужно от группы -->
+      <div class="form-group">
+        <label class="form-label">Что мне нужно от группы</label>
+        <p class="form-hint">Отметь то, что актуально</p>
+        <div class="checkbox-group" id="needsGroup">
+          <div class="checkbox-item" data-value="совет">
+            <div class="checkbox-mark"></div>
+            <span>Совет</span>
+          </div>
+          <div class="checkbox-item" data-value="поддержка">
+            <div class="checkbox-mark"></div>
+            <span>Поддержка</span>
+          </div>
+          <div class="checkbox-item" data-value="ресурс / контакт">
+            <div class="checkbox-mark"></div>
+            <span>Ресурс / контакт</span>
+          </div>
+          <div class="checkbox-item" data-value="ничего, просто отчёт">
+            <div class="checkbox-mark"></div>
+            <span>Ничего, просто отчёт</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Главная кнопка -->
+      <div style="text-align: center; margin-top: 36px;">
+        <button class="primary-btn" id="generateBtn">Собрать отчёт →</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     РЕЗУЛЬТАТ
+     ============================================================ -->
+<section id="resultSection" style="display: none;">
+  <div class="container">
+    <div class="result-card">
+      <span class="label">готово</span>
+      <h2>Твой <em>отчёт</em></h2>
+      <p style="color: var(--ink-soft);">Скопируй текст и вставь в чат клуба.</p>
+      <div class="result-output" id="reportOutput"></div>
+      <div class="result-actions">
+        <button class="primary-btn" id="copyBtn">📋 Скопировать</button>
+        <button class="secondary-btn" id="clearBtn">✓ Очистить форму</button>
+        <button class="secondary-btn" id="editBtn">← Вернуться к форме</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     ИСТОРИЯ ОТЧЁТОВ
+     ============================================================ -->
+<section id="historySection" style="display: none;">
+  <div class="container">
+    <div class="card">
+      <span class="label">история</span>
+      <h2>Мои <em>отчёты</em></h2>
+      <p style="color: var(--ink-soft);">Сохраняются в твоём браузере и видны только тебе. Хранятся последние 20 недель.</p>
+      <div id="historyList" style="margin-top: 24px;"></div>
+    </div>
+  </div>
+</section>
+
+<!-- Тост -->
+<div class="toast" id="toast">Скопировано в буфер ✓</div>
+
+<!-- ============================================================
+     FOOTER
+     ============================================================ -->
+<footer>
+  <div class="container">
+    <p class="quote">Каждая неделя — это не <em>оценка</em>,<br>а точка, в которой видно <em>движение</em>.</p>
+    <p class="meta">Рассвет · еженедельный отчёт</p>
+  </div>
+</footer>
+
+<!-- ============================================================
+     JS
+     ============================================================ -->
+<script>
+  // ============================================================
+  // КОНФИГ ЧЕЛЛЕНДЖЕЙ — даты по летним периодам
+  // Если меняются даты — правь здесь.
+  // ============================================================
+  const CHALLENGES = [
+    { num: 1, name: 'Челлендж 1', start: '2026-06-01', end: '2026-06-19', range: '1–19 июня' },
+    { num: 2, name: 'Челлендж 2', start: '2026-06-20', end: '2026-07-09', range: '20 июня — 9 июля' },
+    { num: 3, name: 'Челлендж 3', start: '2026-07-10', end: '2026-07-29', range: '10–29 июля' },
+    { num: 4, name: 'Челлендж 4', start: '2026-07-30', end: '2026-08-18', range: '30 июля — 18 августа' },
+    { num: 5, name: 'Челлендж 5', start: '2026-08-19', end: '2026-08-31', range: '19–31 августа' }
+  ];
+
+  // ============================================================
+  // ОПРЕДЕЛЕНИЕ ТЕКУЩЕГО ЧЕЛЛЕНДЖА
+  // ============================================================
+  function getCurrentChallenge() {
+    const today = new Date();
+    const todayStr = today.toISOString().split('T')[0];
+    for (const ch of CHALLENGES) {
+      if (todayStr >= ch.start && todayStr <= ch.end) return ch;
+    }
+    // Если сейчас не в челлендже — возвращаем ближайший будущий или последний
+    for (const ch of CHALLENGES) {
+      if (todayStr < ch.start) return ch;
+    }
+    return CHALLENGES[CHALLENGES.length - 1];
+  }
+
+  // ============================================================
+  // СТЕЙТ И LOCALSTORAGE
+  // ============================================================
+  const STORAGE_KEY = 'rassvet_report_v1';
+  const CHALLENGE_TASKS_KEY = 'rassvet_challenge_tasks_v1';
+
+  let state = {
+    name: '',
+    emoji: null,
+    done: '',
+    win: '',
+    stuck: '',
+    percent: 0,
+    experiment: null,
+    task1Status: null,
+    task2Status: null,
+    focus: '',
+    needs: []
+  };
+
+  let challengeTasks = {}; // { 1: {task1, task2}, 2: {...}, ... }
+
+  function loadState() {
+    try {
+      const saved = localStorage.getItem(STORAGE_KEY);
+      if (saved) state = { ...state, ...JSON.parse(saved) };
+      const tasks = localStorage.getItem(CHALLENGE_TASKS_KEY);
+      if (tasks) challengeTasks = JSON.parse(tasks);
+    } catch (e) { /* ignore */ }
+  }
+
+  function saveState() {
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+    } catch (e) { /* ignore */ }
+  }
+
+  function saveChallengeTasks() {
+    try {
+      localStorage.setItem(CHALLENGE_TASKS_KEY, JSON.stringify(challengeTasks));
+    } catch (e) { /* ignore */ }
+  }
+
+  // ============================================================
+  // РЕНДЕР ТЕКУЩЕГО ЧЕЛЛЕНДЖА
+  // ============================================================
+  const currentCh = getCurrentChallenge();
+
+  function renderChallenge() {
+    const titleEl = document.getElementById('challengeTitle');
+    titleEl.innerHTML = `Челлендж <em>${currentCh.num}</em> · ${currentCh.range}`;
+
+    const task1Input = document.getElementById('challengeTask1');
+    const task2Input = document.getElementById('challengeTask2');
+    const savedTasks = challengeTasks[currentCh.num] || {};
+    task1Input.value = savedTasks.task1 || '';
+    task2Input.value = savedTasks.task2 || '';
+
+    updateTaskDisplays();
+  }
+
+  function updateTaskDisplays() {
+    const t1 = document.getElementById('challengeTask1').value.trim() || 'Задача 1';
+    const t2 = document.getElementById('challengeTask2').value.trim() || 'Задача 2';
+    document.getElementById('task1Display').textContent = '— ' + t1;
+    document.getElementById('task2Display').textContent = '— ' + t2;
+    document.getElementById('challengeFormHint').textContent =
+      `Челлендж ${currentCh.num} · ${currentCh.range}`;
+  }
+
+  document.getElementById('challengeTask1').addEventListener('input', (e) => {
+    if (!challengeTasks[currentCh.num]) challengeTasks[currentCh.num] = {};
+    challengeTasks[currentCh.num].task1 = e.target.value;
+    saveChallengeTasks();
+    updateTaskDisplays();
+  });
+
+  document.getElementById('challengeTask2').addEventListener('input', (e) => {
+    if (!challengeTasks[currentCh.num]) challengeTasks[currentCh.num] = {};
+    challengeTasks[currentCh.num].task2 = e.target.value;
+    saveChallengeTasks();
+    updateTaskDisplays();
+  });
+
+  // ============================================================
+  // СВЯЗЫВАНИЕ ПОЛЕЙ ФОРМЫ СО СТЕЙТОМ
+  // ============================================================
+  function bindText(id, key) {
+    const el = document.getElementById(id);
+    el.value = state[key] || '';
+    el.addEventListener('input', (e) => {
+      state[key] = e.target.value;
+      saveState();
+    });
+  }
+
+  function bindPills(containerId, key) {
+    const container = document.getElementById(containerId);
+    container.querySelectorAll('.pill-btn').forEach(btn => {
+      if (btn.dataset.value === state[key]) btn.classList.add('active');
+      btn.addEventListener('click', () => {
+        container.querySelectorAll('.pill-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        state[key] = btn.dataset.value;
+        saveState();
+      });
+    });
+  }
+
+  function bindEmoji() {
+    const grid = document.getElementById('emojiGrid');
+    grid.querySelectorAll('.emoji-btn').forEach(btn => {
+      if (btn.dataset.emoji === state.emoji) btn.classList.add('active');
+      btn.addEventListener('click', () => {
+        grid.querySelectorAll('.emoji-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        state.emoji = btn.dataset.emoji;
+        saveState();
+      });
+    });
+  }
+
+  function bindPercent() {
+    const slider = document.getElementById('percent');
+    const valueEl = document.getElementById('percentValue');
+    slider.value = state.percent || 0;
+    valueEl.textContent = (state.percent || 0) + '%';
+    slider.addEventListener('input', (e) => {
+      state.percent = parseInt(e.target.value);
+      valueEl.textContent = state.percent + '%';
+      saveState();
+    });
+  }
+
+  function bindNeeds() {
+    const group = document.getElementById('needsGroup');
+    group.querySelectorAll('.checkbox-item').forEach(item => {
+      if (state.needs.includes(item.dataset.value)) item.classList.add('active');
+      item.addEventListener('click', () => {
+        const val = item.dataset.value;
+        if (state.needs.includes(val)) {
+          state.needs = state.needs.filter(v => v !== val);
+          item.classList.remove('active');
+        } else {
+          state.needs.push(val);
+          item.classList.add('active');
+        }
+        saveState();
+      });
+    });
+  }
+
+  // ============================================================
+  // СБОРКА И ВЫВОД ОТЧЁТА
+  // ============================================================
+  function formatDate(d) {
+    const months = ['января','февраля','марта','апреля','мая','июня','июля','августа','сентября','октября','ноября','декабря'];
+    return `${d.getDate()} ${months[d.getMonth()]}`;
+  }
+
+  function buildReport() {
+    const today = new Date();
+    const dateStr = formatDate(today);
+    const tasks = challengeTasks[currentCh.num] || {};
+
+    const lines = [];
+    lines.push(`🌅 ОТЧЁТ ЗА НЕДЕЛЮ · ${dateStr}`);
+    lines.push(`Имя: ${state.name || '—'}`);
+    if (state.emoji) lines.push(`Эмодзи недели: ${state.emoji}`);
+    lines.push('');
+
+    lines.push('1. Сделано за неделю:');
+    if (state.done) {
+      state.done.split('\n').filter(l => l.trim()).forEach(l => {
+        const cleaned = l.replace(/^[—–-]\s*/, '');
+        lines.push(`— ${cleaned}`);
+      });
+    } else lines.push('— —');
+    lines.push('');
+
+    lines.push('2. Главная победа недели:');
+    lines.push(`— ${state.win || '—'}`);
+    lines.push('');
+
+    lines.push('3. Где застряла / с чем сложность:');
+    lines.push(`— ${state.stuck || '—'}`);
+    lines.push('');
+
+    lines.push(`4. Мой % выполнения задач: ${state.percent}%`);
+    if (state.experiment) lines.push(`Эксперимент июля: ${state.experiment}`);
+    lines.push('');
+
+    lines.push(`5. Челлендж ${currentCh.num} · ${currentCh.range}:`);
+    if (tasks.task1) lines.push(`— ${tasks.task1}: ${state.task1Status || '—'}`);
+    if (tasks.task2) lines.push(`— ${tasks.task2}: ${state.task2Status || '—'}`);
+    if (!tasks.task1 && !tasks.task2) lines.push('— задачи не заполнены');
+    lines.push('');
+
+    lines.push('6. Фокус следующей недели:');
+    if (state.focus) {
+      state.focus.split('\n').filter(l => l.trim()).forEach(l => {
+        const cleaned = l.replace(/^[—–-]\s*/, '');
+        lines.push(`— ${cleaned}`);
+      });
+    } else lines.push('— —');
+    lines.push('');
+
+    lines.push('7. Что мне нужно от группы:');
+    if (state.needs.length) {
+      state.needs.forEach(n => lines.push(`✓ ${n}`));
+    } else lines.push('— не отмечено');
+
+    return lines.join('\n');
+  }
+
+  document.getElementById('generateBtn').addEventListener('click', () => {
+    const text = buildReport();
+    document.getElementById('reportOutput').textContent = text;
+    saveToHistory(text);
+    document.getElementById('resultSection').style.display = 'block';
+    setTimeout(() => {
+      document.getElementById('resultSection').scrollIntoView({ behavior: 'smooth' });
+    }, 100);
+  });
+
+  document.getElementById('editBtn').addEventListener('click', () => {
+    document.getElementById('resultSection').style.display = 'none';
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
+  // ============================================================
+  // ИСТОРИЯ ОТЧЁТОВ
+  // ============================================================
+  const HISTORY_KEY = 'rassvet_report_history_v1';
+
+  // ISO-неделя для группировки отчётов
+  function getISOWeek(date) {
+    const d = new Date(Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()));
+    const dayNum = d.getUTCDay() || 7;
+    d.setUTCDate(d.getUTCDate() + 4 - dayNum);
+    const yearStart = new Date(Date.UTC(d.getUTCFullYear(), 0, 1));
+    const weekNum = Math.ceil((((d - yearStart) / 86400000) + 1) / 7);
+    return `${d.getUTCFullYear()}-W${String(weekNum).padStart(2, '0')}`;
+  }
+
+  function loadHistory() {
+    try {
+      const saved = localStorage.getItem(HISTORY_KEY);
+      return saved ? JSON.parse(saved) : [];
+    } catch (e) { return []; }
+  }
+
+  function saveHistoryArr(history) {
+    try { localStorage.setItem(HISTORY_KEY, JSON.stringify(history)); }
+    catch (e) { /* ignore */ }
+  }
+
+  function saveToHistory(text) {
+    const today = new Date();
+    const weekId = getISOWeek(today);
+    const history = loadHistory();
+
+    const entry = {
+      id: weekId,
+      timestamp: today.getTime(),
+      dateStr: formatDate(today),
+      emoji: state.emoji || '☁️',
+      percent: state.percent || 0,
+      text: text
+    };
+
+    // Заменяем существующую запись для этой же недели или добавляем новую
+    const existingIdx = history.findIndex(h => h.id === weekId);
+    if (existingIdx >= 0) {
+      history[existingIdx] = entry;
+    } else {
+      history.push(entry);
+    }
+
+    // Сортируем по времени убывающе и ограничиваем 20 записей
+    history.sort((a, b) => b.timestamp - a.timestamp);
+    saveHistoryArr(history.slice(0, 20));
+    renderHistory();
+  }
+
+  function deleteFromHistory(id) {
+    const history = loadHistory().filter(h => h.id !== id);
+    saveHistoryArr(history);
+    renderHistory();
+  }
+
+  function escapeHtml(s) {
+    return (s || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  }
+  function escapeAttr(s) {
+    return (s || '').replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;');
+  }
+
+  function renderHistory() {
+    const history = loadHistory();
+    const banner = document.getElementById('historyBanner');
+    const section = document.getElementById('historySection');
+    const list = document.getElementById('historyList');
+    const count = document.getElementById('historyCount');
+
+    if (!history.length) {
+      banner.style.display = 'none';
+      section.style.display = 'none';
+      return;
+    }
+
+    banner.style.display = 'block';
+    count.textContent = history.length;
+
+    list.innerHTML = '';
+    history.forEach((entry, idx) => {
+      const item = document.createElement('div');
+      item.className = 'history-item';
+      item.innerHTML = `
+        <div class="history-header">
+          <div class="history-meta">
+            <span class="history-emoji">${entry.emoji || '☁️'}</span>
+            <span class="history-date">${entry.dateStr}</span>
+            <span class="history-percent">${entry.percent}%</span>
+          </div>
+          <button class="history-toggle" data-idx="${idx}">Развернуть ↓</button>
+        </div>
+        <div class="history-body" data-idx="${idx}" style="display: none;">
+          <div class="history-text">${escapeHtml(entry.text)}</div>
+          <div class="history-actions">
+            <button class="secondary-btn history-copy-btn" data-idx="${idx}">📋 Скопировать</button>
+            <button class="secondary-btn delete-btn" data-id="${entry.id}">🗑 Удалить</button>
+          </div>
+        </div>
+      `;
+      list.appendChild(item);
+    });
+
+    // Раскрытие/сворачивание
+    list.querySelectorAll('.history-toggle').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const idx = btn.dataset.idx;
+        const body = list.querySelector(`.history-body[data-idx="${idx}"]`);
+        const isOpen = body.style.display !== 'none';
+        body.style.display = isOpen ? 'none' : 'block';
+        btn.textContent = isOpen ? 'Развернуть ↓' : 'Свернуть ↑';
+      });
+    });
+
+    // Копирование конкретного отчёта из истории
+    list.querySelectorAll('.history-copy-btn').forEach(btn => {
+      btn.addEventListener('click', async () => {
+        const idx = parseInt(btn.dataset.idx);
+        const text = history[idx].text;
+        try {
+          await navigator.clipboard.writeText(text);
+          showToast('Скопировано в буфер ✓');
+        } catch (e) {
+          const ta = document.createElement('textarea');
+          ta.value = text;
+          document.body.appendChild(ta);
+          ta.select();
+          try { document.execCommand('copy'); showToast('Скопировано ✓'); }
+          catch (err) { showToast('Не удалось скопировать'); }
+          document.body.removeChild(ta);
+        }
+      });
+    });
+
+    // Удаление
+    list.querySelectorAll('.delete-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        if (confirm('Удалить этот отчёт из истории?')) {
+          deleteFromHistory(btn.dataset.id);
+        }
+      });
+    });
+  }
+
+  // Ссылка на историю из баннера
+  document.getElementById('historyLink').addEventListener('click', (e) => {
+    e.preventDefault();
+    document.getElementById('historySection').style.display = 'block';
+    setTimeout(() => {
+      document.getElementById('historySection').scrollIntoView({ behavior: 'smooth' });
+    }, 50);
+  });
+
+  // Очистка формы — для следующего отчёта
+  document.getElementById('clearBtn').addEventListener('click', () => {
+    if (!confirm('Очистить форму для следующего отчёта?\n\nЭтот отчёт уже сохранён в истории и его можно будет посмотреть.')) return;
+
+    const savedName = state.name; // имя оставляем
+    state = {
+      name: savedName,
+      emoji: null,
+      done: '',
+      win: '',
+      stuck: '',
+      percent: 0,
+      experiment: null,
+      task1Status: null,
+      task2Status: null,
+      focus: '',
+      needs: []
+    };
+    saveState();
+    location.reload();
+  });
+
+  // ============================================================
+  // КОПИРОВАНИЕ
+  // ============================================================
+  document.getElementById('copyBtn').addEventListener('click', async () => {
+    const text = document.getElementById('reportOutput').textContent;
+    try {
+      await navigator.clipboard.writeText(text);
+      showToast('Скопировано в буфер ✓');
+    } catch (e) {
+      // Фолбэк через textarea
+      const ta = document.createElement('textarea');
+      ta.value = text;
+      document.body.appendChild(ta);
+      ta.select();
+      try {
+        document.execCommand('copy');
+        showToast('Скопировано в буфер ✓');
+      } catch (err) {
+        showToast('Не удалось скопировать — выдели вручную');
+      }
+      document.body.removeChild(ta);
+    }
+  });
+
+  function showToast(msg) {
+    const toast = document.getElementById('toast');
+    toast.textContent = msg;
+    toast.classList.add('show');
+    setTimeout(() => toast.classList.remove('show'), 2400);
+  }
+
+  // ============================================================
+  // ИНИЦИАЛИЗАЦИЯ
+  // ============================================================
+  loadState();
+  renderChallenge();
+  bindText('name', 'name');
+  bindText('done', 'done');
+  bindText('win', 'win');
+  bindText('stuck', 'stuck');
+  bindText('focus', 'focus');
+  bindEmoji();
+  bindPercent();
+  bindPills('experimentOptions', 'experiment');
+  bindPills('task1Options', 'task1Status');
+  bindPills('task2Options', 'task2Status');
+  bindNeeds();
+  renderHistory();
+</script>
+</body>
+</html>

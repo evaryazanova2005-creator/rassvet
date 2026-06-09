@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Рассвет · Мой план на июль</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Onest:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  /* ============================================================
+     ДИЗАЙН-СИСТЕМА (те же токены, что на других страницах)
+     ============================================================ */
+  :root {
+    --bg: #faf3e7;
+    --bg-card: #fffaf1;
+    --bg-soft: #f4ebd9;
+    --ink: #2c241b;
+    --ink-soft: #6b5d4a;
+    --accent: #e96d2a;
+    --accent-soft: #f4a974;
+    --border: #e8dcc4;
+    --radius-sm: 14px;
+    --radius: 22px;
+    --radius-lg: 28px;
+    --font-display: 'Cormorant Garamond', serif;
+    --font-body: 'Onest', system-ui, -apple-system, sans-serif;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: var(--font-body);
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.6;
+    font-size: 17px;
+    overflow-x: hidden;
+    position: relative;
+  }
+
+  body::before, body::after {
+    content: '';
+    position: fixed;
+    border-radius: 50%;
+    filter: blur(120px);
+    z-index: 0;
+    pointer-events: none;
+  }
+  body::before {
+    width: 500px; height: 500px;
+    background: radial-gradient(circle, rgba(233,109,42,0.18), transparent 70%);
+    top: -150px; right: -100px;
+  }
+  body::after {
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(244,169,116,0.15), transparent 70%);
+    bottom: -200px; left: -150px;
+  }
+
+  main, header, footer, nav, section { position: relative; z-index: 1; }
+
+  h1, h2, h3, h4 { font-family: var(--font-display); font-weight: 500; line-height: 1.15; color: var(--ink); }
+  h1 { font-size: clamp(2.4rem, 6vw, 4.2rem); letter-spacing: -0.01em; }
+  h2 { font-size: clamp(1.8rem, 4vw, 2.6rem); letter-spacing: -0.01em; margin-bottom: 0.6em; }
+  h3 { font-size: clamp(1.3rem, 2.4vw, 1.7rem); margin-bottom: 0.5em; }
+  h4 { font-size: 1.1rem; font-family: var(--font-body); font-weight: 600; letter-spacing: 0.02em; }
+
+  em { font-style: italic; color: var(--accent); }
+  p { margin-bottom: 1em; }
+  p:last-child { margin-bottom: 0; }
+  a { color: var(--accent); text-decoration: none; transition: opacity 0.2s; }
+  a:hover { opacity: 0.7; }
+  strong { font-weight: 600; }
+
+  .container { max-width: 760px; margin: 0 auto; padding: 0 24px; }
+  section { padding: 50px 0; }
+  section.tight { padding: 30px 0; }
+
+  .label {
+    display: inline-block;
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1.2em;
+  }
+
+  .pill {
+    display: inline-block;
+    padding: 5px 14px;
+    background: var(--bg-soft);
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    font-size: 0.85rem;
+    color: var(--ink-soft);
+    margin-right: 8px;
+  }
+
+  .card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 32px;
+    margin-bottom: 24px;
+  }
+
+  /* ============================================================
+     НАВИГАЦИЯ
+     ============================================================ */
+  nav {
+    padding: 22px 0;
+    border-bottom: 1px solid var(--border);
+    background: rgba(250, 243, 231, 0.85);
+    backdrop-filter: blur(8px);
+    position: sticky; top: 0; z-index: 100;
+  }
+  nav .container { display: flex; flex-wrap: wrap; gap: 20px; align-items: center; justify-content: space-between; max-width: 920px; }
+  nav .brand { font-family: var(--font-display); font-size: 1.4rem; font-weight: 500; color: var(--ink); }
+  nav .nav-links { display: flex; flex-wrap: wrap; gap: 22px; font-size: 0.9rem; }
+  nav .nav-links a { color: var(--ink-soft); }
+  nav .nav-links a:hover, nav .nav-links a.active { color: var(--accent); }
+
+  /* ============================================================
+     HERO
+     ============================================================ */
+  .hero { padding: 80px 0 40px; text-align: center; }
+  .hero h1 { margin-bottom: 0.4em; }
+  .hero .lead { font-size: 1.15rem; color: var(--ink-soft); max-width: 540px; margin: 0 auto 1.5em; }
+
+  /* ============================================================
+     ФОРМЫ
+     ============================================================ */
+  .form-group { margin-bottom: 22px; }
+  .form-group:last-child { margin-bottom: 0; }
+
+  .form-label {
+    display: block;
+    font-weight: 600;
+    font-size: 0.95rem;
+    margin-bottom: 8px;
+    color: var(--ink);
+  }
+  .form-hint {
+    font-size: 0.85rem;
+    color: var(--ink-soft);
+    margin-bottom: 10px;
+    margin-top: -4px;
+  }
+
+  input[type="text"], textarea, select {
+    width: 100%;
+    padding: 12px 16px;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    font-family: var(--font-body);
+    font-size: 1rem;
+    color: var(--ink);
+    transition: border-color 0.2s, background 0.2s;
+  }
+  input[type="text"]:focus, textarea:focus, select:focus {
+    outline: none;
+    border-color: var(--accent);
+    background: white;
+  }
+  textarea { resize: vertical; min-height: 80px; line-height: 1.5; }
+
+  select {
+    appearance: none;
+    -webkit-appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%236b5d4a' stroke-width='2'%3e%3cpolyline points='6 9 12 15 18 9'/%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 14px center;
+    background-size: 16px;
+    padding-right: 40px;
+  }
+
+  /* Карточка сферы */
+  .sphere-card {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 20px;
+    margin-bottom: 14px;
+  }
+  .sphere-num {
+    font-family: var(--font-display);
+    font-style: italic;
+    color: var(--accent);
+    font-size: 1.5rem;
+    line-height: 1;
+    margin-bottom: 10px;
+  }
+
+  /* Главная кнопка */
+  .primary-btn {
+    display: inline-block;
+    padding: 16px 32px;
+    background: var(--accent);
+    color: white;
+    border: none;
+    border-radius: 999px;
+    font-family: var(--font-body);
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    box-shadow: 0 4px 14px rgba(233,109,42,0.25);
+  }
+  .primary-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 18px rgba(233,109,42,0.35); }
+
+  .secondary-btn {
+    display: inline-block;
+    padding: 12px 24px;
+    background: white;
+    color: var(--ink);
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    font-family: var(--font-body);
+    font-size: 0.92rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .secondary-btn:hover { border-color: var(--accent); color: var(--accent); }
+
+  /* Результат */
+  .result-output {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 20px;
+    margin: 20px 0;
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    white-space: pre-wrap;
+    line-height: 1.5;
+    color: var(--ink);
+    max-height: 500px;
+    overflow-y: auto;
+  }
+  .result-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+
+  .toast {
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%) translateY(100px);
+    background: var(--ink);
+    color: white;
+    padding: 14px 26px;
+    border-radius: 999px;
+    font-size: 0.92rem;
+    opacity: 0;
+    transition: all 0.3s;
+    z-index: 1000;
+    pointer-events: none;
+  }
+  .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+  /* Footer */
+  footer {
+    padding: 60px 0 40px;
+    border-top: 1px solid var(--border);
+    margin-top: 40px;
+    text-align: center;
+  }
+  footer .quote {
+    font-family: var(--font-display);
+    font-size: clamp(1.3rem, 2.5vw, 1.8rem);
+    line-height: 1.3;
+    margin-bottom: 20px;
+    color: var(--ink);
+  }
+  footer .meta { color: var(--ink-soft); font-size: 0.9rem; }
+
+  @media (max-width: 600px) {
+    .card { padding: 24px; }
+    nav .nav-links { gap: 14px; font-size: 0.82rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ============================================================
+     НАВИГАЦИЯ
+     ============================================================ -->
+<nav>
+  <div class="container">
+    <a href="/" class="brand">Рассвет</a>
+    <div class="nav-links">
+      <a href="/stratsession-july.html">Стратсессия</a>
+      <a href="/wheel.html">Колесо</a>
+      <a href="/plan.html" class="active">План</a>
+      <a href="/report.html">Отчёт</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ============================================================
+     HERO
+     ============================================================ -->
+<header class="hero">
+  <div class="container">
+    <h1>Мой план <em>на июль</em></h1>
+    <p class="lead">Заполни ответы на вопросы — получишь готовое сообщение для чата клуба. Так каждая увидит план каждой и сможет поддерживать.</p>
+    <div>
+      <span class="pill">15–20 минут</span>
+      <span class="pill">сохраняется в браузере</span>
+    </div>
+  </div>
+</header>
+
+<!-- ============================================================
+     ОБЩИЕ ВОПРОСЫ
+     ============================================================ -->
+<section class="tight">
+  <div class="container">
+    <div class="card">
+      <span class="label">большая картина</span>
+      <h2>Июль <em>в одном кадре</em></h2>
+
+      <div class="form-group">
+        <label class="form-label">Имя</label>
+        <input type="text" id="name" placeholder="Маша">
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">Одно слово, описывающее мой июль</label>
+        <p class="form-hint">Например: разгон, восстановление, завершение, прорыв, фундамент, разворот</p>
+        <input type="text" id="word" placeholder="Разгон">
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">Главные результаты к 31 июля</label>
+        <p class="form-hint">2–3 пункта — каждый с новой строки</p>
+        <textarea id="results" rows="4" placeholder="— Запустить новый поток курса&#10;— Восстановить регулярные тренировки&#10;— Закрыть подвисший проект"></textarea>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">Тащу из июня</label>
+        <p class="form-hint">Что осталось важным и недоделанным — переносится в июль</p>
+        <textarea id="from_june" rows="3" placeholder="— Запись курса (3 из 5 уроков)&#10;— Разобрать рабочий стол и заметки"></textarea>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     6 СФЕР
+     ============================================================ -->
+<section class="tight">
+  <div class="container">
+    <div class="card">
+      <span class="label">задачи по сферам</span>
+      <h2>6 сфер <em>· 6 задач</em></h2>
+      <p style="color: var(--ink-soft);">По каждой из выбранных сфер — 1–2 главные задачи на июль. Не больше. Меньше = лучше.</p>
+
+      <div id="spheresContainer"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     ЭКСПЕРИМЕНТ И ОТКАЗЫ
+     ============================================================ -->
+<section class="tight">
+  <div class="container">
+    <div class="card">
+      <span class="label">ключевая практика</span>
+      <h2>Эксперимент <em>и отказы</em></h2>
+
+      <div class="form-group">
+        <label class="form-label">Один эксперимент июля</label>
+        <p class="form-hint">Маленькое конкретное действие, которое делаю по-другому в июле</p>
+        <input type="text" id="experiment" placeholder="Не открываю телефон до 9 утра">
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">От чего отказываюсь в июле</label>
+        <p class="form-hint">2–3 вещи, от которых освобождаюсь, чтобы оставить силы для главного</p>
+        <textarea id="refuse" rows="3" placeholder="— Бесцельный сёрфинг соцсетей по вечерам&#10;— Брать новые проекты, пока не закрою старые"></textarea>
+      </div>
+    </div>
+
+    <!-- Главная кнопка -->
+    <div style="text-align: center; margin-top: 36px;">
+      <button class="primary-btn" id="generateBtn">Собрать план →</button>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     РЕЗУЛЬТАТ
+     ============================================================ -->
+<section id="resultSection" style="display: none;">
+  <div class="container">
+    <div class="card">
+      <span class="label">готово</span>
+      <h2>Твой <em>план июля</em></h2>
+      <p style="color: var(--ink-soft);">Скопируй текст и вставь в чат клуба.</p>
+      <div class="result-output" id="planOutput"></div>
+      <div class="result-actions">
+        <button class="primary-btn" id="copyBtn">📋 Скопировать</button>
+        <button class="secondary-btn" id="editBtn">← Вернуться к форме</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Тост -->
+<div class="toast" id="toast">Скопировано в буфер ✓</div>
+
+<!-- ============================================================
+     FOOTER
+     ============================================================ -->
+<footer>
+  <div class="container">
+    <p class="quote">План — это <em>обещание себе</em>,<br>сказанное вслух перед группой.</p>
+    <p class="meta">Рассвет · план июля</p>
+  </div>
+</footer>
+
+<!-- ============================================================
+     JS
+     ============================================================ -->
+<script>
+  // ============================================================
+  // СПИСОК СФЕР для выпадающего меню
+  // ============================================================
+  const SPHERES = [
+    'Здоровье и тело',
+    'Физическая активность / спорт',
+    'Питание',
+    'Сон и восстановление',
+    'Энергия / состояние',
+    'Внешность и стиль',
+    'Партнёр / любовные отношения',
+    'Семья / родители',
+    'Дети',
+    'Дружба',
+    'Сексуальность',
+    'Окружение / люди вокруг',
+    'Финансы / доход',
+    'Карьера / работа',
+    'Бизнес / своё дело',
+    'Профессиональный рост',
+    'Личный бренд / публичность',
+    'Личностный рост / саморазвитие',
+    'Психика / эмоции',
+    'Духовность / смыслы',
+    'Дисциплина и привычки',
+    'Обучение / новые знания',
+    'Хобби и увлечения',
+    'Творчество',
+    'Отдых и восстановление',
+    'Путешествия',
+    'Дом и быт',
+    'Время и тайм-менеджмент',
+    'Комьюнити / клуб',
+    'Другое (вписать своё)'
+  ];
+
+  // ============================================================
+  // СТЕЙТ И LOCALSTORAGE
+  // ============================================================
+  const STORAGE_KEY = 'rassvet_plan_v1';
+
+  let state = {
+    name: '',
+    word: '',
+    results: '',
+    from_june: '',
+    experiment: '',
+    refuse: '',
+    spheres: [
+      { name: '', custom: '', tasks: '' },
+      { name: '', custom: '', tasks: '' },
+      { name: '', custom: '', tasks: '' },
+      { name: '', custom: '', tasks: '' },
+      { name: '', custom: '', tasks: '' },
+      { name: '', custom: '', tasks: '' }
+    ]
+  };
+
+  function loadState() {
+    try {
+      const saved = localStorage.getItem(STORAGE_KEY);
+      if (saved) {
+        const parsed = JSON.parse(saved);
+        state = { ...state, ...parsed };
+        // Гарантируем, что spheres — массив из 6
+        if (!Array.isArray(state.spheres) || state.spheres.length !== 6) {
+          state.spheres = [
+            { name: '', custom: '', tasks: '' },
+            { name: '', custom: '', tasks: '' },
+            { name: '', custom: '', tasks: '' },
+            { name: '', custom: '', tasks: '' },
+            { name: '', custom: '', tasks: '' },
+            { name: '', custom: '', tasks: '' }
+          ];
+        }
+      }
+    } catch (e) { /* ignore */ }
+  }
+
+  function saveState() {
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+    } catch (e) { /* ignore */ }
+  }
+
+  // ============================================================
+  // РЕНДЕР БЛОКОВ СФЕР
+  // ============================================================
+  function renderSpheres() {
+    const container = document.getElementById('spheresContainer');
+    container.innerHTML = '';
+
+    state.spheres.forEach((sphere, idx) => {
+      const card = document.createElement('div');
+      card.className = 'sphere-card';
+
+      const options = SPHERES.map(s =>
+        `<option value="${s}" ${s === sphere.name ? 'selected' : ''}>${s}</option>`
+      ).join('');
+
+      card.innerHTML = `
+        <div class="sphere-num">${idx + 1}</div>
+        <div class="form-group">
+          <label class="form-label">Сфера</label>
+          <select data-sphere-idx="${idx}" data-field="name">
+            <option value="">— выбери сферу —</option>
+            ${options}
+          </select>
+        </div>
+        <div class="form-group sphere-custom" data-idx="${idx}" style="display: ${sphere.name === 'Другое (вписать своё)' ? 'block' : 'none'};">
+          <label class="form-label">Название сферы</label>
+          <input type="text" data-sphere-idx="${idx}" data-field="custom" value="${escapeAttr(sphere.custom)}" placeholder="Например: Волонтёрство">
+        </div>
+        <div class="form-group" style="margin-bottom: 0;">
+          <label class="form-label">Главная задача в этой сфере на июль</label>
+          <textarea data-sphere-idx="${idx}" data-field="tasks" rows="2" placeholder="— Что конкретно делаю в этой сфере в июле">${escapeText(sphere.tasks)}</textarea>
+        </div>
+      `;
+      container.appendChild(card);
+    });
+
+    // Привязка обработчиков
+    container.querySelectorAll('[data-sphere-idx]').forEach(el => {
+      el.addEventListener('input', handleSphereChange);
+      el.addEventListener('change', handleSphereChange);
+    });
+  }
+
+  function handleSphereChange(e) {
+    const idx = parseInt(e.target.dataset.sphereIdx);
+    const field = e.target.dataset.field;
+    state.spheres[idx][field] = e.target.value;
+    saveState();
+
+    if (field === 'name') {
+      const customWrap = document.querySelector(`.sphere-custom[data-idx="${idx}"]`);
+      if (customWrap) {
+        customWrap.style.display = e.target.value === 'Другое (вписать своё)' ? 'block' : 'none';
+      }
+    }
+  }
+
+  function escapeAttr(s) {
+    return (s || '').replace(/"/g, '&quot;');
+  }
+  function escapeText(s) {
+    return (s || '').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  }
+
+  // ============================================================
+  // СВЯЗЫВАНИЕ ОБЩИХ ПОЛЕЙ
+  // ============================================================
+  function bindText(id, key) {
+    const el = document.getElementById(id);
+    el.value = state[key] || '';
+    el.addEventListener('input', (e) => {
+      state[key] = e.target.value;
+      saveState();
+    });
+  }
+
+  // ============================================================
+  // СБОРКА ПЛАНА В ТЕКСТ
+  // ============================================================
+  function buildPlan() {
+    const lines = [];
+    lines.push('🌅 МОЙ ПЛАН НА ИЮЛЬ');
+    lines.push(`Имя: ${state.name || '—'}`);
+    lines.push('');
+
+    if (state.word) {
+      lines.push(`🔑 Слово июля: ${state.word}`);
+      lines.push('');
+    }
+
+    if (state.results) {
+      lines.push('📍 Главные результаты к 31 июля:');
+      state.results.split('\n').filter(l => l.trim()).forEach(l => {
+        const cleaned = l.replace(/^[—–-]\s*/, '');
+        lines.push(`— ${cleaned}`);
+      });
+      lines.push('');
+    }
+
+    if (state.from_june && state.from_june.trim()) {
+      lines.push('🎯 Тащу из июня:');
+      state.from_june.split('\n').filter(l => l.trim()).forEach(l => {
+        const cleaned = l.replace(/^[—–-]\s*/, '');
+        lines.push(`— ${cleaned}`);
+      });
+      lines.push('');
+    }
+
+    // Сферы — выводим только заполненные
+    const filledSpheres = state.spheres.filter(s => (s.name || s.custom) && s.tasks);
+    if (filledSpheres.length) {
+      lines.push('🌿 Задачи по сферам:');
+      lines.push('');
+      filledSpheres.forEach(s => {
+        const name = s.name === 'Другое (вписать своё)' ? s.custom : s.name;
+        lines.push(`• ${name}`);
+        s.tasks.split('\n').filter(l => l.trim()).forEach(l => {
+          const cleaned = l.replace(/^[—–-]\s*/, '');
+          lines.push(`  — ${cleaned}`);
+        });
+        lines.push('');
+      });
+    }
+
+    if (state.experiment) {
+      lines.push('⚡ Эксперимент июля:');
+      lines.push(state.experiment);
+      lines.push('');
+    }
+
+    if (state.refuse) {
+      lines.push('🚫 От чего отказываюсь в июле:');
+      state.refuse.split('\n').filter(l => l.trim()).forEach(l => {
+        const cleaned = l.replace(/^[—–-]\s*/, '');
+        lines.push(`— ${cleaned}`);
+      });
+    }
+
+    return lines.join('\n');
+  }
+
+  document.getElementById('generateBtn').addEventListener('click', () => {
+    const text = buildPlan();
+    document.getElementById('planOutput').textContent = text;
+    document.getElementById('resultSection').style.display = 'block';
+    setTimeout(() => {
+      document.getElementById('resultSection').scrollIntoView({ behavior: 'smooth' });
+    }, 100);
+  });
+
+  document.getElementById('editBtn').addEventListener('click', () => {
+    document.getElementById('resultSection').style.display = 'none';
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
+  // ============================================================
+  // КОПИРОВАНИЕ
+  // ============================================================
+  document.getElementById('copyBtn').addEventListener('click', async () => {
+    const text = document.getElementById('planOutput').textContent;
+    try {
+      await navigator.clipboard.writeText(text);
+      showToast('Скопировано в буфер ✓');
+    } catch (e) {
+      const ta = document.createElement('textarea');
+      ta.value = text;
+      document.body.appendChild(ta);
+      ta.select();
+      try {
+        document.execCommand('copy');
+        showToast('Скопировано в буфер ✓');
+      } catch (err) {
+        showToast('Не удалось скопировать — выдели вручную');
+      }
+      document.body.removeChild(ta);
+    }
+  });
+
+  function showToast(msg) {
+    const toast = document.getElementById('toast');
+    toast.textContent = msg;
+    toast.classList.add('show');
+    setTimeout(() => toast.classList.remove('show'), 2400);
+  }
+
+  // ============================================================
+  // ИНИЦИАЛИЗАЦИЯ
+  // ============================================================
+  loadState();
+  bindText('name', 'name');
+  bindText('word', 'word');
+  bindText('results', 'results');
+  bindText('from_june', 'from_june');
+  bindText('experiment', 'experiment');
+  bindText('refuse', 'refuse');
+  renderSpheres();
+</script>
+</body>
+</html>
