@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Рассвет · Пространство участниц</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Onest:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #faf3e7;
+    --bg-card: #fffaf1;
+    --bg-soft: #f4ebd9;
+    --ink: #2c241b;
+    --ink-soft: #6b5d4a;
+    --accent: #e96d2a;
+    --accent-soft: #f4a974;
+    --border: #e8dcc4;
+    --radius-sm: 14px;
+    --radius: 22px;
+    --font-display: 'Cormorant Garamond', serif;
+    --font-body: 'Onest', system-ui, -apple-system, sans-serif;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: var(--font-body);
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.55;
+    font-size: 16px;
+    overflow-x: hidden;
+    position: relative;
+  }
+
+  body::before, body::after {
+    content: ''; position: fixed; border-radius: 50%;
+    filter: blur(120px); z-index: 0; pointer-events: none;
+  }
+  body::before {
+    width: 500px; height: 500px;
+    background: radial-gradient(circle, rgba(233,109,42,0.18), transparent 70%);
+    top: -150px; right: -100px;
+  }
+  body::after {
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(244,169,116,0.15), transparent 70%);
+    bottom: -200px; left: -150px;
+  }
+
+  nav, header, footer, section { position: relative; z-index: 1; }
+
+  h1, h2, h3 { font-family: var(--font-display); font-weight: 500; line-height: 1.15; color: var(--ink); }
+  h1 { font-size: clamp(2.2rem, 5.5vw, 3.6rem); }
+  h2 { font-size: clamp(1.6rem, 3.5vw, 2.2rem); margin-bottom: 0.4em; }
+  h3 { font-size: 1.25rem; margin-bottom: 0.3em; }
+
+  em { font-style: italic; color: var(--accent); }
+  p { margin-bottom: 0.8em; }
+  p:last-child { margin-bottom: 0; }
+  a { color: var(--accent); text-decoration: none; }
+  strong { font-weight: 600; }
+
+  .container { max-width: 880px; margin: 0 auto; padding: 0 20px; }
+  section { padding: 32px 0; }
+
+  .label {
+    display: inline-block;
+    font-size: 0.74rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.8em;
+  }
+
+  nav {
+    padding: 18px 0;
+    border-bottom: 1px solid var(--border);
+    background: rgba(250, 243, 231, 0.85);
+    backdrop-filter: blur(8px);
+    position: sticky; top: 0; z-index: 100;
+  }
+  nav .container { display: flex; gap: 16px; align-items: center; justify-content: space-between; }
+  nav .brand { font-family: var(--font-display); font-size: 1.3rem; color: var(--ink); }
+  nav .exit-link { font-size: 0.85rem; color: var(--ink-soft); cursor: pointer; }
+  nav .exit-link:hover { color: var(--accent); }
+
+  .hero { padding: 56px 0 24px; }
+  .hero .lead { font-size: 1.05rem; color: var(--ink-soft); max-width: 560px; }
+
+  /* Сетка карточек-разделов */
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+  @media (max-width: 640px) { .grid { grid-template-columns: 1fr; } }
+
+  .tile {
+    display: block;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 26px;
+    color: var(--ink);
+    transition: all 0.2s;
+    position: relative;
+    overflow: hidden;
+  }
+  .tile::after {
+    content: '';
+    position: absolute;
+    width: 140px; height: 140px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(244,169,116,0.18), transparent 70%);
+    top: -50px; right: -50px;
+    pointer-events: none;
+  }
+  .tile:hover {
+    transform: translateY(-3px);
+    border-color: var(--accent-soft);
+    box-shadow: 0 8px 24px rgba(233,109,42,0.10);
+  }
+  .tile .tile-emoji { font-size: 1.6rem; margin-bottom: 10px; display: block; }
+  .tile p { color: var(--ink-soft); font-size: 0.92rem; margin: 0; }
+  .tile .arrow {
+    display: inline-block;
+    margin-top: 12px;
+    color: var(--accent);
+    font-weight: 600;
+    font-size: 0.9rem;
+  }
+
+  /* Блок «сейчас в клубе» — Эва редактирует вручную */
+  .now-card {
+    background: linear-gradient(135deg, rgba(233,109,42,0.08), rgba(244,169,116,0.04));
+    border: 1px solid var(--accent-soft);
+    border-radius: var(--radius);
+    padding: 26px;
+    margin-bottom: 28px;
+  }
+  .now-card ul { margin: 0.4em 0 0 1.3em; }
+  .now-card li { margin-bottom: 0.4em; }
+
+  footer {
+    padding: 50px 0 40px;
+    border-top: 1px solid var(--border);
+    margin-top: 40px;
+    text-align: center;
+  }
+  footer .quote {
+    font-family: var(--font-display);
+    font-size: clamp(1.2rem, 2.4vw, 1.6rem);
+    line-height: 1.3;
+    margin-bottom: 14px;
+  }
+  footer .meta { color: var(--ink-soft); font-size: 0.85rem; }
+
+  /* ============================================================
+     ПАРОЛЬНЫЙ ЭКРАН
+     ============================================================ */
+  #gate {
+    position: fixed;
+    inset: 0;
+    background: var(--bg);
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+  }
+  .gate-box {
+    max-width: 380px;
+    width: 100%;
+    text-align: center;
+  }
+  .gate-box h1 { font-size: 2.2rem; margin-bottom: 8px; }
+  .gate-box p { color: var(--ink-soft); margin-bottom: 24px; font-size: 0.95rem; }
+  .gate-box input {
+    width: 100%;
+    padding: 14px 18px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    font-family: var(--font-body);
+    font-size: 1rem;
+    color: var(--ink);
+    text-align: center;
+    margin-bottom: 14px;
+  }
+  .gate-box input:focus { outline: none; border-color: var(--accent); background: white; }
+  .gate-box button {
+    width: 100%;
+    padding: 14px;
+    background: var(--accent);
+    color: white;
+    border: none;
+    border-radius: 999px;
+    font-family: var(--font-body);
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .gate-box button:hover { transform: translateY(-1px); box-shadow: 0 4px 14px rgba(233,109,42,0.3); }
+  .gate-error {
+    color: #c4543a;
+    font-size: 0.88rem;
+    margin-top: 12px;
+    min-height: 1.2em;
+  }
+
+  #content { display: none; }
+</style>
+</head>
+<body>
+
+<!-- ============================================================
+     ПАРОЛЬНЫЙ ЭКРАН
+     ============================================================ -->
+<div id="gate">
+  <div class="gate-box">
+    <h1>Рассвет</h1>
+    <p>Пространство участниц клуба.<br>Введи пароль из чата клуба.</p>
+    <input type="password" id="gateInput" placeholder="Пароль" autocomplete="off">
+    <button id="gateBtn">Войти</button>
+    <div class="gate-error" id="gateError"></div>
+  </div>
+</div>
+
+<!-- ============================================================
+     КОНТЕНТ (показывается после ввода пароля)
+     ============================================================ -->
+<div id="content">
+
+<nav>
+  <div class="container">
+    <a href="/club.html" class="brand">Рассвет · клуб</a>
+    <span class="exit-link" id="exitBtn">Выйти</span>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="container">
+    <h1>Привет! Это твоё <em>пространство</em></h1>
+    <p class="lead">Все инструменты клуба в одном месте: встречи, марафон, книжный клуб, планы и отчёты.</p>
+  </div>
+</header>
+
+<!-- ============================================================
+     СЕЙЧАС В КЛУБЕ — этот блок Эва редактирует вручную
+     ============================================================ -->
+<section style="padding-top: 8px;">
+  <div class="container">
+    <div class="now-card">
+      <span class="label">сейчас в клубе</span>
+      <ul>
+        <li><strong>Стратсессия</strong> — 30 июня, итоги месяца и план на июль</li>
+        <li><strong>Марафон</strong> — 21 день, свои задачи, старт 1 июля</li>
+        <li><strong>Книжный клуб</strong> — встреча раз в две недели, подробности внутри</li>
+        <li><strong>Еженедельный отчёт</strong> — каждое воскресенье в чате</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     РАЗДЕЛЫ
+     ============================================================ -->
+<section style="padding-top: 0;">
+  <div class="container">
+    <div class="grid">
+
+      <a href="/schedule.html" class="tile">
+        <span class="tile-emoji">📅</span>
+        <h3>Расписание</h3>
+        <p>Встречи, эксперты, события клуба — всегда актуальное.</p>
+        <span class="arrow">Открыть →</span>
+      </a>
+
+      <a href="/stratsession-july.html" class="tile">
+        <span class="tile-emoji">🌅</span>
+        <h3>Стратсессия</h3>
+        <p>Конспект: итоги июня и план на июль.</p>
+        <span class="arrow">Открыть →</span>
+      </a>
+
+      <a href="/marathon.html" class="tile">
+        <span class="tile-emoji">🔥</span>
+        <h3>Марафон 21 день</h3>
+        <p>Свои задачи, трекер дней, прогресс.</p>
+        <span class="arrow">Открыть →</span>
+      </a>
+
+      <a href="/bookclub.html" class="tile">
+        <span class="tile-emoji">📖</span>
+        <h3>Книжный клуб</h3>
+        <p>Текущая книга, дата встречи, вопросы для обсуждения.</p>
+        <span class="arrow">Открыть →</span>
+      </a>
+
+      <a href="/wheel.html" class="tile">
+        <span class="tile-emoji">🌀</span>
+        <h3>Колесо баланса</h3>
+        <p>6 сфер, оценки, живая картинка колеса.</p>
+        <span class="arrow">Открыть →</span>
+      </a>
+
+      <a href="/plan.html" class="tile">
+        <span class="tile-emoji">🗺</span>
+        <h3>План месяца</h3>
+        <p>Конструктор плана — собери и поделись в чате.</p>
+        <span class="arrow">Открыть →</span>
+      </a>
+
+      <a href="/report.html" class="tile">
+        <span class="tile-emoji">✍️</span>
+        <h3>Еженедельный отчёт</h3>
+        <p>Форма на 10 минут + история по неделям.</p>
+        <span class="arrow">Открыть →</span>
+      </a>
+
+      <a href="https://t.me/evavasilyyevna" class="tile" target="_blank" rel="noopener">
+        <span class="tile-emoji">💬</span>
+        <h3>Написать Эве</h3>
+        <p>Вопрос, идея, что-то не работает — пиши напрямую.</p>
+        <span class="arrow">В Telegram →</span>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <p class="quote">Ты здесь не одна —<br>нас целый <em>Рассвет</em>.</p>
+    <p class="meta">Рассвет · пространство участниц</p>
+  </div>
+</footer>
+
+</div><!-- /#content -->
+
+<script>
+  // ============================================================
+  // ПАРОЛЬ — поменять можно здесь (и сообщить новый в чате клуба)
+  // ============================================================
+  const CLUB_PASSWORD = 'rassvet2026';
+  const ACCESS_KEY = 'rassvet_club_access';
+
+  function unlock() {
+    document.getElementById('gate').style.display = 'none';
+    document.getElementById('content').style.display = 'block';
+  }
+
+  function checkSaved() {
+    try {
+      if (localStorage.getItem(ACCESS_KEY) === CLUB_PASSWORD) unlock();
+    } catch (e) { /* ignore */ }
+  }
+
+  function tryEnter() {
+    const input = document.getElementById('gateInput');
+    const error = document.getElementById('gateError');
+    if (input.value.trim().toLowerCase() === CLUB_PASSWORD.toLowerCase()) {
+      try { localStorage.setItem(ACCESS_KEY, CLUB_PASSWORD); } catch (e) {}
+      unlock();
+    } else {
+      error.textContent = 'Не подходит. Проверь пароль в чате клуба.';
+      input.value = '';
+      input.focus();
+    }
+  }
+
+  document.getElementById('gateBtn').addEventListener('click', tryEnter);
+  document.getElementById('gateInput').addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') tryEnter();
+  });
+
+  document.getElementById('exitBtn').addEventListener('click', () => {
+    try { localStorage.removeItem(ACCESS_KEY); } catch (e) {}
+    location.reload();
+  });
+
+  checkSaved();
+</script>
+</body>
+</html>
