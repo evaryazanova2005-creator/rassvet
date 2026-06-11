@@ -8,9 +8,6 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Onest:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
-  /* ============================================================
-     ДИЗАЙН-СИСТЕМА
-     ============================================================ */
   :root {
     --bg: #faf3e7;
     --bg-card: #fffaf1;
@@ -22,7 +19,6 @@
     --border: #e8dcc4;
     --radius-sm: 14px;
     --radius: 22px;
-    --radius-lg: 28px;
     --font-display: 'Cormorant Garamond', serif;
     --font-body: 'Onest', system-ui, -apple-system, sans-serif;
   }
@@ -33,406 +29,111 @@
     font-family: var(--font-body);
     background: var(--bg);
     color: var(--ink);
-    line-height: 1.6;
-    font-size: 17px;
+    line-height: 1.55;
+    font-size: 16px;
     overflow-x: hidden;
     position: relative;
   }
+  body::before, body::after { content: ''; position: fixed; border-radius: 50%; filter: blur(120px); z-index: 0; pointer-events: none; }
+  body::before { width: 500px; height: 500px; background: radial-gradient(circle, rgba(233,109,42,0.18), transparent 70%); top: -150px; right: -100px; }
+  body::after { width: 600px; height: 600px; background: radial-gradient(circle, rgba(244,169,116,0.15), transparent 70%); bottom: -200px; left: -150px; }
 
-  body::before, body::after {
-    content: ''; position: fixed; border-radius: 50%;
-    filter: blur(120px); z-index: 0; pointer-events: none;
-  }
-  body::before {
-    width: 500px; height: 500px;
-    background: radial-gradient(circle, rgba(233,109,42,0.18), transparent 70%);
-    top: -150px; right: -100px;
-  }
-  body::after {
-    width: 600px; height: 600px;
-    background: radial-gradient(circle, rgba(244,169,116,0.15), transparent 70%);
-    bottom: -200px; left: -150px;
-  }
-
-  main, header, footer, nav, section { position: relative; z-index: 1; }
-
-  h1, h2, h3, h4 { font-family: var(--font-display); font-weight: 500; line-height: 1.15; color: var(--ink); }
-  h1 { font-size: clamp(2.4rem, 6vw, 4.2rem); letter-spacing: -0.01em; }
-  h2 { font-size: clamp(1.8rem, 4vw, 2.6rem); letter-spacing: -0.01em; margin-bottom: 0.6em; }
-  h3 { font-size: clamp(1.3rem, 2.4vw, 1.7rem); margin-bottom: 0.5em; }
-  h4 { font-size: 1.1rem; font-family: var(--font-body); font-weight: 600; letter-spacing: 0.02em; }
-
+  nav, header, footer, section { position: relative; z-index: 1; }
+  h1, h2, h3 { font-family: var(--font-display); font-weight: 500; line-height: 1.15; }
+  h1 { font-size: clamp(2.2rem, 5.5vw, 3.6rem); }
+  h2 { font-size: clamp(1.6rem, 3.5vw, 2.2rem); margin-bottom: 0.4em; }
+  h3 { font-size: 1.2rem; margin-bottom: 0.3em; }
   em { font-style: italic; color: var(--accent); }
-  p { margin-bottom: 1em; }
+  p { margin-bottom: 0.8em; }
   p:last-child { margin-bottom: 0; }
-  a { color: var(--accent); text-decoration: none; transition: opacity 0.2s; }
-  a:hover { opacity: 0.7; }
+  a { color: var(--accent); text-decoration: none; }
   strong { font-weight: 600; }
 
-  .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
-  section { padding: 40px 0; }
-  section.tight { padding: 30px 0; }
+  .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+  section { padding: 32px 0; }
+  .label { display: inline-block; font-size: 0.74rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.8em; }
+  .pill { display: inline-block; padding: 4px 12px; background: var(--bg-soft); border: 1px solid var(--border); border-radius: 999px; font-size: 0.8rem; color: var(--ink-soft); margin-right: 6px; }
+  .card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); padding: 24px; margin-bottom: 16px; }
 
-  .label {
-    display: inline-block;
-    font-size: 0.78rem;
-    font-weight: 500;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--accent);
-    margin-bottom: 1.2em;
-  }
-
-  .pill {
-    display: inline-block;
-    padding: 5px 14px;
-    background: var(--bg-soft);
-    border: 1px solid var(--border);
-    border-radius: 999px;
-    font-size: 0.85rem;
-    color: var(--ink-soft);
-    margin-right: 8px;
-  }
-
-  .card {
-    background: var(--bg-card);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    padding: 32px;
-    margin-bottom: 24px;
-  }
-
-  /* ============================================================
-     НАВИГАЦИЯ
-     ============================================================ */
-  nav {
-    padding: 22px 0;
-    border-bottom: 1px solid var(--border);
-    background: rgba(250, 243, 231, 0.85);
-    backdrop-filter: blur(8px);
-    position: sticky; top: 0; z-index: 100;
-  }
-  nav .container { display: flex; flex-wrap: wrap; gap: 20px; align-items: center; justify-content: space-between; }
-  nav .brand { font-family: var(--font-display); font-size: 1.4rem; font-weight: 500; color: var(--ink); }
-  nav .nav-links { display: flex; flex-wrap: wrap; gap: 22px; font-size: 0.9rem; }
+  nav { padding: 18px 0; border-bottom: 1px solid var(--border); background: rgba(250,243,231,0.85); backdrop-filter: blur(8px); position: sticky; top: 0; z-index: 100; }
+  nav .container { display: flex; flex-wrap: wrap; gap: 16px; align-items: center; justify-content: space-between; }
+  nav .brand { font-family: var(--font-display); font-size: 1.3rem; color: var(--ink); }
+  nav .nav-links { display: flex; flex-wrap: wrap; gap: 16px; font-size: 0.85rem; }
   nav .nav-links a { color: var(--ink-soft); }
   nav .nav-links a:hover, nav .nav-links a.active { color: var(--accent); }
 
-  /* ============================================================
-     HERO
-     ============================================================ */
-  .hero { padding: 60px 0 30px; text-align: center; }
-  .hero h1 { margin-bottom: 0.4em; }
-  .hero .lead { font-size: 1.15rem; color: var(--ink-soft); max-width: 600px; margin: 0 auto 1.5em; }
+  .hero { padding: 50px 0 20px; text-align: center; }
+  .hero .lead { font-size: 1.05rem; color: var(--ink-soft); max-width: 560px; margin: 0 auto; }
 
-  /* ============================================================
-     ОСНОВНАЯ СЕТКА — колесо + форма
-     ============================================================ */
-  .main-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 30px;
-  }
+  /* Основная сетка */
+  .main-grid { display: grid; grid-template-columns: 1fr; gap: 24px; }
   @media (min-width: 980px) {
-    .main-grid {
-      grid-template-columns: 1fr 1fr;
-      align-items: start;
-    }
-    .wheel-column {
-      position: sticky;
-      top: 100px;
-    }
+    .main-grid { grid-template-columns: 1fr 1fr; align-items: start; }
+    .wheel-column { position: sticky; top: 90px; }
   }
 
-  /* ============================================================
-     SVG КОЛЕСА
-     ============================================================ */
-  .wheel-card {
-    background: var(--bg-card);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    padding: 24px;
-    text-align: center;
-  }
-  .wheel-svg-wrap {
-    max-width: 100%;
-    margin: 0 auto;
-  }
-  .wheel-svg {
-    width: 100%;
-    height: auto;
-    display: block;
-  }
+  /* Колесо */
+  .wheel-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); padding: 20px; text-align: center; }
+  .wheel-svg { width: 100%; height: auto; display: block; max-width: 480px; margin: 0 auto; }
 
-  /* Легенда */
-  .wheel-legend {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    flex-wrap: wrap;
-    margin-top: 20px;
-    font-size: 0.9rem;
-    color: var(--ink-soft);
-  }
-  .legend-item { display: flex; align-items: center; gap: 8px; }
-  .legend-swatch {
-    width: 18px;
-    height: 14px;
-    border-radius: 4px;
-  }
-  .legend-swatch.current {
-    background: rgba(233,109,42,0.4);
-    border: 2px solid var(--accent);
-  }
-  .legend-swatch.desired {
-    background: transparent;
-    border: 2px dashed var(--accent);
-  }
+  .wheel-legend { display: flex; justify-content: center; gap: 18px; flex-wrap: wrap; margin-top: 16px; font-size: 0.85rem; color: var(--ink-soft); }
+  .legend-item { display: flex; align-items: center; gap: 7px; }
+  .legend-swatch { width: 16px; height: 12px; border-radius: 3px; }
+  .legend-swatch.current { background: rgba(233,109,42,0.4); border: 2px solid var(--accent); }
+  .legend-swatch.desired { background: transparent; border: 2px dashed var(--accent); }
 
-  /* Статистика */
-  .stats-row {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 12px;
-    margin-top: 20px;
-  }
-  .stat-box {
-    padding: 14px;
-    background: var(--bg);
-    border-radius: var(--radius-sm);
-    text-align: center;
-  }
-  .stat-label {
-    font-size: 0.75rem;
-    color: var(--ink-soft);
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    margin-bottom: 6px;
-  }
-  .stat-value {
-    font-family: var(--font-display);
-    font-style: italic;
-    font-size: 1.6rem;
-    color: var(--accent);
-    line-height: 1;
-  }
-  .stat-hint {
-    font-size: 0.78rem;
-    color: var(--ink-soft);
-    margin-top: 4px;
-  }
+  .stats-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 16px; }
+  .stat-box { padding: 12px; background: var(--bg); border-radius: var(--radius-sm); text-align: center; }
+  .stat-label { font-size: 0.7rem; color: var(--ink-soft); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 4px; }
+  .stat-value { font-family: var(--font-display); font-style: italic; font-size: 1.5rem; color: var(--accent); line-height: 1; }
+  .stat-hint { font-size: 0.72rem; color: var(--ink-soft); margin-top: 3px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 
-  /* ============================================================
-     ФОРМА
-     ============================================================ */
-  .form-group { margin-bottom: 18px; }
-  .form-group:last-child { margin-bottom: 0; }
+  /* Форма */
+  input[type="text"] { width: 100%; padding: 10px 14px; background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius-sm); font-family: var(--font-body); font-size: 0.95rem; color: var(--ink); }
+  input[type="text"]:focus { outline: none; border-color: var(--accent); background: white; }
+  .form-label { display: block; font-weight: 600; font-size: 0.9rem; margin-bottom: 5px; }
+  .form-hint { font-size: 0.8rem; color: var(--ink-soft); margin-top: -3px; margin-bottom: 8px; }
+  .form-group { margin-bottom: 14px; }
 
-  .form-label {
-    display: block;
-    font-weight: 600;
-    font-size: 0.92rem;
-    margin-bottom: 8px;
-    color: var(--ink);
-  }
-
-  input[type="text"], select {
-    width: 100%;
-    padding: 11px 14px;
-    background: var(--bg);
-    border: 1px solid var(--border);
-    border-radius: var(--radius-sm);
-    font-family: var(--font-body);
-    font-size: 0.95rem;
-    color: var(--ink);
-    transition: border-color 0.2s, background 0.2s;
-  }
-  input[type="text"]:focus, select:focus {
-    outline: none;
-    border-color: var(--accent);
-    background: white;
-  }
-
-  select {
-    appearance: none;
-    -webkit-appearance: none;
-    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%236b5d4a' stroke-width='2'%3e%3cpolyline points='6 9 12 15 18 9'/%3e%3c/svg%3e");
-    background-repeat: no-repeat;
-    background-position: right 14px center;
-    background-size: 16px;
-    padding-right: 36px;
-  }
-
-  /* Карточка сферы */
-  .sphere-card {
-    background: var(--bg);
-    border: 1px solid var(--border);
-    border-radius: var(--radius-sm);
-    padding: 18px;
-    margin-bottom: 12px;
-    transition: border-color 0.2s;
-  }
+  .sphere-card { background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 18px; margin-bottom: 12px; transition: border-color 0.2s; }
   .sphere-card.filled { border-color: var(--accent-soft); }
-  .sphere-num {
-    font-family: var(--font-display);
-    font-style: italic;
-    color: var(--accent);
-    font-size: 1.4rem;
-    line-height: 1;
-    margin-bottom: 12px;
-  }
-  .sphere-custom-input { margin-top: 10px; }
+  .sphere-num { font-family: var(--font-display); font-style: italic; color: var(--accent); font-size: 1.3rem; line-height: 1; margin-bottom: 10px; }
 
-  /* Слайдер с двумя оценками */
-  .score-row {
-    display: grid;
-    grid-template-columns: 110px 1fr 36px;
-    gap: 14px;
-    align-items: center;
-    margin-top: 12px;
-  }
-  .score-row .score-label {
-    font-size: 0.88rem;
-    color: var(--ink-soft);
-    font-weight: 500;
-  }
-  .score-row input[type="range"] {
-    width: 100%;
-    height: 6px;
-    appearance: none;
-    -webkit-appearance: none;
-    background: var(--bg-soft);
-    border-radius: 999px;
-    outline: none;
-  }
-  .score-row input[type="range"]::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    width: 20px; height: 20px;
-    background: var(--accent);
-    border-radius: 50%;
-    cursor: pointer;
-    box-shadow: 0 2px 6px rgba(233,109,42,0.3);
-  }
-  .score-row input[type="range"]::-moz-range-thumb {
-    width: 20px; height: 20px;
-    background: var(--accent);
-    border-radius: 50%;
-    cursor: pointer;
-    border: none;
-    box-shadow: 0 2px 6px rgba(233,109,42,0.3);
-  }
-  .score-row .score-value {
-    font-family: var(--font-display);
-    font-style: italic;
-    font-size: 1.4rem;
-    color: var(--accent);
-    text-align: right;
-    line-height: 1;
-  }
+  .score-row { display: grid; grid-template-columns: 100px 1fr 32px; gap: 10px; align-items: center; margin-top: 10px; }
+  .score-row .score-label { font-size: 0.84rem; color: var(--ink-soft); font-weight: 500; }
+  .score-row input[type="range"] { width: 100%; height: 6px; appearance: none; -webkit-appearance: none; background: var(--bg-soft); border-radius: 999px; outline: none; }
+  .score-row input[type="range"]::-webkit-slider-thumb { -webkit-appearance: none; width: 20px; height: 20px; background: var(--accent); border-radius: 50%; cursor: pointer; box-shadow: 0 2px 6px rgba(233,109,42,0.3); }
+  .score-row input[type="range"]::-moz-range-thumb { width: 20px; height: 20px; background: var(--accent); border-radius: 50%; cursor: pointer; border: none; }
+  .score-row .score-value { font-family: var(--font-display); font-style: italic; font-size: 1.3rem; color: var(--accent); text-align: right; line-height: 1; }
 
-  .gap-line {
-    margin-top: 10px;
-    font-size: 0.85rem;
-    color: var(--ink-soft);
-    text-align: right;
-  }
-  .gap-line strong { color: var(--accent); font-weight: 500; }
+  .gap-line { margin-top: 8px; font-size: 0.82rem; color: var(--ink-soft); text-align: right; }
+  .gap-line strong { color: var(--accent); }
 
-  /* Кнопки */
-  .primary-btn {
-    display: inline-block;
-    padding: 16px 32px;
-    background: var(--accent);
-    color: white;
-    border: none;
-    border-radius: 999px;
-    font-family: var(--font-body);
-    font-size: 1rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.2s;
-    box-shadow: 0 4px 14px rgba(233,109,42,0.25);
-  }
-  .primary-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 18px rgba(233,109,42,0.35); }
-
-  .secondary-btn {
-    display: inline-block;
-    padding: 12px 24px;
-    background: white;
-    color: var(--ink);
-    border: 1px solid var(--border);
-    border-radius: 999px;
-    font-family: var(--font-body);
-    font-size: 0.92rem;
-    font-weight: 500;
-    cursor: pointer;
-    transition: all 0.2s;
-  }
+  .primary-btn { display: inline-block; padding: 14px 28px; background: var(--accent); color: white; border: none; border-radius: 999px; font-family: var(--font-body); font-size: 0.95rem; font-weight: 600; cursor: pointer; transition: all 0.2s; box-shadow: 0 4px 14px rgba(233,109,42,0.25); }
+  .primary-btn:hover { transform: translateY(-2px); }
+  .secondary-btn { display: inline-block; padding: 11px 22px; background: white; color: var(--ink); border: 1px solid var(--border); border-radius: 999px; font-family: var(--font-body); font-size: 0.88rem; font-weight: 500; cursor: pointer; transition: all 0.2s; }
   .secondary-btn:hover { border-color: var(--accent); color: var(--accent); }
 
-  /* Результат */
-  .result-output {
-    background: var(--bg);
-    border: 1px solid var(--border);
-    border-radius: var(--radius-sm);
-    padding: 20px;
-    margin: 20px 0;
-    font-family: var(--font-body);
-    font-size: 0.92rem;
-    white-space: pre-wrap;
-    line-height: 1.5;
-    color: var(--ink);
-    max-height: 400px;
-    overflow-y: auto;
-  }
-  .result-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+  .result-output { background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 16px; margin: 16px 0; font-size: 0.9rem; white-space: pre-wrap; line-height: 1.5; }
+  .result-actions { display: flex; gap: 10px; flex-wrap: wrap; }
 
-  .toast {
-    position: fixed;
-    bottom: 30px;
-    left: 50%;
-    transform: translateX(-50%) translateY(100px);
-    background: var(--ink);
-    color: white;
-    padding: 14px 26px;
-    border-radius: 999px;
-    font-size: 0.92rem;
-    opacity: 0;
-    transition: all 0.3s;
-    z-index: 1000;
-    pointer-events: none;
-  }
+  .toast { position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%) translateY(100px); background: var(--ink); color: white; padding: 14px 26px; border-radius: 999px; font-size: 0.92rem; opacity: 0; transition: all 0.3s; z-index: 1000; pointer-events: none; }
   .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
 
-  /* Footer */
-  footer {
-    padding: 60px 0 40px;
-    border-top: 1px solid var(--border);
-    margin-top: 40px;
-    text-align: center;
-  }
-  footer .quote {
-    font-family: var(--font-display);
-    font-size: clamp(1.3rem, 2.5vw, 1.8rem);
-    line-height: 1.3;
-    margin-bottom: 20px;
-    color: var(--ink);
-  }
-  footer .meta { color: var(--ink-soft); font-size: 0.9rem; }
+  footer { padding: 50px 0 40px; border-top: 1px solid var(--border); margin-top: 30px; text-align: center; }
+  footer .quote { font-family: var(--font-display); font-size: clamp(1.2rem, 2.4vw, 1.6rem); line-height: 1.3; margin-bottom: 14px; }
+  footer .meta { color: var(--ink-soft); font-size: 0.85rem; }
 
   @media (max-width: 600px) {
-    .card, .wheel-card { padding: 22px; }
+    .card, .wheel-card { padding: 18px; }
     .stats-row { grid-template-columns: 1fr; }
-    .score-row { grid-template-columns: 90px 1fr 32px; gap: 10px; }
-    nav .nav-links { gap: 14px; font-size: 0.82rem; }
+    .score-row { grid-template-columns: 80px 1fr 28px; gap: 8px; }
+    nav .nav-links { gap: 12px; font-size: 0.78rem; }
   }
 </style>
 </head>
 <body>
 
-<!-- ============================================================
-     НАВИГАЦИЯ
-     ============================================================ -->
 <nav>
   <div class="container">
     <a href="/" class="brand">Рассвет</a>
@@ -445,23 +146,14 @@
   </div>
 </nav>
 
-<!-- ============================================================
-     HERO
-     ============================================================ -->
 <header class="hero">
   <div class="container">
     <h1>Колесо <em>баланса</em></h1>
-    <p class="lead">Выбери 6 сфер. По каждой оцени от 1 до 10: где ты сейчас и куда хочешь прийти. Колесо обновляется по мере заполнения.</p>
-    <div>
-      <span class="pill">15 минут</span>
-      <span class="pill">сохраняется в браузере</span>
-    </div>
+    <p class="lead">Выбери или впиши 6 сфер. Оцени каждую — колесо обновляется в реальном времени. Результат можно скопировать в чат.</p>
+    <div><span class="pill">15 минут</span><span class="pill">сохраняется в браузере</span></div>
   </div>
 </header>
 
-<!-- ============================================================
-     ОСНОВНОЙ БЛОК — колесо слева, форма справа (десктоп)
-     ============================================================ -->
 <section>
   <div class="container">
     <div class="main-grid">
@@ -469,58 +161,30 @@
       <!-- КОЛЕСО -->
       <div class="wheel-column">
         <div class="wheel-card">
-          <span class="label">картина</span>
-          <h3>Моё <em>колесо</em></h3>
-
-          <div class="wheel-svg-wrap">
-            <svg id="wheelSvg" class="wheel-svg" viewBox="0 0 560 560" xmlns="http://www.w3.org/2000/svg" aria-label="Колесо баланса"></svg>
-          </div>
-
+          <svg id="wheelSvg" class="wheel-svg" viewBox="0 0 520 520" xmlns="http://www.w3.org/2000/svg"></svg>
           <div class="wheel-legend">
-            <div class="legend-item">
-              <div class="legend-swatch current"></div>
-              <span>Где я сейчас</span>
-            </div>
-            <div class="legend-item">
-              <div class="legend-swatch desired"></div>
-              <span>Куда хочу прийти</span>
-            </div>
+            <div class="legend-item"><div class="legend-swatch current"></div><span>Сейчас</span></div>
+            <div class="legend-item"><div class="legend-swatch desired"></div><span>Хочу прийти</span></div>
           </div>
-
           <div class="stats-row">
-            <div class="stat-box">
-              <div class="stat-label">Сейчас</div>
-              <div class="stat-value" id="statCurrent">—</div>
-              <div class="stat-hint">среднее</div>
-            </div>
-            <div class="stat-box">
-              <div class="stat-label">Цель</div>
-              <div class="stat-value" id="statDesired">—</div>
-              <div class="stat-hint">среднее</div>
-            </div>
-            <div class="stat-box">
-              <div class="stat-label">Главный разрыв</div>
-              <div class="stat-value" id="statGap">—</div>
-              <div class="stat-hint" id="statGapName">—</div>
-            </div>
+            <div class="stat-box"><div class="stat-label">Сейчас</div><div class="stat-value" id="statCur">—</div></div>
+            <div class="stat-box"><div class="stat-label">Цель</div><div class="stat-value" id="statDes">—</div></div>
+            <div class="stat-box"><div class="stat-label">Разрыв</div><div class="stat-value" id="statGap">—</div><div class="stat-hint" id="statGapName">—</div></div>
           </div>
         </div>
       </div>
 
       <!-- ФОРМА -->
-      <div class="form-column">
+      <div>
         <div class="card">
           <span class="label">заполнение</span>
           <h3>6 сфер <em>· оценки</em></h3>
-
-          <div class="form-group" style="margin-bottom: 24px;">
+          <div class="form-group" style="margin-bottom: 20px;">
             <label class="form-label">Имя</label>
             <input type="text" id="name" placeholder="Маша">
           </div>
-
           <div id="spheresContainer"></div>
-
-          <div style="text-align: center; margin-top: 28px;">
+          <div style="text-align: center; margin-top: 24px;">
             <button class="primary-btn" id="generateBtn">Собрать в текст для чата →</button>
           </div>
         </div>
@@ -530,30 +194,56 @@
   </div>
 </section>
 
-<!-- ============================================================
-     РЕЗУЛЬТАТ
-     ============================================================ -->
+<!-- Подсказки для сфер -->
+<datalist id="sphereHints">
+  <option value="Здоровье и тело">
+  <option value="Спорт">
+  <option value="Питание">
+  <option value="Сон и восстановление">
+  <option value="Энергия">
+  <option value="Внешность и стиль">
+  <option value="Партнёр">
+  <option value="Семья">
+  <option value="Дети">
+  <option value="Дружба">
+  <option value="Сексуальность">
+  <option value="Окружение">
+  <option value="Финансы">
+  <option value="Карьера">
+  <option value="Бизнес">
+  <option value="Профессиональный рост">
+  <option value="Личный бренд">
+  <option value="Личностный рост">
+  <option value="Психика и эмоции">
+  <option value="Духовность">
+  <option value="Дисциплина и привычки">
+  <option value="Обучение">
+  <option value="Хобби">
+  <option value="Творчество">
+  <option value="Отдых">
+  <option value="Путешествия">
+  <option value="Дом и быт">
+  <option value="Тайм-менеджмент">
+  <option value="Комьюнити">
+</datalist>
+
+<!-- Результат -->
 <section id="resultSection" style="display: none;">
   <div class="container" style="max-width: 760px;">
     <div class="card">
       <span class="label">готово</span>
-      <h2>Моё <em>колесо</em> · текст для чата</h2>
-      <p style="color: var(--ink-soft);">Скопируй текст и вставь в чат клуба вместе со скриншотом колеса, если хочешь.</p>
+      <h2>Моё <em>колесо</em> · для чата</h2>
       <div class="result-output" id="wheelOutput"></div>
       <div class="result-actions">
         <button class="primary-btn" id="copyBtn">📋 Скопировать</button>
-        <button class="secondary-btn" id="editBtn">← Вернуться к форме</button>
+        <button class="secondary-btn" id="editBtn">← Назад</button>
       </div>
     </div>
   </div>
 </section>
 
-<!-- Тост -->
-<div class="toast" id="toast">Скопировано в буфер ✓</div>
+<div class="toast" id="toast">Скопировано ✓</div>
 
-<!-- ============================================================
-     FOOTER
-     ============================================================ -->
 <footer>
   <div class="container">
     <p class="quote">Колесо — это не оценка <em>себя</em>,<br>а карта, куда сейчас тянет.</p>
@@ -561,193 +251,142 @@
   </div>
 </footer>
 
-<!-- ============================================================
-     JS
-     ============================================================ -->
 <script>
   // ============================================================
-  // СПИСОК СФЕР
+  // ГЕОМЕТРИЯ КРУГЛОГО КОЛЕСА
   // ============================================================
-  const SPHERES = [
-    'Здоровье и тело',
-    'Физическая активность',
-    'Питание',
-    'Сон и восстановление',
-    'Энергия / состояние',
-    'Внешность и стиль',
-    'Партнёр / любовные отношения',
-    'Семья / родители',
-    'Дети',
-    'Дружба',
-    'Сексуальность',
-    'Окружение',
-    'Финансы / доход',
-    'Карьера / работа',
-    'Бизнес / своё дело',
-    'Профессиональный рост',
-    'Личный бренд',
-    'Личностный рост',
-    'Психика / эмоции',
-    'Духовность / смыслы',
-    'Дисциплина и привычки',
-    'Обучение',
-    'Хобби',
-    'Творчество',
-    'Отдых',
-    'Путешествия',
-    'Дом и быт',
-    'Время и тайм-менеджмент',
-    'Комьюнити / клуб',
-    'Другое (вписать своё)'
-  ];
+  const CX = 260, CY = 260, MAX_R = 170;
+  const SECTORS = 6;
+  const SECTOR_ANGLE = 360 / SECTORS;
+  const START_OFFSET = -90; // начинаем сверху
 
-  // ============================================================
-  // ГЕОМЕТРИЯ КОЛЕСА
-  // ============================================================
-  const CX = 280, CY = 280, MAX_R = 175;
-  const LABEL_R = 215;
+  function deg2rad(d) { return d * Math.PI / 180; }
 
-  function getPoint(idx, score) {
-    // -90 — старт сверху, по часовой
-    const angle = (-90 + 60 * idx) * Math.PI / 180;
+  function polarToXY(angleDeg, r) {
+    const rad = deg2rad(angleDeg);
+    return { x: CX + r * Math.cos(rad), y: CY + r * Math.sin(rad) };
+  }
+
+  // Путь сектора (заполненный кусок пирога)
+  function sectorPath(idx, score) {
+    if (score <= 0) return '';
     const r = (score / 10) * MAX_R;
-    return { x: CX + r * Math.cos(angle), y: CY + r * Math.sin(angle) };
+    const a1 = START_OFFSET + idx * SECTOR_ANGLE;
+    const a2 = START_OFFSET + (idx + 1) * SECTOR_ANGLE;
+    const p1 = polarToXY(a1, r);
+    const p2 = polarToXY(a2, r);
+    const large = SECTOR_ANGLE > 180 ? 1 : 0;
+    return `M${CX},${CY} L${p1.x.toFixed(1)},${p1.y.toFixed(1)} A${r},${r} 0 ${large},1 ${p2.x.toFixed(1)},${p2.y.toFixed(1)} Z`;
   }
 
-  function getLabelPos(idx) {
-    const angle = (-90 + 60 * idx) * Math.PI / 180;
-    return {
-      x: CX + LABEL_R * Math.cos(angle),
-      y: CY + LABEL_R * Math.sin(angle),
-      anchor: getAnchor(angle)
-    };
+  // Путь дуги (только контур, без заливки к центру)
+  function arcPath(idx, score) {
+    if (score <= 0) return '';
+    const r = (score / 10) * MAX_R;
+    const a1 = START_OFFSET + idx * SECTOR_ANGLE;
+    const a2 = START_OFFSET + (idx + 1) * SECTOR_ANGLE;
+    const p1 = polarToXY(a1, r);
+    const p2 = polarToXY(a2, r);
+    const large = SECTOR_ANGLE > 180 ? 1 : 0;
+    return `M${p1.x.toFixed(1)},${p1.y.toFixed(1)} A${r},${r} 0 ${large},1 ${p2.x.toFixed(1)},${p2.y.toFixed(1)}`;
   }
 
-  function getAnchor(angle) {
-    const x = Math.cos(angle);
-    if (x < -0.3) return 'end';
-    if (x > 0.3) return 'start';
-    return 'middle';
-  }
+  function escXml(s) { return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
 
-  function shortenName(name, custom) {
-    const raw = name === 'Другое (вписать своё)' ? (custom || 'Другое') : (name || '');
-    if (!raw) return '';
-    const beforeSlash = raw.split('/')[0].trim();
-    return beforeSlash.length > 18 ? beforeSlash.slice(0, 16) + '…' : beforeSlash;
+  // Обрезка длинных имён
+  function trimName(s) {
+    if (!s) return '';
+    if (s.length <= 16) return s;
+    return s.slice(0, 14) + '…';
   }
 
   // ============================================================
-  // СТЕЙТ И LOCALSTORAGE
+  // СТЕЙТ
   // ============================================================
-  const STORAGE_KEY = 'rassvet_wheel_v1';
-
+  const STORAGE_KEY = 'rassvet_wheel_v2';
   let state = {
     name: '',
     spheres: [
-      { name: '', custom: '', current: 0, desired: 0 },
-      { name: '', custom: '', current: 0, desired: 0 },
-      { name: '', custom: '', current: 0, desired: 0 },
-      { name: '', custom: '', current: 0, desired: 0 },
-      { name: '', custom: '', current: 0, desired: 0 },
-      { name: '', custom: '', current: 0, desired: 0 }
+      { name: '', current: 0, desired: 0 },
+      { name: '', current: 0, desired: 0 },
+      { name: '', current: 0, desired: 0 },
+      { name: '', current: 0, desired: 0 },
+      { name: '', current: 0, desired: 0 },
+      { name: '', current: 0, desired: 0 }
     ]
   };
 
-  function loadState() {
+  function load() {
     try {
-      const saved = localStorage.getItem(STORAGE_KEY);
-      if (saved) {
-        const parsed = JSON.parse(saved);
-        if (parsed.spheres && Array.isArray(parsed.spheres) && parsed.spheres.length === 6) {
-          state = parsed;
-        }
-      }
-    } catch (e) { /* ignore */ }
+      const s = localStorage.getItem(STORAGE_KEY);
+      if (s) { const p = JSON.parse(s); if (p.spheres && p.spheres.length === 6) state = p; }
+    } catch (e) {}
   }
-
-  function saveState() {
-    try { localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); }
-    catch (e) { /* ignore */ }
-  }
+  function save() { try { localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); } catch (e) {} }
 
   // ============================================================
-  // РЕНДЕР SVG-КОЛЕСА
+  // РЕНДЕР SVG
   // ============================================================
   function renderWheel() {
     const svg = document.getElementById('wheelSvg');
-    let parts = [];
+    let html = '';
 
-    // Опорные шестиугольники на уровнях 2, 4, 6, 8, 10
+    // Концентрические круги-подсказки (2, 4, 6, 8, 10)
     for (let s = 2; s <= 10; s += 2) {
-      const pts = [];
-      for (let i = 0; i < 6; i++) {
-        const p = getPoint(i, s);
-        pts.push(`${p.x.toFixed(1)},${p.y.toFixed(1)}`);
-      }
-      const opacity = s === 10 ? 0.35 : 0.15;
-      parts.push(`<polygon points="${pts.join(' ')}" fill="none" stroke="#6b5d4a" stroke-opacity="${opacity}" stroke-width="1"/>`);
+      const r = (s / 10) * MAX_R;
+      const op = s === 10 ? 0.3 : 0.12;
+      html += `<circle cx="${CX}" cy="${CY}" r="${r}" fill="none" stroke="#6b5d4a" stroke-opacity="${op}" stroke-width="1"/>`;
     }
 
-    // Оси (6 лучей)
-    for (let i = 0; i < 6; i++) {
-      const p = getPoint(i, 10);
-      parts.push(`<line x1="${CX}" y1="${CY}" x2="${p.x.toFixed(1)}" y2="${p.y.toFixed(1)}" stroke="#6b5d4a" stroke-opacity="0.18" stroke-width="1"/>`);
+    // Разделительные линии секторов
+    for (let i = 0; i < SECTORS; i++) {
+      const a = START_OFFSET + i * SECTOR_ANGLE;
+      const p = polarToXY(a, MAX_R + 6);
+      html += `<line x1="${CX}" y1="${CY}" x2="${p.x.toFixed(1)}" y2="${p.y.toFixed(1)}" stroke="#6b5d4a" stroke-opacity="0.15" stroke-width="1"/>`;
     }
 
-    // Подписи шкалы 2, 4, 6, 8, 10 — на верхней оси
+    // Цифры шкалы — вдоль верхнего луча
     for (let s = 2; s <= 10; s += 2) {
-      const p = getPoint(0, s);
-      parts.push(`<text x="${(p.x + 6).toFixed(1)}" y="${(p.y + 3).toFixed(1)}" font-family="Onest" font-size="10" fill="#6b5d4a" opacity="0.5">${s}</text>`);
+      const p = polarToXY(START_OFFSET, (s / 10) * MAX_R);
+      html += `<text x="${(p.x + 8).toFixed(1)}" y="${(p.y + 4).toFixed(1)}" font-family="Onest" font-size="9" fill="#6b5d4a" opacity="0.45">${s}</text>`;
     }
 
-    // Многоугольник «куда хочу прийти» (контур-пунктир)
-    const desiredHasAny = state.spheres.some(s => s.desired > 0);
-    if (desiredHasAny) {
-      const dPts = state.spheres.map((s, i) => {
-        const p = getPoint(i, s.desired);
-        return `${p.x.toFixed(1)},${p.y.toFixed(1)}`;
-      });
-      parts.push(`<polygon points="${dPts.join(' ')}" fill="rgba(233,109,42,0.06)" stroke="#e96d2a" stroke-width="2" stroke-dasharray="5,4" stroke-linejoin="round"/>`);
-    }
-
-    // Многоугольник «где я сейчас» (заливка)
-    const currentHasAny = state.spheres.some(s => s.current > 0);
-    if (currentHasAny) {
-      const cPts = state.spheres.map((s, i) => {
-        const p = getPoint(i, s.current);
-        return `${p.x.toFixed(1)},${p.y.toFixed(1)}`;
-      });
-      parts.push(`<polygon points="${cPts.join(' ')}" fill="rgba(233,109,42,0.35)" stroke="#e96d2a" stroke-width="2" stroke-linejoin="round"/>`);
-
-      // Точки на вершинах
-      state.spheres.forEach((s, i) => {
-        if (s.current > 0) {
-          const p = getPoint(i, s.current);
-          parts.push(`<circle cx="${p.x.toFixed(1)}" cy="${p.y.toFixed(1)}" r="4" fill="#e96d2a"/>`);
-        }
-      });
-    }
-
-    // Подписи сфер вокруг колеса
-    state.spheres.forEach((sphere, i) => {
-      const lp = getLabelPos(i);
-      const label = shortenName(sphere.name, sphere.custom) || `Сфера ${i + 1}`;
-      const scoreText = (sphere.current || sphere.desired)
-        ? `${sphere.current}/${sphere.desired}`
-        : '';
-
-      parts.push(`<text x="${lp.x.toFixed(1)}" y="${lp.y.toFixed(1)}" text-anchor="${lp.anchor}" dominant-baseline="middle" font-family="Onest" font-size="13" font-weight="500" fill="#2c241b">${escapeXml(label)}</text>`);
-      if (scoreText) {
-        parts.push(`<text x="${lp.x.toFixed(1)}" y="${(lp.y + 16).toFixed(1)}" text-anchor="${lp.anchor}" dominant-baseline="middle" font-family="Onest" font-size="11" fill="#6b5d4a">${scoreText}</text>`);
+    // Секторы «хочу прийти» (пунктир) — рисуем ДО заливки
+    state.spheres.forEach((s, i) => {
+      if (s.desired > 0) {
+        html += `<path d="${sectorPath(i, s.desired)}" fill="rgba(233,109,42,0.06)" stroke="none"/>`;
+        html += `<path d="${arcPath(i, s.desired)}" fill="none" stroke="#e96d2a" stroke-width="2" stroke-dasharray="4,3"/>`;
       }
     });
 
-    svg.innerHTML = parts.join('');
-  }
+    // Секторы «сейчас» (заливка)
+    state.spheres.forEach((s, i) => {
+      if (s.current > 0) {
+        html += `<path d="${sectorPath(i, s.current)}" fill="rgba(233,109,42,0.38)" stroke="#e96d2a" stroke-width="1.5" stroke-linejoin="round"/>`;
+      }
+    });
 
-  function escapeXml(s) {
-    return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+    // Подписи сфер вокруг колеса
+    state.spheres.forEach((s, i) => {
+      const midAngle = START_OFFSET + (i + 0.5) * SECTOR_ANGLE;
+      const labelR = MAX_R + 30;
+      const p = polarToXY(midAngle, labelR);
+
+      const cosA = Math.cos(deg2rad(midAngle));
+      let anchor = 'middle';
+      if (cosA > 0.3) anchor = 'start';
+      else if (cosA < -0.3) anchor = 'end';
+
+      const label = trimName(s.name) || `Сфера ${i + 1}`;
+      const scores = (s.current > 0 || s.desired > 0) ? `${s.current} → ${s.desired}` : '';
+
+      html += `<text x="${p.x.toFixed(1)}" y="${p.y.toFixed(1)}" text-anchor="${anchor}" dominant-baseline="middle" font-family="Onest" font-size="11.5" font-weight="500" fill="#2c241b">${escXml(label)}</text>`;
+      if (scores) {
+        html += `<text x="${p.x.toFixed(1)}" y="${(p.y + 15).toFixed(1)}" text-anchor="${anchor}" dominant-baseline="middle" font-family="Onest" font-size="10" fill="#6b5d4a">${scores}</text>`;
+      }
+    });
+
+    svg.innerHTML = html;
   }
 
   // ============================================================
@@ -755,191 +394,134 @@
   // ============================================================
   function renderStats() {
     const filled = state.spheres.filter(s => s.current > 0 || s.desired > 0);
-
     if (!filled.length) {
-      document.getElementById('statCurrent').textContent = '—';
-      document.getElementById('statDesired').textContent = '—';
+      document.getElementById('statCur').textContent = '—';
+      document.getElementById('statDes').textContent = '—';
       document.getElementById('statGap').textContent = '—';
       document.getElementById('statGapName').textContent = '—';
       return;
     }
+    document.getElementById('statCur').textContent = (filled.reduce((a, s) => a + s.current, 0) / filled.length).toFixed(1);
+    document.getElementById('statDes').textContent = (filled.reduce((a, s) => a + s.desired, 0) / filled.length).toFixed(1);
 
-    const avgCur = filled.reduce((sum, s) => sum + s.current, 0) / filled.length;
-    const avgDes = filled.reduce((sum, s) => sum + s.desired, 0) / filled.length;
-
-    document.getElementById('statCurrent').textContent = avgCur.toFixed(1);
-    document.getElementById('statDesired').textContent = avgDes.toFixed(1);
-
-    // Самый большой разрыв
     const gaps = state.spheres
-      .map((s, i) => ({ name: shortenName(s.name, s.custom) || `Сфера ${i + 1}`, gap: s.desired - s.current, hasData: s.current > 0 || s.desired > 0 }))
-      .filter(g => g.hasData);
+      .map((s, i) => ({ name: s.name || `Сфера ${i + 1}`, gap: s.desired - s.current, has: s.current > 0 || s.desired > 0 }))
+      .filter(g => g.has)
+      .sort((a, b) => b.gap - a.gap);
 
-    if (gaps.length) {
-      gaps.sort((a, b) => b.gap - a.gap);
-      const top = gaps[0];
-      document.getElementById('statGap').textContent = top.gap > 0 ? `+${top.gap}` : top.gap;
-      document.getElementById('statGapName').textContent = top.name;
+    if (gaps.length && gaps[0].gap > 0) {
+      document.getElementById('statGap').textContent = '+' + gaps[0].gap;
+      document.getElementById('statGapName').textContent = trimName(gaps[0].name);
     } else {
-      document.getElementById('statGap').textContent = '—';
-      document.getElementById('statGapName').textContent = '—';
+      document.getElementById('statGap').textContent = '0';
+      document.getElementById('statGapName').textContent = 'баланс';
     }
   }
 
   // ============================================================
-  // РЕНДЕР ФОРМЫ — 6 СФЕР
+  // РЕНДЕР ФОРМЫ
   // ============================================================
-  function renderSpheres() {
+  function renderForm() {
     const container = document.getElementById('spheresContainer');
     container.innerHTML = '';
 
     state.spheres.forEach((sphere, idx) => {
-      const card = document.createElement('div');
-      card.className = 'sphere-card' + ((sphere.name || sphere.current > 0 || sphere.desired > 0) ? ' filled' : '');
-
-      const options = SPHERES.map(s =>
-        `<option value="${escapeXml(s)}" ${s === sphere.name ? 'selected' : ''}>${escapeXml(s)}</option>`
-      ).join('');
-
-      const customDisplay = sphere.name === 'Другое (вписать своё)' ? 'block' : 'none';
+      const hasData = sphere.name || sphere.current > 0 || sphere.desired > 0;
       const gap = (sphere.current > 0 || sphere.desired > 0) ? (sphere.desired - sphere.current) : null;
-      const gapText = gap === null ? '' : (gap > 0 ? `Разрыв: <strong>+${gap}</strong>` : (gap < 0 ? `Разрыв: <strong>${gap}</strong>` : 'Разрыв: <strong>0</strong>'));
+      const gapHtml = gap !== null ? (gap > 0 ? `Разрыв: <strong>+${gap}</strong>` : (gap < 0 ? `Разрыв: <strong>${gap}</strong>` : 'Разрыв: <strong>0</strong>')) : '';
 
+      const card = document.createElement('div');
+      card.className = 'sphere-card' + (hasData ? ' filled' : '');
       card.innerHTML = `
         <div class="sphere-num">${idx + 1}</div>
-        <div class="form-group">
-          <select data-idx="${idx}" data-field="name">
-            <option value="">— выбери сферу —</option>
-            ${options}
-          </select>
-          <div class="sphere-custom-input" style="display: ${customDisplay};">
-            <input type="text" data-idx="${idx}" data-field="custom" value="${escapeXml(sphere.custom)}" placeholder="Название своей сферы">
-          </div>
+        <div class="form-group" style="margin-bottom: 6px;">
+          <input type="text" list="sphereHints" data-idx="${idx}" data-field="name" value="${escAttr(sphere.name)}" placeholder="Впиши или выбери из подсказок">
         </div>
         <div class="score-row">
-          <span class="score-label">Где я сейчас</span>
+          <span class="score-label">Сейчас</span>
           <input type="range" data-idx="${idx}" data-field="current" min="0" max="10" value="${sphere.current}">
-          <span class="score-value" data-display="current-${idx}">${sphere.current}</span>
+          <span class="score-value" data-display="cur-${idx}">${sphere.current}</span>
         </div>
         <div class="score-row">
           <span class="score-label">Хочу прийти</span>
           <input type="range" data-idx="${idx}" data-field="desired" min="0" max="10" value="${sphere.desired}">
-          <span class="score-value" data-display="desired-${idx}">${sphere.desired}</span>
+          <span class="score-value" data-display="des-${idx}">${sphere.desired}</span>
         </div>
-        <div class="gap-line">${gapText}</div>
+        <div class="gap-line">${gapHtml}</div>
       `;
       container.appendChild(card);
     });
 
-    // Обработчики
     container.querySelectorAll('[data-idx]').forEach(el => {
-      el.addEventListener('input', handleSphereChange);
-      el.addEventListener('change', handleSphereChange);
+      el.addEventListener('input', handleField);
+      el.addEventListener('change', handleField);
     });
   }
 
-  function handleSphereChange(e) {
+  function escAttr(s) { return (s || '').replace(/"/g, '&quot;'); }
+
+  function handleField(e) {
     const idx = parseInt(e.target.dataset.idx);
     const field = e.target.dataset.field;
     let value = e.target.value;
     if (field === 'current' || field === 'desired') value = parseInt(value);
 
     state.spheres[idx][field] = value;
-    saveState();
+    save();
 
-    // Обновляем число рядом со слайдером без полного рендера формы
     if (field === 'current' || field === 'desired') {
-      const display = document.querySelector(`[data-display="${field}-${idx}"]`);
+      // Обновляем число и gap без полного ререндера формы
+      const dKey = field === 'current' ? 'cur' : 'des';
+      const display = document.querySelector(`[data-display="${dKey}-${idx}"]`);
       if (display) display.textContent = value;
 
-      // Обновляем gap-line
       const card = e.target.closest('.sphere-card');
       const gapLine = card.querySelector('.gap-line');
       const s = state.spheres[idx];
+      const has = s.current > 0 || s.desired > 0;
       const gap = s.desired - s.current;
-      const hasData = s.current > 0 || s.desired > 0;
-      if (hasData) {
-        gapLine.innerHTML = gap > 0 ? `Разрыв: <strong>+${gap}</strong>` : (gap < 0 ? `Разрыв: <strong>${gap}</strong>` : 'Разрыв: <strong>0</strong>');
-      } else {
-        gapLine.innerHTML = '';
-      }
-      // Подсветка «заполненной» карточки
-      card.classList.toggle('filled', hasData || !!s.name);
+      gapLine.innerHTML = has ? (gap > 0 ? `Разрыв: <strong>+${gap}</strong>` : (gap < 0 ? `Разрыв: <strong>${gap}</strong>` : 'Разрыв: <strong>0</strong>')) : '';
+      card.classList.toggle('filled', has || !!s.name);
     }
 
-    // Если поменялось название сферы — перерисуем форму чтобы показать/скрыть custom input
-    if (field === 'name') {
-      renderSpheres();
-    }
-
-    // Обновляем колесо и статистику всегда
     renderWheel();
     renderStats();
   }
 
   // ============================================================
-  // ИМЯ
-  // ============================================================
-  function bindName() {
-    const el = document.getElementById('name');
-    el.value = state.name || '';
-    el.addEventListener('input', (e) => {
-      state.name = e.target.value;
-      saveState();
-    });
-  }
-
-  // ============================================================
-  // СБОРКА ТЕКСТА ДЛЯ ЧАТА
+  // СБОРКА ТЕКСТА
   // ============================================================
   function buildText() {
-    const lines = [];
-    lines.push('🌀 МОЁ КОЛЕСО БАЛАНСА');
-    lines.push(`Имя: ${state.name || '—'}`);
-    lines.push('');
-
-    const filled = state.spheres.filter(s => (s.name || s.custom) && (s.current > 0 || s.desired > 0));
-
+    const lines = ['🌀 МОЁ КОЛЕСО БАЛАНСА', `Имя: ${state.name || '—'}`, ''];
+    const filled = state.spheres.filter(s => s.name && (s.current > 0 || s.desired > 0));
     if (filled.length) {
       filled.forEach(s => {
-        const name = s.name === 'Другое (вписать своё)' ? (s.custom || 'Своё') : s.name;
         const gap = s.desired - s.current;
-        const gapStr = gap > 0 ? `(разрыв +${gap})` : (gap < 0 ? `(разрыв ${gap})` : '');
-        lines.push(`🌿 ${name}: ${s.current} → ${s.desired} ${gapStr}`.trim());
+        const gs = gap > 0 ? ` (разрыв +${gap})` : (gap < 0 ? ` (разрыв ${gap})` : '');
+        lines.push(`🌿 ${s.name}: ${s.current} → ${s.desired}${gs}`);
       });
       lines.push('');
-
-      const avgCur = (filled.reduce((sum, s) => sum + s.current, 0) / filled.length).toFixed(1);
-      const avgDes = (filled.reduce((sum, s) => sum + s.desired, 0) / filled.length).toFixed(1);
-
-      lines.push(`📊 Среднее сейчас: ${avgCur}`);
-      lines.push(`📊 Среднее цель: ${avgDes}`);
-
-      // Самый большой разрыв
+      const avgC = (filled.reduce((a, s) => a + s.current, 0) / filled.length).toFixed(1);
+      const avgD = (filled.reduce((a, s) => a + s.desired, 0) / filled.length).toFixed(1);
+      lines.push(`📊 Среднее сейчас: ${avgC}`);
+      lines.push(`📊 Среднее цель: ${avgD}`);
       const sorted = [...filled].sort((a, b) => (b.desired - b.current) - (a.desired - a.current));
       const top = sorted[0];
-      const topName = top.name === 'Другое (вписать своё)' ? (top.custom || 'Своё') : top.name;
-      const topGap = top.desired - top.current;
-      if (topGap > 0) {
-        lines.push(`📊 Главный разрыв: ${topName} (+${topGap})`);
-      }
+      const tGap = top.desired - top.current;
+      if (tGap > 0) lines.push(`📊 Главный разрыв: ${top.name} (+${tGap})`);
     } else {
       lines.push('— колесо ещё не заполнено —');
     }
-
     return lines.join('\n');
   }
 
   // ============================================================
-  // ОБРАБОТЧИКИ КНОПОК
+  // КНОПКИ
   // ============================================================
   document.getElementById('generateBtn').addEventListener('click', () => {
-    const text = buildText();
-    document.getElementById('wheelOutput').textContent = text;
+    document.getElementById('wheelOutput').textContent = buildText();
     document.getElementById('resultSection').style.display = 'block';
-    setTimeout(() => {
-      document.getElementById('resultSection').scrollIntoView({ behavior: 'smooth' });
-    }, 100);
+    setTimeout(() => document.getElementById('resultSection').scrollIntoView({ behavior: 'smooth' }), 100);
   });
 
   document.getElementById('editBtn').addEventListener('click', () => {
@@ -949,33 +531,29 @@
 
   document.getElementById('copyBtn').addEventListener('click', async () => {
     const text = document.getElementById('wheelOutput').textContent;
-    try {
-      await navigator.clipboard.writeText(text);
-      showToast('Скопировано в буфер ✓');
-    } catch (e) {
-      const ta = document.createElement('textarea');
-      ta.value = text;
-      document.body.appendChild(ta);
-      ta.select();
-      try { document.execCommand('copy'); showToast('Скопировано ✓'); }
-      catch (err) { showToast('Не удалось скопировать'); }
+    try { await navigator.clipboard.writeText(text); showToast('Скопировано ✓'); }
+    catch (e) {
+      const ta = document.createElement('textarea'); ta.value = text;
+      document.body.appendChild(ta); ta.select();
+      try { document.execCommand('copy'); showToast('Скопировано ✓'); } catch (err) { showToast('Не удалось'); }
       document.body.removeChild(ta);
     }
   });
 
   function showToast(msg) {
-    const toast = document.getElementById('toast');
-    toast.textContent = msg;
-    toast.classList.add('show');
-    setTimeout(() => toast.classList.remove('show'), 2400);
+    const t = document.getElementById('toast');
+    t.textContent = msg; t.classList.add('show');
+    setTimeout(() => t.classList.remove('show'), 2400);
   }
 
   // ============================================================
   // ИНИЦИАЛИЗАЦИЯ
   // ============================================================
-  loadState();
-  bindName();
-  renderSpheres();
+  load();
+  const nameEl = document.getElementById('name');
+  nameEl.value = state.name || '';
+  nameEl.addEventListener('input', (e) => { state.name = e.target.value; save(); });
+  renderForm();
   renderWheel();
   renderStats();
 </script>
