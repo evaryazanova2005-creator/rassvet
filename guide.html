@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Рассвет · Как тут всё устроено</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Onest:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #faf3e7;
+    --bg-card: #fffaf1;
+    --bg-soft: #f4ebd9;
+    --ink: #2c241b;
+    --ink-soft: #6b5d4a;
+    --accent: #e96d2a;
+    --accent-soft: #f4a974;
+    --border: #e8dcc4;
+    --radius-sm: 14px;
+    --radius: 22px;
+    --font-display: 'Cormorant Garamond', serif;
+    --font-body: 'Onest', system-ui, -apple-system, sans-serif;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: var(--font-body);
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.55;
+    font-size: 16px;
+    overflow-x: hidden;
+    position: relative;
+  }
+
+  body::before, body::after {
+    content: ''; position: fixed; border-radius: 50%;
+    filter: blur(120px); z-index: 0; pointer-events: none;
+  }
+  body::before {
+    width: 500px; height: 500px;
+    background: radial-gradient(circle, rgba(233,109,42,0.18), transparent 70%);
+    top: -150px; right: -100px;
+  }
+  body::after {
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(244,169,116,0.15), transparent 70%);
+    bottom: -200px; left: -150px;
+  }
+
+  nav, header, footer, section { position: relative; z-index: 1; }
+
+  h1, h2, h3 { font-family: var(--font-display); font-weight: 500; line-height: 1.15; }
+  h1 { font-size: clamp(2.2rem, 5.5vw, 3.4rem); }
+  h2 { font-size: clamp(1.5rem, 3.2vw, 2rem); margin-bottom: 0.4em; }
+  h3 { font-size: 1.2rem; margin-bottom: 0.3em; }
+
+  em { font-style: italic; color: var(--accent); }
+  p { margin-bottom: 0.8em; }
+  p:last-child { margin-bottom: 0; }
+  a { color: var(--accent); text-decoration: none; }
+  strong { font-weight: 600; }
+
+  .container { max-width: 720px; margin: 0 auto; padding: 0 20px; }
+  section { padding: 28px 0; }
+
+  .label {
+    display: inline-block;
+    font-size: 0.74rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.8em;
+  }
+
+  .card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 24px;
+    margin-bottom: 16px;
+  }
+  .card.accent {
+    background: linear-gradient(135deg, rgba(233,109,42,0.08), rgba(244,169,116,0.04));
+    border-color: var(--accent-soft);
+  }
+
+  nav {
+    padding: 18px 0;
+    border-bottom: 1px solid var(--border);
+    background: rgba(250, 243, 231, 0.85);
+    backdrop-filter: blur(8px);
+    position: sticky; top: 0; z-index: 100;
+  }
+  nav .container { display: flex; gap: 16px; align-items: center; justify-content: space-between; max-width: 880px; }
+  nav .brand { font-family: var(--font-display); font-size: 1.3rem; color: var(--ink); }
+  nav a.back { font-size: 0.85rem; color: var(--ink-soft); }
+  nav a.back:hover { color: var(--accent); }
+
+  .hero { padding: 50px 0 20px; }
+  .hero .lead { font-size: 1.05rem; color: var(--ink-soft); max-width: 540px; }
+
+  /* Шаг с номером */
+  .step {
+    display: flex;
+    gap: 18px;
+    align-items: flex-start;
+    padding: 20px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .step:last-child { border-bottom: none; }
+  .step-num {
+    flex-shrink: 0;
+    width: 40px; height: 40px;
+    background: var(--accent);
+    color: white;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 1.2rem;
+  }
+  .step-body { flex: 1; }
+  .step-body h3 { margin-bottom: 4px; }
+  .step-body p { color: var(--ink-soft); font-size: 0.95rem; margin-bottom: 0; }
+  .step-body a { font-weight: 500; }
+
+  /* Ритм-блок */
+  .rhythm-item {
+    padding: 16px 0;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+  }
+  .rhythm-item:last-child { border-bottom: none; }
+  .rhythm-emoji { font-size: 1.3rem; flex-shrink: 0; margin-top: 2px; }
+  .rhythm-body h3 { font-size: 1.05rem; margin-bottom: 2px; }
+  .rhythm-body p { color: var(--ink-soft); font-size: 0.92rem; margin-bottom: 0; }
+
+  /* FAQ */
+  .faq-item {
+    padding: 16px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .faq-item:last-child { border-bottom: none; }
+  .faq-q {
+    font-weight: 600;
+    margin-bottom: 6px;
+    font-size: 0.95rem;
+  }
+  .faq-a {
+    color: var(--ink-soft);
+    font-size: 0.92rem;
+  }
+
+  .cta-btn {
+    display: inline-block;
+    padding: 14px 28px;
+    background: var(--accent);
+    color: white;
+    border-radius: 999px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    box-shadow: 0 4px 14px rgba(233,109,42,0.25);
+    transition: all 0.2s;
+  }
+  .cta-btn:hover { transform: translateY(-2px); opacity: 1; }
+
+  footer {
+    padding: 40px 0;
+    border-top: 1px solid var(--border);
+    margin-top: 30px;
+    text-align: center;
+  }
+  footer .quote {
+    font-family: var(--font-display);
+    font-size: clamp(1.2rem, 2.4vw, 1.6rem);
+    line-height: 1.3;
+    margin-bottom: 14px;
+  }
+  footer .meta { color: var(--ink-soft); font-size: 0.85rem; }
+
+  @media (max-width: 600px) {
+    .card { padding: 20px; }
+    .step { gap: 14px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="container">
+    <a href="/club.html" class="brand">Рассвет · клуб</a>
+    <a href="/club.html" class="back">← В пространство</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="container">
+    <h1>Как тут всё <em>устроено</em></h1>
+    <p class="lead">Короткий гид по пространству клуба. Прочитай один раз — дальше будет интуитивно понятно.</p>
+  </div>
+</header>
+
+<!-- ============================================================
+     ПЕРВЫЕ ШАГИ
+     ============================================================ -->
+<section style="padding-top: 8px;">
+  <div class="container">
+    <div class="card accent">
+      <span class="label">с чего начать</span>
+      <h2>Три шага <em>в первый день</em></h2>
+
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-body">
+          <h3>Заполни <em>колесо баланса</em></h3>
+          <p>Выбери 6 сфер жизни, оцени каждую от 1 до 10 — где ты сейчас и куда хочешь. Это твоя карта на лето. <a href="/wheel.html">Открыть колесо →</a></p>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-body">
+          <h3>Собери <em>план на месяц</em></h3>
+          <p>По каждой сфере — 1–2 задачи, разбивка по неделям, один эксперимент. Готовый план копируется в чат клуба. <a href="/plan.html">Открыть план →</a></p>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-body">
+          <h3>Поставь задачи <em>в марафон</em></h3>
+          <p>Придумай 1–3 задачи и цель по каждой. Отмечай прогресс, делись им в чате раз в неделю. <a href="/marathon.html">Открыть марафон →</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     РИТМ КЛУБА
+     ============================================================ -->
+<section>
+  <div class="container">
+    <span class="label">ритм клуба</span>
+    <h2>Что происходит <em>и когда</em></h2>
+
+    <div class="card">
+      <div class="rhythm-item">
+        <span class="rhythm-emoji">📅</span>
+        <div class="rhythm-body">
+          <h3>Еженедельные встречи</h3>
+          <p>Онлайн, ведёт Ева. Темы: отношения, смыслы, стиль жизни — каждая неделя разная. Расписание актуальных встреч — на <a href="/schedule.html">странице расписания</a>.</p>
+        </div>
+      </div>
+
+      <div class="rhythm-item">
+        <span class="rhythm-emoji">✍️</span>
+        <div class="rhythm-body">
+          <h3>Еженедельный отчёт</h3>
+          <p>Каждое воскресенье вечером — заполняешь <a href="/report.html">форму отчёта</a>, копируешь в чат клуба. Это не контроль — это способ видеть своё движение и получать поддержку.</p>
+        </div>
+      </div>
+
+      <div class="rhythm-item">
+        <span class="rhythm-emoji">🔥</span>
+        <div class="rhythm-body">
+          <h3>Марафон 21 день</h3>
+          <p>Цикличный: один заканчивается — начинается следующий. Ты сама выбираешь задачи и темп. <a href="/marathon.html">Трекер марафона →</a></p>
+        </div>
+      </div>
+
+      <div class="rhythm-item">
+        <span class="rhythm-emoji">📖</span>
+        <div class="rhythm-body">
+          <h3>Книжный клуб</h3>
+          <p>Встреча раз в две недели. Книгу выбираем вместе, читаем в своём темпе, обсуждаем живьём. Не дочитала — всё равно приходи. <a href="/bookclub.html">Текущая книга →</a></p>
+        </div>
+      </div>
+
+      <div class="rhythm-item">
+        <span class="rhythm-emoji">🎙</span>
+        <div class="rhythm-body">
+          <h3>Приглашённые эксперты</h3>
+          <p>Психологи и другие специалисты — периодически, по расписанию. Анонсы в чате клуба и на <a href="/schedule.html">странице расписания</a>.</p>
+        </div>
+      </div>
+
+      <div class="rhythm-item">
+        <span class="rhythm-emoji">🌅</span>
+        <div class="rhythm-body">
+          <h3>Стратсессия</h3>
+          <p>Раз в месяц, в конце месяца. Подводим итоги, разбираем провалы, планируем следующий месяц. <a href="/stratsession-july.html">Конспект последней →</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     ИНСТРУМЕНТЫ
+     ============================================================ -->
+<section>
+  <div class="container">
+    <span class="label">инструменты</span>
+    <h2>Что есть <em>на сайте</em></h2>
+
+    <div class="card">
+      <div class="rhythm-item">
+        <span class="rhythm-emoji">🌀</span>
+        <div class="rhythm-body">
+          <h3><a href="/wheel.html">Колесо баланса</a></h3>
+          <p>Выбираешь 6 сфер, ставишь оценки — рисуется живая картинка. Видно, где фокус и где разрыв. Результат можно скопировать в чат.</p>
+        </div>
+      </div>
+
+      <div class="rhythm-item">
+        <span class="rhythm-emoji">🗺</span>
+        <div class="rhythm-body">
+          <h3><a href="/plan.html">Конструктор плана</a></h3>
+          <p>Заполняешь ответы на вопросы — получаешь готовый план месяца для чата. Сохраняется в браузере.</p>
+        </div>
+      </div>
+
+      <div class="rhythm-item">
+        <span class="rhythm-emoji">✍️</span>
+        <div class="rhythm-body">
+          <h3><a href="/report.html">Конструктор отчёта</a></h3>
+          <p>Форма на 10 минут раз в неделю. Собирает сообщение для чата. Хранит историю отчётов по неделям.</p>
+        </div>
+      </div>
+
+      <div class="rhythm-item">
+        <span class="rhythm-emoji">🔥</span>
+        <div class="rhythm-body">
+          <h3><a href="/marathon.html">Трекер марафона</a></h3>
+          <p>Свои задачи, своя цель, кнопки +/−, прогресс-бар. Делись результатом в чате.</p>
+        </div>
+      </div>
+    </div>
+
+    <p style="color: var(--ink-soft); font-size: 0.92rem;">Все данные хранятся в твоём браузере — никто, кроме тебя, их не видит. Если сменишь устройство или очистишь кеш — данные сбросятся.</p>
+  </div>
+</section>
+
+<!-- ============================================================
+     ЧАСТЫЕ ВОПРОСЫ
+     ============================================================ -->
+<section>
+  <div class="container">
+    <span class="label">частые вопросы</span>
+    <h2>Если <em>непонятно</em></h2>
+
+    <div class="card">
+      <div class="faq-item">
+        <div class="faq-q">Я пропустила стратсессию — могу ли я заполнить колесо и план сама?</div>
+        <div class="faq-a">Да. Все инструменты работают независимо от стратсессии. Заполни колесо, собери план, скинь в чат — и ты в ритме клуба.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">Обязательно ли писать отчёт каждую неделю?</div>
+        <div class="faq-a">Это не обязательство, а инструмент. Но практика показывает: кто пишет — двигается. Кто не пишет — теряет фокус к третьей неделе. Попробуй хотя бы 3 недели подряд.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">Я не успеваю читать книгу к встрече книжного клуба.</div>
+        <div class="faq-a">Приходи. Живой разговор ценнее количества прочитанных страниц. Многие приходят, прочитав половину или треть — и это нормально.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">Что делать, если я срываюсь с марафона?</div>
+        <div class="faq-a">Это не провал — это данные. Напиши в чат, что происходит. Часто одного «я тут застряла» достаточно, чтобы кто-то откликнулся и помог вернуться.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">Мои данные кто-то видит?</div>
+        <div class="faq-a">Нет. Всё, что ты заполняешь на сайте, хранится только в твоём браузере. В чат попадает только то, что ты сама скопируешь и отправишь.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">Что-то не работает на сайте / не могу разобраться.</div>
+        <div class="faq-a">Напиши Еве — <a href="https://t.me/evavasilyyevna" target="_blank">@evavasilyyevna</a> в Telegram. Разберёмся.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     CTA
+     ============================================================ -->
+<section style="text-align: center;">
+  <div class="container">
+    <a href="/club.html" class="cta-btn">← Вернуться в пространство клуба</a>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <p class="quote">Здесь не нужно быть <em>идеальной</em>.<br>Здесь нужно быть <em>честной</em>.</p>
+    <p class="meta">Рассвет · гид для участниц</p>
+  </div>
+</footer>
+
+</body>
+</html>
