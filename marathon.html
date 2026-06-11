@@ -35,29 +35,18 @@
     overflow-x: hidden;
     position: relative;
   }
-
   body::before, body::after {
     content: ''; position: fixed; border-radius: 50%;
     filter: blur(120px); z-index: 0; pointer-events: none;
   }
-  body::before {
-    width: 500px; height: 500px;
-    background: radial-gradient(circle, rgba(233,109,42,0.18), transparent 70%);
-    top: -150px; right: -100px;
-  }
-  body::after {
-    width: 600px; height: 600px;
-    background: radial-gradient(circle, rgba(244,169,116,0.15), transparent 70%);
-    bottom: -200px; left: -150px;
-  }
+  body::before { width: 500px; height: 500px; background: radial-gradient(circle, rgba(233,109,42,0.18), transparent 70%); top: -150px; right: -100px; }
+  body::after { width: 600px; height: 600px; background: radial-gradient(circle, rgba(244,169,116,0.15), transparent 70%); bottom: -200px; left: -150px; }
 
   nav, header, footer, section { position: relative; z-index: 1; }
-
   h1, h2, h3 { font-family: var(--font-display); font-weight: 500; line-height: 1.15; }
   h1 { font-size: clamp(2.2rem, 5.5vw, 3.4rem); }
   h2 { font-size: clamp(1.5rem, 3.2vw, 2rem); margin-bottom: 0.4em; }
   h3 { font-size: 1.2rem; margin-bottom: 0.3em; }
-
   em { font-style: italic; color: var(--accent); }
   p { margin-bottom: 0.8em; }
   p:last-child { margin-bottom: 0; }
@@ -66,224 +55,143 @@
 
   .container { max-width: 720px; margin: 0 auto; padding: 0 20px; }
   section { padding: 28px 0; }
+  .label { display: inline-block; font-size: 0.74rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.8em; }
+  .card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); padding: 24px; margin-bottom: 16px; }
 
-  .label {
-    display: inline-block;
-    font-size: 0.74rem;
-    font-weight: 500;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--accent);
-    margin-bottom: 0.8em;
-  }
-
-  .pill {
-    display: inline-block;
-    padding: 4px 12px;
-    background: var(--bg-soft);
-    border: 1px solid var(--border);
-    border-radius: 999px;
-    font-size: 0.8rem;
-    color: var(--ink-soft);
-    margin-right: 6px;
-  }
-
-  .card {
-    background: var(--bg-card);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    padding: 24px;
-    margin-bottom: 16px;
-  }
-
-  nav {
-    padding: 18px 0;
-    border-bottom: 1px solid var(--border);
-    background: rgba(250, 243, 231, 0.85);
-    backdrop-filter: blur(8px);
-    position: sticky; top: 0; z-index: 100;
-  }
+  nav { padding: 18px 0; border-bottom: 1px solid var(--border); background: rgba(250,243,231,0.85); backdrop-filter: blur(8px); position: sticky; top: 0; z-index: 100; }
   nav .container { display: flex; gap: 16px; align-items: center; justify-content: space-between; max-width: 880px; }
   nav .brand { font-family: var(--font-display); font-size: 1.3rem; color: var(--ink); }
   nav a.back { font-size: 0.85rem; color: var(--ink-soft); }
   nav a.back:hover { color: var(--accent); }
 
   .hero { padding: 50px 0 20px; text-align: center; }
-  .hero .lead { font-size: 1rem; color: var(--ink-soft); max-width: 480px; margin: 0 auto; }
+  .hero .lead { font-size: 1rem; color: var(--ink-soft); max-width: 500px; margin: 0 auto; }
 
-  input[type="text"] {
-    width: 100%;
-    padding: 11px 14px;
-    background: var(--bg);
-    border: 1px solid var(--border);
-    border-radius: var(--radius-sm);
-    font-family: var(--font-body);
-    font-size: 0.95rem;
-    color: var(--ink);
-  }
-  input[type="text"]:focus { outline: none; border-color: var(--accent); background: white; }
-
-  .form-label {
-    display: block;
-    font-weight: 600;
-    font-size: 0.9rem;
-    margin-bottom: 6px;
-  }
+  input[type="text"], input[type="number"] { width: 100%; padding: 11px 14px; background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius-sm); font-family: var(--font-body); font-size: 0.95rem; color: var(--ink); }
+  input:focus { outline: none; border-color: var(--accent); background: white; }
+  input[type="number"] { width: 90px; text-align: center; }
+  .form-label { display: block; font-weight: 600; font-size: 0.9rem; margin-bottom: 6px; }
   .form-group { margin-bottom: 14px; }
 
   /* ============================================================
-     ТРЕКЕР 21 ДЕНЬ
+     ПЕРЕКЛЮЧАТЕЛЬ РЕЖИМОВ
      ============================================================ */
-  .tracker-grid {
-    display: grid;
-    grid-template-columns: repeat(7, 1fr);
-    gap: 8px;
-    margin: 18px 0;
-  }
-  .day-cell {
-    aspect-ratio: 1;
-    border: 1.5px solid var(--border);
-    border-radius: var(--radius-sm);
-    background: var(--bg);
+  .mode-toggle {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: all 0.15s;
-    user-select: none;
-    -webkit-user-select: none;
-  }
-  .day-cell:hover { border-color: var(--accent-soft); transform: scale(1.04); }
-  .day-cell .day-num {
-    font-family: var(--font-display);
-    font-style: italic;
-    font-size: 1.1rem;
-    color: var(--ink-soft);
-    line-height: 1;
-  }
-  .day-cell .day-mark { font-size: 1rem; line-height: 1; margin-top: 3px; min-height: 1.1em; }
-
-  .day-cell.done {
-    background: var(--accent);
-    border-color: var(--accent);
-  }
-  .day-cell.done .day-num { color: rgba(255,255,255,0.85); }
-
-  .day-cell.today { border-color: var(--accent); border-width: 2.5px; }
-
-  .progress-bar-wrap {
-    height: 10px;
     background: var(--bg-soft);
+    border: 1px solid var(--border);
     border-radius: 999px;
-    overflow: hidden;
-    margin: 14px 0 6px;
+    padding: 4px;
+    max-width: 420px;
+    margin: 0 auto;
   }
-  .progress-bar {
-    height: 100%;
-    background: linear-gradient(90deg, var(--accent-soft), var(--accent));
-    border-radius: 999px;
-    width: 0%;
-    transition: width 0.4s;
-  }
-  .progress-text {
-    font-size: 0.88rem;
-    color: var(--ink-soft);
-    text-align: center;
-  }
-  .progress-text strong { color: var(--accent); }
-
-  .primary-btn {
-    display: inline-block;
-    padding: 14px 28px;
-    background: var(--accent);
-    color: white;
+  .mode-btn {
+    flex: 1;
+    padding: 12px 16px;
     border: none;
     border-radius: 999px;
+    background: transparent;
     font-family: var(--font-body);
-    font-size: 0.95rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.2s;
-    box-shadow: 0 4px 14px rgba(233,109,42,0.25);
-  }
-  .primary-btn:hover { transform: translateY(-2px); }
-
-  .secondary-btn {
-    display: inline-block;
-    padding: 11px 22px;
-    background: white;
-    color: var(--ink);
-    border: 1px solid var(--border);
-    border-radius: 999px;
-    font-family: var(--font-body);
-    font-size: 0.88rem;
+    font-size: 0.92rem;
     font-weight: 500;
+    color: var(--ink-soft);
     cursor: pointer;
     transition: all 0.2s;
   }
-  .secondary-btn:hover { border-color: var(--accent); color: var(--accent); }
+  .mode-btn.active {
+    background: var(--accent);
+    color: white;
+    box-shadow: 0 2px 10px rgba(233,109,42,0.2);
+  }
+  .mode-btn:not(.active):hover { color: var(--ink); }
 
-  .result-output {
+  .mode-panel { display: none; }
+  .mode-panel.active { display: block; }
+
+  /* ============================================================
+     РЕЖИМ 1: СВОИ ЗАДАЧИ
+     ============================================================ */
+  .task-card {
     background: var(--bg);
     border: 1px solid var(--border);
     border-radius: var(--radius-sm);
-    padding: 16px;
-    margin: 16px 0;
-    font-size: 0.9rem;
-    white-space: pre-wrap;
-    line-height: 1.5;
+    padding: 20px;
+    margin-bottom: 14px;
+    transition: border-color 0.2s;
+    position: relative;
   }
+  .task-card.has-data { border-color: var(--accent-soft); }
+  .task-num { font-family: var(--font-display); font-style: italic; font-size: 1.4rem; color: var(--accent); line-height: 1; margin-bottom: 12px; }
+  .task-setup { display: flex; flex-direction: column; gap: 10px; margin-bottom: 16px; }
+  .task-goal-row { display: flex; gap: 10px; align-items: end; }
+  .task-goal-row .field { flex: 1; }
+  .task-goal-row .field-sm { flex: 0 0 90px; }
 
-  .toast {
-    position: fixed;
-    bottom: 30px;
-    left: 50%;
-    transform: translateX(-50%) translateY(100px);
-    background: var(--ink);
-    color: white;
-    padding: 14px 26px;
-    border-radius: 999px;
-    font-size: 0.92rem;
-    opacity: 0;
-    transition: all 0.3s;
-    z-index: 1000;
-    pointer-events: none;
-  }
+  .task-bar-outer { height: 14px; background: var(--bg-soft); border-radius: 999px; overflow: hidden; }
+  .task-bar-inner { height: 100%; background: linear-gradient(90deg, var(--accent-soft), var(--accent)); border-radius: 999px; width: 0%; transition: width 0.4s; }
+  .task-bar-inner.complete { background: linear-gradient(90deg, var(--green), #a8c25a); }
+  .task-stats { display: flex; justify-content: space-between; align-items: center; margin-top: 8px; }
+  .task-fraction { font-size: 0.88rem; color: var(--ink-soft); }
+  .task-percent { font-family: var(--font-display); font-style: italic; font-size: 1.4rem; color: var(--accent); line-height: 1; }
+  .task-percent.complete { color: var(--green); }
+  .task-progress-controls { display: flex; gap: 8px; align-items: center; margin-top: 12px; }
+  .step-btn { width: 42px; height: 42px; border-radius: 50%; border: 1.5px solid var(--border); background: var(--bg-card); font-size: 1.2rem; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.15s; color: var(--ink); font-family: var(--font-body); }
+  .step-btn:hover { border-color: var(--accent); color: var(--accent); transform: scale(1.06); }
+  .step-btn.plus { background: var(--accent); border-color: var(--accent); color: white; }
+  .step-btn.plus:hover { box-shadow: 0 4px 12px rgba(233,109,42,0.3); }
+  .current-input { flex: 1; text-align: center; font-family: var(--font-display); font-style: italic; font-size: 1.3rem; color: var(--accent); background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 8px; width: 100%; }
+
+  .remove-task-btn { position: absolute; top: 14px; right: 14px; background: none; border: none; color: var(--ink-soft); font-size: 1.1rem; cursor: pointer; padding: 4px 8px; border-radius: 8px; transition: color 0.2s; }
+  .remove-task-btn:hover { color: #c4543a; }
+
+  /* ============================================================
+     РЕЖИМ 2: ЕЖЕДНЕВНЫЙ ТРЕКЕР
+     ============================================================ */
+  .tracker-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 8px; margin: 18px 0; }
+  .day-cell { aspect-ratio: 1; border: 1.5px solid var(--border); border-radius: var(--radius-sm); background: var(--bg); display: flex; flex-direction: column; align-items: center; justify-content: center; cursor: pointer; transition: all 0.15s; user-select: none; -webkit-user-select: none; }
+  .day-cell:hover { border-color: var(--accent-soft); transform: scale(1.04); }
+  .day-cell .day-num { font-family: var(--font-display); font-style: italic; font-size: 1.1rem; color: var(--ink-soft); line-height: 1; }
+  .day-cell .day-mark { font-size: 1rem; line-height: 1; margin-top: 3px; min-height: 1.1em; }
+  .day-cell.done { background: var(--accent); border-color: var(--accent); }
+  .day-cell.done .day-num { color: rgba(255,255,255,0.85); }
+
+  /* ============================================================
+     ОБЩИЙ ПРОГРЕСС + КНОПКИ
+     ============================================================ */
+  .total-card { background: linear-gradient(135deg, rgba(233,109,42,0.08), rgba(244,169,116,0.04)); border: 1px solid var(--accent-soft); border-radius: var(--radius); padding: 24px; text-align: center; margin-bottom: 16px; }
+  .total-percent { font-family: var(--font-display); font-style: italic; font-size: 3rem; color: var(--accent); line-height: 1; margin-bottom: 6px; }
+  .total-percent.complete { color: var(--green); }
+  .total-bar-outer { height: 18px; background: rgba(255,255,255,0.5); border-radius: 999px; overflow: hidden; margin: 16px 0 10px; }
+  .total-bar-inner { height: 100%; background: linear-gradient(90deg, var(--accent-soft), var(--accent)); border-radius: 999px; width: 0%; transition: width 0.5s; }
+  .total-bar-inner.complete { background: linear-gradient(90deg, var(--green), #a8c25a); }
+
+  .primary-btn { display: inline-block; padding: 14px 28px; background: var(--accent); color: white; border: none; border-radius: 999px; font-family: var(--font-body); font-size: 0.95rem; font-weight: 600; cursor: pointer; transition: all 0.2s; box-shadow: 0 4px 14px rgba(233,109,42,0.25); }
+  .primary-btn:hover { transform: translateY(-2px); }
+  .secondary-btn { display: inline-block; padding: 11px 22px; background: white; color: var(--ink); border: 1px solid var(--border); border-radius: 999px; font-family: var(--font-body); font-size: 0.88rem; font-weight: 500; cursor: pointer; transition: all 0.2s; }
+  .secondary-btn:hover { border-color: var(--accent); color: var(--accent); }
+
+  .result-output { background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 16px; margin: 16px 0; font-size: 0.9rem; white-space: pre-wrap; line-height: 1.5; }
+  .toast { position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%) translateY(100px); background: var(--ink); color: white; padding: 14px 26px; border-radius: 999px; font-size: 0.92rem; opacity: 0; transition: all 0.3s; z-index: 1000; pointer-events: none; }
   .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
 
-  footer {
-    padding: 40px 0;
-    border-top: 1px solid var(--border);
-    margin-top: 30px;
-    text-align: center;
-  }
+  footer { padding: 40px 0; border-top: 1px solid var(--border); margin-top: 30px; text-align: center; }
   footer .meta { color: var(--ink-soft); font-size: 0.85rem; }
 
   #content { display: none; }
-  #gate {
-    position: fixed; inset: 0; background: var(--bg);
-    z-index: 9999; display: flex; align-items: center; justify-content: center; padding: 24px;
-  }
+  #gate { position: fixed; inset: 0; background: var(--bg); z-index: 9999; display: flex; align-items: center; justify-content: center; padding: 24px; }
   .gate-box { max-width: 380px; width: 100%; text-align: center; }
   .gate-box h1 { font-size: 2rem; margin-bottom: 8px; }
   .gate-box p { color: var(--ink-soft); margin-bottom: 22px; font-size: 0.92rem; }
-  .gate-box input {
-    width: 100%; padding: 14px 18px; background: var(--bg-card);
-    border: 1px solid var(--border); border-radius: var(--radius-sm);
-    font-family: var(--font-body); font-size: 1rem; text-align: center; margin-bottom: 12px;
-  }
+  .gate-box input { width: 100%; padding: 14px 18px; background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-sm); font-family: var(--font-body); font-size: 1rem; text-align: center; margin-bottom: 12px; }
   .gate-box input:focus { outline: none; border-color: var(--accent); }
-  .gate-box button {
-    width: 100%; padding: 14px; background: var(--accent); color: white;
-    border: none; border-radius: 999px; font-family: var(--font-body);
-    font-size: 1rem; font-weight: 600; cursor: pointer;
-  }
+  .gate-box button { width: 100%; padding: 14px; background: var(--accent); color: white; border: none; border-radius: 999px; font-family: var(--font-body); font-size: 1rem; font-weight: 600; cursor: pointer; }
   .gate-error { color: #c4543a; font-size: 0.85rem; margin-top: 10px; min-height: 1.2em; }
 
   @media (max-width: 600px) {
-    .card { padding: 18px; }
+    .card, .total-card { padding: 20px; }
+    .task-card { padding: 16px; }
     .tracker-grid { gap: 6px; }
+    .task-goal-row { flex-wrap: wrap; }
   }
 </style>
 </head>
@@ -311,75 +219,130 @@
 <header class="hero">
   <div class="container">
     <h1>Марафон <em>21 день</em></h1>
-    <p class="lead">Ты сама ставишь себе задачи — клуб помогает их не бросить. Отмечай каждый день, в который выполнила задуманное.</p>
+    <p class="lead">Выбери формат, который подходит тебе: свои задачи с индивидуальным прогрессом или ежедневная отметка.</p>
   </div>
 </header>
 
 <!-- ============================================================
-     ПРАВИЛА — Эва редактирует под текущий марафон
+     ПЕРЕКЛЮЧАТЕЛЬ РЕЖИМОВ
      ============================================================ -->
-<section style="padding-top: 8px;">
+<section style="padding-top: 8px; padding-bottom: 0;">
   <div class="container">
-    <div class="card" style="background: var(--bg-soft);">
-      <span class="label">как устроен марафон</span>
-      <p><strong>1.</strong> Поставь себе 1–2 задачи на 21 день — конкретные и ежедневные (или почти ежедневные).<br>
-      <strong>2.</strong> Каждый день отмечай в трекере: выполнила — нажми на день.<br>
-      <strong>3.</strong> Раз в неделю делись прогрессом в чате клуба — кнопка внизу соберёт сообщение.</p>
+    <div class="mode-toggle">
+      <button class="mode-btn active" data-mode="custom">Свои задачи</button>
+      <button class="mode-btn" data-mode="daily">Ежедневный трекер</button>
     </div>
   </div>
 </section>
 
 <!-- ============================================================
-     МОИ ЗАДАЧИ
+     РЕЖИМ 1: СВОИ ЗАДАЧИ
      ============================================================ -->
-<section style="padding-top: 0;">
-  <div class="container">
-    <div class="card">
-      <span class="label">мои задачи марафона</span>
-      <div class="form-group">
-        <label class="form-label">Имя</label>
-        <input type="text" id="name" placeholder="Маша">
-      </div>
-      <div class="form-group">
-        <label class="form-label">Задача 1</label>
-        <input type="text" id="task1" placeholder="Например: 15 минут чтения каждый день">
-      </div>
-      <div class="form-group" style="margin-bottom: 0;">
-        <label class="form-label">Задача 2 <span style="font-weight: 400; color: var(--ink-soft);">(необязательно)</span></label>
-        <input type="text" id="task2" placeholder="Например: утренняя зарядка">
+<div class="mode-panel active" id="panelCustom">
+
+  <section style="padding-top: 16px;">
+    <div class="container">
+      <div class="card" style="background: var(--bg-soft);">
+        <span class="label">как это работает</span>
+        <p><strong>1.</strong> Придумай 1–3 задачи и поставь цель по каждой — сколько раз, километров, страниц, что угодно.<br>
+        <strong>2.</strong> Отмечай прогресс кнопками +/− или вручную.<br>
+        <strong>3.</strong> Раз в неделю делись прогрессом в чате — кнопка внизу соберёт сообщение.</p>
       </div>
     </div>
-  </div>
-</section>
+  </section>
+
+  <section style="padding-top: 0;">
+    <div class="container">
+      <div class="card">
+        <div class="form-group" style="margin-bottom: 16px;">
+          <label class="form-label">Имя</label>
+          <input type="text" id="customName" placeholder="Маша">
+        </div>
+        <div id="tasksContainer"></div>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding-top: 0;">
+    <div class="container">
+      <div class="total-card">
+        <span class="label">общий прогресс</span>
+        <div class="total-percent" id="customTotalPercent">0%</div>
+        <p style="color: var(--ink-soft); font-size: 0.9rem; margin: 0;" id="customTotalHint">задай цель хотя бы в одной задаче</p>
+        <div class="total-bar-outer"><div class="total-bar-inner" id="customTotalBar"></div></div>
+      </div>
+      <div style="text-align: center; display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;">
+        <button class="primary-btn" id="customShareBtn">Собрать прогресс для чата →</button>
+        <button class="secondary-btn" id="customResetBtn">Начать заново</button>
+      </div>
+      <div id="customShareResult" style="display: none;">
+        <div class="result-output" id="customShareOutput"></div>
+        <div style="text-align: center;"><button class="primary-btn" id="customCopyBtn">📋 Скопировать</button></div>
+      </div>
+    </div>
+  </section>
+</div>
 
 <!-- ============================================================
-     ТРЕКЕР
+     РЕЖИМ 2: ЕЖЕДНЕВНЫЙ ТРЕКЕР
      ============================================================ -->
-<section style="padding-top: 0;">
-  <div class="container">
-    <div class="card">
-      <span class="label">трекер</span>
-      <h3>21 день — <em>нажимай на выполненные</em></h3>
-      <div class="tracker-grid" id="trackerGrid"></div>
-      <div class="progress-bar-wrap">
-        <div class="progress-bar" id="progressBar"></div>
-      </div>
-      <p class="progress-text" id="progressText"><strong>0</strong> из 21</p>
+<div class="mode-panel" id="panelDaily">
 
-      <div style="text-align: center; margin-top: 22px; display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;">
-        <button class="primary-btn" id="shareBtn">Собрать прогресс для чата →</button>
-        <button class="secondary-btn" id="resetBtn">Начать заново</button>
+  <section style="padding-top: 16px;">
+    <div class="container">
+      <div class="card" style="background: var(--bg-soft);">
+        <span class="label">как это работает</span>
+        <p><strong>1.</strong> Запиши, что ты делаешь каждый день в рамках марафона.<br>
+        <strong>2.</strong> В конце дня нажми на номер дня — он загорится 🔥.<br>
+        <strong>3.</strong> Раз в неделю делись прогрессом в чате.</p>
       </div>
+    </div>
+  </section>
 
-      <div id="shareResult" style="display: none;">
-        <div class="result-output" id="shareOutput"></div>
-        <div style="text-align: center;">
-          <button class="primary-btn" id="copyBtn">📋 Скопировать</button>
+  <section style="padding-top: 0;">
+    <div class="container">
+      <div class="card">
+        <div class="form-group">
+          <label class="form-label">Имя</label>
+          <input type="text" id="dailyName" placeholder="Маша">
+        </div>
+        <div class="form-group" style="margin-bottom: 0;">
+          <label class="form-label">Что я делаю каждый день</label>
+          <input type="text" id="dailyTask" placeholder="Например: утренняя зарядка, 30 минут чтения, прогулка...">
         </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
+
+  <section style="padding-top: 0;">
+    <div class="container">
+      <div class="card">
+        <span class="label">трекер</span>
+        <h3>21 день — <em>нажимай на выполненные</em></h3>
+        <div class="tracker-grid" id="trackerGrid"></div>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding-top: 0;">
+    <div class="container">
+      <div class="total-card">
+        <span class="label">прогресс</span>
+        <div class="total-percent" id="dailyTotalPercent">0%</div>
+        <p style="color: var(--ink-soft); font-size: 0.9rem; margin: 0;" id="dailyTotalHint">0 из 21</p>
+        <div class="total-bar-outer"><div class="total-bar-inner" id="dailyTotalBar"></div></div>
+      </div>
+      <div style="text-align: center; display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;">
+        <button class="primary-btn" id="dailyShareBtn">Собрать прогресс для чата →</button>
+        <button class="secondary-btn" id="dailyResetBtn">Начать заново</button>
+      </div>
+      <div id="dailyShareResult" style="display: none;">
+        <div class="result-output" id="dailyShareOutput"></div>
+        <div style="text-align: center;"><button class="primary-btn" id="dailyCopyBtn">📋 Скопировать</button></div>
+      </div>
+    </div>
+  </section>
+</div>
 
 <div class="toast" id="toast">Скопировано ✓</div>
 
@@ -393,131 +356,266 @@
 
 <script>
   // ============================================================
-  // ПАРОЛЬ — тот же, что на club.html
+  // ПАРОЛЬ
   // ============================================================
   const CLUB_PASSWORD = 'rassvet2026';
   const ACCESS_KEY = 'rassvet_club_access';
-
-  function unlock() {
-    document.getElementById('gate').style.display = 'none';
-    document.getElementById('content').style.display = 'block';
-  }
-  try {
-    if (localStorage.getItem(ACCESS_KEY) === CLUB_PASSWORD) unlock();
-  } catch (e) {}
-
+  function unlock() { document.getElementById('gate').style.display = 'none'; document.getElementById('content').style.display = 'block'; }
+  try { if (localStorage.getItem(ACCESS_KEY) === CLUB_PASSWORD) unlock(); } catch (e) {}
   function tryEnter() {
     const input = document.getElementById('gateInput');
     if (input.value.trim().toLowerCase() === CLUB_PASSWORD.toLowerCase()) {
       try { localStorage.setItem(ACCESS_KEY, CLUB_PASSWORD); } catch (e) {}
       unlock();
-    } else {
-      document.getElementById('gateError').textContent = 'Не подходит. Проверь пароль в чате клуба.';
-      input.value = '';
-    }
+    } else { document.getElementById('gateError').textContent = 'Не подходит. Проверь пароль в чате клуба.'; input.value = ''; }
   }
   document.getElementById('gateBtn').addEventListener('click', tryEnter);
   document.getElementById('gateInput').addEventListener('keydown', (e) => { if (e.key === 'Enter') tryEnter(); });
 
   // ============================================================
-  // СТЕЙТ МАРАФОНА
+  // ПЕРЕКЛЮЧАТЕЛЬ РЕЖИМОВ
   // ============================================================
-  const STORAGE_KEY = 'rassvet_marathon_v1';
+  const MODE_KEY = 'rassvet_marathon_mode';
+  let currentMode = 'custom';
+  try { currentMode = localStorage.getItem(MODE_KEY) || 'custom'; } catch (e) {}
 
-  let state = {
+  function setMode(mode) {
+    currentMode = mode;
+    try { localStorage.setItem(MODE_KEY, mode); } catch (e) {}
+    document.querySelectorAll('.mode-btn').forEach(b => b.classList.toggle('active', b.dataset.mode === mode));
+    document.querySelectorAll('.mode-panel').forEach(p => p.classList.remove('active'));
+    document.getElementById(mode === 'custom' ? 'panelCustom' : 'panelDaily').classList.add('active');
+  }
+
+  document.querySelectorAll('.mode-btn').forEach(btn => {
+    btn.addEventListener('click', () => setMode(btn.dataset.mode));
+  });
+
+  // ============================================================
+  // РЕЖИМ 1: СВОИ ЗАДАЧИ
+  // ============================================================
+  const CUSTOM_KEY = 'rassvet_marathon_v2';
+  let customState = {
     name: '',
-    task1: '',
-    task2: '',
-    days: Array(21).fill(false)
+    taskCount: 1,
+    tasks: [
+      { name: '', target: 21, unit: 'раз', current: 0 },
+      { name: '', target: 21, unit: 'раз', current: 0 },
+      { name: '', target: 21, unit: 'раз', current: 0 }
+    ]
   };
 
-  function loadState() {
+  function loadCustom() {
     try {
-      const saved = localStorage.getItem(STORAGE_KEY);
-      if (saved) {
-        const parsed = JSON.parse(saved);
-        state = { ...state, ...parsed };
-        if (!Array.isArray(state.days) || state.days.length !== 21) {
-          state.days = Array(21).fill(false);
-        }
-      }
+      const s = localStorage.getItem(CUSTOM_KEY);
+      if (s) { customState = { ...customState, ...JSON.parse(s) }; while (customState.tasks.length < 3) customState.tasks.push({ name: '', target: 21, unit: 'раз', current: 0 }); if (!customState.taskCount) customState.taskCount = 1; }
     } catch (e) {}
   }
+  function saveCustom() { try { localStorage.setItem(CUSTOM_KEY, JSON.stringify(customState)); } catch (e) {} }
 
-  function saveState() {
-    try { localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); } catch (e) {}
-  }
+  function esc(s) { return (s || '').replace(/"/g, '&quot;'); }
 
-  // ============================================================
-  // ПОЛЯ
-  // ============================================================
-  function bindText(id, key) {
-    const el = document.getElementById(id);
-    el.value = state[key] || '';
-    el.addEventListener('input', (e) => {
-      state[key] = e.target.value;
-      saveState();
+  function renderCustomTasks() {
+    const container = document.getElementById('tasksContainer');
+    container.innerHTML = '';
+
+    for (let idx = 0; idx < customState.taskCount; idx++) {
+      const task = customState.tasks[idx];
+      const pct = task.target > 0 ? Math.min(100, Math.round((task.current / task.target) * 100)) : 0;
+      const isComplete = pct >= 100;
+      const hasData = task.name || task.current > 0;
+
+      const card = document.createElement('div');
+      card.className = 'task-card' + (hasData ? ' has-data' : '');
+      card.innerHTML = `
+        ${idx > 0 ? `<button class="remove-task-btn" data-idx="${idx}" title="Убрать задачу">✕</button>` : ''}
+        <div class="task-num">${idx + 1}</div>
+        <div class="task-setup">
+          <div class="form-group" style="margin-bottom: 0;">
+            <label class="form-label">Задача ${idx + 1}</label>
+            <input type="text" data-idx="${idx}" data-field="name" value="${esc(task.name)}" placeholder="Например: бег, чтение, медитация, уроки курса...">
+          </div>
+          <div class="task-goal-row">
+            <div class="field"><label class="form-label">Единица</label><input type="text" data-idx="${idx}" data-field="unit" value="${esc(task.unit)}" placeholder="раз, км, страниц..."></div>
+            <div class="field-sm"><label class="form-label">Цель</label><input type="number" data-idx="${idx}" data-field="target" value="${task.target || ''}" min="0" placeholder="21"></div>
+          </div>
+        </div>
+        ${task.target > 0 ? `
+        <div class="task-progress-wrap">
+          <div class="task-bar-outer"><div class="task-bar-inner${isComplete ? ' complete' : ''}" style="width:${pct}%"></div></div>
+          <div class="task-stats"><span class="task-fraction">${task.current} из ${task.target} ${task.unit}</span><span class="task-percent${isComplete ? ' complete' : ''}">${pct}%</span></div>
+          <div class="task-progress-controls">
+            <button class="step-btn" data-idx="${idx}" data-action="minus">−</button>
+            <input type="number" class="current-input" data-idx="${idx}" data-field="current" value="${task.current}" min="0">
+            <button class="step-btn plus" data-idx="${idx}" data-action="plus">+</button>
+          </div>
+        </div>` : ''}
+      `;
+      container.appendChild(card);
+    }
+
+    if (customState.taskCount < 3) {
+      const addBtn = document.createElement('button');
+      addBtn.className = 'secondary-btn';
+      addBtn.style.cssText = 'width:100%;margin-top:4px;';
+      addBtn.textContent = '+ Добавить задачу';
+      addBtn.addEventListener('click', () => { customState.taskCount++; saveCustom(); renderCustomTasks(); });
+      container.appendChild(addBtn);
+    }
+
+    container.querySelectorAll('[data-field]').forEach(el => { el.addEventListener('input', handleCustomField); el.addEventListener('change', handleCustomField); });
+    container.querySelectorAll('.step-btn').forEach(btn => { btn.addEventListener('click', handleCustomStep); });
+    container.querySelectorAll('.remove-task-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const idx = parseInt(btn.dataset.idx);
+        if (confirm('Убрать эту задачу?')) {
+          for (let i = idx; i < customState.taskCount - 1; i++) customState.tasks[i] = { ...customState.tasks[i + 1] };
+          customState.tasks[customState.taskCount - 1] = { name: '', target: 21, unit: 'раз', current: 0 };
+          customState.taskCount--;
+          saveCustom();
+          renderCustomTasks();
+        }
+      });
     });
+    renderCustomTotal();
   }
 
+  function handleCustomField(e) {
+    const idx = parseInt(e.target.dataset.idx);
+    const field = e.target.dataset.field;
+    let value = e.target.value;
+    if (field === 'target' || field === 'current') value = Math.max(0, parseInt(value) || 0);
+    customState.tasks[idx][field] = value;
+    saveCustom();
+    if (field === 'target') renderCustomTasks(); else renderCustomTotal();
+  }
+
+  function handleCustomStep(e) {
+    const idx = parseInt(e.target.dataset.idx);
+    const action = e.target.dataset.action;
+    if (action === 'plus') customState.tasks[idx].current++;
+    else if (customState.tasks[idx].current > 0) customState.tasks[idx].current--;
+    saveCustom();
+    renderCustomTasks();
+  }
+
+  function renderCustomTotal() {
+    const active = customState.tasks.slice(0, customState.taskCount).filter(t => t.target > 0);
+    let pct = 0;
+    if (active.length) pct = Math.round(active.reduce((s, t) => s + Math.min(100, Math.round((t.current / t.target) * 100)), 0) / active.length);
+    const el = document.getElementById('customTotalPercent');
+    el.textContent = pct + '%';
+    el.classList.toggle('complete', pct >= 100);
+    const bar = document.getElementById('customTotalBar');
+    bar.style.width = pct + '%';
+    bar.classList.toggle('complete', pct >= 100);
+    document.getElementById('customTotalHint').textContent = active.length ? `среднее по ${active.length} ${active.length === 1 ? 'задаче' : 'задачам'}` : 'задай цель хотя бы в одной задаче';
+  }
+
+  function buildBar(pct) { const f = Math.round(pct / 10); return '🟧'.repeat(f) + '⬜'.repeat(10 - f); }
+
+  document.getElementById('customShareBtn').addEventListener('click', () => {
+    const active = customState.tasks.slice(0, customState.taskCount).filter(t => t.name && t.target > 0);
+    const lines = ['🔥 МОЙ МАРАФОН · 21 ДЕНЬ', `Имя: ${customState.name || '—'}`, ''];
+    active.forEach(t => {
+      const pct = Math.min(100, Math.round((t.current / t.target) * 100));
+      lines.push(`${t.name}: ${t.current}/${t.target} ${t.unit} (${pct}%)`);
+      lines.push(buildBar(pct));
+      lines.push('');
+    });
+    if (active.length) {
+      const avg = Math.round(active.reduce((s, t) => s + Math.min(100, Math.round((t.current / t.target) * 100)), 0) / active.length);
+      lines.push(`📊 Общий прогресс: ${avg}%`);
+      lines.push(buildBar(avg));
+    }
+    document.getElementById('customShareOutput').textContent = lines.join('\n');
+    document.getElementById('customShareResult').style.display = 'block';
+  });
+
+  document.getElementById('customCopyBtn').addEventListener('click', () => copyText(document.getElementById('customShareOutput').textContent));
+
+  document.getElementById('customResetBtn').addEventListener('click', () => {
+    if (confirm('Сбросить прогресс?\nНазвания и цели останутся.')) {
+      customState.tasks.slice(0, customState.taskCount).forEach(t => t.current = 0);
+      saveCustom(); renderCustomTasks();
+      document.getElementById('customShareResult').style.display = 'none';
+    }
+  });
+
   // ============================================================
-  // ТРЕКЕР
+  // РЕЖИМ 2: ЕЖЕДНЕВНЫЙ ТРЕКЕР
   // ============================================================
+  const DAILY_KEY = 'rassvet_marathon_daily_v1';
+  let dailyState = { name: '', task: '', days: Array(21).fill(false) };
+
+  function loadDaily() {
+    try {
+      const s = localStorage.getItem(DAILY_KEY);
+      if (s) { dailyState = { ...dailyState, ...JSON.parse(s) }; if (!Array.isArray(dailyState.days) || dailyState.days.length !== 21) dailyState.days = Array(21).fill(false); }
+    } catch (e) {}
+  }
+  function saveDaily() { try { localStorage.setItem(DAILY_KEY, JSON.stringify(dailyState)); } catch (e) {} }
+
   function renderTracker() {
     const grid = document.getElementById('trackerGrid');
     grid.innerHTML = '';
-    state.days.forEach((done, i) => {
+    dailyState.days.forEach((done, i) => {
       const cell = document.createElement('div');
       cell.className = 'day-cell' + (done ? ' done' : '');
       cell.innerHTML = `<span class="day-num">${i + 1}</span><span class="day-mark">${done ? '🔥' : ''}</span>`;
-      cell.addEventListener('click', () => {
-        state.days[i] = !state.days[i];
-        saveState();
-        renderTracker();
-      });
+      cell.addEventListener('click', () => { dailyState.days[i] = !dailyState.days[i]; saveDaily(); renderTracker(); });
       grid.appendChild(cell);
     });
-
-    const count = state.days.filter(Boolean).length;
+    const count = dailyState.days.filter(Boolean).length;
     const pct = Math.round((count / 21) * 100);
-    document.getElementById('progressBar').style.width = pct + '%';
-    document.getElementById('progressText').innerHTML = `<strong>${count}</strong> из 21 · ${pct}%`;
+    const el = document.getElementById('dailyTotalPercent');
+    el.textContent = pct + '%';
+    el.classList.toggle('complete', pct >= 100);
+    const bar = document.getElementById('dailyTotalBar');
+    bar.style.width = pct + '%';
+    bar.classList.toggle('complete', pct >= 100);
+    document.getElementById('dailyTotalHint').textContent = `${count} из 21`;
   }
 
-  // ============================================================
-  // ШЕРИНГ
-  // ============================================================
-  document.getElementById('shareBtn').addEventListener('click', () => {
-    const count = state.days.filter(Boolean).length;
+  document.getElementById('dailyShareBtn').addEventListener('click', () => {
+    const count = dailyState.days.filter(Boolean).length;
     const pct = Math.round((count / 21) * 100);
-
-    // Полоска прогресса из квадратиков по неделям
     const rows = [];
     for (let w = 0; w < 3; w++) {
       let row = '';
-      for (let d = 0; d < 7; d++) {
-        row += state.days[w * 7 + d] ? '🟧' : '⬜';
-      }
+      for (let d = 0; d < 7; d++) row += dailyState.days[w * 7 + d] ? '🟧' : '⬜';
       rows.push(row);
     }
-
-    const lines = [];
-    lines.push('🔥 МОЙ МАРАФОН · 21 ДЕНЬ');
-    lines.push(`Имя: ${state.name || '—'}`);
-    lines.push('');
-    if (state.task1) lines.push(`Задача 1: ${state.task1}`);
-    if (state.task2) lines.push(`Задача 2: ${state.task2}`);
-    lines.push('');
-    lines.push(rows.join('\n'));
-    lines.push('');
-    lines.push(`Прогресс: ${count} из 21 (${pct}%)`);
-
-    document.getElementById('shareOutput').textContent = lines.join('\n');
-    document.getElementById('shareResult').style.display = 'block';
+    const lines = ['🔥 МОЙ МАРАФОН · 21 ДЕНЬ', `Имя: ${dailyState.name || '—'}`, ''];
+    if (dailyState.task) lines.push(`Задача: ${dailyState.task}`, '');
+    lines.push(rows.join('\n'), '', `Прогресс: ${count} из 21 (${pct}%)`);
+    document.getElementById('dailyShareOutput').textContent = lines.join('\n');
+    document.getElementById('dailyShareResult').style.display = 'block';
   });
 
-  document.getElementById('copyBtn').addEventListener('click', async () => {
-    const text = document.getElementById('shareOutput').textContent;
+  document.getElementById('dailyCopyBtn').addEventListener('click', () => copyText(document.getElementById('dailyShareOutput').textContent));
+
+  document.getElementById('dailyResetBtn').addEventListener('click', () => {
+    if (confirm('Сбросить трекер?\nЗадача и имя останутся.')) {
+      dailyState.days = Array(21).fill(false);
+      saveDaily(); renderTracker();
+      document.getElementById('dailyShareResult').style.display = 'none';
+    }
+  });
+
+  function bindDaily() {
+    const nameEl = document.getElementById('dailyName');
+    const taskEl = document.getElementById('dailyTask');
+    nameEl.value = dailyState.name || '';
+    taskEl.value = dailyState.task || '';
+    nameEl.addEventListener('input', (e) => { dailyState.name = e.target.value; saveDaily(); });
+    taskEl.addEventListener('input', (e) => { dailyState.task = e.target.value; saveDaily(); });
+  }
+
+  // ============================================================
+  // ОБЩЕЕ: КОПИРОВАНИЕ И ТОСТ
+  // ============================================================
+  async function copyText(text) {
     try {
       await navigator.clipboard.writeText(text);
       showToast('Скопировано ✓');
@@ -526,36 +624,29 @@
       ta.value = text;
       document.body.appendChild(ta);
       ta.select();
-      try { document.execCommand('copy'); showToast('Скопировано ✓'); }
-      catch (err) { showToast('Не удалось скопировать'); }
+      try { document.execCommand('copy'); showToast('Скопировано ✓'); } catch (err) { showToast('Не удалось скопировать'); }
       document.body.removeChild(ta);
     }
-  });
-
-  document.getElementById('resetBtn').addEventListener('click', () => {
-    if (confirm('Сбросить трекер и начать марафон заново?\nЗадачи и имя останутся.')) {
-      state.days = Array(21).fill(false);
-      saveState();
-      renderTracker();
-      document.getElementById('shareResult').style.display = 'none';
-    }
-  });
-
+  }
   function showToast(msg) {
-    const toast = document.getElementById('toast');
-    toast.textContent = msg;
-    toast.classList.add('show');
-    setTimeout(() => toast.classList.remove('show'), 2400);
+    const t = document.getElementById('toast');
+    t.textContent = msg;
+    t.classList.add('show');
+    setTimeout(() => t.classList.remove('show'), 2400);
   }
 
   // ============================================================
   // ИНИЦИАЛИЗАЦИЯ
   // ============================================================
-  loadState();
-  bindText('name', 'name');
-  bindText('task1', 'task1');
-  bindText('task2', 'task2');
+  loadCustom();
+  loadDaily();
+  const nameEl = document.getElementById('customName');
+  nameEl.value = customState.name || '';
+  nameEl.addEventListener('input', (e) => { customState.name = e.target.value; saveCustom(); });
+  renderCustomTasks();
+  bindDaily();
   renderTracker();
+  setMode(currentMode);
 </script>
 </body>
 </html>
