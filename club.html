@@ -10,14 +10,14 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Onest:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg: #faf3e7;
-    --bg-card: #fffaf1;
-    --bg-soft: #f4ebd9;
-    --ink: #2c241b;
-    --ink-soft: #6b5d4a;
-    --accent: #e96d2a;
-    --accent-soft: #f4a974;
-    --border: #e8dcc4;
+    --bg: #f6f6e8;
+    --bg-card: #fbfbf2;
+    --bg-soft: #eaead4;
+    --ink: #2b2b1a;
+    --ink-soft: #6b6b4a;
+    --accent: #a2a043;
+    --accent-soft: #c4c38a;
+    --border: #d6d5b4;
     --radius-sm: 14px;
     --radius: 22px;
     --font-display: 'Cormorant Garamond', serif;
@@ -42,12 +42,12 @@
   }
   body::before {
     width: 500px; height: 500px;
-    background: radial-gradient(circle, rgba(233,109,42,0.18), transparent 70%);
+    background: radial-gradient(circle, rgba(162,160,67,0.18), transparent 70%);
     top: -150px; right: -100px;
   }
   body::after {
     width: 600px; height: 600px;
-    background: radial-gradient(circle, rgba(244,169,116,0.15), transparent 70%);
+    background: radial-gradient(circle, rgba(196,195,138,0.18), transparent 70%);
     bottom: -200px; left: -150px;
   }
 
@@ -80,7 +80,7 @@
   nav {
     padding: 18px 0;
     border-bottom: 1px solid var(--border);
-    background: rgba(250, 243, 231, 0.85);
+    background: rgba(246, 246, 232, 0.85);
     backdrop-filter: blur(8px);
     position: sticky; top: 0; z-index: 100;
   }
@@ -116,14 +116,14 @@
     position: absolute;
     width: 140px; height: 140px;
     border-radius: 50%;
-    background: radial-gradient(circle, rgba(244,169,116,0.18), transparent 70%);
+    background: radial-gradient(circle, rgba(196,195,138,0.18), transparent 70%);
     top: -50px; right: -50px;
     pointer-events: none;
   }
   .tile:hover {
     transform: translateY(-3px);
     border-color: var(--accent-soft);
-    box-shadow: 0 8px 24px rgba(233,109,42,0.10);
+    box-shadow: 0 8px 24px rgba(162,160,67,0.15);
   }
   .tile .tile-emoji { font-size: 1.6rem; margin-bottom: 10px; display: block; }
   .tile p { color: var(--ink-soft); font-size: 0.92rem; margin: 0; }
@@ -135,9 +135,52 @@
     font-size: 0.9rem;
   }
 
+  /* === FEATURED TILE (Как тут всё устроено) === */
+  .tile.tile-featured {
+    grid-column: 1 / -1;
+    background: var(--accent);
+    border-color: var(--accent);
+    color: #fff;
+    padding: 36px 32px;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-template-rows: auto auto auto;
+    column-gap: 20px;
+  }
+  .tile.tile-featured::after {
+    width: 260px; height: 260px;
+    background: radial-gradient(circle, rgba(255,255,255,0.15), transparent 70%);
+    top: -80px; right: -60px;
+  }
+  .tile.tile-featured:hover {
+    background: #8a8936;
+    border-color: #8a8936;
+    box-shadow: 0 10px 32px rgba(162,160,67,0.30);
+  }
+  .tile.tile-featured .tile-emoji {
+    font-size: 2.4rem;
+    grid-row: 1 / 3;
+    align-self: center;
+    margin-bottom: 0;
+  }
+  .tile.tile-featured h3 {
+    color: #fff;
+    font-size: 1.5rem;
+    margin-bottom: 0.2em;
+  }
+  .tile.tile-featured p {
+    color: rgba(255,255,255,0.85);
+    font-size: 1rem;
+  }
+  .tile.tile-featured .arrow {
+    color: #fff;
+    grid-column: 2;
+    font-size: 0.95rem;
+  }
+
   /* Блок «сейчас в клубе» — Ева редактирует вручную */
   .now-card {
-    background: linear-gradient(135deg, rgba(233,109,42,0.08), rgba(244,169,116,0.04));
+    background: linear-gradient(135deg, rgba(162,160,67,0.08), rgba(196,195,138,0.04));
     border: 1px solid var(--accent-soft);
     border-radius: var(--radius);
     padding: 26px;
@@ -206,7 +249,7 @@
     cursor: pointer;
     transition: all 0.2s;
   }
-  .gate-box button:hover { transform: translateY(-1px); box-shadow: 0 4px 14px rgba(233,109,42,0.3); }
+  .gate-box button:hover { transform: translateY(-1px); box-shadow: 0 4px 14px rgba(162,160,67,0.35); }
   .gate-error {
     color: #c4543a;
     font-size: 0.88rem;
@@ -274,6 +317,14 @@
   <div class="container">
     <div class="grid">
 
+      <!-- FEATURED: Как тут всё устроено — на первом месте, во всю ширину -->
+      <a href="/guide.html" class="tile tile-featured">
+        <span class="tile-emoji">🧭</span>
+        <h3>Как тут всё устроено</h3>
+        <p>Гид для тебя, если ты впервые: с чего начать, что когда, зачем.</p>
+        <span class="arrow">Открыть →</span>
+      </a>
+
       <a href="/schedule.html" class="tile">
         <span class="tile-emoji">📅</span>
         <h3>Расписание</h3>
@@ -321,13 +372,6 @@
         <h3>Написать Еве</h3>
         <p>Вопрос, идея, что-то не работает — пиши напрямую.</p>
         <span class="arrow">В Telegram →</span>
-      </a>
-
-      <a href="/guide.html" class="tile">
-        <span class="tile-emoji">🧭</span>
-        <h3>Как тут всё устроено</h3>
-        <p>Гид для тебя, если ты впервые: с чего начать, что когда, зачем.</p>
-        <span class="arrow">Открыть →</span>
       </a>
 
     </div>
