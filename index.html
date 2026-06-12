@@ -602,6 +602,7 @@ h1,h2,h3,h4{letter-spacing:-.01em}
       <div class="hero-buttons">
         <a href="#welcome" class="btn btn-primary">welcome встреча за 500 ₽</a>
         <a href="#about" class="btn btn-ghost">Что внутри</a>
+        <a href="/wheel.html" class="btn btn-ghost" style="box-shadow:inset 0 0 0 1.5px var(--green-deep);color:var(--green-deep)">Колесо баланса для самодиагностики</a>
       </div>
     </div>
     <div class="hero-img-wrap">
@@ -656,58 +657,6 @@ h1,h2,h3,h4{letter-spacing:-.01em}
   </div>
 </section>
 
-<section class="compare-wrap">
-  <div class="container">
-    <div class="compare-head">
-      <div>
-        <span class="section-eyebrow">почему клуб</span>
-        <h2 class="section-title">Рассвет vs <i>альтернативы</i></h2>
-      </div>
-      <p>Можно искать всё самой — а можно прийти туда, где уже всё собрано: люди, ритм, идеи.</p>
-    </div>
-    <div class="compare-grid">
-      <div class="cmp-card cmp-highlight">
-        <span class="cmp-badge">Рассвет</span>
-        <h3 class="cmp-name">Клуб «Рассвет»</h3>
-        <ul class="cmp-list">
-          <li class="cmp-yes">Готовое расписание на каждую неделю</li>
-          <li class="cmp-yes">Постоянная компания и новые подруги</li>
-          <li class="cmp-yes">8+ разных активностей в одном месте</li>
-          <li class="cmp-yes">Закрытый чат с поддержкой</li>
-          <li class="cmp-yes">Кто-то уже всё организовал за тебя</li>
-        </ul>
-      </div>
-      <div class="cmp-card">
-        <h3 class="cmp-name">Искать самой</h3>
-        <ul class="cmp-list">
-          <li class="cmp-no">Нужно самой всё планировать</li>
-          <li class="cmp-no">Люди отменяют в последний момент</li>
-          <li class="cmp-no">Нет постоянного круга</li>
-          <li class="cmp-meh">Бесплатно, но энергозатратно</li>
-        </ul>
-      </div>
-      <div class="cmp-card">
-        <h3 class="cmp-name">Разовые события</h3>
-        <ul class="cmp-list">
-          <li class="cmp-meh">Классно, но раз в месяц</li>
-          <li class="cmp-no">Каждый раз новые люди</li>
-          <li class="cmp-no">Нет ощущения «своих»</li>
-          <li class="cmp-no">Дорого за одну встречу</li>
-        </ul>
-      </div>
-      <div class="cmp-card">
-        <h3 class="cmp-name">Фитнес-клуб</h3>
-        <ul class="cmp-list">
-          <li class="cmp-yes">Регулярные тренировки</li>
-          <li class="cmp-no">Каждый сам по себе</li>
-          <li class="cmp-no">Нет общения и дружбы</li>
-          <li class="cmp-no">Только спорт, без разнообразия</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</section>
-
 <section class="schedule-wrap">
   <div class="container">
     <div class="schedule">
@@ -725,6 +674,60 @@ h1,h2,h3,h4{letter-spacing:-.01em}
         <div class="day"><span class="day-name">Вс</span><div class="event yellow">Отдыхаем<span class="event-time">весь день ☀</span></div></div>
       </div>
       <div class="schedule-foot">Помимо основного расписания — тренировки в парке, фотодни, велопрогулки и воплощение ваших идей</div>
+    </div>
+  </div>
+</section>
+<!-- ═══ НЕДЕЛЯ В КЛУБЕ — онлайн и офлайн ═══ -->
+<!-- ВСТАВЬ ЭТОТ БЛОК ПОСЛЕ </section> schedule-wrap И ПЕРЕД <section id="activities"> -->
+<style>
+.week-formats{padding:80px 0 90px;background:var(--bg)}
+.wf-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:44px}
+.wf-col{background:var(--paper);border:1px solid var(--line);border-radius:24px;padding:36px 32px}
+.wf-col-label{display:inline-block;font-size:12px;color:var(--orange);letter-spacing:.14em;text-transform:uppercase;font-weight:500;margin-bottom:14px}
+.wf-col h3{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:30px;line-height:1.1;margin:0 0 6px}
+.wf-col h3 i{font-style:italic;font-weight:500;color:var(--orange)}
+.wf-col .wf-audience{font-size:14px;color:var(--ink-mute);margin-bottom:22px}
+.wf-item{padding:16px 0;border-bottom:1px solid var(--line);display:flex;gap:14px;align-items:flex-start}
+.wf-item:last-child{border-bottom:none}
+.wf-emoji{font-size:1.15rem;flex-shrink:0;margin-top:2px}
+.wf-desc{font-size:15px;color:var(--ink-soft);line-height:1.5}
+.wf-desc strong{color:var(--ink)}
+@media(max-width:880px){.wf-grid{grid-template-columns:1fr}.wf-col{padding:28px 22px}}
+</style>
+
+<section class="week-formats">
+  <div class="container">
+    <div style="text-align:center">
+      <span class="section-eyebrow">ритм клуба</span>
+      <h2 class="section-title">Как выглядит <i>неделя</i></h2>
+      <p style="color:var(--ink-mute);max-width:520px;margin:12px auto 0">Два формата — одно сообщество. Онлайн-участницы и московские девушки живут в одном чате и поддерживают друг друга.</p>
+    </div>
+    <div class="wf-grid">
+
+      <!-- ОНЛАЙН -->
+      <div class="wf-col">
+        <span class="wf-col-label">онлайн · из любого города</span>
+        <h3>Клуб <i>образа жизни</i></h3>
+        <p class="wf-audience">Для тех, кому важен ритм, поддержка и смысл — без привязки к Москве</p>
+        <div class="wf-item"><span class="wf-emoji">💬</span><span class="wf-desc"><strong>Каждый день</strong> — закрытый чат: темы недели, обсуждения, поддержка</span></div>
+        <div class="wf-item"><span class="wf-emoji">🎙</span><span class="wf-desc"><strong>Раз в неделю</strong> — онлайн-встреча с Евой: отношения, смыслы, стиль жизни</span></div>
+        <div class="wf-item"><span class="wf-emoji">🔥</span><span class="wf-desc"><strong>Марафоны 21 день</strong> — свои задачи, свой темп, общий прогресс</span></div>
+        <div class="wf-item"><span class="wf-emoji">🌅</span><span class="wf-desc"><strong>Раз в месяц</strong> — стратсессия: итоги, цели, план на следующий месяц</span></div>
+        <div class="wf-item"><span class="wf-emoji">🧠</span><span class="wf-desc"><strong>Приглашённые эксперты</strong> — психологи и другие специалисты</span></div>
+      </div>
+
+      <!-- ОФЛАЙН -->
+      <div class="wf-col">
+        <span class="wf-col-label">офлайн · москва</span>
+        <h3>Вживую <i>в городе</i></h3>
+        <p class="wf-audience">Всё, что есть в онлайне + живые встречи, тренировки и события</p>
+        <div class="wf-item"><span class="wf-emoji">🏃‍♀️</span><span class="wf-desc"><strong>Утренние пробежки</strong> — вместе по красивым маршрутам</span></div>
+        <div class="wf-item"><span class="wf-emoji">💪</span><span class="wf-desc"><strong>Тренировки в парках</strong> — без спортзала, на свежем воздухе</span></div>
+        <div class="wf-item"><span class="wf-emoji">🧺</span><span class="wf-desc"><strong>Пикники и встречи</strong> — просто побыть вместе</span></div>
+        <div class="wf-item"><span class="wf-emoji">💃</span><span class="wf-desc"><strong>Танцы</strong> — камерная группа, пластика, хореография</span></div>
+        <div class="wf-item"><span class="wf-emoji">🌅</span><span class="wf-desc"><strong>+ весь онлайн</strong> — чат, встречи, марафоны, стратсессии</span></div>
+      </div>
+
     </div>
   </div>
 </section>
@@ -772,6 +775,56 @@ h1,h2,h3,h4{letter-spacing:-.01em}
       <div class="g"><img src="gal-2.png" alt=""></img></div>
       <div class="g"><img src="gal-3.png" alt=""></img></div>
       <div class="g"><img src="gal-4.png" alt=""></img></div>
+    </div>
+  </div>
+</section>
+<!-- ═══ КОЛЕСО БАЛАНСА — ЛИДМАГНИТ ═══ -->
+<!-- ВСТАВЬ ПОСЛЕ </section> gallery-wrap И ПЕРЕД <section class="benefits"> -->
+<style>
+.wheel-magnet{padding:30px 0 50px}
+.wheel-magnet-inner{display:grid;grid-template-columns:1fr 1fr;gap:44px;align-items:center;background:linear-gradient(135deg,rgba(142,163,90,.12),rgba(233,109,42,.06));border:1px solid rgba(142,163,90,.25);border-radius:28px;padding:52px 56px}
+.wm-text h2{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:46px;line-height:1.04;margin:0 0 16px}
+.wm-text h2 i{font-style:italic;font-weight:500;color:var(--green-deep)}
+.wm-text p{font-size:16px;color:var(--ink-soft);line-height:1.6;margin:0 0 24px;max-width:460px}
+.wm-list{list-style:none;padding:0;margin:0 0 30px}
+.wm-list li{padding:6px 0;font-size:15px;color:var(--ink-soft)}
+.wm-list li::before{content:"→ ";color:var(--green-deep);font-weight:600}
+.wm-visual{text-align:center}
+.wm-visual svg{width:100%;max-width:280px;height:auto}
+@media(max-width:880px){.wheel-magnet-inner{grid-template-columns:1fr;padding:36px 28px;gap:28px}.wm-visual{order:-1}}
+</style>
+
+<section class="wheel-magnet">
+  <div class="container">
+    <div class="wheel-magnet-inner">
+      <div class="wm-text">
+        <h2>Колесо баланса для <i>самодиагностики</i></h2>
+        <p>Бесплатный инструмент клуба. Выбери 6 сфер жизни, оцени каждую — и увидь, где сейчас фокус, а где разрыв.</p>
+        <ul class="wm-list">
+          <li>Занимает 5–10 минут</li>
+          <li>Колесо рисуется в реальном времени</li>
+          <li>Результат можно скопировать и поделиться</li>
+        </ul>
+        <a href="/wheel.html" class="btn btn-primary" style="background:var(--green-deep)">🌀 Заполнить колесо баланса →</a>
+      </div>
+      <div class="wm-visual">
+        <svg viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="150" cy="150" r="120" fill="none" stroke="#cad9a9" stroke-width="1"/>
+          <circle cx="150" cy="150" r="80" fill="none" stroke="#cad9a9" stroke-width="1"/>
+          <circle cx="150" cy="150" r="40" fill="none" stroke="#cad9a9" stroke-width="1"/>
+          <line x1="150" y1="30" x2="150" y2="270" stroke="#cad9a9" stroke-width="1"/>
+          <line x1="46" y1="90" x2="254" y2="210" stroke="#cad9a9" stroke-width="1"/>
+          <line x1="46" y1="210" x2="254" y2="90" stroke="#cad9a9" stroke-width="1"/>
+          <polygon points="150,54 225,108 225,192 150,246 75,192 75,108" fill="rgba(142,163,90,0.2)" stroke="#8ea35a" stroke-width="2" stroke-linejoin="round"/>
+          <polygon points="150,38 240,95 240,205 150,262 60,205 60,95" fill="none" stroke="#8ea35a" stroke-width="1.5" stroke-dasharray="4,3"/>
+          <circle cx="150" cy="54" r="4" fill="#8ea35a"/>
+          <circle cx="225" cy="108" r="4" fill="#8ea35a"/>
+          <circle cx="225" cy="192" r="4" fill="#8ea35a"/>
+          <circle cx="150" cy="246" r="4" fill="#8ea35a"/>
+          <circle cx="75" cy="192" r="4" fill="#8ea35a"/>
+          <circle cx="75" cy="108" r="4" fill="#8ea35a"/>
+        </svg>
+      </div>
     </div>
   </div>
 </section>
@@ -857,14 +910,16 @@ h1,h2,h3,h4{letter-spacing:-.01em}
   </button>
 </div>
         <ul class="features">
+          <li style="color:#b09a78;opacity:.7;list-style:none" class="no-check"><span style="display:inline-flex;align-items:center;justify-content:center;width:18px;height:18px;border-radius:50%;background:#f0e7d4;color:#c0392b;font-size:12px;font-weight:700;flex-shrink:0">✕</span> Без офлайн-встреч в Москве</li>        
           <li>Закрытый чат сообщества</li>
           <li>Стратсессия — итоги месяца и планы на следующий</li>
           <li>Книжный клуб онлайн — раз в месяц</li>
-          <li>Челленджи с отчетами (21 день)</li>
+          <li>Колесо баланса, план месяца и еженедельный отчёт</li>
+          <li>Марафон 21 день с персональным трекером</li>
+          <li>Пространство участниц — все инструменты на сайте клуба</li>
           <li>Встречи с гостями 2 раза в месяц (психолог и др.)</li>
           <li>Подкасты от меня — 2 раза в месяц</li>
           <li>Киноклуб — раз в месяц</li>
-          <li style="color:#b09a78;opacity:.7;list-style:none" class="no-check"><span style="display:inline-flex;align-items:center;justify-content:center;width:18px;height:18px;border-radius:50%;background:#f0e7d4;color:#c0392b;font-size:12px;font-weight:700;flex-shrink:0">✕</span> Без офлайн-встреч в Москве</li>        
           <button class="cta-btn" data-pay="online" data-price="1190" data-month="july">Подключиться →</button>
       </div>
 
