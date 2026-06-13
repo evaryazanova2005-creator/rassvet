@@ -734,44 +734,32 @@ h1,h2,h3,h4{letter-spacing:-.01em}
 
 <!-- ═══ ИЮНЬ В РАССВЕТЕ ═══ -->
 <!-- ВСТАВЬ ПОСЛЕ </section> week-formats, УДАЛИ <section id="activities" class="activities"> -->
-<!-- ФОТО: загрузи все файлы из папки june-photos/ в корень Vercel-проекта -->
 <style>
 .june-wrap{padding:70px 0 80px;background:var(--bg)}
-
-/* ── заголовок секции ── */
 .june-head{text-align:center;margin-bottom:36px}
 .june-head p{color:var(--ink-mute);max-width:480px;margin:10px auto 0;font-size:15.5px;line-height:1.6}
 
-/* ── сетка папок (компактные плитки) ── */
 .june-folders{display:grid;grid-template-columns:1fr 1fr;gap:14px}
 
-/* ── одна папка ── */
 .june-folder{background:var(--paper);border:1px solid var(--line);border-radius:20px;overflow:hidden;cursor:pointer;transition:box-shadow .2s}
 .june-folder:hover{box-shadow:0 8px 24px rgba(120,80,30,.10)}
+.june-folder.open{box-shadow:0 8px 24px rgba(120,80,30,.10)}
 
-/* шапка папки — всегда видна */
+/* шапка — всегда видна, кликабельна */
 .june-folder-head{display:flex;align-items:center;gap:14px;padding:18px 20px;user-select:none}
 .june-folder-icon{font-size:22px;flex-shrink:0;line-height:1}
 .june-folder-info{flex:1;min-width:0}
 .june-folder-name{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:20px;color:var(--ink);line-height:1.15;margin:0 0 2px}
 .june-folder-sub{font-size:12px;color:var(--ink-mute)}
-.june-folder-arrow{font-size:18px;color:var(--ink-mute);transition:transform .28s;flex-shrink:0;opacity:.5}
+.june-folder-arrow{font-size:20px;color:var(--ink-mute);transition:transform .28s;flex-shrink:0;opacity:.4;line-height:1}
 .june-folder.open .june-folder-arrow{transform:rotate(90deg);color:var(--orange);opacity:1}
 
-/* превью — 3 маленьких фото, видно всегда */
-.june-folder-preview{display:grid;grid-template-columns:1fr 1fr 1fr;gap:4px;padding:0 12px 12px}
-.june-folder-preview .jp{border-radius:8px;overflow:hidden;background:#d8d2c2;aspect-ratio:1/1}
-.june-folder-preview .jp img{width:100%;height:100%;object-fit:cover;display:block}
-.june-folder-preview .jp.single{grid-column:1/span 3;aspect-ratio:16/7}
-.june-folder-preview .jp.two-a{grid-column:1/span 2;aspect-ratio:2/1}
-.june-folder-preview .jp.two-b{grid-column:3}
+/* раскрывающееся тело */
+.june-folder-body{max-height:0;overflow:hidden;transition:max-height .45s cubic-bezier(.4,0,.2,1)}
+.june-folder.open .june-folder-body{max-height:3000px}
+.june-folder-body-inner{padding:0 14px 16px;display:flex;flex-direction:column;gap:10px}
 
-/* раскрывающийся контент */
-.june-folder-body{max-height:0;overflow:hidden;transition:max-height .4s cubic-bezier(.4,0,.2,1)}
-.june-folder.open .june-folder-body{max-height:2000px}
-.june-folder-body-inner{padding:0 12px 16px;display:flex;flex-direction:column;gap:8px}
-
-/* фото-сетка внутри папки */
+/* галерея внутри */
 .june-gallery{display:grid;gap:6px}
 .june-gallery.g1{grid-template-columns:1fr}
 .june-gallery.g2{grid-template-columns:1fr 1fr}
@@ -781,38 +769,39 @@ h1,h2,h3,h4{letter-spacing:-.01em}
 .june-gallery .gi.land{aspect-ratio:4/3}
 .june-gallery .gi.port{aspect-ratio:3/4}
 .june-gallery .gi.sq{aspect-ratio:1/1}
-.june-gallery .gi.wide{aspect-ratio:16/7}
 .june-gallery .gi.screen{aspect-ratio:9/19;max-height:260px}
 .june-gallery .gi.span2{grid-column:1/span 2}
 .june-gallery .gi.span3{grid-column:1/span 3}
 
 /* статы */
-.june-stats{display:flex;gap:7px;flex-wrap:wrap;padding:0 0 4px}
-.june-stat{background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:8px 12px}
+.june-stats{display:flex;gap:7px;flex-wrap:wrap}
+.june-stat{background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:8px 13px}
 .june-stat-val{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:600;color:var(--ink);line-height:1}
 .june-stat-label{font-size:11px;color:var(--ink-mute);margin-top:1px}
 
-/* описание внутри папки */
-.june-folder-desc{font-size:14px;color:var(--ink-soft);line-height:1.6;margin:4px 0 0;padding:10px 12px;background:var(--bg);border-radius:10px}
+/* описание */
+.june-folder-desc{font-size:14px;color:var(--ink-soft);line-height:1.6;padding:10px 12px;background:var(--bg);border-radius:10px;margin:0}
 
-/* скрин чата как фон */
-.june-chat-overlay{position:relative;border-radius:10px;overflow:hidden}
-.june-chat-overlay-bg{position:absolute;inset:0;display:grid;grid-template-columns:1fr 1fr;opacity:.1;pointer-events:none}
-.june-chat-overlay-bg img{width:100%;height:100%;object-fit:cover;object-position:top;filter:grayscale(1)}
-.june-chat-overlay-content{position:relative;z-index:1;display:grid;grid-template-columns:1fr 1fr;gap:6px;padding:10px}
-.june-chat-overlay-content .gi{border-radius:8px;overflow:hidden;background:#d8d2c2;aspect-ratio:4/3}
-.june-chat-overlay-content .gi img{width:100%;height:100%;object-fit:cover;display:block}
+/* книжный+кино: чат как фон */
+.june-chat-wrap{position:relative;border-radius:10px;overflow:hidden;background:var(--bg)}
+.june-chat-bg{position:absolute;inset:0;display:grid;grid-template-columns:1fr 1fr;opacity:.09;pointer-events:none}
+.june-chat-bg img{width:100%;height:100%;object-fit:cover;object-position:top;filter:grayscale(1)}
+.june-chat-photos{position:relative;z-index:1;display:grid;grid-template-columns:1fr 1fr;gap:6px;padding:10px}
+.june-chat-photos .gi{border-radius:8px;overflow:hidden;background:#d8d2c2;aspect-ratio:4/3}
+.june-chat-photos .gi img{width:100%;height:100%;object-fit:cover;display:block}
 
 @media(max-width:880px){
   .june-folders{grid-template-columns:1fr}
+  .june-folder[style*="span 2"]{grid-column:1!important}
   .june-gallery.g3{grid-template-columns:1fr 1fr}
-  .june-gallery .gi.screen{max-height:220px}
+  .june-gallery .gi.screen{max-height:200px}
 }
 @media(max-width:600px){
   .june-wrap{padding:44px 0 54px}
   .june-folder-name{font-size:17px}
   .june-gallery.g3{grid-template-columns:1fr 1fr}
   .june-gallery .gi.port{aspect-ratio:1/1}
+  .june-folder-body-inner{padding:0 10px 14px}
 }
 </style>
 
@@ -821,7 +810,7 @@ h1,h2,h3,h4{letter-spacing:-.01em}
     <div class="june-head">
       <span class="section-eyebrow">уже было</span>
       <h2 class="section-title">Июнь в <i>Рассвете</i></h2>
-      <p>Первый месяц — и уже столько всего. Нажми на любую папку.</p>
+      <p>Первый месяц — и уже столько всего. Нажми на папку.</p>
     </div>
 
     <div class="june-folders">
@@ -836,10 +825,6 @@ h1,h2,h3,h4{letter-spacing:-.01em}
           </div>
           <span class="june-folder-arrow">›</span>
         </div>
-        <div class="june-folder-preview">
-          <div class="jp two-a"><img src="june-run-1.jpg" alt="Пробежка"/></div>
-          <div class="jp two-b"><img src="june-run-2.jpg" alt="Apple Watch"/></div>
-        </div>
         <div class="june-folder-body">
           <div class="june-folder-body-inner">
             <div class="june-stats">
@@ -852,7 +837,7 @@ h1,h2,h3,h4{letter-spacing:-.01em}
               <div class="gi land"><img src="june-run-1.jpg" alt="Пробежка клуба Рассвет"/></div>
               <div class="gi screen"><img src="june-run-2.jpg" alt="Статистика Apple Watch"/></div>
             </div>
-            <div class="june-folder-desc">Старт в 8:46 — первая совместная пробежка клуба. 5 километров по Москве, вошли в ритм с первого раза.</div>
+            <p class="june-folder-desc">Старт в 8:46 — первая совместная пробежка клуба. 5 километров по Москве, вошли в ритм с первого раза.</p>
           </div>
         </div>
       </div>
@@ -867,15 +852,12 @@ h1,h2,h3,h4{letter-spacing:-.01em}
           </div>
           <span class="june-folder-arrow">›</span>
         </div>
-        <div class="june-folder-preview">
-          <div class="jp single"><img src="june-dance.jpg" alt="Танцы"/></div>
-        </div>
         <div class="june-folder-body">
           <div class="june-folder-body-inner">
             <div class="june-gallery g1">
               <div class="gi land"><img src="june-dance.jpg" alt="Танцы клуба Рассвет"/></div>
             </div>
-            <div class="june-folder-desc">Латина, пластика, работа с телом — пятеро у зеркала. Камерный формат, в котором можно не бояться выглядеть смешно.</div>
+            <p class="june-folder-desc">Латина, пластика, работа с телом — пятеро у зеркала. Камерный формат, в котором можно не бояться выглядеть смешно.</p>
           </div>
         </div>
       </div>
@@ -890,11 +872,6 @@ h1,h2,h3,h4{letter-spacing:-.01em}
           </div>
           <span class="june-folder-arrow">›</span>
         </div>
-        <div class="june-folder-preview">
-          <div class="jp"><img src="june-picnic-1.jpg" alt="Пикник"/></div>
-          <div class="jp"><img src="june-picnic-2.jpg" alt="Еда"/></div>
-          <div class="jp"><img src="june-picnic-3.jpg" alt="Пикник"/></div>
-        </div>
         <div class="june-folder-body">
           <div class="june-folder-body-inner">
             <div class="june-gallery g2">
@@ -904,7 +881,7 @@ h1,h2,h3,h4{letter-spacing:-.01em}
               <div class="gi land span2"><img src="june-picnic-4.jpg" alt="Настольные игры"/></div>
               <div class="gi land span2"><img src="june-picnic-5.jpg" alt="Пикник Рассвет"/></div>
             </div>
-            <div class="june-folder-desc">Черешня, фрукты, снеки — и настольные игры до темноты. Девушки, которые ещё несколько недель назад не знали друг друга, уходить не хотели.</div>
+            <p class="june-folder-desc">Черешня, фрукты, снеки — и настольные игры до темноты. Девушки, которые ещё несколько недель назад не знали друг друга, уходить не хотели.</p>
           </div>
         </div>
       </div>
@@ -919,23 +896,19 @@ h1,h2,h3,h4{letter-spacing:-.01em}
           </div>
           <span class="june-folder-arrow">›</span>
         </div>
-        <div class="june-folder-preview">
-          <div class="jp two-a"><img src="june-book-1.jpg" alt="Книжный клуб"/></div>
-          <div class="jp two-b"><img src="june-book-2.jpg" alt="Книжный клуб"/></div>
-        </div>
         <div class="june-folder-body">
           <div class="june-folder-body-inner">
-            <div class="june-chat-overlay">
-              <div class="june-chat-overlay-bg">
+            <div class="june-chat-wrap">
+              <div class="june-chat-bg">
                 <img src="june-chat-1.jpg" alt=""/>
                 <img src="june-chat-2.jpg" alt=""/>
               </div>
-              <div class="june-chat-overlay-content">
+              <div class="june-chat-photos">
                 <div class="gi"><img src="june-book-1.jpg" alt="Книжный клуб Рассвет"/></div>
-                <div class="gi"><img src="june-book-2.jpg" alt="Книжный клуб Рассвет"/></div>
+                <div class="gi"><img src="june-book-2.jpg" alt="Кино-клуб Рассвет"/></div>
               </div>
             </div>
-            <div class="june-folder-desc">Обсуждали книгу онлайн — каждая со своей точкой зрения. А потом собрались офлайн в Усадьбе Трубецких на кино-клуб: фильм «Вот это драма!», 58% участниц пришли — даже те, кто не смотрел.</div>
+            <p class="june-folder-desc">Обсуждали книгу онлайн — каждая со своей точкой зрения. А потом собрались офлайн в Усадьбе Трубецких на кино-клуб: фильм «Вот это драма!», 58% участниц пришли — даже те, кто не смотрел.</p>
           </div>
         </div>
       </div>
@@ -950,11 +923,6 @@ h1,h2,h3,h4{letter-spacing:-.01em}
           </div>
           <span class="june-folder-arrow">›</span>
         </div>
-        <div class="june-folder-preview">
-          <div class="jp"><img src="june-strategy-1.jpg" alt="Стратсессия"/></div>
-          <div class="jp"><img src="june-strategy-2.jpg" alt="Стратсессия"/></div>
-          <div class="jp"><img src="june-strategy-3.jpg" alt="Стратсессия"/></div>
-        </div>
         <div class="june-folder-body">
           <div class="june-folder-body-inner">
             <div class="june-gallery g3">
@@ -962,7 +930,7 @@ h1,h2,h3,h4{letter-spacing:-.01em}
               <div class="gi land"><img src="june-strategy-2.jpg" alt="Стратсессия"/></div>
               <div class="gi land"><img src="june-strategy-3.jpg" alt="Инструменты клуба"/></div>
             </div>
-            <div class="june-folder-desc">Итоги весны, цели на лето, колесо баланса — разобрали каждую сферу. Пространство участниц уже работает: колесо, конструктор целей, задания и рекомендации по планированию.</div>
+            <p class="june-folder-desc">Итоги весны, цели на лето, колесо баланса — разобрали каждую сферу. Пространство участниц уже работает: колесо, конструктор целей, задания и рекомендации по планированию.</p>
           </div>
         </div>
       </div>
@@ -972,9 +940,7 @@ h1,h2,h3,h4{letter-spacing:-.01em}
 </section>
 
 <script>
-function toggleFolder(el) {
-  el.classList.toggle('open');
-}
+function toggleFolder(el){el.classList.toggle('open')}
 </script>
 
 <section class="checklist-banner">
