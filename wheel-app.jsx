@@ -6,7 +6,8 @@
 
 const { useState, useEffect, useCallback, useRef } = React;
 
-const STORAGE_KEY = 'rassvet_wheel_v3';
+// Storage key set per page via window.WHEEL_STORAGE_KEY
+const STORAGE_KEY = window.WHEEL_STORAGE_KEY || 'rassvet_wheel_v3';
 
 const DEFAULT_AREAS = [
   { id: 'health',   name: 'Здоровье',       shortName: 'Здоровье',  emoji: '💚' },
