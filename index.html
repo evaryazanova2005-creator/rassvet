@@ -732,24 +732,168 @@ h1,h2,h3,h4{letter-spacing:-.01em}
   </div>
 </section>
 
-<section id="activities" class="activities">
+<!-- ═══ ИЮНЬ В РАССВЕТЕ ═══ -->
+<!-- ВСТАВЬ ПОСЛЕ </section> week-formats И УДАЛИ <section id="activities" class="activities"> -->
+<style>
+.june-wrap{padding:80px 0 90px;background:var(--bg)}
+.june-events{display:flex;flex-direction:column;gap:22px;margin-top:44px}
+.june-card{background:var(--paper);border:1px solid var(--line);border-radius:24px;overflow:hidden}
+.june-card-header{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:16px;padding:22px 28px 18px}
+.june-num{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:500;font-size:22px;color:var(--orange);flex-shrink:0}
+.june-meta{}
+.june-event-name{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:24px;color:var(--ink);line-height:1.1;margin:0 0 3px}
+.june-event-date{font-size:12.5px;color:var(--ink-mute);letter-spacing:.04em}
+.june-tag{font-size:11.5px;padding:6px 14px;border-radius:999px;font-weight:500;white-space:nowrap;flex-shrink:0}
+.june-tag-orange{background:var(--orange-50);color:#c45a1b}
+.june-tag-green{background:var(--green-50);color:var(--green-deep)}
+.june-tag-yellow{background:#fcefc6;color:#a87c1c}
+.june-photos{display:grid;gap:12px;padding:0 20px 18px}
+.june-photos.cols-1{grid-template-columns:1fr}
+.june-photos.cols-2{grid-template-columns:1fr 1fr}
+.june-photos.cols-3{grid-template-columns:1fr 1fr 1fr}
+.june-photo{border-radius:14px;overflow:hidden;background:#d8d2c2}
+.june-photo img{width:100%;height:100%;object-fit:cover;display:block}
+.june-photo.ratio-landscape{aspect-ratio:4/3}
+.june-photo.ratio-portrait{aspect-ratio:3/4}
+.june-photo.ratio-wide{aspect-ratio:16/7}
+.june-stats{display:flex;gap:10px;padding:0 20px 16px;flex-wrap:wrap}
+.june-stat{background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:10px 16px}
+.june-stat-val{font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:600;color:var(--ink);line-height:1}
+.june-stat-label{font-size:11.5px;color:var(--ink-mute);margin-top:2px}
+.june-chat{margin:0 20px 16px;background:var(--bg);border:1px solid var(--line);border-radius:14px;padding:14px 16px;display:flex;flex-direction:column;gap:8px}
+.june-bubble{background:var(--paper);border:1px solid var(--line);border-radius:12px 12px 12px 3px;padding:10px 14px;font-size:13.5px;line-height:1.5;color:var(--ink)}
+.june-bubble-note{font-size:11.5px;color:var(--ink-mute);padding:0 4px}
+.june-desc{padding:0 28px 20px;font-size:15px;color:var(--ink-soft);line-height:1.65;margin:0}
+@media(max-width:880px){
+  .june-wrap{padding:50px 0 60px}
+  .june-card-header{grid-template-columns:auto 1fr;gap:12px}
+  .june-tag{grid-column:2}
+  .june-photos.cols-2,.june-photos.cols-3{grid-template-columns:1fr 1fr}
+  .june-photo.ratio-portrait{aspect-ratio:1/1}
+  .june-event-name{font-size:20px}
+}
+@media(max-width:600px){
+  .june-card-header{padding:18px 18px 14px}
+  .june-photos{padding:0 12px 14px}
+  .june-photos.cols-2,.june-photos.cols-3{grid-template-columns:1fr 1fr}
+  .june-stats{padding:0 12px 12px}
+  .june-chat{margin:0 12px 12px}
+  .june-desc{padding:0 18px 16px}
+}
+</style>
+
+<section class="june-wrap">
   <div class="container">
-    <div class="activities-head">
-      <div>
-        <span class="section-eyebrow">активности</span>
-        <h2 class="section-title">Что тебя <i>ждёт</i></h2>
-      </div>
-      <div class="activities-sub">8+ идей, чем мы займёмся</div>
+    <div style="text-align:center">
+      <span class="section-eyebrow">уже было</span>
+      <h2 class="section-title">Июнь в <i>Рассвете</i></h2>
+      <p style="color:var(--ink-mute);max-width:500px;margin:12px auto 0;font-size:16px;line-height:1.6">Первый месяц — и уже столько всего. Вот что мы успели.</p>
     </div>
-    <div class="activity-grid">
-      <div class="activity act-peach"><span class="num">01</span><div class="a-text"><span class="a-title">Танцевальные тренировки</span></div><span class="tag">4 ч/мес · 2 раза/нед</span></div>
-      <div class="activity act-yellow"><span class="num">02</span><div class="a-text"><span class="a-title">Пробежки</span><span class="a-desc">По красивым маршрутам</span></div><span class="tag">1 раз/нед</span></div>
-      <div class="activity act-peach"><span class="num">03</span><div class="a-text"><span class="a-title">Онлайн марафоны</span><span class="a-desc">Челленджи и марафоны</span></div><span class="tag">1 раз/мес</span></div>
-      <div class="activity act-yellow"><span class="num">04</span><div class="a-text"><span class="a-title">Пикники и игры</span><span class="a-desc">Отдых на свежем воздухе</span></div><span class="tag">3 раза/мес</span></div>
-      <div class="activity act-peach"><span class="num">05</span><div class="a-text"><span class="a-title">Книжный / кино клуб</span><span class="a-desc">Книги и впечатления</span></div><span class="tag">1 раз/нед</span></div>
-      <div class="activity act-yellow"><span class="num">06</span><div class="a-text"><span class="a-title">Тренировки на воздухе</span><span class="a-desc">Спорт в парках</span></div><span class="tag">1 раз/нед</span></div>
-      <div class="activity act-peach"><span class="num">07</span><div class="a-text"><span class="a-title">Творческие съёмки</span></div><span class="tag">по запросу</span></div>
-      <div class="activity act-yellow"><span class="num">08</span><div class="a-text"><span class="a-title">Реализация ваших идей</span></div><span class="tag">2 раза/мес</span></div>
+
+    <div class="june-events">
+
+      <!-- 01 — ПРОБЕЖКА -->
+      <div class="june-card">
+        <div class="june-card-header">
+          <span class="june-num">01</span>
+          <div class="june-meta">
+            <div class="june-event-name">Пробежка в парке</div>
+            <div class="june-event-date">1 июня · Москва</div>
+          </div>
+          <span class="june-tag june-tag-green">Спорт</span>
+        </div>
+        <div class="june-stats">
+          <div class="june-stat"><div class="june-stat-val">5 км</div><div class="june-stat-label">дистанция</div></div>
+          <div class="june-stat"><div class="june-stat-val">42 мин</div><div class="june-stat-label">в движении</div></div>
+          <div class="june-stat"><div class="june-stat-val">8'32"</div><div class="june-stat-label">темп / км</div></div>
+          <div class="june-stat"><div class="june-stat-val">277 ккал</div><div class="june-stat-label">сожжено</div></div>
+        </div>
+        <div class="june-photos cols-1">
+          <div class="june-photo ratio-wide">
+            <img src="june-run.jpg" alt="Пробежка клуба Рассвет, 1 июня"/>
+          </div>
+        </div>
+        <p class="june-desc">Старт в 8:46 — первая совместная пробежка клуба. 5 километров по Москве, средний пульс 155 уд/мин. Вошли в ритм.</p>
+      </div>
+
+      <!-- 02 — ТАНЦЫ -->
+      <div class="june-card">
+        <div class="june-card-header">
+          <span class="june-num">02</span>
+          <div class="june-meta">
+            <div class="june-event-name">Танцы в зале</div>
+            <div class="june-event-date">Июнь · Москва</div>
+          </div>
+          <span class="june-tag june-tag-orange">Движение</span>
+        </div>
+        <div class="june-photos cols-1">
+          <div class="june-photo ratio-landscape">
+            <img src="june-dance.jpg" alt="Танцы клуба Рассвет"/>
+          </div>
+        </div>
+        <p class="june-desc">Латина, пластика, работа с телом — и пятеро у зеркала. Именно так выглядела наша первая танцевальная тренировка.</p>
+      </div>
+
+      <!-- 03 — ПИКНИК -->
+      <div class="june-card">
+        <div class="june-card-header">
+          <span class="june-num">03</span>
+          <div class="june-meta">
+            <div class="june-event-name">Пикник в парке</div>
+            <div class="june-event-date">Июнь · Москва</div>
+          </div>
+          <span class="june-tag june-tag-yellow">Встреча</span>
+        </div>
+        <div class="june-photos cols-2">
+          <div class="june-photo ratio-portrait">
+            <img src="june-picnic-1.jpg" alt="Девушки на пикнике клуба Рассвет"/>
+          </div>
+          <div class="june-photo ratio-portrait">
+            <img src="june-picnic-2.jpg" alt="Угощения на пикнике клуба Рассвет"/>
+          </div>
+        </div>
+        <p class="june-desc">Черешня, фрукты, снеки — и девушки, которые ещё несколько недель назад не знали друг друга. Вот это и есть Рассвет.</p>
+      </div>
+
+      <!-- 04 — КИНО-КЛУБ -->
+      <div class="june-card">
+        <div class="june-card-header">
+          <span class="june-num">04</span>
+          <div class="june-meta">
+            <div class="june-event-name">Кино-клуб офлайн</div>
+            <div class="june-event-date">Июнь · Усадьба Трубецких · м. Фрунзенская</div>
+          </div>
+          <span class="june-tag june-tag-orange">Клуб</span>
+        </div>
+        <div class="june-chat">
+          <div class="june-bubble">Во вторник будет кино-клуб оффлайн ❤️<br>Будем обсуждать фильм «Вот это драма!» — 18:00–19:30</div>
+          <div class="june-bubble">Завтра встречаемся очно, поболтаем, обсудим фильм, можете просто приходить, даже если не смотрели ❤️<br><br>📍 Усачева, 1с1 — Усадьба Трубецких в Хамовниках</div>
+          <div class="june-bubble-note">58% участниц ответили «Я буду!» в опросе чата</div>
+        </div>
+        <p class="june-desc">Обсуждали фильм в красивом месте. Пришли даже те, кто не успел посмотреть — и это правило клуба.</p>
+      </div>
+
+      <!-- 05 — СТРАТСЕССИЯ -->
+      <div class="june-card">
+        <div class="june-card-header">
+          <span class="june-num">05</span>
+          <div class="june-meta">
+            <div class="june-event-name">Стратегическая сессия</div>
+            <div class="june-event-date">Июнь · онлайн</div>
+          </div>
+          <span class="june-tag june-tag-green">Онлайн</span>
+        </div>
+        <div class="june-photos cols-2">
+          <div class="june-photo ratio-landscape">
+            <img src="june-strategy-1.jpg" alt="Пространство участниц клуба Рассвет"/>
+          </div>
+          <div class="june-photo ratio-landscape">
+            <img src="june-strategy-2.jpg" alt="Стратсессия клуба Рассвет"/>
+          </div>
+        </div>
+        <p class="june-desc">Итоги весны, цели на лето, колесо баланса — разобрали каждую сферу. Пространство участниц уже работает: колесо, конструктор целей, задания и рекомендации.</p>
+      </div>
+
     </div>
   </div>
 </section>
