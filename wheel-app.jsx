@@ -1,12 +1,10 @@
 /* ============================================================
    WheelApp — split layout: sticky wheel left, cards right
-   Heatmap indicators (single color, saturation = score)
    Depends on: window.WheelChart, window.heatColor
    ============================================================ */
 
 const { useState, useEffect, useCallback, useRef } = React;
 
-// Storage key set per page via window.WHEEL_STORAGE_KEY
 const STORAGE_KEY = window.WHEEL_STORAGE_KEY || 'rassvet_wheel_v3';
 
 const DEFAULT_AREAS = [
@@ -32,16 +30,15 @@ function saveState(state) {
   try { localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); } catch (e) {}
 }
 
-/* ── Heatmap StatusBadge ─────────────────────────────── */
+/* ── StatusBadge ─────────────────────────────────────── */
 function StatusBadge({ score }) {
-  const t = (score - 1) / 9;
   let label;
   if (score <= 3) label = 'Нужно внимание';
   else if (score <= 6) label = 'Можно лучше';
   else label = 'Хорошо';
 
   const color = heatColor(score);
-  const bg = heatColor(score, 0.15);
+  const bg    = heatColor(score, 0.15);
 
   return (
     <span style={{
@@ -51,12 +48,10 @@ function StatusBadge({ score }) {
   );
 }
 
-/* ── HeatBar — visual bar indicator ──────────────────── */
+/* ── HeatBar ─────────────────────────────────────────── */
 function HeatBar({ score }) {
   return (
-    <div style={{
-      display: 'flex', gap: 2, alignItems: 'center',
-    }}>
+    <div style={{ display: 'flex', gap: 2, alignItems: 'center' }}>
       {Array.from({ length: 10 }, (_, i) => {
         const filled = i < score;
         return (
@@ -144,7 +139,7 @@ function AreaCard({ area, score, isPriority, goals, onTogglePriority, onScoreCha
     onGoalsChange(goals.filter((g) => g.id !== id));
   }
 
-  const doneCount = goals.filter((g) => g.done).length;
+  const doneCount  = goals.filter((g) => g.done).length;
   const borderLeft = `4px solid ${heatColor(score)}`;
 
   return (
@@ -213,7 +208,7 @@ function AreaCard({ area, score, isPriority, goals, onTogglePriority, onScoreCha
         }}>›</span>
       </div>
 
-      {/* Expanded */}
+      {/* Expanded panel */}
       {open && (
         <div style={{ marginTop: 16 }}>
           {/* Score slider */}
@@ -290,11 +285,11 @@ function AreaCard({ area, score, isPriority, goals, onTogglePriority, onScoreCha
 
 /* ── InsightsPanel ────────────────────────────────────── */
 function InsightsPanel({ areas, scores, priorities }) {
-  const entries = areas.map((a) => ({ ...a, score: scores[a.id] || 0 }));
-  const avg = entries.reduce((s, e) => s + e.score, 0) / entries.length;
-  const weakest = [...entries].sort((a, b) => a.score - b.score).slice(0, 2);
-  const strongest = [...entries].sort((a, b) => b.score - a.score).slice(0, 2);
-  const gap = strongest[0].score - weakest[0].score;
+  const entries  = areas.map((a) => ({ ...a, score: scores[a.id] || 0 }));
+  const avg      = entries.reduce((s, e) => s + e.score, 0) / entries.length;
+  const weakest  = [...entries].sort((a, b) => a.score - b.score).slice(0, 2);
+  const strongest= [...entries].sort((a, b) => b.score - a.score).slice(0, 2);
+  const gap      = strongest[0].score - weakest[0].score;
 
   return (
     <div style={{
@@ -336,36 +331,17 @@ function InsightsPanel({ areas, scores, priorities }) {
   );
 }
 
-/* ── Legend ────────────────────────────────────────────── */
-function HeatLegend() {
-  return (
-    <div style={{
-      display: 'flex', alignItems: 'center', justifyContent: 'center',
-      gap: 4, marginTop: 10, marginBottom: 4,
-    }}>
-      <span style={{ fontSize: '0.7rem', color: 'var(--ink-soft)', marginRight: 4 }}>слабо</span>
-      {Array.from({ length: 10 }, (_, i) => (
-        <div key={i} style={{
-          width: 14, height: 14, borderRadius: 3,
-          background: heatColor(i + 1, 0.55),
-        }} />
-      ))}
-      <span style={{ fontSize: '0.7rem', color: 'var(--ink-soft)', marginLeft: 4 }}>отлично</span>
-    </div>
-  );
-}
-
 /* ── WheelApp — split layout ──────────────────────────── */
 function WheelApp() {
   const saved = loadState();
-  const [scores, setScores] = useState(saved?.scores || Object.fromEntries(DEFAULT_AREAS.map((a) => [a.id, 5])));
-  const [priorities, setPriorities] = useState(saved?.priorities || []);
-  const [goals, setGoals] = useState(saved?.goals || Object.fromEntries(DEFAULT_AREAS.map((a) => [a.id, []])));
+  const [scores,      setScores]      = useState(saved?.scores      || Object.fromEntries(DEFAULT_AREAS.map((a) => [a.id, 5])));
+  const [priorities,  setPriorities]  = useState(saved?.priorities  || []);
+  const [goals,       setGoals]       = useState(saved?.goals       || Object.fromEntries(DEFAULT_AREAS.map((a) => [a.id, []])));
   const [customNames, setCustomNames] = useState(saved?.customNames || {});
 
   const areas = DEFAULT_AREAS.map((a) => ({
     ...a,
-    name: customNames[a.id] || a.name,
+    name:      customNames[a.id] || a.name,
     shortName: customNames[a.id] || a.shortName,
   }));
 
@@ -408,9 +384,8 @@ function WheelApp() {
           priorities={priorities}
           onScoreChange={handleScoreChange}
         />
-        <HeatLegend />
-        <p style={{ textAlign: 'center', fontSize: '0.78rem', color: 'var(--ink-soft)', marginTop: 6 }}>
-          Нажми на сектор, чтобы изменить оценку
+        <p style={{ textAlign: 'center', fontSize: '0.78rem', color: 'var(--ink-soft)', marginTop: 10 }}>
+          Перетащи точку или нажми на ось, чтобы изменить оценку
         </p>
       </div>
 
