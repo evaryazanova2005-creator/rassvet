@@ -1,212 +1,238 @@
 /* ============================================================
-   WheelChart — circular heatmap wheel for 6 life areas
-   One color, saturation = score. Exports: window.WheelChart
+   WheelChart — radar/spider chart for 6 life areas
+   Drag a vertex or click an axis to change score.
+   Exports: window.WheelChart, window.heatColor
    ============================================================ */
+const { useRef, useState } = React;
 
-const WHEEL_SIZE = 340;
-const WHEEL_CENTER = WHEEL_SIZE / 2;
-const WHEEL_RADIUS = 125;
+const CX    = 200;           /* SVG center X (user units) */
+const CY    = 200;           /* SVG center Y (user units) */
+const MAX_R = 132;            /* outer ring radius */
+const LABEL_R = MAX_R + 46;  /* label distance from center = 178 */
 const RINGS = [2, 4, 6, 8, 10];
+/* viewBox: "-70 -50 540 500" — generous margin so labels never clip */
 
-/* Heatmap: single hue (olive green), saturation scales with score */
+/* ── Olive heatColor — kept for cards / badges / HeatBar ── */
 function heatColor(score, alpha) {
-  // score 1 = very pale sage, 10 = deep saturated olive
   const t = Math.max(0, Math.min(1, (score - 1) / 9));
-  // Interpolate from pale (#e8e8c8) to rich (#6e6d18)
-  const r = Math.round(232 - t * (232 - 110));
-  const g = Math.round(232 - t * (232 - 109));
-  const b = Math.round(200 - t * (200 - 24));
-  if (alpha !== undefined) return `rgba(${r},${g},${b},${alpha})`;
-  return `rgb(${r},${g},${b})`;
+  const r = Math.round(232 - t * 122);
+  const g = Math.round(232 - t * 123);
+  const b = Math.round(200 - t * 176);
+  return alpha !== undefined ? `rgba(${r},${g},${b},${alpha})` : `rgb(${r},${g},${b})`;
 }
 
-function polarToXY(angleDeg, radius) {
-  const rad = ((angleDeg - 90) * Math.PI) / 180;
-  return {
-    x: WHEEL_CENTER + radius * Math.cos(rad),
-    y: WHEEL_CENTER + radius * Math.sin(rad),
-  };
+/* Radian angle for axis i  (0 = top, clockwise) */
+function aRad(i, n) { return (i / n) * 2 * Math.PI - Math.PI / 2; }
+
+/* SVG point on axis i at radius r */
+function axPt(i, n, r) {
+  const a = aRad(i, n);
+  return { x: CX + r * Math.cos(a), y: CY + r * Math.sin(a) };
 }
 
-function sectorPath(startAngle, endAngle, outerR, innerR) {
-  if (outerR < 1) outerR = 1;
-  innerR = innerR || 0;
-  const s1 = polarToXY(startAngle, outerR);
-  const e1 = polarToXY(endAngle, outerR);
-  const largeArc = (endAngle - startAngle) > 180 ? 1 : 0;
-  if (innerR <= 0) {
-    return [
-      `M ${WHEEL_CENTER} ${WHEEL_CENTER}`,
-      `L ${s1.x} ${s1.y}`,
-      `A ${outerR} ${outerR} 0 ${largeArc} 1 ${e1.x} ${e1.y}`,
-      'Z',
-    ].join(' ');
-  }
-  const s2 = polarToXY(endAngle, innerR);
-  const e2 = polarToXY(startAngle, innerR);
-  return [
-    `M ${s1.x} ${s1.y}`,
-    `A ${outerR} ${outerR} 0 ${largeArc} 1 ${e1.x} ${e1.y}`,
-    `L ${s2.x} ${s2.y}`,
-    `A ${innerR} ${innerR} 0 ${largeArc} 0 ${e2.x} ${e2.y}`,
-    'Z',
-  ].join(' ');
+/* "x,y x,y …" string for a regular n-gon at radius r */
+function polyPts(r, n) {
+  return Array.from({ length: n }, (_, i) => {
+    const { x, y } = axPt(i, n, r);
+    return `${x.toFixed(2)},${y.toFixed(2)}`;
+  }).join(' ');
 }
 
+/* Polygon points from current scores */
+function scorePts(areas, scores) {
+  return areas.map((a, i) => {
+    const r = ((scores[a.id] || 1) / 10) * MAX_R;
+    const { x, y } = axPt(i, areas.length, r);
+    return `${x.toFixed(2)},${y.toFixed(2)}`;
+  }).join(' ');
+}
+
+/* Score (1–10) from distance vector (dx, dy) from center */
+function ds(dx, dy) {
+  return Math.max(1, Math.min(10, Math.round((Math.hypot(dx, dy) / MAX_R) * 10)));
+}
+
+/* ── Design tokens ── */
+const C_POLY_FILL   = 'rgba(162,160,67,0.18)';
+const C_POLY_STROKE = '#8a8930';
+const C_VERTEX      = '#a2a043';
+const C_GRID        = '#d6d5b4';
+
+/* ── WheelChart ─────────────────────────────────────────── */
 function WheelChart({ areas, scores, priorities, onScoreChange }) {
-  const n = areas.length;
-  const angleStep = 360 / n;
-  const GAP_DEG = 3;
+  const n      = areas.length;
+  const svgRef = useRef(null);
+  const dragId = useRef(null);           /* areaId being dragged */
+  const [isDragging, setIsDragging] = useState(false);
+
+  /* Client pixel → SVG user-unit coordinate
+     viewBox: x=-70, y=-50, w=540, h=500 */
+  function toSVG(clientX, clientY) {
+    const rect = svgRef.current.getBoundingClientRect();
+    return {
+      x: (clientX - rect.left) * (540 / rect.width)  - 70,
+      y: (clientY - rect.top)  * (500 / rect.height) - 50,
+    };
+  }
+
+  function evXY(e) {
+    const src = e.touches ? e.touches[0] : e;
+    return toSVG(src.clientX, src.clientY);
+  }
+
+  function onMove(e) {
+    if (!dragId.current) return;
+    e.preventDefault();
+    const { x, y } = evXY(e);
+    onScoreChange(dragId.current, ds(x - CX, y - CY));
+  }
+
+  function onUp() {
+    dragId.current = null;
+    setIsDragging(false);
+  }
+
+  function onStart(areaId, e) {
+    if (e.preventDefault) e.preventDefault();
+    dragId.current = areaId;
+    setIsDragging(true);
+  }
+
+  function onAxisClick(e, areaId) {
+    const { x, y } = evXY(e);
+    onScoreChange(areaId, ds(x - CX, y - CY));
+  }
 
   return (
     <svg
-      viewBox={`0 0 ${WHEEL_SIZE} ${WHEEL_SIZE}`}
-      style={{ width: '100%', maxWidth: 360, display: 'block', margin: '0 auto' }}
+      ref={svgRef}
+      viewBox="-70 -50 540 500"
+      style={{ width: '100%', maxWidth: 360, display: 'block', margin: '0 auto', userSelect: 'none' }}
+      onMouseMove={onMove}    onMouseUp={onUp}    onMouseLeave={onUp}
+      onTouchMove={onMove}    onTouchEnd={onUp}   onTouchCancel={onUp}
     >
-      {/* Background rings */}
+      {/* ── Concentric hexagonal grid ── */}
       {RINGS.map((ring) => (
-        <circle
+        <polygon
           key={ring}
-          cx={WHEEL_CENTER}
-          cy={WHEEL_CENTER}
-          r={(ring / 10) * WHEEL_RADIUS}
+          points={polyPts((ring / 10) * MAX_R, n)}
           fill="none"
-          stroke="var(--border)"
-          strokeWidth={ring === 10 ? 1.2 : 0.4}
-          strokeDasharray={ring < 10 ? '2,5' : 'none'}
-          opacity={0.5}
+          stroke={C_GRID}
+          strokeWidth={ring === 10 ? 1.3 : 0.7}
+          strokeDasharray={ring < 10 ? '3,6' : undefined}
+          opacity={ring === 10 ? 1 : 0.6}
         />
       ))}
 
-      {/* Full-radius background sectors (light) */}
+      {/* ── Axis lines + fat invisible click strips ── */}
       {areas.map((area, i) => {
-        const startAngle = i * angleStep + GAP_DEG / 2;
-        const endAngle = (i + 1) * angleStep - GAP_DEG / 2;
+        const outer = axPt(i, n, MAX_R);
         return (
-          <path
-            key={`bg-${area.id}`}
-            d={sectorPath(startAngle, endAngle, WHEEL_RADIUS)}
-            fill={heatColor(1, 0.12)}
-            stroke="none"
-          />
+          <g key={`ax-${area.id}`}>
+            {/* Visible thin line */}
+            <line
+              x1={CX} y1={CY} x2={outer.x} y2={outer.y}
+              stroke={C_GRID} strokeWidth={0.8} opacity={0.65}
+              style={{ pointerEvents: 'none' }}
+            />
+            {/* Fat transparent overlay — wide hit zone for click */}
+            <line
+              x1={CX} y1={CY} x2={outer.x} y2={outer.y}
+              stroke="transparent" strokeWidth={30}
+              style={{ cursor: 'crosshair' }}
+              onClick={(e) => onAxisClick(e, area.id)}
+            />
+          </g>
         );
       })}
 
-      {/* Filled sectors — heatmap color by score */}
-      {areas.map((area, i) => {
-        const startAngle = i * angleStep + GAP_DEG / 2;
-        const endAngle = (i + 1) * angleStep - GAP_DEG / 2;
-        const val = scores[area.id] || 0;
-        const r = (val / 10) * WHEEL_RADIUS;
+      {/* ── Scale numbers along axis 0 (top) ── */}
+      {RINGS.map((ring) => {
+        const { x, y } = axPt(0, n, (ring / 10) * MAX_R);
         return (
-          <path
-            key={`sector-${area.id}`}
-            d={sectorPath(startAngle, endAngle, r)}
-            fill={heatColor(val, 0.55)}
-            stroke={heatColor(val)}
-            strokeWidth={1.5}
-            strokeLinejoin="round"
-            style={{ transition: 'all 0.35s ease' }}
-          />
+          <text
+            key={`sc-${ring}`}
+            x={x + 5} y={y + 1}
+            textAnchor="start"
+            style={{ fontSize: '9px', fontFamily: 'Onest,sans-serif', fill: '#bbb', pointerEvents: 'none' }}
+          >{ring}</text>
         );
       })}
 
-      {/* Sector dividers (white gaps) */}
-      {areas.map((_, i) => {
-        const angle = i * angleStep;
-        const end = polarToXY(angle, WHEEL_RADIUS + 1);
-        return (
-          <line
-            key={`div-${i}`}
-            x1={WHEEL_CENTER}
-            y1={WHEEL_CENTER}
-            x2={end.x}
-            y2={end.y}
-            stroke="var(--bg)"
-            strokeWidth={3}
-          />
-        );
-      })}
-
-      {/* Outer ring */}
-      <circle
-        cx={WHEEL_CENTER}
-        cy={WHEEL_CENTER}
-        r={WHEEL_RADIUS}
-        fill="none"
-        stroke="var(--border)"
-        strokeWidth={1}
+      {/* ── Score polygon (fills behind vertices) ── */}
+      <polygon
+        points={scorePts(areas, scores)}
+        fill={C_POLY_FILL}
+        stroke={C_POLY_STROKE}
+        strokeWidth={2.5}
+        strokeLinejoin="round"
+        style={{ pointerEvents: 'none' }}
       />
 
-      {/* Clickable hit areas for setting score */}
+      {/* ── Draggable vertex dots ── */}
       {areas.map((area, i) => {
-        const midAngle = i * angleStep + angleStep / 2;
-        return Array.from({ length: 10 }, (_, s) => {
-          const score = s + 1;
-          const r = (score / 10) * WHEEL_RADIUS;
-          const { x, y } = polarToXY(midAngle, r);
-          return (
+        const r   = ((scores[area.id] || 1) / 10) * MAX_R;
+        const { x, y } = axPt(i, n, r);
+        const draggingThis = isDragging && dragId.current === area.id;
+        return (
+          <g
+            key={`vx-${area.id}`}
+            style={{
+              /* CSS transform in SVG context: px = user units */
+              transform: `translate(${x}px, ${y}px)`,
+              transition: draggingThis ? 'none' : 'transform 0.28s ease',
+            }}
+          >
+            {/* 44 × 44 touch/click target (r = 22) — Apple HIG */}
             <circle
-              key={`hit-${area.id}-${score}`}
-              cx={x}
-              cy={y}
-              r={11}
-              fill="transparent"
-              style={{ cursor: 'pointer' }}
-              onClick={() => onScoreChange(area.id, score)}
-            >
-              <title>{area.name}: {score}</title>
-            </circle>
-          );
-        });
+              r={22} fill="transparent"
+              style={{ cursor: 'grab' }}
+              onMouseDown={(e) => onStart(area.id, e)}
+              onTouchStart={(e) => onStart(area.id, e)}
+            />
+            {/* Visible dot */}
+            <circle
+              r={7} fill={C_VERTEX} stroke="#fff" strokeWidth={2.5}
+              style={{ pointerEvents: 'none' }}
+            />
+          </g>
+        );
       })}
 
-      {/* Labels */}
+      {/* ── Labels outside the outer ring ── */}
       {areas.map((area, i) => {
-        const midAngle = i * angleStep + angleStep / 2;
-        const labelR = WHEEL_RADIUS + 22;
-        const { x, y } = polarToXY(midAngle, labelR);
-        const isPriority = priorities.includes(area.id);
-        const score = scores[area.id] || 0;
+        const a    = aRad(i, n);
+        const cosA = Math.cos(a);
+        const sinA = Math.sin(a);
+        const lx   = CX + LABEL_R * cosA;
+        const ly   = CY + LABEL_R * sinA;
+
+        /* text-anchor based on left/right/center of wheel */
+        const anchor = cosA > 0.25 ? 'start' : cosA < -0.25 ? 'end' : 'middle';
+        /* small nudge for pure top/bottom axes so text doesn't sit on the outer ring */
+        const dy = sinA < -0.65 ? -5 : sinA > 0.65 ? 5 : 0;
+
+        const isPri = priorities.includes(area.id);
+        const sc    = scores[area.id] || 0;
 
         return (
-          <g key={`label-${area.id}`}>
-            <text
-              x={x}
-              y={y - 2}
-              textAnchor="middle"
-              dominantBaseline="auto"
-              style={{
-                fontSize: '10px',
-                fontFamily: 'var(--font-body)',
-                fontWeight: isPriority ? 700 : 500,
-                fill: isPriority ? 'var(--accent)' : 'var(--ink)',
-              }}
-            >
-              {isPriority ? '★ ' : ''}{area.shortName || area.name}
-            </text>
-            {/* Score badge — heatmap colored */}
-            <circle cx={x} cy={y + 13} r={10} fill={heatColor(score, 0.25)} />
-            <text
-              x={x}
-              y={y + 13}
-              textAnchor="middle"
-              dominantBaseline="central"
-              style={{
-                fontSize: '10px',
-                fontFamily: 'var(--font-body)',
-                fontWeight: 700,
-                fill: heatColor(score),
-              }}
-            >
-              {score}
-            </text>
-          </g>
+          <text
+            key={`lb-${area.id}`}
+            x={lx} y={ly + dy}
+            textAnchor={anchor}
+            dominantBaseline="middle"
+            style={{
+              fontSize: '11.5px',
+              fontFamily: 'Onest, sans-serif',
+              fontWeight: isPri ? 700 : 500,
+              fill: isPri ? C_VERTEX : '#3A2E22',
+              pointerEvents: 'none',
+            }}
+          >{isPri ? '★ ' : ''}{area.shortName || area.name} · {sc}</text>
         );
       })}
     </svg>
   );
 }
 
-/* Export heatColor so app can reuse */
 Object.assign(window, { WheelChart, heatColor });
