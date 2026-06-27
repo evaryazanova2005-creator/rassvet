@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="Политика конфиденциальности клуба Рассвет — обработка персональных данных в соответствии с 152-ФЗ.">
+<title>Политика конфиденциальности — Рассвет</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Onest:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#faf3e7;--paper:#fffaf0;--paper-soft:#fdf5e6;
+  --ink:#1d150c;--ink-soft:#3d2e1f;--ink-mute:#8a7558;--line:#ece1c8;
+  --orange:#e96d2a;--orange-50:#fde3d0;
+  --shadow-sm:0 1px 2px rgba(120,80,30,.05),0 4px 12px rgba(120,80,30,.04);
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:'Onest','Inter',Arial,sans-serif;font-size:15px;line-height:1.6;color:var(--ink);background:var(--bg);-webkit-font-smoothing:antialiased;}
+a{color:var(--orange);text-decoration:none}
+a:hover{text-decoration:underline}
+.container{max-width:860px;margin:0 auto;padding:0 36px}
+
+.header{position:sticky;top:0;z-index:50;background:rgba(250,243,231,.86);backdrop-filter:saturate(140%) blur(10px);border-bottom:1px solid rgba(140,90,40,.06);}
+.header-inner{display:flex;align-items:center;justify-content:space-between;height:78px}
+.logo{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:600;font-size:30px;color:var(--orange);text-decoration:none;}
+.nav{display:flex;gap:38px}
+.nav a{font-size:14.5px;color:var(--ink-soft);transition:color .2s;text-decoration:none;}
+.nav a:hover{color:var(--orange)}
+.btn{display:inline-flex;align-items:center;justify-content:center;border-radius:999px;padding:14px 28px;font-size:14.5px;font-weight:500;transition:transform .15s,background .2s;white-space:nowrap;border:none;text-decoration:none;}
+.btn-primary{background:var(--orange);color:#fff}
+.btn-primary:hover{background:#d46820;transform:translateY(-1px)}
+
+.privacy-wrap{padding:60px 0 100px}
+.eyebrow{display:inline-block;font-size:12px;color:var(--orange);letter-spacing:.16em;text-transform:uppercase;margin-bottom:16px;font-weight:500;}
+.eyebrow::before{content:"— "}
+h1{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:56px;line-height:1.04;margin:0 0 12px;letter-spacing:-.012em;}
+h1 i{font-style:italic;font-weight:500;color:var(--orange);}
+.date-note{font-size:13.5px;color:var(--ink-mute);margin-bottom:48px;}
+
+.privacy-body{background:var(--paper);border:1px solid var(--line);border-radius:24px;padding:48px 52px;box-shadow:var(--shadow-sm);}
+.privacy-body h2{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:26px;margin:36px 0 12px;color:var(--ink);}
+.privacy-body h2:first-child{margin-top:0}
+.privacy-body p{margin:0 0 14px;color:var(--ink-soft);line-height:1.7;}
+.privacy-body ul{margin:0 0 14px;padding-left:24px;color:var(--ink-soft);}
+.privacy-body ul li{margin-bottom:8px;line-height:1.6;}
+.privacy-body strong{color:var(--ink);font-weight:600;}
+.privacy-body a{color:var(--orange)}
+
+.footer{background:#1c1107;color:#a89a7c;padding:74px 0 32px}
+.footer-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:48px;padding-bottom:44px;border-bottom:1px solid rgba(255,240,200,.08);}
+.footer .logo{color:#ed8a4e;font-size:28px}
+.footer-about{color:#8a7a5e;font-size:14px;line-height:1.55;max-width:300px;margin-top:18px}
+.footer h4{color:#f0e2b3;font-size:14.5px;font-weight:500;margin:0 0 20px}
+.footer ul{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:10px}
+.footer ul a{font-size:14.5px;color:#a89a7c;transition:color .2s;text-decoration:none;}
+.footer ul a:hover{color:#fff8e8}
+.footer-copy{padding-top:28px;font-size:12.5px;color:#5a4d35;display:flex;align-items:center;gap:24px;flex-wrap:wrap;}
+.footer-copy a{color:#5a4d35;font-size:0.8rem;text-decoration:none;}
+.footer-copy a:hover{color:#a89a7c}
+
+.burger-btn{display:none;background:none;border:none;font-size:22px;cursor:pointer;color:#3A2E22;padding:4px 8px;}
+.mobile-menu{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:#faf3e7;z-index:9999;flex-direction:column;align-items:center;justify-content:center;gap:24px;}
+.mobile-menu-close{position:absolute;top:24px;right:24px;background:none;border:none;font-size:24px;cursor:pointer;color:#3A2E22;}
+.mobile-menu-nav{display:flex;flex-direction:column;align-items:center;gap:24px;}
+.mobile-menu-nav a{font-family:'Onest',sans-serif;font-size:20px;color:#3A2E22;text-decoration:none;}
+.mobile-menu-cta{background:#e96d2a;color:#fff!important;padding:12px 28px;border-radius:100px;margin-top:12px;}
+body.menu-open .mobile-menu{display:flex;}
+@media(max-width:768px){
+  .burger-btn{display:block;}
+  .desktop-nav{display:none!important;}
+  .privacy-body{padding:32px 24px;}
+  h1{font-size:36px;}
+  .footer-grid{grid-template-columns:1fr;}
+  .container{padding:0 22px;}
+}
+</style>
+</head>
+<body>
+
+<header class="header">
+  <div class="container header-inner">
+    <a href="/" class="logo">Рассвет</a>
+    <nav class="nav desktop-nav">
+      <a href="/#about">О клубе</a>
+      <a href="/#activities">Активности</a>
+      <a href="/#pricing">Тарифы</a>
+      <a href="/#faq">Вопросы</a>
+    </nav>
+    <a href="/#pricing" class="btn btn-primary">Присоединиться</a>
+    <button class="burger-btn" id="burgerBtn" aria-label="Меню" onclick="document.body.classList.toggle('menu-open')">☰</button>
+  </div>
+</header>
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-menu-close" onclick="document.body.classList.remove('menu-open')">✕</button>
+  <nav class="mobile-menu-nav">
+    <a href="/#about" onclick="document.body.classList.remove('menu-open')">О клубе</a>
+    <a href="/#activities" onclick="document.body.classList.remove('menu-open')">Активности</a>
+    <a href="/#pricing" onclick="document.body.classList.remove('menu-open')">Тарифы</a>
+    <a href="/#faq" onclick="document.body.classList.remove('menu-open')">Вопросы</a>
+    <a href="/#pricing" class="mobile-menu-cta" onclick="document.body.classList.remove('menu-open')">Присоединиться</a>
+  </nav>
+</div>
+
+<div class="privacy-wrap">
+  <div class="container">
+    <span class="eyebrow">документ</span>
+    <h1>Политика <i>конфиденциальности</i></h1>
+    <p class="date-note">Дата вступления в силу: 1 июля 2026 г.</p>
+
+    <div class="privacy-body">
+
+      <h2>1. Общие положения</h2>
+      <p>Настоящая Политика конфиденциальности (далее — «Политика») определяет порядок обработки персональных данных, которые Евгения Рязанова (далее — «Оператор») собирает при использовании сайта <strong>rassvet-self.vercel.app</strong> и при вступлении в клуб «Рассвет».</p>
+      <p>Оператор обрабатывает персональные данные в соответствии с требованиями Федерального закона от 27.07.2006 № 152-ФЗ «О персональных данных».</p>
+      <p>Используя сайт и отправляя свои данные через форму, вы выражаете согласие с настоящей Политикой.</p>
+
+      <h2>2. Сведения об операторе</h2>
+      <p>
+        <strong>Оператор:</strong> Евгения Рязанова (физическое лицо, самозанятая)<br>
+        <strong>Контактный email:</strong> <a href="mailto:evaryazanova2005@gmail.com">evaryazanova2005@gmail.com</a><br>
+        <strong>Telegram:</strong> <a href="https://t.me/evavasilyyevna" target="_blank" rel="noopener">@evavasilyyevna</a>
+      </p>
+
+      <h2>3. Какие данные мы собираем</h2>
+      <p>При заполнении формы на сайте мы собираем следующие персональные данные:</p>
+      <ul>
+        <li><strong>Имя</strong> — для обращения к вам</li>
+        <li><strong>Telegram-псевдоним (username)</strong> — для связи по вопросам участия в клубе</li>
+        <li><strong>Номер телефона</strong> — для подтверждения записи и связи</li>
+      </ul>
+      <p>Мы не собираем специальные категории персональных данных (биометрические данные, сведения о состоянии здоровья, политических взглядах и т. д.).</p>
+
+      <h2>4. Цели обработки персональных данных</h2>
+      <p>Ваши данные используются исключительно в следующих целях:</p>
+      <ul>
+        <li>Связь с вами по вопросам вступления в клуб «Рассвет»</li>
+        <li>Подтверждение записи и оплаты</li>
+        <li>Организация мероприятий и уведомление участниц</li>
+        <li>Ответы на ваши вопросы и обращения</li>
+      </ul>
+      <p>Мы <strong>не используем</strong> ваши данные для таргетированной рекламы, продажи третьим лицам или иных целей, не связанных с деятельностью клуба.</p>
+
+      <h2>5. Правовое основание обработки</h2>
+      <p>Обработка персональных данных осуществляется на основании:</p>
+      <ul>
+        <li>Согласия субъекта персональных данных (п. 1 ч. 1 ст. 6 Федерального закона № 152-ФЗ), выраженного при отправке формы на сайте</li>
+        <li>Необходимости исполнения договора (оказание услуги — членство в клубе)</li>
+      </ul>
+
+      <h2>6. Передача данных третьим лицам</h2>
+      <p>Ваши данные могут передаваться следующим третьим лицам исключительно в объёме, необходимом для оказания услуги:</p>
+      <ul>
+        <li><strong>ООО «Продамус» (Prodamus)</strong> — платёжный сервис, используемый для приёма оплаты. Передаётся только информация, необходимая для проведения транзакции. Политика конфиденциальности Prodamus: <a href="https://prodamus.ru/company/privacy" target="_blank" rel="noopener">prodamus.ru/company/privacy</a></li>
+        <li><strong>Google Sheets / Google LLC</strong> — хранение заявок участниц (имя, telegram, телефон, выбранный тариф)</li>
+      </ul>
+      <p>Мы не продаём, не обмениваем и иным образом не передаём ваши персональные данные посторонним сторонам.</p>
+
+      <h2>7. Срок хранения данных</h2>
+      <p>Персональные данные хранятся <strong>не дольше, чем это необходимо</strong> для целей, указанных в разделе 4, но не более <strong>3 лет</strong> с момента последнего взаимодействия с вами. По истечении этого срока данные уничтожаются.</p>
+      <p>По вашему запросу данные могут быть удалены досрочно (см. раздел 8).</p>
+
+      <h2>8. Права субъекта персональных данных</h2>
+      <p>В соответствии с Федеральным законом № 152-ФЗ вы имеете право:</p>
+      <ul>
+        <li>Получить информацию об обработке ваших персональных данных</li>
+        <li>Потребовать исправления неточных данных</li>
+        <li>Потребовать удаления (блокирования) ваших данных</li>
+        <li>Отозвать согласие на обработку персональных данных в любое время</li>
+        <li>Обжаловать действия (бездействие) оператора в Роскомнадзор</li>
+      </ul>
+      <p>Для реализации любого из указанных прав напишите нам на email <a href="mailto:evaryazanova2005@gmail.com">evaryazanova2005@gmail.com</a> или в Telegram <a href="https://t.me/evavasilyyevna" target="_blank" rel="noopener">@evavasilyyevna</a>. Мы ответим в течение 10 рабочих дней.</p>
+
+      <h2>9. Безопасность данных</h2>
+      <p>Оператор принимает разумные технические и организационные меры для защиты персональных данных от несанкционированного доступа, изменения, раскрытия или уничтожения. Сайт работает по протоколу HTTPS. Доступ к данным ограничен и предоставляется только самому оператору.</p>
+
+      <h2>10. Использование файлов cookie</h2>
+      <p>Сайт не использует файлы cookie для отслеживания пользователей. Сторонние шрифты (Google Fonts) могут устанавливать технические файлы cookie в соответствии со своей политикой конфиденциальности.</p>
+
+      <h2>11. Изменения политики</h2>
+      <p>Оператор оставляет за собой право вносить изменения в настоящую Политику. Актуальная версия всегда доступна на странице <a href="/privacy.html">rassvet-self.vercel.app/privacy.html</a>. Продолжение использования сайта после внесения изменений означает ваше согласие с обновлённой Политикой.</p>
+
+      <h2>12. Контактная информация</h2>
+      <p>По всем вопросам, связанным с обработкой персональных данных, обращайтесь:</p>
+      <ul>
+        <li>Email: <a href="mailto:evaryazanova2005@gmail.com">evaryazanova2005@gmail.com</a></li>
+        <li>Telegram: <a href="https://t.me/evavasilyyevna" target="_blank" rel="noopener">@evavasilyyevna</a></li>
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="logo">Рассвет</div>
+        <div class="footer-about">Клуб активностей для тех, кто хочет наполнить жизнь движением, творчеством и общением.</div>
+      </div>
+      <div>
+        <h4>Разделы</h4>
+        <ul>
+          <li><a href="/#about">О клубе</a></li>
+          <li><a href="/#activities">Активности</a></li>
+          <li><a href="/#pricing">Тарифы</a></li>
+          <li><a href="/#faq">Вопросы</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Связь</h4>
+        <ul>
+          <li><a href="https://t.me/evavasilyyevna" target="_blank" rel="noopener">Telegram</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-copy">© 2026 Рассвет. Все права защищены. <a href="/privacy.html">Политика конфиденциальности</a></div>
+  </div>
+</footer>
+
+<script>
+document.addEventListener('click', function(e){
+  if(document.body.classList.contains('menu-open') && !e.target.closest('.mobile-menu') && !e.target.closest('.burger-btn')){
+    document.body.classList.remove('menu-open');
+  }
+});
+</script>
+</body>
+</html>
