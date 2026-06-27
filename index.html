@@ -298,7 +298,7 @@ h1,h2,h3,h4{letter-spacing:-.01em}
 
 /* ═══ PERIOD TOGGLE (на карточках тарифов) ═══ */
 .period-toggle{
-  display:grid;grid-template-columns:1fr 1fr;gap:10px;
+  display:block;
   margin-bottom:24px;
 }
 .period-card{
@@ -308,6 +308,7 @@ h1,h2,h3,h4{letter-spacing:-.01em}
   border:2px solid var(--line);
   background:rgba(255,250,240,.7);
   transition:border-color .2s,background .2s,transform .18s,box-shadow .18s;
+  width:100%;box-sizing:border-box;display:block;
 }
 .period-card:hover{
   border-color:var(--orange-100);
@@ -785,13 +786,14 @@ body.menu-open .mobile-menu { display: flex; }
 /* раскрывающееся тело */
 .june-folder-body{max-height:0;overflow:hidden;transition:max-height .45s cubic-bezier(.4,0,.2,1)}
 .june-folder.open .june-folder-body{max-height:3000px}
-.june-folder-body-inner{padding:0 14px 16px;display:flex;flex-direction:column;gap:10px}
+.june-folder-body-inner{padding:0 14px 16px;display:flex;flex-direction:column;gap:10px;overflow:hidden}
 
 /* галерея внутри */
-.june-gallery{display:grid;gap:6px}
+.june-gallery{display:grid;gap:6px;overflow:hidden;border-radius:8px}
 .june-gallery.g1{grid-template-columns:1fr}
 .june-gallery.g2{grid-template-columns:1fr 1fr}
 .june-gallery.g3{grid-template-columns:1fr 1fr 1fr}
+.june-gallery .gi{overflow:hidden;border-radius:8px}
 .june-gallery .gi img{width:100%;height:100%;object-fit:cover;display:block}
 .june-gallery .gi.land{aspect-ratio:4/3}
 .june-gallery .gi.port{aspect-ratio:3/4}
@@ -1120,117 +1122,46 @@ function toggleFolder(el){el.classList.toggle('open')}
 </section>
 
 
-<section class="online-section" id="online">
+<section class="online-note" id="online">
   <div class="container">
-    <div style="text-align:center;max-width:600px;margin:0 auto 48px">
-      <span class="section-eyebrow">онлайн-формат</span>
-      <h2 class="section-title">Клуб как образ жизни — <i>из любой точки</i></h2>
-      <p style="color:var(--ink-mute);margin-top:12px;line-height:1.7">
-        Не курс, не подписка на контент. Еженедельные живые встречи с Евой и девушками клуба — разговор о том, что важно прямо сейчас.
-      </p>
-    </div>
-
-    <!-- For whom -->
-    <div class="online-for">
-      <div class="online-for-card">
-        <div class="online-for-icon">🌍</div>
-        <div>
-          <strong>Ты не в Москве</strong>
-          <p>Или твой ритм не совпадает с офлайном — но хочется тёплого окружения, а не просто читать чужие сторис.</p>
-        </div>
+    <div class="online-note-inner">
+      <div class="online-note-text">
+        <span class="section-eyebrow">если не можешь офлайн</span>
+        <h3 style="font-family:var(--font-display);font-size:1.5rem;font-weight:500;margin:8px 0 12px">Онлайн-формат — <i>для тех, кто не в Москве</i></h3>
+        <p style="color:var(--ink-mute);line-height:1.7;font-size:0.95rem;max-width:480px">
+          Если расстояние или ритм жизни не позволяют приходить офлайн — онлайн-тариф создан специально для тебя. Закрытый чат, еженедельные встречи с Евой, стратсессия, книжный и киноклуб, марафон 21 день — всё это в твоём телефоне, из любого города.
+        </p>
+        <a href="#pricing" style="display:inline-block;margin-top:18px;font-size:0.88rem;color:var(--accent);font-weight:600;text-decoration:none">Посмотреть тариф Онлайн →</a>
       </div>
-      <div class="online-for-card">
-        <div class="online-for-icon">💬</div>
-        <div>
-          <strong>Хочется говорить о важном</strong>
-          <p>О себе, отношениях, образе жизни — в кругу девушек, которые тебя слышат и понимают.</p>
+      <div class="online-note-nudge">
+        <div class="onn-card">
+          <div style="font-size:0.72rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:10px">Если ты в Москве — иди офлайн</div>
+          <div class="onn-row">💃 <span>Танцы 2 раза в месяц по 2 часа</span></div>
+          <div class="onn-row">🏃‍♀️ <span>Пробежки каждую субботу</span></div>
+          <div class="onn-row">🧺 <span>Пикники и встречи</span></div>
+          <div class="onn-row">💪 <span>Тренировки в парках</span></div>
+          <a href="#pricing" class="onn-cta">Выбрать офлайн-тариф →</a>
         </div>
-      </div>
-      <div class="online-for-card">
-        <div class="online-for-icon">🌅</div>
-        <div>
-          <strong>Ищешь ритм и смыслы</strong>
-          <p>Марафоны, стратсессии, книжный клуб — структура, которая не давит, а наполняет.</p>
-        </div>
-      </div>
-    </div>
-
-    <!-- What awaits -->
-    <div class="online-what">
-      <div class="online-what-left">
-        <h3 style="font-family:var(--font-display);font-size:1.55rem;font-weight:500;margin-bottom:20px">Что тебя <i>ждёт</i></h3>
-        <ul class="online-list">
-          <li><span class="online-icon">🎙</span><div><strong>Раз в неделю</strong> — онлайн-встреча с Евой. Живой разговор, не запись.</div></li>
-          <li><span class="online-icon">🧠</span><div><strong>2 раза в месяц</strong> — приглашённый эксперт: психолог, нутрициолог, стилист и другие.</div></li>
-          <li><span class="online-icon">🔥</span><div><strong>Марафон 21 день</strong> — общий прогресс, личный трекер, поддержка в чате.</div></li>
-          <li><span class="online-icon">📖</span><div><strong>Книжный и киноклуб</strong> — раз в месяц, с живым обсуждением.</div></li>
-          <li><span class="online-icon">🌅</span><div><strong>Стратсессия</strong> — итоги месяца, цели, колесо баланса.</div></li>
-          <li><span class="online-icon">💬</span><div><strong>Закрытый чат</strong> — темы недели, поддержка, общение каждый день.</div></li>
-        </ul>
-      </div>
-      <div class="online-what-right">
-        <h3 style="font-family:var(--font-display);font-size:1.3rem;font-weight:500;margin-bottom:16px">Темы встреч</h3>
-        <p style="font-size:0.82rem;color:var(--ink-mute);margin-bottom:16px">Каждую неделю — что-то своё. Вот несколько тем этого сезона:</p>
-        <div class="online-topics">
-          <div class="online-topic"><span class="topic-tag topic-self">Я</span>Чего я на самом деле хочу</div>
-          <div class="online-topic"><span class="topic-tag topic-rel">Отношения</span>Почему выбираем одних и тех же</div>
-          <div class="online-topic"><span class="topic-tag topic-life">Образ жизни</span>Утренний ритуал: зачем и как</div>
-          <div class="online-topic"><span class="topic-tag topic-self">Я</span>Синдром самозванца</div>
-          <div class="online-topic"><span class="topic-tag topic-rel">Отношения</span>Дружба в 20+ — как она меняется</div>
-          <div class="online-topic"><span class="topic-tag topic-guest">Гость</span>Психолог: тревога без таблеток</div>
-        </div>
-        <a href="#pricing" class="btn-online-cta">Присоединиться · 1 190 ₽/мес →</a>
       </div>
     </div>
   </div>
 </section>
 
 <style>
-.online-section { padding: 72px 0; }
-.online-for { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 52px; }
-.online-for-card {
-  background: var(--bg-card); border: 1px solid var(--border);
-  border-radius: var(--radius); padding: 22px 20px;
-  display: flex; flex-direction: column; gap: 12px;
+.online-note { padding: 52px 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); background: var(--bg-card); }
+.online-note-inner { display: grid; grid-template-columns: 1fr auto; gap: 40px; align-items: center; }
+.onn-card { background: #faf3e7; border: 1px solid #e8dcc4; border-radius: 18px; padding: 22px 24px; min-width: 240px; }
+.onn-row { display: flex; gap: 10px; align-items: center; font-size: 0.9rem; color: var(--ink); margin-bottom: 9px; }
+.onn-cta {
+  display: block; margin-top: 16px; text-align: center;
+  background: var(--accent); color: #fff; border-radius: 100px;
+  padding: 10px 18px; font-size: 0.85rem; font-weight: 600;
+  text-decoration: none; transition: opacity .2s;
 }
-.online-for-card p { font-size: 0.88rem; color: var(--ink-mute); margin-top: 4px; line-height: 1.55; }
-.online-for-card strong { font-size: 1rem; color: var(--ink); }
-.online-for-icon { font-size: 1.6rem; }
-
-.online-what { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start; }
-.online-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 14px; }
-.online-list li { display: flex; gap: 12px; align-items: flex-start; font-size: 0.9rem; line-height: 1.5; }
-.online-list li strong { display: block; margin-bottom: 2px; }
-.online-icon { font-size: 1.15rem; flex-shrink: 0; margin-top: 1px; }
-
-.online-topics { display: flex; flex-direction: column; gap: 8px; margin-bottom: 22px; }
-.online-topic {
-  display: flex; align-items: center; gap: 10px;
-  background: var(--bg-card); border: 1px solid var(--border);
-  border-radius: 12px; padding: 10px 14px;
-  font-size: 0.88rem; color: var(--ink);
-}
-.topic-tag {
-  font-size: 0.7rem; font-weight: 600; padding: 2px 8px;
-  border-radius: 20px; white-space: nowrap; flex-shrink: 0;
-}
-.topic-self  { background: #EEF3E4; color: #3a5c1a; }
-.topic-rel   { background: #FDE8E0; color: #8c2e10; }
-.topic-life  { background: #E8F0FE; color: #1a3a80; }
-.topic-guest { background: #FFF3E0; color: #7a4a00; }
-
-.btn-online-cta {
-  display: inline-block; padding: 13px 24px;
-  background: var(--accent); color: #fff;
-  border-radius: 100px; font-family: var(--font-body);
-  font-size: 0.9rem; font-weight: 600; text-decoration: none;
-  transition: opacity 0.2s;
-}
-.btn-online-cta:hover { opacity: 0.88; }
-
-@media (max-width: 900px) {
-  .online-for  { grid-template-columns: 1fr; }
-  .online-what { grid-template-columns: 1fr; gap: 32px; }
+.onn-cta:hover { opacity: .88; }
+@media (max-width: 768px) {
+  .online-note-inner { grid-template-columns: 1fr; }
+  .onn-card { min-width: unset; }
 }
 </style>
 
@@ -1241,7 +1172,7 @@ function toggleFolder(el){el.classList.toggle('open')}
         <span class="section-eyebrow">тарифы — онлайн и офлайн</span>
         <h2 class="section-title">Выбери свой формат <i>членства в Рассвете</i></h2>
       </div>
-      <p class="pricing-sub">Онлайн — для глубины и сообщества из любой точки. Офлайн — для живых встреч в Москве. В офлайн-тарифах онлайн уже включён.</p>
+      <p class="pricing-sub">Офлайн — живые встречи, движение и танцы в Москве. В офлайн-тарифах онлайн уже включён. Онлайн — если нет возможности приехать.</p>
     </div>
     <div class="pricing-timeline">
       <div class="pt-step">
@@ -1276,12 +1207,6 @@ function toggleFolder(el){el.classList.toggle('open')}
     <div class="pc-label">1 месяц</div>
     <div class="pc-price">1 190 ₽</div>
   </button>
-  <button type="button" class="period-card" data-period="3">
-    <span class="pc-badge">−15%</span>
-    <div class="pc-label">3 месяца</div>
-    <div class="pc-price">1 000 ₽/мес</div>
-    <div class="pc-sub">3 000 ₽ итого · экономия 570 ₽</div>
-  </button>
 </div>
         <ul class="features">
           <li style="color:#b09a78;opacity:.7;list-style:none" class="no-check"><span style="display:inline-flex;align-items:center;justify-content:center;width:18px;height:18px;border-radius:50%;background:#f0e7d4;color:#c0392b;font-size:12px;font-weight:700;flex-shrink:0">✕</span> Без офлайн-встреч в Москве</li>        
@@ -1309,12 +1234,6 @@ function toggleFolder(el){el.classList.toggle('open')}
             <div class="pc-label">1 месяц</div>
             <div class="pc-price">2 000 ₽</div>
           </button>
-          <button type="button" class="period-card" data-period="3">
-            <span class="pc-badge">−10%</span>
-            <div class="pc-label">3 месяца</div>
-            <div class="pc-price">1 800 ₽/мес</div>
-            <div class="pc-sub">5 400 ₽ итого · экономия 600 ₽</div>
-          </button>
         </div>
 
         <ul class="features">
@@ -1333,24 +1252,18 @@ function toggleFolder(el){el.classList.toggle('open')}
         <span class="tariff-month">☀ Июль</span>
         <div class="tnum">03</div>
         <h3 class="tname">Клуб + танцы</h3>
-        <div class="tsub">Всё из базы — и наконец начать танцевать. Кайфуй!</div>
+        <div class="tsub">Всё из «Базы» — плюс 2 занятия по 2 часа каждые две недели. Латина, пластика, работа с телом.</div>
 
         <div class="period-toggle" data-tariff-key="dance">
           <button type="button" class="period-card selected" data-period="1">
             <div class="pc-label">1 месяц</div>
             <div class="pc-price">3 800 ₽</div>
           </button>
-          <button type="button" class="period-card" data-period="3">
-            <span class="pc-badge">−10%</span>
-            <div class="pc-label">3 месяца</div>
-            <div class="pc-price">3 420 ₽/мес</div>
-            <div class="pc-sub">10 260 ₽ итого · экономия 1 140 ₽</div>
-          </button>
         </div>
 
         <ul class="features">
           <li class="hi">Все активности тарифа «База» и «Онлайн»</li>
-          <li>4 часа танцев в месяц</li>
+          <li>2 занятия по 2 часа — танцы каждые 2 недели</li>
           <li>Латина и пластика — работа с телом</li>
           <li>Подборки музыки и хореографии</li>
         </ul>
@@ -1362,9 +1275,9 @@ function toggleFolder(el){el.classList.toggle('open')}
     <!-- Как выбрать -->
     <div class="tariff-chooser">
       <strong>Не уверена, что выбрать?</strong><br>
-      Не в Москве или очень занята → <strong>Онлайн</strong><br>
-      Хочешь живых встреч и подруг → <strong>База</strong><br>
-      Офлайн + наконец начать танцевать → <strong>Клуб + Танцы</strong><br>
+      Хочешь танцевать + весь клуб → <strong>Клуб + Танцы</strong> ⭐<br>
+      Пробежки, пикники, встречи в Москве → <strong>База</strong><br>
+      Не в Москве или нет возможности офлайн → <strong>Онлайн</strong><br>
       <em style="font-size:13.5px;color:var(--ink-mute)">Или приходи на Welcome-встречу за 500 ₽ — попробуй атмосферу.</em>
     </div>
   </div>
@@ -1553,12 +1466,6 @@ function toggleFolder(el){el.classList.toggle('open')}
           <button type="button" class="modal-period-card selected" data-period="1">
             <div class="mpc-label">1 месяц</div>
             <div class="mpc-price" id="mpc-price-1"></div>
-          </button>
-          <button type="button" class="modal-period-card" data-period="3">
-            <span class="mpc-badge">−10%</span>
-            <div class="mpc-label">3 месяца</div>
-            <div class="mpc-price" id="mpc-price-3"></div>
-            <div class="mpc-sub" id="mpc-sub-3"></div>
           </button>
         </div>
         <!-- скрытый select для совместимости с JS -->
