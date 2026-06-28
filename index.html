@@ -1603,13 +1603,7 @@ const PRICES = { online:{name:'Онлайн',price:1190,price3:3000}, base:{name
 function updateModalPeriodCards() {
   const t = PRICES[modal.dataset.tariff]; if (!t) return;
   const p1El = document.getElementById('mpc-price-1');
-  const p3El = document.getElementById('mpc-price-3');
-  const s3El = document.getElementById('mpc-sub-3');
   if (p1El) p1El.textContent = fmt(t.price) + ' ₽';
-  const total3 = t.price3 || Math.round(t.price * 0.9) * 3;
-const perMonth3 = Math.round(total3 / 3);
-if (p3El) p3El.textContent = fmt(perMonth3) + ' ₽/мес';
-if (s3El) s3El.textContent = fmt(total3) + ' ₽ итого';
 }
 
 function updatePriceSummary() {
@@ -1624,7 +1618,7 @@ function updatePriceSummary() {
 const disc = Math.round(total / p);
 const saved = t.price * p - total;
     priceSummary.innerHTML =
-      '<strong style="font-size:20px;color:var(--ink)">' + fmt(total) + ' ₽</strong> — итого за 3 месяца' +
+      '<strong style="font-size:20px;color:var(--ink)">' + fmt(total) + ' ₽</strong>' +
       '<br><span style="font-size:13px;color:var(--ink-mute)">' + fmt(disc) + ' ₽/мес вместо ' + fmt(t.price) + ' ₽ · экономия ' + fmt(saved) + ' ₽</span>';
   }
 }
