@@ -586,11 +586,9 @@ a{color:inherit;text-decoration:none}
       'BEGIN:VEVENT','UID:' + uid,'DTSTAMP:' + fmt(new Date()),
       'DTSTART:' + fmt(start),'DTEND:' + fmt(end),
       'SUMMARY:' + (ev.title || '').replace(/,/g,'\,'),
-      'DESCRIPTION:' + (ev.desc || '').replace(/,/g,'\,').replace(/
-/g,'\n'),
+      'DESCRIPTION:' + (ev.desc || '').replace(/,/g,'\,').replace(/\n/g,'\\n'),
       'END:VEVENT','END:VCALENDAR'
-    ].join('
-');
+    ].join('\n');
   }
   function googleCalUrl(ev, y, m, d){
     const start = new Date(y, m, d, ev.startH || 10, ev.startM || 0);
@@ -819,9 +817,7 @@ a{color:inherit;text-decoration:none}
       .map(r => Object.fromEntries(head.map((h, i) => [h, (r[i] || '').trim()])));
   }
   function parseTSV(text){
-    const lines = text.split('
-').map(l => l.replace(/
-$/, ''));
+    const lines = text.split('\n').map(l => l.replace(/\n$/, ''));
     if (!lines.length) return [];
     const head = lines[0].split('	').map(s => s.trim().toLowerCase());
     return lines.slice(1).filter(l => l.trim())
@@ -869,6 +865,8 @@ $/, ''));
     }
     console.warn('⚠️ Не удалось загрузить таблицу ни по одной ссылке. Используем встроенные данные.');
   }
+
+  buildCalendar(6);
   tryLoadSheet();
 
   const burger = document.getElementById('burger');
