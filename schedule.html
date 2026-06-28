@@ -597,9 +597,7 @@ a{color:inherit;text-decoration:none}
     const params = new URLSearchParams({
       action:'TEMPLATE', text:ev.title || '',
       dates: fmt(start) + '/' + fmt(end),
-      details: (ev.desc || '') + '
-
-Клуб Рассвет'
+      details: (ev.desc || '') + '\n\nКлуб Рассвет'
     });
     return 'https://www.google.com/calendar/render?' + params.toString();
   }
@@ -804,10 +802,8 @@ a{color:inherit;text-decoration:none}
       }
       if (c === '"'){ inQuotes = true; i++; continue; }
       if (c === ','){ row.push(field); field = ''; i++; continue; }
-      if (c === '
-'){ row.push(field); rows.push(row); row = []; field = ''; i++; continue; }
-      if (c === '
-'){ i++; continue; }
+      if (c === '\n'){ row.push(field); rows.push(row); row = []; field = ''; i++; continue; }
+      if (c === '\n'){ i++; continue; }
       field += c; i++;
     }
     if (field.length || row.length){ row.push(field); rows.push(row); }
