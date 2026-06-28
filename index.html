@@ -610,7 +610,7 @@ body.menu-open .mobile-menu { display: flex; }
     <nav class="nav desktop-nav">
       <a href="#about">О клубе</a>
       <a href="#activities">Активности</a>
-      <a href="#" onclick="openScheduleModal();return false;">Расписание клуба</a>
+      <a href="/schedule.html">Расписание клуба</a>
       <a href="#pricing">Тарифы</a>
       <a href="#faq">Вопросы</a>
     </nav>
@@ -699,7 +699,7 @@ body.menu-open .mobile-menu { display: flex; }
     <div class="schedule">
       <div class="schedule-head">
         <h3>Пример расписания <i>на неделю</i></h3>
-        <a href="#" onclick="openScheduleModal();return false;" class="schedule-link">Расписание июля <span class="arr">→</span></a>
+        <a href="/schedule.html" class="schedule-link">Расписание июля <span class="arr">→</span></a>
       </div>
       <div class="week">
         <div class="day"><span class="day-name">Пн</span><div class="event">Танцы<span class="event-time">18:00–20:00</span></div></div>
@@ -1161,7 +1161,8 @@ function toggleFolder(el){el.classList.toggle('open')}
 .onn-row { display: flex; gap: 10px; align-items: center; font-size: 0.9rem; color: var(--ink); margin-bottom: 9px; }
 .onn-cta {
   display: block; margin-top: 16px; text-align: center;
-  background: var(--accent); color: #fff; border-radius: 100px;
+  background: none; color: var(--accent); border-radius: 100px;
+  border: 1.5px solid var(--accent);
   padding: 10px 18px; font-size: 0.85rem; font-weight: 600;
   text-decoration: none; transition: opacity .2s;
 }
@@ -1439,7 +1440,7 @@ function toggleFolder(el){el.classList.toggle('open')}
         <ul>
           <li><a href="#about">О клубе</a></li>
           <li><a href="#activities">Активности</a></li>
-          <li><a href="#" onclick="openScheduleModal();return false;">Расписание июля</a></li>
+          <li><a href="/schedule.html">Расписание июля</a></li>
           <li><a href="#pricing">Тарифы</a></li>
           <li><a href="#faq">Вопросы</a></li>
         </ul>
@@ -1833,52 +1834,6 @@ document.addEventListener('click', function(e){
   }
 });
 </script>
-<!-- July Schedule Modal -->
-<div id="schedule-modal" style="display:none;position:fixed;inset:0;z-index:9999;background:rgba(30,20,10,0.55);backdrop-filter:blur(4px);overflow-y:auto;" onclick="if(event.target===this)closeScheduleModal()">
-  <div style="background:#faf3e7;border-radius:24px;max-width:560px;margin:40px auto;padding:36px 32px;position:relative;">
-    <button onclick="closeScheduleModal()" style="position:absolute;top:18px;right:20px;background:none;border:none;font-size:22px;cursor:pointer;color:#8a7558;">✕</button>
-    <div style="font-size:0.72rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#e96d2a;margin-bottom:8px;">расписание</div>
-    <h2 style="font-family:'Cormorant Garamond',serif;font-size:1.9rem;font-weight:500;margin:0 0 24px;color:#1d150c;">Июль в <em>Рассвете</em></h2>
 
-    <div style="display:flex;flex-direction:column;gap:10px;">
-      <div style="background:#fff;border:1px solid #e8dcc4;border-radius:14px;padding:14px 18px;">
-        <div style="font-size:0.72rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:#8ea35a;margin-bottom:8px;">Каждую неделю</div>
-        <div style="display:flex;flex-direction:column;gap:6px;font-size:0.9rem;color:#1d150c;">
-          <div>🏃‍♀️ <strong>Пробежки</strong> — каждую субботу, 09:00</div>
-          <div>💪 <strong>Тренировки в парке</strong> — каждую среду, 10:00</div>
-          <div>🎙 <strong>Онлайн-встреча с Евой</strong> — каждую пятницу, 19:00</div>
-        </div>
-      </div>
-
-      <div style="background:#fff;border:1px solid #e8dcc4;border-radius:14px;padding:14px 18px;">
-        <div style="font-size:0.72rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:#e96d2a;margin-bottom:8px;">Июльские события</div>
-        <div style="display:flex;flex-direction:column;gap:8px;font-size:0.9rem;color:#1d150c;">
-          <div><span style="color:#8a7558;font-size:0.8rem;min-width:60px;display:inline-block;">2 июля</span> 🏁 <strong>Старт марафона 21 день</strong> + 🧺 Пикник</div>
-          <div><span style="color:#8a7558;font-size:0.8rem;min-width:60px;display:inline-block;">9 июля</span> 🎬 <strong>КИНОклуб</strong></div>
-          <div><span style="color:#8a7558;font-size:0.8rem;min-width:60px;display:inline-block;">15 июля</span> 🧺 <strong>Пикник</strong></div>
-          <div><span style="color:#8a7558;font-size:0.8rem;min-width:60px;display:inline-block;">23 июля</span> 🏆 <strong>Итоги марафона</strong></div>
-          <div><span style="color:#8a7558;font-size:0.8rem;min-width:60px;display:inline-block;">24 июля</span> 📖 <strong>Книжный клуб</strong></div>
-          <div><span style="color:#8a7558;font-size:0.8rem;min-width:60px;display:inline-block;">29 июля</span> 🧺 <strong>Пикник</strong></div>
-          <div><span style="color:#8a7558;font-size:0.8rem;min-width:60px;display:inline-block;">31 июля</span> 🌅 <strong>Стратегическая сессия</strong></div>
-        </div>
-      </div>
-
-      <div style="background:#fff;border:1px solid #e8dcc4;border-radius:14px;padding:14px 18px;">
-        <div style="font-size:0.72rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:#a2a043;margin-bottom:8px;">Танцы (тариф Клуб + Танцы)</div>
-        <div style="display:flex;flex-direction:column;gap:6px;font-size:0.9rem;color:#1d150c;">
-          <div>💃 2 занятия по 2 часа — точные даты уточняются в чате клуба</div>
-        </div>
-      </div>
-    </div>
-
-    <p style="text-align:center;margin-top:20px;font-size:0.82rem;color:#8a7558;">Точное время и адрес — в закрытом чате клуба</p>
-    <a href="#pricing" onclick="closeScheduleModal()" style="display:block;margin-top:16px;text-align:center;background:#e96d2a;color:#fff;border-radius:100px;padding:13px 24px;font-family:'Onest',sans-serif;font-size:0.9rem;font-weight:600;text-decoration:none;">Присоединиться →</a>
-  </div>
-</div>
-<script>
-function openScheduleModal(){document.getElementById('schedule-modal').style.display='block';document.body.style.overflow='hidden';}
-function closeScheduleModal(){document.getElementById('schedule-modal').style.display='none';document.body.style.overflow='';}
-document.addEventListener('keydown',function(e){if(e.key==='Escape')closeScheduleModal();});
-</script>
 </body>
 </html>
