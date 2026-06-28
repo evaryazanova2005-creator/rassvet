@@ -4,6 +4,7 @@
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="Расписание активностей клуба «Рассвет»: пробежки, танцы, встречи и мероприятия для девушек в Москве. Выбирай, что по душе, и добавляй в календарь.">
 <title>Расписание — Рассвет</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -555,15 +556,11 @@ a{color:inherit;text-decoration:none}
   const RU_MONTH = ['января','февраля','марта','апреля','мая','июня','июля','августа','сентября','октября','ноября','декабря'];
 
   const YEAR  = 2026;
-  let currentMonth = 5;
+  let currentMonth = 6;
   let DATA = DEFAULT_DATA;
 
-  /* ══════════════════════════════════════════════════════════════
-     🔧 ИСПРАВЛЕНИЕ: используем реальную дату вместо захардкоженной
-     ══════════════════════════════════════════════════════════════ */
   const TODAY = new Date();
 
-  /* Динамически обновляем бейдж «Сегодня — …» */
   function updateTodayBadge() {
     const el = document.getElementById('cal-today');
     if (!el) return;
@@ -579,7 +576,6 @@ a{color:inherit;text-decoration:none}
 
   function eventsForDate(y, m, d){ return DATA[dateKey(y, m, d)] || []; }
 
-  /* ── .ics + Google Calendar export ───────────────────────────── */
   function makeICS(ev, y, m, d){
     const start = new Date(y, m, d, ev.startH || 10, ev.startM || 0);
     const end   = new Date(y, m, d, ev.endH || (ev.startH ? ev.startH+1 : 11), ev.endM || 0);
@@ -589,10 +585,12 @@ a{color:inherit;text-decoration:none}
       'BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//Rassvet//Schedule//RU','CALSCALE:GREGORIAN','METHOD:PUBLISH',
       'BEGIN:VEVENT','UID:' + uid,'DTSTAMP:' + fmt(new Date()),
       'DTSTART:' + fmt(start),'DTEND:' + fmt(end),
-      'SUMMARY:' + (ev.title || '').replace(/,/g,'\\,'),
-      'DESCRIPTION:' + (ev.desc || '').replace(/,/g,'\\,').replace(/\n/g,'\\n'),
+      'SUMMARY:' + (ev.title || '').replace(/,/g,'\,'),
+      'DESCRIPTION:' + (ev.desc || '').replace(/,/g,'\,').replace(/
+/g,'\n'),
       'END:VEVENT','END:VCALENDAR'
-    ].join('\r\n');
+    ].join('
+');
   }
   function googleCalUrl(ev, y, m, d){
     const start = new Date(y, m, d, ev.startH || 10, ev.startM || 0);
@@ -601,7 +599,9 @@ a{color:inherit;text-decoration:none}
     const params = new URLSearchParams({
       action:'TEMPLATE', text:ev.title || '',
       dates: fmt(start) + '/' + fmt(end),
-      details: (ev.desc || '') + '\n\nКлуб Рассвет'
+      details: (ev.desc || '') + '
+
+Клуб Рассвет'
     });
     return 'https://www.google.com/calendar/render?' + params.toString();
   }
@@ -614,7 +614,6 @@ a{color:inherit;text-decoration:none}
     setTimeout(() => URL.revokeObjectURL(url), 1000);
   }
 
-  /* ── Calendar build ──────────────────────────────────────────── */
   function buildCalendar(m){
     currentMonth = m;
     const grid = document.getElementById('grid');
@@ -685,7 +684,6 @@ a{color:inherit;text-decoration:none}
     applyFilters();
   }
 
-  /* ── Totals card ─────────────────────────────────────────────── */
   const TOTAL_ORDER = ['dance','book','run','train','pic','content','marathon','recipe','special'];
   const TOTAL_LABEL = {
     dance:    'танцевальные<br>тренировки',
@@ -722,7 +720,6 @@ a{color:inherit;text-decoration:none}
     sub.textContent = `${totalCount} активностей на выбор — приходи на те, что зажигают именно тебя`;
   }
 
-  /* ── Day modal ──────────────────────────────────────────────── */
   const modal   = document.getElementById('modal');
   const mClose  = document.getElementById('modal-close');
   const mTitle  = document.getElementById('m-title');
@@ -768,7 +765,6 @@ a{color:inherit;text-decoration:none}
     if (e.key === 'Escape' && document.body.classList.contains('modal-open')) closeModal();
   });
 
-  /* ── Month tabs / nav ───────────────────────────────────────── */
   document.querySelectorAll('.month-tab').forEach(tab => {
     tab.addEventListener('click', () => {
       buildCalendar(+tab.dataset.month);
@@ -778,7 +774,6 @@ a{color:inherit;text-decoration:none}
   document.getElementById('prev-btn').addEventListener('click', () => { if (currentMonth > 4) buildCalendar(currentMonth - 1); });
   document.getElementById('next-btn').addEventListener('click', () => { if (currentMonth < 7) buildCalendar(currentMonth + 1); });
 
-  /* ── Legend filter ───────────────────────────────────────────── */
   const activeFilters = new Set();
   function applyFilters(){
     const noneActive = activeFilters.size === 0;
@@ -799,7 +794,6 @@ a{color:inherit;text-decoration:none}
     });
   });
 
-  /* ── Optional: load from Google Sheet (CSV) ─────────────────── */
   function parseCSV(text){
     const rows = [];
     let i = 0, field = '', row = [], inQuotes = false;
@@ -812,8 +806,10 @@ a{color:inherit;text-decoration:none}
       }
       if (c === '"'){ inQuotes = true; i++; continue; }
       if (c === ','){ row.push(field); field = ''; i++; continue; }
-      if (c === '\n'){ row.push(field); rows.push(row); row = []; field = ''; i++; continue; }
-      if (c === '\r'){ i++; continue; }
+      if (c === '
+'){ row.push(field); rows.push(row); row = []; field = ''; i++; continue; }
+      if (c === '
+'){ i++; continue; }
       field += c; i++;
     }
     if (field.length || row.length){ row.push(field); rows.push(row); }
@@ -823,12 +819,14 @@ a{color:inherit;text-decoration:none}
       .map(r => Object.fromEntries(head.map((h, i) => [h, (r[i] || '').trim()])));
   }
   function parseTSV(text){
-    const lines = text.split('\n').map(l => l.replace(/\r$/, ''));
+    const lines = text.split('
+').map(l => l.replace(/
+$/, ''));
     if (!lines.length) return [];
-    const head = lines[0].split('\t').map(s => s.trim().toLowerCase());
+    const head = lines[0].split('	').map(s => s.trim().toLowerCase());
     return lines.slice(1).filter(l => l.trim())
       .map(l => {
-        const cols = l.split('\t');
+        const cols = l.split('	');
         return Object.fromEntries(head.map((h, i) => [h, (cols[i] || '').trim()]));
       });
   }
@@ -875,7 +873,6 @@ a{color:inherit;text-decoration:none}
   buildCalendar(5);
   tryLoadSheet();
 
-  /* ── Burger menu (mobile) ────────────────────────────────────── */
   const burger = document.getElementById('burger');
   const mobileNav = document.getElementById('mobile-nav');
   burger.addEventListener('click', () => {
