@@ -111,11 +111,12 @@ function WheelChart({ areas, scores, priorities, onScoreChange }) {
       onMouseMove={onMove}    onMouseUp={onUp}    onMouseLeave={onUp}
       onTouchMove={onMove}    onTouchEnd={onUp}   onTouchCancel={onUp}
     >
-      {/* ── Concentric hexagonal grid ── */}
+      {/* ── Concentric circular grid ── */}
       {RINGS.map((ring) => (
-        <polygon
+        <circle
           key={ring}
-          points={polyPts((ring / 10) * MAX_R, n)}
+          cx={CX} cy={CY}
+          r={(ring / 10) * MAX_R}
           fill="none"
           stroke={C_GRID}
           strokeWidth={ring === 10 ? 1.3 : 0.7}
