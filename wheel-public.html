@@ -4,20 +4,21 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="noindex, nofollow">
+<meta name="description" content="Колесо баланса от клуба «Рассвет» — бесплатный инструмент, чтобы оценить ключевые сферы жизни и понять, чему дать больше внимания.">
 <title>Рассвет · Колесо баланса</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Onest:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg: #f6f6e8;
-    --bg-card: #fbfbf2;
-    --bg-soft: #eaead4;
-    --ink: #2b2b1a;
-    --ink-soft: #6b6b4a;
+    --bg: #faf3e7;
+    --bg-card: #fffaf2;
+    --bg-soft: #f2e8d0;
+    --ink: #1d150c;
+    --ink-soft: #6b5c3e;
     --accent: #a2a043;
     --accent-soft: #c4c38a;
-    --border: #d6d5b4;
+    --border: #e8dcc4;
     --radius-sm: 14px;
     --radius: 22px;
     --font-display: 'Cormorant Garamond', serif;
@@ -42,12 +43,12 @@
   }
   body::before {
     width: 500px; height: 500px;
-    background: radial-gradient(circle, rgba(162,160,67,0.18), transparent 70%);
+    background: radial-gradient(circle, rgba(233,109,42,0.10), transparent 70%);
     top: -150px; right: -100px;
   }
   body::after {
     width: 600px; height: 600px;
-    background: radial-gradient(circle, rgba(196,195,138,0.18), transparent 70%);
+    background: radial-gradient(circle, rgba(162,160,67,0.14), transparent 70%);
     bottom: -200px; left: -150px;
   }
 
@@ -64,24 +65,19 @@
   .container--narrow { max-width: 680px; }
 
   nav {
-    padding: 18px 0;
+    padding: 14px 0;
     border-bottom: 1px solid var(--border);
-    background: rgba(246, 246, 232, 0.85);
+    background: rgba(250, 243, 231, 0.92);
     backdrop-filter: blur(8px);
     position: sticky; top: 0; z-index: 100;
   }
   nav .container { display: flex; gap: 16px; align-items: center; justify-content: space-between; }
-  nav .brand { font-family: var(--font-display); font-size: 1.3rem; color: var(--ink); }
-  nav .back-link { font-size: 0.85rem; color: var(--ink-soft); }
+  nav .brand { font-family: var(--font-display); font-size: 1.2rem; color: var(--ink); font-weight: 500; }
+  nav .nav-links { display: flex; gap: 20px; align-items: center; }
+  nav .back-link { font-size: 0.85rem; color: var(--ink-soft); text-decoration: none; transition: color .15s; }
   nav .back-link:hover { color: var(--accent); }
 
-  header {
-    padding: 48px 0 16px;
-    text-align: center;
-  }
-  header p { color: var(--ink-soft); font-size: 0.95rem; margin-top: 8px; }
-
-  main { padding: 20px 0 60px; }
+  main { padding: 24px 0 60px; }
 
   /* Split layout: sticky wheel left, cards right */
   .wheel-layout {
@@ -121,16 +117,12 @@
 <nav>
   <div class="container">
     <a href="index.html" class="brand">Рассвет</a>
-    <a href="index.html" class="back-link">← На главную</a>
+    <div class="nav-links">
+      <a href="index.html" class="back-link">← Назад в клуб</a>
+      <a href="stratsession.html" class="back-link">Обратно в конспект →</a>
+    </div>
   </div>
 </nav>
-
-<header>
-  <div class="container">
-    <h1>Колесо <em>баланса</em></h1>
-    <p>Оцени 6 сфер жизни, выдели приоритеты и запиши цели на месяц</p>
-  </div>
-</header>
 
 <main>
   <div class="container">
