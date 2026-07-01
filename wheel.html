@@ -89,9 +89,15 @@
   }
   .wheel-cards { min-width: 0; }
 
+  .cards-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+  }
   @media (max-width: 820px) {
     .wheel-layout { grid-template-columns: 1fr; gap: 20px; }
     .wheel-sticky { position: static; }
+    .cards-grid { grid-template-columns: 1fr; }
   }
 
   footer {
